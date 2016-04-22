@@ -1,7 +1,9 @@
+
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-	<meta name="baidu-site-verification" content="7AB1qIzhnt">
+	<meta name="baidu-site-verification" content="7AB1qIzhnt" />
     
     <meta name="author" content="Jxust_CGS">
     
@@ -20,7 +22,7 @@
 	
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>正则表达式 | 月下踟蹰 · 遥想秦时月下，英豪追梦千里</title>
 
     <!-- Bootstrap -->
@@ -34,8 +36,9 @@
     <script src="/js/headroom.min.js"></script>
     <script src="/js/jquery.headroom.min.js"></script> 
     <script src="/js/common.js"></script>
+	<script src="/js/busuanzi.pure.mini.js"></script>
 	
-	<link rel="stylesheet" href="/css/animate.css">
+	<link rel="stylesheet" href="/css/animate.css"></link>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -93,7 +96,7 @@
         
         $("#nav-" + pageId).addClass("active");
     });
-    </script></body></html>
+    </script>
     <article class="post container">
     <div class="well post-body first-post last-post">
         <h1>正则表达式</h1>
@@ -105,7 +108,7 @@
         <div class="post-body-inner">
             <div id="toc" class="toc-article well">
                 <strong class="toc-title">大纲</strong>
-                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#写在前面（参考网站）"><span class="toc-number">1.</span> <span class="toc-text">写在前面（参考网站）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是正则表达式"><span class="toc-number">2.</span> <span class="toc-text">什么是正则表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#正则表达式的语法"><span class="toc-number">3.</span> <span class="toc-text">正则表达式的语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#具体语法请查看前面参考链接，此处只列出常见的例子"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">具体语法请查看前面参考链接，此处只列出常见的例子</span></a></li></ol></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#写在前面（参考网站）"><span class="toc-number">1.</span> <span class="toc-text">写在前面（参考网站）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是正则表达式"><span class="toc-number">2.</span> <span class="toc-text">什么是正则表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#正则表达式的语法"><span class="toc-number">3.</span> <span class="toc-text">正则表达式的语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#具体语法请查看前面参考链接，此处只列出常见的例子"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">具体语法请查看前面参考链接，此处只列出常见的例子</span></a></li></ol></li></ol></li></ol></li></ol>
             </div>
             
             <h1 id="写在前面（参考网站）">写在前面（参考网站）</h1><ul>
@@ -122,6 +125,7 @@
 <li>匹配中文（包括了繁体的）：\^[\u4E00-\u9FFF]+$<br><a href="http://www.cnblogs.com/yitian/archive/2008/11/14/1333569.html" target="_blank" rel="external">正则表达式匹配非英语字符</a>  </li>
 <li>匹配用户名（字母加数字）：\^[a-zA-Z][a-zA-Z0-9_]{4,15}$<br>以字母开头，后接4到15位字符包含下划线  </li>
 </ul>
+
             
             <section class="comment">
 	<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a><a href="#" class="bds_mshare" data-cmd="mshare" title="分享到一键分享"></a></div>
@@ -144,14 +148,20 @@
 	</script> 
 	<!-- 多说公共JS代码 end -->
 </section>
+	
+
+
         </div>
     </div>
 </article>
-<footer id="footer">
+
+    <footer id="footer">
     <div id="bottom-tip">
-        月下踟蹰 —— <small>遥想秦时月下，英豪追梦千里</small>
+        月下踟蹰 —— <small>遥想秦时月下，英豪追梦千里</small><br />
+		<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+		<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span>
     </div>
-		<small>该博客由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动，搭载 <a href="https://github.com/XadillaX/hexadillax" target="_blank">Hexadillax</a> 主题</small><br>
+		<small>该博客由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动，搭载 <a href="https://github.com/XadillaX/hexadillax" target="_blank">Hexadillax</a> 主题</small>
 		<script>
 		var _hmt = _hmt || [];
 		(function() {
@@ -161,9 +171,7 @@
 		  s.parentNode.insertBefore(hm, s);
 		})();
 		</script>
-		<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-		</script>
-		<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-		<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span>
 		<small>&copy; 2014 -2016 </small>
     </footer>
+</body>
+</html>

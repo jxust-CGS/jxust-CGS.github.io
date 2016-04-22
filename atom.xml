@@ -1,0 +1,1635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>月下踟蹰</title>
+  <subtitle>遥想秦时月下，英豪追梦千里</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://jxust-cgs.github.io/"/>
+  <updated>2016-04-10T13:47:31.048Z</updated>
+  <id>http://jxust-cgs.github.io/</id>
+  
+  <author>
+    <name>Jxust_CGS</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>正则表达式</title>
+    <link href="http://jxust-cgs.github.io/2016/04/10/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <id>http://jxust-cgs.github.io/2016/04/10/正则表达式/</id>
+    <published>2016-04-10T03:45:54.000Z</published>
+    <updated>2016-04-10T13:47:31.048Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;写在前面（参考网站）&quot;&gt;写在前面（参考网站）&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;(正则表达式语法)[&lt;a href=&quot;https://msdn.microsoft.com/zh-cn/library/ae5bf541(VS.80).aspx&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://msdn.microsoft.com/zh-cn/library/ae5bf541(VS.80).aspx&lt;/a&gt;]&lt;/li&gt;
+&lt;li&gt;(正则表达式 – 语法 | 菜鸟教程)[&lt;a href=&quot;http://www.runoob.com/regexp/regexp-syntax.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.runoob.com/regexp/regexp-syntax.html&lt;/a&gt;]&lt;/li&gt;
+&lt;li&gt;(Java正则表达式入门)[&lt;a href=&quot;http://blog.csdn.net/kdnuggets/article/details/2526588&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/kdnuggets/article/details/2526588&lt;/a&gt;]  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;什么是正则表达式&quot;&gt;什么是正则表达式&lt;/h1&gt;&lt;p&gt;正则表达式(regular expression)描述了一种字符串匹配的模式，可以用来检查一个串是否含有某种子串、将匹配的子串做替换或者从某个串中取出符合某个条件的子串等。&lt;br&gt;众所周知，在程序开发中，难免会遇到需要&lt;strong&gt;匹配、查找、替换、判断字符串&lt;/strong&gt;的情况发生，而这些情况有时又比较复杂，如果用纯编码方式解决，往往会浪费程序员的时间及精力。因此，学习及使用正则表达式，便成了解决这一矛盾的主要手段。&lt;br&gt;Java正则的功用还有很多，事实上只要是字符处理，就没有正则做不到的事情存在。（当然，正则解释时较耗时间就是了|||……）    &lt;/p&gt;
+&lt;h1 id=&quot;正则表达式的语法&quot;&gt;正则表达式的语法&lt;/h1&gt;&lt;h4 id=&quot;具体语法请查看前面参考链接，此处只列出常见的例子&quot;&gt;具体语法请查看前面参考链接，此处只列出常见的例子&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;匹配手机号码：^1[3|4|5|7|8][0-9]{9}$&lt;br&gt;“\^1”表示开始手机号以“1”开头，[3|4|5|7|8]表示第二位只可能是“3、4、5、7、8”，[0-9]{9}表示之后会跟9位数字。&lt;/li&gt;
+&lt;li&gt;匹配网址：[a-zA-Z]+://[^\s]&lt;em&gt;&lt;br&gt;“[a-zA-Z]+”表示多个字母，紧接着是“://”接着是[^\s]&lt;/em&gt;表示包含零或多个不为空格的字母或数字或其他符号&lt;/li&gt;
+&lt;li&gt;匹配邮箱：^\w+([-+.]\w+)&lt;em&gt;@\w+([-.]\w+)&lt;/em&gt;.\w+([-.]\w+)&lt;em&gt;$&lt;br&gt;“^\w+”表示以一或多个字符开始，“（）&lt;/em&gt;”接着零或多个子表达式，“[-.]\w+”表示“-”或“.”接一或多个字符，“@\w+”表示@后接一或多个字符，“（）*”接着零或多个子表达式，“[-.]\w+”表示“-”或“.”接一或多个字符，“$”表示结束  &lt;/li&gt;
+&lt;li&gt;匹配qq号：[1-9][0-9]{4,10}&lt;br&gt;以不为0的数字开头，接着是4到10位数字  &lt;/li&gt;
+&lt;li&gt;匹配中文（包括了繁体的）：\^[\u4E00-\u9FFF]+$&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/yitian/archive/2008/11/14/1333569.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;正则表达式匹配非英语字符&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;匹配用户名（字母加数字）：\^[a-zA-Z][a-zA-Z0-9_]{4,15}$&lt;br&gt;以字母开头，后接4到15位字符包含下划线  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;写在前面（参考网站）&quot;&gt;写在前面（参考网站）&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;(正则表达式语法)[&lt;a href=&quot;https://msdn.microsoft.com/zh-cn/library/ae5bf541(VS.80).aspx&quot; target=&quot;_blank
+    
+    </summary>
+    
+      <category term="正则表达式" scheme="http://jxust-cgs.github.io/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+    
+      <category term="正则表达式" scheme="http://jxust-cgs.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android学习笔记（4） ——多线程</title>
+    <link href="http://jxust-cgs.github.io/2016/04/08/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89%20%E2%80%94%E2%80%94%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    <id>http://jxust-cgs.github.io/2016/04/08/android学习笔记（4） ——多线程/</id>
+    <published>2016-04-08T03:45:54.000Z</published>
+    <updated>2016-04-10T13:34:25.477Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;为什么要使用多线程&quot;&gt;为什么要使用多线程&lt;/h1&gt;&lt;p&gt;Android中的Main线程的事件处理不能太耗时，否则后续的事件无法在5秒内得到响应，就会弹出ANR对话框。  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;常见的耗时的操作有：获取网络数据、批量操作数据库、绘图等。&lt;/li&gt;
+&lt;li&gt;需要刷新UI。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;java中线程的实现方法&quot;&gt;java中线程的实现方法&lt;/h1&gt;&lt;p&gt;在java中可有两种方式实现多线程，一种是继承Thread类，一种是实现Runnable接口；Thread类是在java.lang包中定义的。一个类只要继承了Thread类同时覆写了本类中的run()方法就可以实现多线程操作了，但是一个类只能继承一个父类，这是此方法的局限。&lt;br&gt;&lt;a href=&quot;http://developer.51cto.com/art/201203/321042.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Java中Runnable和Thread的区别&lt;/a&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;android中线程的实现方法&quot;&gt;android中线程的实现方法&lt;/h1&gt;&lt;p&gt;在android中多线程的实现方法有：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Activity.runOnUiThread(Runnable)  &lt;/li&gt;
+&lt;li&gt;View.post(Runnable) ;View.postDelay(Runnable , long)  &lt;/li&gt;
+&lt;li&gt;Handler  &lt;/li&gt;
+&lt;li&gt;AsyncTask  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/johnny901114/article/details/7536951&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android中轻松使用线程&lt;/a&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;同步与异步&quot;&gt;同步与异步&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;同步，需要等待返回结果。例如用户点击了注册按钮，需要等待服务端返回结果，那么需要有一个进度条来提示用户你的程序正在运行没有死掉。一般与服务端交互的都要有进度条，例如系统自带的浏览器，URL跳转时会有进度条。&lt;/li&gt;
+&lt;li&gt;异步，不需要等待返回结果。例如微博中的收藏功能，点击完收藏按钮后是否成功执行完成后告诉我就行了，我不想等它，这里最好实现为异步的。    &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;线程之间的通讯&quot;&gt;线程之间的通讯&lt;/h1&gt;&lt;h3 id=&quot;asyncTask：&quot;&gt;asyncTask：&lt;/h3&gt;&lt;p&gt;简单的异步耗时操作&lt;/p&gt;
+&lt;h3 id=&quot;Handler：&quot;&gt;Handler：&lt;/h3&gt;&lt;p&gt;刷新ui之算下progressbar&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;为什么要使用多线程&quot;&gt;为什么要使用多线程&lt;/h1&gt;&lt;p&gt;Android中的Main线程的事件处理不能太耗时，否则后续的事件无法在5秒内得到响应，就会弹出ANR对话框。  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;常见的耗时的操作有：获取网络数据、批量操作数据库、绘图等。&lt;/li
+    
+    </summary>
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/categories/android/"/>
+    
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android学习笔记（3） ——ListView</title>
+    <link href="http://jxust-cgs.github.io/2016/04/01/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89%20%E2%80%94%E2%80%94ListView/"/>
+    <id>http://jxust-cgs.github.io/2016/04/01/android学习笔记（3） ——ListView/</id>
+    <published>2016-04-01T03:45:54.000Z</published>
+    <updated>2016-04-10T13:52:40.045Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;ListView&quot;&gt;ListView&lt;/h1&gt;&lt;h5 id=&quot;想要在应用中添加ListView控件需要怎样做？&quot;&gt;想要在应用中添加ListView控件需要怎样做？&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;在activity的xml布局文件中添加listView控件  &lt;/li&gt;
+&lt;li&gt;新建item.xml文件为listView的子项进行布局（系统提供了一些也可直接使用）  &lt;/li&gt;
+&lt;li&gt;在activity中使用adapter将数据填充到item.xml中并组合到ListView中   &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&quot;什么是Adapter呢？&quot;&gt;什么是Adapter呢？&lt;/h5&gt;&lt;p&gt;Adapter，适配器，是连接后端数据和前端显示的适配器接口，是数据和UI（View）之间一个重要的纽带。在常见的View(ListView,GridView)等地方都需要用到Adapter。如下图直观的表达了Data、Adapter、View三者的关系：  &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://pic002.cnblogs.com/images/2012/267603/2012012021592978.jpg&quot; alt=&quot;adapter&quot;&gt;  &lt;/p&gt;
+&lt;p&gt;Adatper中有哪些实现类呢？    &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://dl2.iteye.com/upload/attachment/0040/8195/3d321acd-aec8-3f99-bde7-c7634d8f4ac3.png&quot; alt=&quot;adapter&quot;&gt;   &lt;/p&gt;
+&lt;p&gt;其实我用过的也就只有ArrayAdapter和SimpleAdapter&lt;br&gt;我们需要定义自己的实现类MyAdapter重新实现下面的方法：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;abstract Object getItem(int position)  &lt;/li&gt;
+&lt;li&gt;abstract int getCount()  &lt;/li&gt;
+&lt;li&gt;abstract long getItemId(int position)  &lt;/li&gt;
+&lt;li&gt;abstract int getItemViewType(int position)  &lt;/li&gt;
+&lt;li&gt;&lt;p&gt;abstract View getView(int position,View convertVeiw,ViewGroup parent)    &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;lv&lt;/span&gt; = (ListView) findViewById(R.id.&lt;span class=&quot;keyword&quot;&gt;lv&lt;/span&gt;);
+&lt;span class=&quot;comment&quot;&gt;//得到ListView对象的引用  &lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;lv&lt;/span&gt;.setAdapter(new ArrayAdapter&amp;lt;Items&amp;gt;(this,android.R.layout.item, Item[]));
+&lt;span class=&quot;comment&quot;&gt;//为ListView设置Adapter来绑定数据   &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/purediy/p/3267913.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android开发优化-Adapter优化&lt;/a&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;最后附上自己实现的一个Demo&quot;&gt;最后附上自己实现的一个Demo&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://jxust-cgs.github.io/photos/ListView.png&quot; alt=&quot;ListView&quot;&gt;   &lt;/p&gt;
+&lt;p&gt;Person.java&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; Person {
+    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt; name;
+    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; int photo_id;
+    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;number&lt;/span&gt;;
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Person(){
+    }
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Person(&lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt; name,int photo_id,&lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;number&lt;/span&gt;){
+        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name=name;
+        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.photo_id=photo_id;
+        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.number=&lt;span class=&quot;built_in&quot;&gt;number&lt;/span&gt;;
+    }
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt; getName() {
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; name;
+    }
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;void&lt;/span&gt; setName(&lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt; name) {
+        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name;
+    }
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; int getPhoto_id() {
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; photo_id;
+    }
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;void&lt;/span&gt; setPhoto_id(int photo_id) {
+        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.photo_id = photo_id;
+    }
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt; getNumber() {
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;number&lt;/span&gt;;
+    }
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;void&lt;/span&gt; setNumber(&lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;number&lt;/span&gt;) {
+        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.number = &lt;span class=&quot;built_in&quot;&gt;number&lt;/span&gt;;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;MyAdapter.java&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MyAdapter&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BaseAdapter&lt;/span&gt;&lt;/span&gt;{
+
+    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; ArrayList&amp;lt;Person&amp;gt; persons;
+    Context context;
+
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MyAdapter&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Context context,ArrayList&amp;lt;Person&amp;gt; persons)&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.context=context;
+        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.persons=persons;
+    }
+
+    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;getCount&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; persons==&lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;?&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;:persons.size();
+    }
+
+    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;Object &lt;span class=&quot;title&quot;&gt;getItem&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; position)&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; persons.&lt;span class=&quot;title&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(position)&lt;/span&gt;&lt;/span&gt;;
+    }
+
+    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;getItemId&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; position)&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; position;
+    }
+
+    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;View &lt;span class=&quot;title&quot;&gt;getView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; position, View convertView, ViewGroup parent)&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; Person person=(Person) getItem(position);
+        ViewHolder viewHolder=&lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
+        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(viewHolder==&lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;){
+            convertView=LayoutInflater.from(context).inflate(R.layout.person_item, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);
+            viewHolder=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ViewHolder();
+            viewHolder.imageView_photo=(ImageView) convertView.findViewById(R.id.photo);
+            viewHolder.textView_name=(TextView) convertView.findViewById(R.id.name);
+            viewHolder.textView_number=(TextView) convertView.findViewById(R.id.number);
+            convertView.setTag(viewHolder);
+        }&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;{
+            viewHolder=(ViewHolder) convertView.getTag();
+        }
+        viewHolder.textView_name.setText(person.getName());
+        viewHolder.textView_number.setText(person.getNumber());
+        viewHolder.imageView_photo.setImageResource(person.getPhoto_id());
+
+        convertView.setOnClickListener(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; OnClickListener() {
+
+            &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
+            &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View v)&lt;/span&gt; &lt;/span&gt;{
+                Toast.makeText(context, person.getName()+&lt;span class=&quot;string&quot;&gt;&quot;的号码是&quot;&lt;/span&gt;+person.getNumber(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;  convertView;
+    }
+
+    &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ViewHolder&lt;/span&gt; &lt;/span&gt;{
+        TextView textView_name;
+        TextView textView_number;
+        ImageView imageView_photo;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;MainActivity.java&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; class MainActivity extends Activity {
+
+    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; ArrayList&amp;lt;Person&amp;gt; persons =&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;Person&amp;gt;();
+
+    @Override
+    &lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; onCreate(Bundle savedInstanceState) {
+        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initPerson();
+        ListView listView=(ListView) findViewById(R.id.listView1);
+        MyAdapter myAdapter=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; MyAdapter(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;,persons);
+        listView.setAdapter(myAdapter);
+    }
+
+    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; initPerson() {
+        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;李华&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
+        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;丽华&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
+        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;利华&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
+        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;立华&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
+        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;小明&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
+        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;小红&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
+        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;天明&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
+        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;少羽&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
+        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;小莉&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
+        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;joke&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
+        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;Tom&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
+        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;Boby&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
+        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;Bob&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
+        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;小胡&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
+        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;小菜鸟&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;person_item.xml&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    &amp;lt;ImageView
+        android:&lt;span class=&quot;variable&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;@+id/photo&quot;&lt;/span&gt;
+        android:&lt;span class=&quot;variable&quot;&gt;layout_width=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;50dp&quot;&lt;/span&gt;
+        android:&lt;span class=&quot;variable&quot;&gt;layout_height=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;50dp&quot;&lt;/span&gt;
+        android:&lt;span class=&quot;variable&quot;&gt;contentDescription=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;@string/image&quot;&lt;/span&gt;/&amp;gt;
+
+    &amp;lt;LinearLayout
+        android:&lt;span class=&quot;variable&quot;&gt;layout_width=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+        android:&lt;span class=&quot;variable&quot;&gt;layout_height=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+        android:&lt;span class=&quot;variable&quot;&gt;orientation=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;vertical&quot;&lt;/span&gt;
+        android:&lt;span class=&quot;variable&quot;&gt;layout_gravity=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;center_vertical&quot;&lt;/span&gt;&amp;gt;
+
+        &amp;lt;TextView
+            android:&lt;span class=&quot;variable&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;@+id/name&quot;&lt;/span&gt;
+            android:&lt;span class=&quot;variable&quot;&gt;layout_width=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+            android:&lt;span class=&quot;variable&quot;&gt;layout_height=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+            android:&lt;span class=&quot;variable&quot;&gt;textSize=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;20sp&quot;&lt;/span&gt;
+            android:&lt;span class=&quot;variable&quot;&gt;textColor=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;#48c0f0&quot;&lt;/span&gt; /&amp;gt;
+
+        &amp;lt;TextView
+            android:&lt;span class=&quot;variable&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;@+id/number&quot;&lt;/span&gt;
+            android:&lt;span class=&quot;variable&quot;&gt;layout_width=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+            android:&lt;span class=&quot;variable&quot;&gt;layout_height=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+            android:&lt;span class=&quot;variable&quot;&gt;textSize=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;10sp&quot;&lt;/span&gt;
+            android:&lt;span class=&quot;variable&quot;&gt;textColor=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;#48c0f0&quot;&lt;/span&gt; /&amp;gt;
+    &amp;lt;/LinearLayout&amp;gt;
+
+&amp;lt;/LinearLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;ListView&quot;&gt;ListView&lt;/h1&gt;&lt;h5 id=&quot;想要在应用中添加ListView控件需要怎样做？&quot;&gt;想要在应用中添加ListView控件需要怎样做？&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;在activity的xml布局文件中添加listView控件  &lt;/li&gt;
+    
+    </summary>
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/categories/android/"/>
+    
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android学习笔记（2） ——UI</title>
+    <link href="http://jxust-cgs.github.io/2016/04/01/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89%20%E2%80%94%E2%80%94UI/"/>
+    <id>http://jxust-cgs.github.io/2016/04/01/android学习笔记（2） ——UI/</id>
+    <published>2016-04-01T03:40:54.000Z</published>
+    <updated>2016-04-10T13:40:56.910Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;UI布局&quot;&gt;UI布局&lt;/h1&gt;&lt;p&gt;第一次开发安卓感觉和j2ee中的web编程有点像，mvc模式，layout布局就是view，activity就是controller，实体类就是model。&lt;br&gt;在android中布局文件是用xml文件编写通过ViewGroup和VIew组成。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://hi.csdn.net/attachment/201108/21/0_1313928575W9Q0.gif&quot; alt=&quot;photo&quot;&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;ViewGroup&quot;&gt;ViewGroup&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;GridLayout网格布局 ,必须声明几行几列，可以实现跨行显示（相对于表格的不同）  &lt;pre&gt;&lt;code&gt;&lt;span class=&quot;label&quot;&gt;android:&lt;/span&gt;layout_row=&lt;span class=&quot;string&quot;&gt;&quot;0&quot;&lt;/span&gt;  
+&lt;span class=&quot;label&quot;&gt;android:&lt;/span&gt;layout_column=&lt;span class=&quot;string&quot;&gt;&quot;1&quot;&lt;/span&gt;  
+&lt;span class=&quot;label&quot;&gt;android:&lt;/span&gt;layout_columnSpan=&lt;span class=&quot;string&quot;&gt;&quot;2&quot;&lt;/span&gt;  
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;LinnearLayout线形布局，通过orientation设置反向水平或竖直。&lt;br&gt;android:weightSum=”5”，android：layout_weight=”1”，android：layout_weith=”0dp”实现指定反向上按比例摆放。    &lt;/li&gt;
+&lt;li&gt;RelativeLayout相对布局，对布局中的组件摆放比较复杂时使用，方便布局中组件位置的配置  &lt;/li&gt;
+&lt;li&gt;FrameLayout帧布局，用于叠加的摆放&lt;/li&gt;
+&lt;li&gt;TableLayout表格布局，每次都有加&lt;tablerow&gt;不加的话组件会独占一行&lt;/tablerow&gt;&lt;/li&gt;
+&lt;li&gt;AbsoluteLayout绝对布局（官方不提倡使用）&lt;/li&gt;
+&lt;li&gt;Include引用其他布局文件  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;View&quot;&gt;View&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;TextView，文本控件，用于显示文本，额好吧不说了&lt;/li&gt;
+&lt;li&gt;Button，按钮&lt;/li&gt;
+&lt;li&gt;EditView，输入框，通过hint属性配置提示，通过background=“@null”去除横线&lt;/li&gt;
+&lt;li&gt;CheckBox、RedioBox，多选和单选框&lt;/li&gt;
+&lt;li&gt;ListView，列表显示，这就有的说了：&lt;br&gt;  1．ListVeiw 用来展示列表的View。&lt;br&gt;  2．适配器 用来把数据映射到ListView上的中介。&lt;br&gt;  3．数据具体的将被映射的字符串，图片，或者基本组件。&lt;br&gt;&lt;a href=&quot;http://jxust-cgs.github.io/2016/04/01/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89%20%E2%80%94%E2%80%94ListView/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;学习ListView的使用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;WebView,网络视图   &lt;/li&gt;
+&lt;li&gt;progressBar，进度条&lt;br&gt;&lt;a href=&quot;http://jxust-cgs.github.io/2016/04/08/android学习笔记（4）%20——多线程/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;由webView,progressBar了解多线程&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;ImageView,图片视图，通过src属性配置资源或者在程序中配置&lt;pre&gt;&lt;code&gt;Bitmap bm = BitmapFactory.decodeStream(  
+        MainActivity.&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.getAssets().&lt;span class=&quot;built_in&quot;&gt;open&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;weather/100.png&quot;&lt;/span&gt;));  
+iv_logo.setImageBitmap(bm);  &lt;span class=&quot;comment&quot;&gt;// 通过获得assets目录下文件路径的方式设置图片资源  &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;Fragment碎片，通过fragment能够很好的适应平板和手机，不过很少这么用，一般用于经常变动的页面替换&lt;/li&gt;
+&lt;li&gt;scrollView滚动条，在显示很长的数据的时候可以轻松搞定&lt;/li&gt;
+&lt;li&gt;…&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;UI布局&quot;&gt;UI布局&lt;/h1&gt;&lt;p&gt;第一次开发安卓感觉和j2ee中的web编程有点像，mvc模式，layout布局就是view，activity就是controller，实体类就是model。&lt;br&gt;在android中布局文件是用xml文件编写通过ViewGrou
+    
+    </summary>
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/categories/android/"/>
+    
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android学习笔记（1）——activity与intent</title>
+    <link href="http://jxust-cgs.github.io/2016/03/31/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89%20%E2%80%94%E2%80%94activity%E4%B8%8Eintent/"/>
+    <id>http://jxust-cgs.github.io/2016/03/31/android学习笔记（1） ——activity与intent/</id>
+    <published>2016-03-31T05:32:54.000Z</published>
+    <updated>2016-04-10T13:34:11.997Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;activity&quot;&gt;activity&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;对于安卓的学习一开始无非就是安装软件配置开发环境，adt和android stdio我感觉都差不多。在eclipse中开发一次加载多个项目，而在android stdio中只对一个项目进行开发。 我比较喜欢查看以前项目中的代码或是写个小例子还是eclipse比较适合我^_^  &lt;/li&gt;
+&lt;li&gt;说到activity就是要说activity的生命周期。&lt;br&gt;&lt;img src=&quot;http://hukai.me/android-training-course-in-chinese/basics/activity-lifecycle/basic-lifecycle-paused.png&quot; alt=&quot;photo&quot;&gt;  &lt;/li&gt;
+&lt;li&gt;finish()结束activity，默认会返回到上一个activity。&lt;br&gt;（ps：acitvity是通过返回栈来管理的，不要用intent跳回去哟这样你按返回键又会返回回来的）  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;intent&quot;&gt;intent&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;显式intent：显式就是意图非常明确，&lt;br&gt;指定跳转的activity，startActivity（&lt;br&gt;New Intent(MainActivity.this,OtherActivity.class)）。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;隐式intent：隐式就是意图不明确，&lt;br&gt;需要根据action和category匹配对应的activity   &lt;/p&gt;
+&lt;p&gt;  &lt;intent-filter&gt;&lt;/intent-filter&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;action android:&lt;span class=&quot;property&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;android.intent.action.MAIN&quot;&lt;/span&gt; /&amp;gt;
+&amp;lt;category android:&lt;span class=&quot;property&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;android.intent.category.LAUNCHER&quot;&lt;/span&gt; /&amp;gt;
+保证此activity入口出现在luncher中，一般出现在Mainactivity
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;    &lt;/p&gt;
+&lt;p&gt;  对于隐式的Intent的使用比较常见的就是调用系统的应用如：打电话   &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Intent intent = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Intent(Intent.ACTION_DIAL);
+intent.setData(&lt;span class=&quot;built_in&quot;&gt;Uri&lt;/span&gt;.parse(&lt;span class=&quot;string&quot;&gt;&quot;tel:10086&quot;&lt;/span&gt;));
+startActivity(intent);
+还有很多实践可以尝试：发短信，打开网页等
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;intent可以用于发送和回传数据&quot;&gt;intent可以用于发送和回传数据&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;发送：  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;button1.setOnClickListener(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;OnClickListener&lt;/span&gt;() {
+  &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
+  public void onClick(&lt;span class=&quot;type&quot;&gt;View&lt;/span&gt; v) {
+      &lt;span class=&quot;type&quot;&gt;String&lt;/span&gt; data = &lt;span class=&quot;string&quot;&gt;&quot;Hello SecondActivity&quot;&lt;/span&gt;;
+      &lt;span class=&quot;type&quot;&gt;Intent&lt;/span&gt; intent = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;Intent&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;FirstActivity&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;, &lt;span class=&quot;type&quot;&gt;SecondActivity&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;);
+      intent.putExtra(&lt;span class=&quot;string&quot;&gt;&quot;extra_data&quot;&lt;/span&gt;, data);
+      &lt;span class=&quot;comment&quot;&gt;//发送需要的数据，发送对象是需要对对象进行序列化通过实现Serializable接口传递对象,一种是通过实现Parcelable接口传递对象&lt;/span&gt;
+      startActivity(intent);
+    }
+});
+
+public &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SecondActivity&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Activity&lt;/span&gt; {&lt;/span&gt;
+  &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
+  &lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; void onCreate(&lt;span class=&quot;type&quot;&gt;Bundle&lt;/span&gt; savedInstanceState) {
+      &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);
+      requestWindowFeature(&lt;span class=&quot;type&quot;&gt;Window&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;FEATURE_NO_TITLE&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//去掉标题栏，一定要放在setContentView（）之前哟&lt;/span&gt;
+      setContentView(&lt;span class=&quot;type&quot;&gt;R&lt;/span&gt;.layout.second_layout);
+      &lt;span class=&quot;type&quot;&gt;Intent&lt;/span&gt; intent = getIntent();
+      &lt;span class=&quot;type&quot;&gt;String&lt;/span&gt; data = intent.getStringExtra(&lt;span class=&quot;string&quot;&gt;&quot;extra_data&quot;&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//获取从firstactivity中传递来的数据&lt;/span&gt;
+      &lt;span class=&quot;type&quot;&gt;Log&lt;/span&gt;.d(&lt;span class=&quot;string&quot;&gt;&quot;SecondActivity&quot;&lt;/span&gt;, data);
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;返回数据：  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;button1.setOnClickListener(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; OnClickListener() {
+    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View v)&lt;/span&gt; &lt;/span&gt;{
+        Intent intent = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Intent(FirstActivity.&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;, SecondActivity.class);
+        startActivityForResult(intent, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);
+    }
+});
+&lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
+&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onActivityResult&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; requestCode, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; resultCode, Intent data)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt; (requestCode) {
+        &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;:
+            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (resultCode == RESULT_OK) {
+                String returnedData = data.getStringExtra(&lt;span class=&quot;string&quot;&gt;&quot;data_return&quot;&lt;/span&gt;);
+                Log.d(&lt;span class=&quot;string&quot;&gt;&quot;FirstActivity&quot;&lt;/span&gt;, returnedData);
+            }
+            &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;
+        &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt;:
+    }
+}
+&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SecondActivity&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Activity&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Bundle savedInstanceState)&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.second_layout);
+        Button button2 = (Button) findViewById(R.id.button_2);
+        button2.setOnClickListener(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; OnClickListener() {
+            &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
+            &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View v)&lt;/span&gt; &lt;/span&gt;{
+                Intent intent = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Intent();
+                intent.putExtra(&lt;span class=&quot;string&quot;&gt;&quot;data_return&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Hello FirstActivity&quot;&lt;/span&gt;);
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;activity的启动模式&quot;&gt;activity的启动模式&lt;/h1&gt;&lt;p&gt;启动模式一共有四种，分别是standard、singleTop、singleTask 和singleInstance ， 可以在AndroidManifest.xml 中通过给&lt;activity&gt; 标签指定android:launchMode 属性来选择启动模式。&lt;/activity&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;standard 标准启动模式，使用返回栈管理activity，需要一层一层的返回，而且可能会创建多个相同activity的实例。  &lt;/li&gt;
+&lt;li&gt;singleTop 在启动活动时如果发现返回栈的栈顶已经是该活动，则认为可以直接使用它，不会再创建新的活动实例。   &lt;/li&gt;
+&lt;li&gt;singleTask 每次启动该活动时系统首先会在返回栈中检查是否存在该活动的实例，如果发现已经存在则直接使用该实例，并把在这个活动之上的所有活动统统出栈，如果没有发现就会创建一个新的活动实例。  &lt;/li&gt;
+&lt;li&gt;singleInstance 在这种模式下会有一个单独的返回栈来管理这个活动，不管是哪个应用程序来访问这个活动，都共用的同一个返回栈，也就解决了共享活动实例的问题。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;快速结束activity&quot;&gt;快速结束activity&lt;/h1&gt;&lt;p&gt;我们知道activity的返回是一个退栈的过程，但是如果当前是第N个activity中如何做到结束所有的activity呢？&lt;br&gt;你肯能会想用home键返回或调用系统的结束进程。但是我们程序自己是完全可以做得到的。&lt;br&gt;首先建立一个工具类ActivityCollector，在这个类中创建一个List&lt;activity&gt;的实例，提供静态方法addActivity（）和removeActivity（）方法来并在BaseActivity中onCreate（）和onDestory（）维护List&lt;activity&gt;。然后就是在ActivityCollector中提供一个finishAll的方法就OK了。  &lt;/activity&gt;&lt;/activity&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;activity&quot;&gt;activity&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;对于安卓的学习一开始无非就是安装软件配置开发环境，adt和android stdio我感觉都差不多。在eclipse中开发一次加载多个项目，而在android stdio中只对一个项目进行开发。 我比
+    
+    </summary>
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/categories/android/"/>
+    
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习Hibernate记录(6)——映射关联</title>
+    <link href="http://jxust-cgs.github.io/2015/11/23/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%886%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/11/23/学习Hibernate记录（6）/</id>
+    <published>2015-11-23T13:38:32.000Z</published>
+    <updated>2015-12-06T13:42:39.642Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;映射关联配置&quot;&gt;映射关联配置&lt;/h2&gt;&lt;p&gt;总体来说在Hibernate中对象的关系主要有：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;一对一&lt;br&gt;依照映射方法不同，可分为主键关联映射和唯一外键关联映射。主键关联是维护两张表的主键一致，如有必要还可以在主键上再加上外键约束；唯一外键关联则类似于多对一关联，为表加入一个外键列，不过一对一关联会同时将这个外键加上唯一约束。&lt;br&gt;此处给出双向关联的实例代码：根据具体可以只使用单向的关联  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;主键双向关联  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- bean/User.hbm.xml --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.User&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_user&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 指定主键生成策略为外键 --&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;foreign&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 指定要参照的属性 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;param&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;property&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;group&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;param&lt;/span&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;one-to-one&amp;gt;映射一对一关系。 --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;one-to-one&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;group&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;  
+&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- bean/Group.hbm.xml --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.Group&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_group&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;native&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;one-to-one&amp;gt;映射一对一关系 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;one-to-one&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;user&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;唯一外键双向关联  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- bean/User.hbm.xml --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.User&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_user&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;native&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 为&amp;lt;many-to-one&amp;gt;加上unique就变成了一对一 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;many-to-one&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;group&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;unique&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;true&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;gid&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- bean/Group.hbm.xml --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.Group&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_group&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;native&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;one-to-one&amp;gt;映射一对一 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;one-to-one&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;user&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;一对多&lt;br&gt;此处给出双向关联的实例代码：根据具体可以只使用单向的关联，特别强调的是要根据使用的场景不同注意级联关系的处理和抓取策略的选择。&lt;br&gt;一般一对多的使用用于集合包含的关系，亦可以自己对自己进行一对多的关联可以形成一个父子对象的关系  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- bean/User.hbm.xml --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.User&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_user&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;native&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;many-to-one&amp;gt;映射多对一关系。导出ddl时将自动生成一个外键 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;many-to-one&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;group&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;gid&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- bean/Group.hbm.xml --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.Group&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_group&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;native&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;set&amp;gt;映射集合 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;users&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;key&amp;gt;指定引用至自身的外键表（t_user）中的外键 --&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;gid&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;one-to-many&amp;gt;映射一对多关系 --&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;one-to-many&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.User&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;set&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;多对多&lt;br&gt;此处给出双向关联的实例代码：根据具体可以只使用单向的关联  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- bean/User.hbm.xml --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.User&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_user&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;native&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;set&amp;gt;映射集合，在多对多关系中，Hibernate将生成第三张表 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;groups&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_user_group&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;key&amp;gt;指定引用至自身的外键表（t_user_group）中的外键 --&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;userid&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;many-to-many&amp;gt;映射多对多关系，column指定另一端在表t_user_group中的列 --&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;many-to-many&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.Group&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;groupid&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;set&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- bean/Group.hbm.xml --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.Group&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_group&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;native&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;set&amp;gt;映射集合，在多对多关系中，Hibernate将生成第三张表 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;users&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_user_group&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;key&amp;gt;指定引用至自身的外键表（t_user_group）中的外键 --&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;group&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;many-to-many&amp;gt;映射多对多关系，column指定另一端在表t_user_group中的列 --&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;many-to-many&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.User&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;userid&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;set&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;级联关系：casecde属性的相关介绍在&lt;a href=&quot;http://jxust-cgs.github.io/2015/11/03/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%883%EF%BC%89/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;学习Hibernate记录（3）&lt;/a&gt;中有介绍此处省略&lt;br&gt;多对多的双向关联同样可以在不想要维护关系的一端的&lt;set&gt;里设置inverse=”true”；但是必须有一端可以维护，也就是说只可以设置一个。&lt;br&gt;&lt;a href=&quot;http://blog.sina.com.cn/s/blog_6e5195850100oats.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hibernate中的集合类的配置&lt;/a&gt;&lt;/set&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Hibernate乐观锁和悲观锁&quot;&gt;Hibernate乐观锁和悲观锁&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/Fskjb/archive/2010/04/10/1709269.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hibernate乐观锁和悲观锁(转)&lt;/a&gt;  &lt;/p&gt;
+&lt;h2 id=&quot;sql常用聚合查询&quot;&gt;sql常用聚合查询&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;count:SELECT COUNT(&amp;lt;计数规范&amp;gt;) FROM &amp;lt;表名&amp;gt;&lt;br&gt;其中，计数规范包括：&lt;br&gt;  ‘    * ’ 列名：计数所有选择的行，包括NULL值；&lt;br&gt;  ‘   ALL’ 列名：计数指定列的所有非空值行，如果不写，默认为ALL；&lt;br&gt;DISTINCT 列名：计数指定列的唯一非空值行。  &lt;/li&gt;
+&lt;li&gt;sun:SELECT SUM(student_age) FROM t_student;   &lt;/li&gt;
+&lt;li&gt;avg:SELECT AVG(student_age)FROM t_student;&lt;/li&gt;
+&lt;li&gt;max:SELECT MAX(student_age) FROM t_student;  &lt;/li&gt;
+&lt;li&gt;min:SELECT MIN(student_age) FROM t_student;  &lt;/li&gt;
+&lt;li&gt;分组查询：SELECT student_class,COUNT(ALL student_name) AS 总人数 FROM t_student GROUP BY (student_class);   &lt;/li&gt;
+&lt;li&gt;过滤查询: SELECT student_class,AVG(student_age) AS 平均年龄 FROM t_student GROUP BY (student_class) HAVING AVG(student_age)&amp;gt;20;    &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;SQL的执行顺序：&lt;br&gt;–第一步：执行FROM&lt;br&gt;–第二步：WHERE条件过滤&lt;br&gt;–第三步：GROUP BY分组&lt;br&gt;–第四步：执行SELECT投影列&lt;br&gt;–第五步：HAVING条件过滤&lt;br&gt;–第六步：执行ORDER BY 排序    &lt;/p&gt;
+&lt;h2 id=&quot;参考博客&quot;&gt;参考博客&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/huxi/archive/2009/12/15/1624988.html&quot; title=&quot;参考博客链接&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hibernate关联映射&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/ghost-xyx/p/3811036.html?utm_source=tuicool&amp;amp;utm_medium=referral&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SQL语句汇总（三）——聚合函数、分组、子查询及组合查询&lt;/a&gt;  &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;映射关联配置&quot;&gt;映射关联配置&lt;/h2&gt;&lt;p&gt;总体来说在Hibernate中对象的关系主要有：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;一对一&lt;br&gt;依照映射方法不同，可分为主键关联映射和唯一外键关联映射。主键关联是维护两张表的主键一致，如有必要还可以在主键上再加上外键
+    
+    </summary>
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/categories/Hibernate/"/>
+    
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/tags/Hibernate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习Hibernate记录(5)——数据查询</title>
+    <link href="http://jxust-cgs.github.io/2015/11/22/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%885%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/11/22/学习Hibernate记录（5）/</id>
+    <published>2015-11-22T02:42:38.000Z</published>
+    <updated>2015-12-06T11:11:58.282Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Hibernate的查询方式主要由4种&quot;&gt;Hibernate的查询方式主要由4种&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;OID检索方式：利用Session的get()和load()方法加载指定OID对象    &lt;/li&gt;
+&lt;li&gt;HQL检索方式：通过Query接口使用面向对象的HQL查询语言    &lt;/li&gt;
+&lt;li&gt;QBC检索方式：使用QBC（Query by Criteria）API检索对象  &lt;/li&gt;
+&lt;li&gt;本地SQL检索方式:使用SQLQuery接口使用SQL语言查询     &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;OID检索方式&quot;&gt;OID检索方式&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;User user=(User) session.get(“jxust.config.User”, 2);&lt;/li&gt;
+&lt;li&gt;User user=(User) session.get(User.class, 2);&lt;/li&gt;
+&lt;li&gt;User user=(User) session.load(“jxust.config.User”, 2);  &lt;/li&gt;
+&lt;li&gt;User user=(User) session.load(User.class, 2);  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对比Session.get()和Session.load()方法&lt;br&gt;get方法会在调用之后立即向数据库发出sql语句（不考虑缓存的情况下），返回持久化对象，不支持lazy延时加载；&lt;br&gt;load方法会在调用后返回一个代理对象，该代理对象只保存了实体对象的id，直到使用对象的非主键属性时才会发出sql语句。查询数据库中不存在的数据时，get方法返回null，load方法抛出异常：org.hibernate.ObjectNotFoundException,支持lazy延时加载;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/photos/Hibernate_5.1.jpg&quot; alt=&quot;Hibernate&quot;&gt;  &lt;/p&gt;
+&lt;h2 id=&quot;HQL检索方式&quot;&gt;HQL检索方式&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;this.openSession();
+&lt;span class=&quot;keyword&quot;&gt;Query&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;=this.getSession().createQuery(&quot;from User &lt;span class=&quot;keyword&quot;&gt;u&lt;/span&gt; where &lt;span class=&quot;keyword&quot;&gt;u&lt;/span&gt;.name=:name);
+&lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;,&quot;cgs&quot;&lt;/span&gt;);
+&lt;span class=&quot;keyword&quot;&gt;List&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;list&lt;/span&gt;=&lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;list&lt;/span&gt;();
+&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(int i=0;i&amp;lt;&lt;span class=&quot;keyword&quot;&gt;list&lt;/span&gt;.size();i++)
+{
+    User user=(User)&lt;span class=&quot;keyword&quot;&gt;list&lt;/span&gt;.&lt;span class=&quot;literal&quot;&gt;get&lt;/span&gt;(i);
+    System.&lt;span class=&quot;keyword&quot;&gt;out&lt;/span&gt;.printf(&lt;span class=&quot;string&quot;&gt;&quot;NAME=&quot;&lt;/span&gt;+user.getName());
+}
+this.closeSession();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;只返回一个对象：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;type&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;object&lt;/span&gt;=this.getSession&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;.createQuery(&lt;span class=&quot;string&quot;&gt;&quot;from User&quot;&lt;/span&gt;).setMaxResult(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;).uniqueResult&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;批量检索对象（分页查询数据）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;Query&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;=this.getSession().createQuery(&lt;span class=&quot;string&quot;&gt;&quot;from User&quot;&lt;/span&gt;);
+&lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;.setFirstResult(0);&lt;span class=&quot;comment&quot;&gt;//第0条数据开始&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;.setMaxResult(6);&lt;span class=&quot;comment&quot;&gt;//结果最大包括6条数据&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;QBC检索方式&quot;&gt;QBC检索方式&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;this.openSession&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;
+&lt;span class=&quot;type&quot;&gt;Criteria&lt;/span&gt; criteria=this.getSession&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;.createCriteria(&lt;span class=&quot;type&quot;&gt;User&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;);
+&lt;span class=&quot;type&quot;&gt;Criterion&lt;/span&gt; c=&lt;span class=&quot;type&quot;&gt;Expression&lt;/span&gt;.eq(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;cgs&quot;&lt;/span&gt;);
+criteria=criterion.add(c);
+&lt;span class=&quot;type&quot;&gt;List&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;list&lt;/span&gt;=criteria.&lt;span class=&quot;built_in&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;
+&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; i=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;i&amp;lt;&lt;span class=&quot;built_in&quot;&gt;list&lt;/span&gt;.size&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;i++)
+{
+    &lt;span class=&quot;type&quot;&gt;User&lt;/span&gt; user=(&lt;span class=&quot;type&quot;&gt;User&lt;/span&gt;)&lt;span class=&quot;built_in&quot;&gt;list&lt;/span&gt;.get(i);
+    &lt;span class=&quot;type&quot;&gt;System&lt;/span&gt;.out.printf(&lt;span class=&quot;string&quot;&gt;&quot;NAME=&quot;&lt;/span&gt;+user.getName&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;);
+}
+this.closeSession&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;/photos/Hibernate_5.2.jpg&quot; alt=&quot;Hibernate&quot;&gt;&lt;/p&gt;
+&lt;p&gt;只返回一个对象：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;type&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;object&lt;/span&gt;=this.getSession&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;.createCriteria(&lt;span class=&quot;string&quot;&gt;&quot;User.class&quot;&lt;/span&gt;).setMaxResult(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;).uniqueResult&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;批量检索对象（分页查询数据）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;Query&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;=this.getSession().createCriteria(&lt;span class=&quot;string&quot;&gt;&quot;User.class&quot;&lt;/span&gt;);
+&lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;.setFirstResult(0);&lt;span class=&quot;comment&quot;&gt;//第0条数据开始&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;.setMaxResult(6);&lt;span class=&quot;comment&quot;&gt;//结果最大包括6条数据&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;数据设置排序  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;criteria.addOrder(&lt;span class=&quot;keyword&quot;&gt;Order&lt;/span&gt;.asc(&lt;span class=&quot;string&quot;&gt;&quot;id&quot;&lt;/span&gt;));
+criteria.addOrder(&lt;span class=&quot;keyword&quot;&gt;Order&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;desc&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;));
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;本地SQL检索方式&quot;&gt;本地SQL检索方式&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;this.openSession();
+&lt;span class=&quot;keyword&quot;&gt;Query&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;=this.getSession().createSQLQuery(&lt;span class=&quot;string&quot;&gt;&quot;select * from user&quot;&lt;/span&gt;).addEntity(User.&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;);
+&lt;span class=&quot;comment&quot;&gt;//Query query=this.getSession().createSQLQuery(&quot;select u.* from user u&quot;).addEntity(&quot;u&quot;,User.class);&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;List&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;list&lt;/span&gt;=&lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;list&lt;/span&gt;();
+&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(int i=0;i&amp;lt;&lt;span class=&quot;keyword&quot;&gt;list&lt;/span&gt;.size();i++)
+{
+    User user=(User)&lt;span class=&quot;keyword&quot;&gt;list&lt;/span&gt;.&lt;span class=&quot;literal&quot;&gt;get&lt;/span&gt;(i);
+    System.&lt;span class=&quot;keyword&quot;&gt;out&lt;/span&gt;.printf(&lt;span class=&quot;string&quot;&gt;&quot;NAME=&quot;&lt;/span&gt;+user.getName());
+}
+this.closeSession();
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;参考博客&quot;&gt;参考博客&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/chssheng2007/article/details/6701970&quot; title=&quot;参考博客链接&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hibernate数据查询&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/luotaoyeah/p/3862974.html&quot; title=&quot;参考博客链接&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hibernate中Session的get和load&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Hibernate的查询方式主要由4种&quot;&gt;Hibernate的查询方式主要由4种&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;OID检索方式：利用Session的get()和load()方法加载指定OID对象    &lt;/li&gt;
+&lt;li&gt;HQL检索方式：通过Query接口使用面向对象
+    
+    </summary>
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/categories/Hibernate/"/>
+    
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/tags/Hibernate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习Hibernate记录(4)——事务管理</title>
+    <link href="http://jxust-cgs.github.io/2015/11/16/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%884%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/11/16/学习Hibernate记录（4）/</id>
+    <published>2015-11-16T03:19:52.000Z</published>
+    <updated>2015-11-17T09:11:27.089Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;事务的特性&quot;&gt;事务的特性&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;原子性  &lt;/li&gt;
+&lt;li&gt;一致性  &lt;/li&gt;
+&lt;li&gt;隔离性  &lt;/li&gt;
+&lt;li&gt;持久性   &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;事务的缺陷&quot;&gt;事务的缺陷&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;脏读取  &lt;/li&gt;
+&lt;li&gt;不可重复读取  &lt;/li&gt;
+&lt;li&gt;幻影行  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;事务的传播行为&quot;&gt;事务的传播行为&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;PROPAGATION_REQUIRED: 如果存在一个事务，则支持当前事务。如果没有事务则开启；  &lt;/li&gt;
+&lt;li&gt;PROPAGATION_SUPPORTS: 如果存在一个事务，支持当前事务。如果没有事务，则非事务的执行；  &lt;/li&gt;
+&lt;li&gt;PROPAGATION_MANDATORY: 如果已经存在一个事务，支持当前事务。如果没有一个活动的事务，则抛出异常；   &lt;/li&gt;
+&lt;li&gt;PROPAGATION_REQUIRES_NEW: 总是开启一个新的事务。如果一个事务已经存在，则将这个存在的事务挂起；   &lt;/li&gt;
+&lt;li&gt;PROPAGATION_NOT_SUPPORTED: 总是非事务地执行，并挂起任何存在的事务；  &lt;/li&gt;
+&lt;li&gt;PROPAGATION_NEVER: 总是非事务地执行，如果存在一个活动事务，则抛出异常；  &lt;/li&gt;
+&lt;li&gt;PROPAGATION_NESTED：如果一个活动的事务存在，则运行在一个嵌套的事务中. 如果没有活动事务, 则按TransactionDefinition.PROPAGATION_REQUIRED 属性执行。  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;事务的隔离级别&quot;&gt;事务的隔离级别&lt;/h2&gt;&lt;p&gt;使用Hibernate设置数据库隔离级别&lt;br&gt;在Hibernate的配置文件中可以显示的配置数据库事务隔离级别。每一个隔离级别用一个整数表示：&lt;br&gt;8 - Serializable 串行化&lt;br&gt;4 - Repeatable Read 可重复读&lt;br&gt;2 - Read Commited 可读已提交&lt;br&gt;1 - Read Uncommited 可读未提交&lt;br&gt;在hibernate.cfg.xml中使用hibernate.connection.isolation参数配置数据库事务隔离级别。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/photos/Hibernate_4.1.png&quot; alt=&quot;Hibernate&quot;&gt;&lt;/p&gt;
+&lt;p&gt;事务的只读属性以及超时属性的配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;&lt;span class=&quot;keyword&quot;&gt;prop&lt;/span&gt; key=&lt;span class=&quot;string&quot;&gt;&quot;query*&quot;&lt;/span&gt;&amp;gt;PROPAGATION_REQUIRED,timeout_5,readOnly&amp;lt;&lt;span class=&quot;keyword&quot;&gt;prop&lt;/span&gt;&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;基本的事务&quot;&gt;基本的事务&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
+    Session session = HibernateUtil.currentSession();
+    Transaction tx = session.beginTransaction();  &lt;span class=&quot;comment&quot;&gt;//在默认情况下，开启一个JDBC事物&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; i=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i&amp;lt;&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;; i++)  {
+        Student stu = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Student();
+        stu.setName(&lt;span class=&quot;string&quot;&gt;&quot;Student&quot;&lt;/span&gt; + i);
+        session.&lt;span class=&quot;built_in&quot;&gt;save&lt;/span&gt;(stu);
+    }
+    tx.commit(); &lt;span class=&quot;comment&quot;&gt;//提交事务&lt;/span&gt;
+    session.close();
+} &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt;(Exception e) {…
+    tx.rollback();   &lt;span class=&quot;comment&quot;&gt;//事务回滚&lt;/span&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;Spring的事务管理器&quot;&gt;Spring的事务管理器&lt;/h2&gt;&lt;p&gt;事务管理器的实例&lt;br&gt;Org.springframwork.jdbc.datasource.DataSourceTransactionManagert 用JDBC的 DataSource 去管理事务&lt;br&gt;Org.springframwork.orm.hibernate.HibernateTransactionManager 当持久机制是Hibernate时的事务管理器&lt;br&gt;Org.springframework.orm.jdoTransactionManager 当持久机制是JDO时的事务管理器&lt;br&gt;Org.springframework.transaction.jta.JtaTransactionManager 用JTA管理事务&lt;br&gt;Org.springframwork.orm.ojb.PersistenceBrokerTransactionManager 当持久机制是apache的OJB时的事务管理器  &lt;/p&gt;
+&lt;h2 id=&quot;参考博客&quot;&gt;参考博客&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.blogjava.net/robbie/archive/2009/04/05/264003.html&quot; title=&quot;参考博客链接&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Spring事务配置的五种方式&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/otomedaybreak/archive/2012/01/27/2330008.html#C5&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hibernate事务与并发问题处理（乐观锁与悲观锁）&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/rushoooooo/archive/2011/08/28/2155960.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Spring声明式事务配置管理方法&lt;/a&gt;  &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;事务的特性&quot;&gt;事务的特性&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;原子性  &lt;/li&gt;
+&lt;li&gt;一致性  &lt;/li&gt;
+&lt;li&gt;隔离性  &lt;/li&gt;
+&lt;li&gt;持久性   &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;事务的缺陷&quot;&gt;事务的缺陷&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;脏读取  &lt;/li
+    
+    </summary>
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/categories/Hibernate/"/>
+    
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/tags/Hibernate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习Hibernate记录(3)——操纵实体</title>
+    <link href="http://jxust-cgs.github.io/2015/11/03/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%883%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/11/03/学习Hibernate记录（3）/</id>
+    <published>2015-11-03T08:52:17.000Z</published>
+    <updated>2015-12-06T11:49:17.954Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;创建工厂、获取Session、开启事务&quot;&gt;创建工厂、获取Session、开启事务&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;type&quot;&gt;Configuration&lt;/span&gt; configuration=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;Configuration&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;.configure&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;
+sessionFactory=configuration.buildSessionFactory&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;
+session=sessionFactory.openSession&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;  
+&lt;span class=&quot;type&quot;&gt;Transaction&lt;/span&gt; tx=session.beginTransaction&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;
+tx.commit&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;Hibernate对象的三种状态&quot;&gt;Hibernate对象的三种状态&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/photos/Hibernate_3.1.jpg&quot; alt=&quot;Hibernate&quot;&gt;   &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;临时状态&lt;br&gt;不在Session的缓存中，不与Session对象实例相关联；&lt;br&gt;在数据库中没有与之对应的记录  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;持久化状态&lt;br&gt;在Session缓存中与Session实例相关联；&lt;br&gt;在数据库中存在与之对应的记录&lt;br&gt;Session在清理缓存时会根据持久化对象的属性变化更新数据库  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;游离状态&lt;br&gt;不在Session的缓存中，不与任何Session实例相关联&lt;br&gt;数据库中存在与之相对应的记录  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;清除Session的缓存&quot;&gt;清除Session的缓存&lt;/h2&gt;&lt;p&gt;Session.evict(ClassesName);从Session中清除指定持久化对象。&lt;br&gt;Session.clear();清除Session中所有持久化对象。&lt;/p&gt;
+&lt;h2 id=&quot;级联操作&quot;&gt;级联操作&lt;/h2&gt;&lt;p&gt;Hibernate的一大优点是可以级联操作相关的持久化对象，可以非常方便的从当前的操作对象转而操作另一个与之相关的对象。&lt;/p&gt;
+&lt;p&gt;&lt;many-to-one&gt;都有casecde属性&lt;br&gt;none:默认值，所有情况下均不进行关联操作。（将子对象中的关联属性改为null）&lt;br&gt;all :所有情况下均进行关联操作。&lt;br&gt;save-update:在执行save/update/saveOrUpdate时进行关联操作。&lt;br&gt;delete:在执行delete时进行关联操作。（删除子对象）&lt;br&gt;delete-orphan: 当save/update/saveOrUpdate时，相当于save-update ;当删除操作时，相当于delete;  &lt;/many-to-one&gt;&lt;/p&gt;
+&lt;h2 id=&quot;抓取策略&quot;&gt;抓取策略&lt;/h2&gt;&lt;p&gt;当fetch设置抓取策略的值为‘join’时，lazy=”true”不起作用了&lt;br&gt;&lt;a href=&quot;http://blog.sina.com.cn/s/blog_4586764e0100ri21.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hibernate的fetch&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;创建工厂、获取Session、开启事务&quot;&gt;创建工厂、获取Session、开启事务&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;type&quot;&gt;Configuration&lt;/span&gt; configuration=&lt;span class=&quot;keyword&quot;&gt;
+    
+    </summary>
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/categories/Hibernate/"/>
+    
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/tags/Hibernate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习Hibernate记录(2)——配置文件</title>
+    <link href="http://jxust-cgs.github.io/2015/11/01/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%882%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/11/01/学习Hibernate记录（2）/</id>
+    <published>2015-11-01T12:28:40.000Z</published>
+    <updated>2015-12-06T12:55:42.595Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;创建Hibernate项目&quot;&gt;创建Hibernate项目&lt;/h2&gt;&lt;p&gt;第一步：当然是添加jar包&lt;br&gt;第二步：编辑Hibernate的配置文件  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;&amp;lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;doctype&quot;&gt;&amp;lt;!DOCTYPE hibernate-configuration PUBLIC
+          &quot;-//Hibernate/Hibernate Configuration DTD 3.0//EN&quot;
+          &quot;http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd&quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- Generated by MyEclipse Hibernate Tools.                   --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-configuration&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;session-factory&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;dialect&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;org.hibernate.dialect.MySQLDialect&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 设置方言 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;connection.url&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;jdbc:mysql://localhost:3306/test&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 设置连接 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;connection.username&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;root&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 用户名 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;connection.password&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;root&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 密码 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;connection.driver_class&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;com.mysql.jdbc.Driver&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 设置驱动 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;myeclipse.connection.profile&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;com.mysql.jdbc.Driver&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 无关紧要的参数，Eclipse的数据库视图【MyEclipse database explorer】中定义的链接database的一个连接 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;show_sql&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;true&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 输出sql语句 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;format_sql&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;true&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 格式化sql语句 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;use_sql_comments&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;true&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 输出便于调试的注释 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;hibernate.transaction.factory_class&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;org.hibernate.trasaction.JDBCTrasactionFactory&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;mapping&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;resource&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;User.hbm.xml&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 配置的方式 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;mapping&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;jxust.config.Classes&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 标签注释的方式 --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;session-factory&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-configuration&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;第三步：持久化类和映射文件&lt;br&gt;持久化类略过…&lt;br&gt;直接上映射文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;doctype&quot;&gt;&amp;lt;!DOCTYPE hibernate-mapping PUBLIC &quot;-//Hibernate/Hibernate Mapping DTD 3.0//EN&quot;
+&quot;http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd&quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;comment&quot;&gt;&amp;lt;!--
+    Mapping file autogenerated by MyEclipse Persistence Tools
+--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;jxust.config.Classes_1&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;classes&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;catalog&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;test&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;java.lang.Integer&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;column&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;identity&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 自增 --&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;comment&quot;&gt;&amp;lt;!--
+                    increment  
+                    identity  
+                    sequence  
+                    hilo  
+                    native  
+                    uuid.hex  
+                    assigned  具体含义百度去吧^_^
+                 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;java.lang.String&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;column&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;length&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;20&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;students&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;cascade&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;none&quot;&lt;/span&gt; &amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;class_id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;one-to-many&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;jxust.config.Student&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;set&lt;/span&gt;&amp;gt;&lt;/span&gt;
+         &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;students&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;cascade&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;none&quot;&lt;/span&gt; &amp;gt;&lt;/span&gt;配置的方式写的list需要配置&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;index&lt;/span&gt;&amp;gt;&lt;/span&gt;选项用于
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;class_id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;java.lang.Integer&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;index&lt;/span&gt;&amp;gt;&lt;/span&gt;从表的主键用于设置list中的顺序，如果1号位的数据不是你所查找的会返回为null，这样有一个弊端，如果有1000条数据的表你之遥查询特定的几条，最后一条为第800条数据，会开辟一个长度为800的list其中大部分都是null，所以一般用set，转化为list
+            &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- &amp;lt;list-index column=&quot;id&quot;&amp;gt;&amp;lt;/list-index&amp;gt; --&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;one-to-many&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;jxust.config.Student&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;list&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;标签注释法映射&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; jxust.config;
+
+&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.util.ArrayList;
+&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.util.List;
+
+&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; javax.persistence.CascadeType;
+&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; javax.persistence.Column;
+&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; javax.persistence.Entity;
+&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; javax.persistence.FetchType;
+&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; javax.persistence.GeneratedValue;
+&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; javax.persistence.Id;
+&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; javax.persistence.JoinColumn;
+&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; javax.persistence.OneToMany;
+&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; javax.persistence.Table;
+
+&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; org.hibernate.annotations.GenericGenerator;
+&lt;span class=&quot;annotation&quot;&gt;@Entity&lt;/span&gt;
+&lt;span class=&quot;annotation&quot;&gt;@Table&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&quot;classes&quot;&lt;/span&gt;)
+&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Classes&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Integer id;
+    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; String name;
+    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; List&amp;lt;Student&amp;gt; students=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;Student&amp;gt;();
+
+    &lt;span class=&quot;annotation&quot;&gt;@Id&lt;/span&gt;
+    &lt;span class=&quot;annotation&quot;&gt;@GenericGenerator&lt;/span&gt;(name=&lt;span class=&quot;string&quot;&gt;&quot;idGenerator&quot;&lt;/span&gt;,strategy=&lt;span class=&quot;string&quot;&gt;&quot;identity&quot;&lt;/span&gt;)
+    &lt;span class=&quot;annotation&quot;&gt;@GeneratedValue&lt;/span&gt;(generator=&lt;span class=&quot;string&quot;&gt;&quot;idGenerator&quot;&lt;/span&gt;)
+    &lt;span class=&quot;annotation&quot;&gt;@Column&lt;/span&gt;(name=&lt;span class=&quot;string&quot;&gt;&quot;id&quot;&lt;/span&gt;,length=&lt;span class=&quot;number&quot;&gt;11&lt;/span&gt;)
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Integer &lt;span class=&quot;title&quot;&gt;getId&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; id;
+    }
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setId&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Integer id)&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.id = id;
+    }
+    &lt;span class=&quot;annotation&quot;&gt;@Column&lt;/span&gt;(name=&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;,length=&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;)
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; String &lt;span class=&quot;title&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; name;
+    }
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setName&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String name)&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name;
+    }
+
+    &lt;span class=&quot;comment&quot;&gt;//@OneToMany(fetch = FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE}, mappedBy=&quot;class_id&quot;)&lt;/span&gt;
+    &lt;span class=&quot;annotation&quot;&gt;@OneToMany&lt;/span&gt;(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    &lt;span class=&quot;annotation&quot;&gt;@JoinColumn&lt;/span&gt;(name=&lt;span class=&quot;string&quot;&gt;&quot;class_id&quot;&lt;/span&gt;)
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; List&amp;lt;Student&amp;gt; &lt;span class=&quot;title&quot;&gt;getStudents&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; students;
+    }
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setStudents&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(List&amp;lt;Student&amp;gt; students)&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.students = students;
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;更多相关博客&quot;&gt;更多相关博客&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.07net01.com/linux/Hibernate_zhujie_Annotation__depeizhi_50352_1357527742.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hibernate注解(Annotation)的配置&lt;/a&gt;  &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;创建Hibernate项目&quot;&gt;创建Hibernate项目&lt;/h2&gt;&lt;p&gt;第一步：当然是添加jar包&lt;br&gt;第二步：编辑Hibernate的配置文件  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;&amp;lt;?xml version=&#39;1.0&#39; e
+    
+    </summary>
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/categories/Hibernate/"/>
+    
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/tags/Hibernate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习Hibernate记录(1)——概念</title>
+    <link href="http://jxust-cgs.github.io/2015/11/01/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%881%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/11/01/学习Hibernate记录（1）/</id>
+    <published>2015-11-01T11:14:20.000Z</published>
+    <updated>2015-11-03T08:49:08.169Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;什么是ORM&quot;&gt;什么是ORM&lt;/h2&gt;&lt;p&gt;ORM(Object-Relational Mapping)是对象到关系的映射，简单的说就是ORM是通过使用描述对象和数据库之间映射的元数据，将java程序中的对象自动持久化到关系数据库中。&lt;/p&gt;
+&lt;h2 id=&quot;ORM的优缺点&quot;&gt;ORM的优缺点&lt;/h2&gt;&lt;p&gt;优点：     &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;提高开发效率,由于ORM可以对实体对象与数据库中的表进行字段与属性的映射，所以实际操作中已经不再需要一个专用的、庞大的数据库访问层。  &lt;/li&gt;
+&lt;li&gt;ORM提供了对数据库的映射，能够像操作对象一样从数据库中获取数据，而不用直接进行SQL编程。    &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;缺点：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;系统架构方面，采用ORM的系统的一般都是多层系统，系统的层次增加了，效率就会降低。  &lt;/li&gt;
+&lt;li&gt;性能方面，主要体现在对持久化对象的提取和对数据的加工处理上。采用ORM是，系统可能将全部的数据提取到内存对象之中，然后在进行过滤和加工处理，这样就很容易产生性能问题。   &lt;/li&gt;
+&lt;li&gt;对象持久化方面，ORM一般会持久化所有的属性，这对有些是不希望发生的&lt;h2 id=&quot;域对象的关系&quot;&gt;域对象的关系&lt;/h2&gt;一共有4种：关联（类之间引用）、依赖（类之间访问）、聚集（整体与部分）、一般化（类之间的继承）。  &lt;h2 id=&quot;Hibernate特点&quot;&gt;Hibernate特点&lt;/h2&gt;&lt;/li&gt;
+&lt;li&gt;它负责协调软件与数据库的交互，提供了管理持久性数据的完整方案。让开发者能够专注于业务逻辑的开发；  &lt;/li&gt;
+&lt;li&gt;应用者不需要才、遵循太多的规则和设计模式，能够灵活地运用；  &lt;/li&gt;
+&lt;li&gt;它是一个开源代码的映射框架，对JDBC只做了轻量级的封装，让java程序员可以随心所欲地运用面向对象的思想操纵数据库，无需考虑资源的问题。&lt;h2 id=&quot;Hibernate核心接口&quot;&gt;Hibernate核心接口&lt;/h2&gt;&lt;/li&gt;
+&lt;li&gt;Configuation接口&lt;/li&gt;
+&lt;li&gt;SessionFactory接口&lt;/li&gt;
+&lt;li&gt;Session接口&lt;/li&gt;
+&lt;li&gt;Transaction接口&lt;/li&gt;
+&lt;li&gt;Query和Criteria接口&lt;br&gt;详细信息不解释，百度去^_^  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;什么是ORM&quot;&gt;什么是ORM&lt;/h2&gt;&lt;p&gt;ORM(Object-Relational Mapping)是对象到关系的映射，简单的说就是ORM是通过使用描述对象和数据库之间映射的元数据，将java程序中的对象自动持久化到关系数据库中。&lt;/p&gt;
+&lt;h2 id=&quot;OR
+    
+    </summary>
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/categories/Hibernate/"/>
+    
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/tags/Hibernate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习Spring记录(4)——aop</title>
+    <link href="http://jxust-cgs.github.io/2015/10/24/%E5%AD%A6%E4%B9%A0Spring%E8%AE%B0%E5%BD%95%EF%BC%884%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/10/24/学习Spring记录（4）/</id>
+    <published>2015-10-24T08:18:39.000Z</published>
+    <updated>2015-10-24T12:36:21.217Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;相关概念&quot;&gt;相关概念&lt;/h2&gt;&lt;p&gt;AOP：Aspect Oriented Program，面向切面编程；&lt;br&gt;切面：操作过程中的截面；&lt;br&gt;连接点：对象操作过程中的某个阶段点；&lt;br&gt;切入点：切入点是连接点的集合，切面与程序的“交叉点”；&lt;br&gt;通知：切入点被横切都所采取的处理逻辑；&lt;br&gt;目标对象：被通知的对象；&lt;br&gt;织入：将切面功能应用到目标对象中，一般有3种，编译织入、加载织入、执行织入；&lt;br&gt;引入：动态的向类里加入属性或方法。  &lt;/p&gt;
+&lt;h2 id=&quot;aop实现&quot;&gt;aop实现&lt;/h2&gt;&lt;p&gt;首先创建目标类&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@Repository(&lt;span class=&quot;string&quot;&gt;&quot;target&quot;&lt;/span&gt;)
+&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Target&lt;/span&gt; {
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;
+    &lt;/span&gt;{
+        System.&lt;span class=&quot;keyword&quot;&gt;out&lt;/span&gt;.println(&lt;span class=&quot;string&quot;&gt;&quot;doing execute&quot;&lt;/span&gt;); 
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;创建通知（本例是around通知）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;LoggerExecute&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MethodInterceptor&lt;/span&gt;&lt;/span&gt;{&lt;span class=&quot;comment&quot;&gt;//around通知必须实现MethodInterceptor&lt;/span&gt;
+
+    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;Object &lt;span class=&quot;title&quot;&gt;invoke&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(MethodInvocation arg0)&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;throws&lt;/span&gt; Throwable &lt;/span&gt;{
+        &lt;span class=&quot;keyword&quot;&gt;before&lt;/span&gt;();
+    &lt;span class=&quot;comment&quot;&gt;//    System.out.println(arg0.getClass().getName());&lt;/span&gt;
+        arg0.&lt;span class=&quot;keyword&quot;&gt;proceed&lt;/span&gt;();
+        &lt;span class=&quot;keyword&quot;&gt;after&lt;/span&gt;();
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
+    }
+
+    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;do this before &quot;&lt;/span&gt;);
+    }
+
+    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;before&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+        System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;do this after &quot;&lt;/span&gt;);
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;创建代理&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Aop_test_1&lt;/span&gt; &lt;/span&gt;{
+    public &lt;span class=&quot;literal&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; main(&lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt;[] args) {
+        Target target=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Target();&lt;span class=&quot;comment&quot;&gt;//创建目标对象&lt;/span&gt;
+        ProxyFactory &lt;span class=&quot;literal&quot;&gt;factory&lt;/span&gt;=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ProxyFactory();&lt;span class=&quot;comment&quot;&gt;//创建代理工厂&lt;/span&gt;
+        &lt;span class=&quot;literal&quot;&gt;factory&lt;/span&gt;.addAdvice(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LoggerExecute());&lt;span class=&quot;comment&quot;&gt;//添加通知&lt;/span&gt;
+        &lt;span class=&quot;literal&quot;&gt;factory&lt;/span&gt;.setTarget(target);&lt;span class=&quot;comment&quot;&gt;//注册目标&lt;/span&gt;
+        Target proxy=(Target) &lt;span class=&quot;literal&quot;&gt;factory&lt;/span&gt;.getProxy();&lt;span class=&quot;comment&quot;&gt;//从工厂获得目标类&lt;/span&gt;
+        proxy.execute();&lt;span class=&quot;comment&quot;&gt;//执行目标，织入通知&lt;/span&gt;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;运行结果&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;do this after 
+doing&lt;span class=&quot;instruction&quot;&gt; execute
+&lt;/span&gt;do this before 
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;其他具体通知&quot;&gt;其他具体通知&lt;/h2&gt;&lt;p&gt;通知一共分为5种：前置Before Advice、后置After Returning Advice、周围Interception Around Advice、异常Throws Advice、引入通知Introduction Advice;&lt;br&gt;同样需要目标类&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@Repository(&lt;span class=&quot;string&quot;&gt;&quot;target&quot;&lt;/span&gt;)
+&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Target&lt;/span&gt; {
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;
+    &lt;/span&gt;{
+        System.&lt;span class=&quot;keyword&quot;&gt;out&lt;/span&gt;.println(&lt;span class=&quot;string&quot;&gt;&quot;doing execute&quot;&lt;/span&gt;); 
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;通知类&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@&lt;span class=&quot;type&quot;&gt;Repository&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;beforeAdviceExample&quot;&lt;/span&gt;)
+public class &lt;span class=&quot;type&quot;&gt;BeforeAdviceExample&lt;/span&gt; implements &lt;span class=&quot;type&quot;&gt;MethodBeforeAdvice&lt;/span&gt;{
+//此处展示的是&lt;span class=&quot;type&quot;&gt;Before&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;Advice&lt;/span&gt;
+//如果是after则需要实现&lt;span class=&quot;type&quot;&gt;AfterReturningAdvice&lt;/span&gt;中的public &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; afterReturning(&lt;span class=&quot;type&quot;&gt;Object&lt;/span&gt; returnValue, &lt;span class=&quot;type&quot;&gt;Method&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;method&lt;/span&gt;, &lt;span class=&quot;type&quot;&gt;Object&lt;/span&gt;[] arg2,&lt;span class=&quot;type&quot;&gt;Object&lt;/span&gt; target) throws &lt;span class=&quot;type&quot;&gt;Throwable&lt;/span&gt;
+    @&lt;span class=&quot;type&quot;&gt;Override&lt;/span&gt;
+    public &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; before(&lt;span class=&quot;type&quot;&gt;Method&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;method&lt;/span&gt;, &lt;span class=&quot;type&quot;&gt;Object&lt;/span&gt;[] arg1, &lt;span class=&quot;type&quot;&gt;Object&lt;/span&gt; target)
+            throws &lt;span class=&quot;type&quot;&gt;Throwable&lt;/span&gt; {
+        &lt;span class=&quot;type&quot;&gt;System&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;out&lt;/span&gt;.println(target.getClass());
+        &lt;span class=&quot;type&quot;&gt;System&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;out&lt;/span&gt;.println(&lt;span class=&quot;keyword&quot;&gt;method&lt;/span&gt;+&lt;span class=&quot;string&quot;&gt;&quot; will runing!&quot;&lt;/span&gt;);
+    }
+}
+
+public class &lt;span class=&quot;type&quot;&gt;LoggerExecute&lt;/span&gt; implements &lt;span class=&quot;type&quot;&gt;MethodInterceptor&lt;/span&gt;{//around通知
+    @&lt;span class=&quot;type&quot;&gt;Override&lt;/span&gt;
+    public &lt;span class=&quot;type&quot;&gt;Object&lt;/span&gt; invoke(&lt;span class=&quot;type&quot;&gt;MethodInvocation&lt;/span&gt; arg0) throws &lt;span class=&quot;type&quot;&gt;Throwable&lt;/span&gt; {
+        before();
+        //&lt;span class=&quot;type&quot;&gt;System&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;out&lt;/span&gt;.println(arg0.getClass().getName());
+        arg0.proceed();//此行代码表示执行目标代码，之前的为前置通知，之后的为后置通知
+        after();
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; null;
+    }
+    private &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; after() {
+        &lt;span class=&quot;type&quot;&gt;System&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;out&lt;/span&gt;.println(&lt;span class=&quot;string&quot;&gt;&quot;do this before &quot;&lt;/span&gt;);
+    }
+    private &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; before() {
+        &lt;span class=&quot;type&quot;&gt;System&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;out&lt;/span&gt;.println(&lt;span class=&quot;string&quot;&gt;&quot;do this after &quot;&lt;/span&gt;);
+    }
+}
+另外的异常通知和引入通知，略^_^
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;代理工厂&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 注册代理工厂，进行切面编程 --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;proxyFactoryBean&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;org.springframework.aop.framework.ProxyFactoryBean&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;target&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;ref&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;target&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;interceptorNames&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;list&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;beforeAdviceExample&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 添加前置通知 --&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;afterAdviceExample&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 添加后置通知 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;list&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;自动代理&quot;&gt;自动代理&lt;/h2&gt;&lt;p&gt;BeanNameAutoProxyCreator类允许开发者指定适当的Bean名称，这样的Spring会自动用指定的通知代理这些bean；&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt;  &lt;span class=&quot;attribute&quot;&gt;id&lt;/span&gt;= &quot;&lt;span class=&quot;attribute&quot;&gt;beanNameProxyCreater&lt;/span&gt;&quot; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;    
+     &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;beanNames&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;    
+         &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;list&lt;/span&gt;&amp;gt;&lt;/span&gt;    
+             &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;Test*&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;//所有Test开头的方法会被拦截   
+         &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;list&lt;/span&gt;&amp;gt;&lt;/span&gt;    
+     &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;    
+     &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;interceptorNames&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;    
+         &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;list&lt;/span&gt;&amp;gt;&lt;/span&gt;    
+             &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;BeforeAdvice&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;//对代理bean添加before通知  
+         &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;list&lt;/span&gt;&amp;gt;&lt;/span&gt;    
+     &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;    
+ &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt;&amp;gt;&lt;/span&gt;  
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;使用DefaultAdviceAutoProxyCreater类只需创建相应的通知者就可以在applicationContext.xml中通知任何bean了&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 自动代理所有的advisor --&amp;gt;&lt;/span&gt;  
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;autoProxyCreator&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt;&amp;gt;&lt;/span&gt; 
+
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;WelcomeAdvice&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;AutoProxyTwo.WelcomeAdvice&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;  
+
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;advisor&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;org.springframework.aop.support.RegexpMethodPointcutAdvisor&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;  
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;pointcut&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;  
+   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;spring.aop.PointCut&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt;&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;  
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;advice&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;  
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;ref&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;bean&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;WelcomeAdvice&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;  
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;  
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt;&amp;gt;&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;相关概念&quot;&gt;相关概念&lt;/h2&gt;&lt;p&gt;AOP：Aspect Oriented Program，面向切面编程；&lt;br&gt;切面：操作过程中的截面；&lt;br&gt;连接点：对象操作过程中的某个阶段点；&lt;br&gt;切入点：切入点是连接点的集合，切面与程序的“交叉点”；&lt;br&gt;通知：切入点
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://jxust-cgs.github.io/categories/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://jxust-cgs.github.io/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习Spring记录(3)——国际化、日志</title>
+    <link href="http://jxust-cgs.github.io/2015/10/24/%E5%AD%A6%E4%B9%A0Spring%E8%AE%B0%E5%BD%95%EF%BC%883%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/10/24/学习Spring记录（3）/</id>
+    <published>2015-10-24T07:57:08.000Z</published>
+    <updated>2015-10-24T08:19:15.467Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Spring国际化&quot;&gt;Spring国际化&lt;/h2&gt;&lt;p&gt;本例将输出messages.properties中的name属性  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;static &lt;span class=&quot;built_in&quot;&gt;Locale&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;locale&lt;/span&gt;&lt;span class=&quot;subst&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;built_in&quot;&gt;Locale&lt;/span&gt;&lt;span class=&quot;built_in&quot;&gt;.&lt;/span&gt;getDefault();
+ApplicationContext context&lt;span class=&quot;subst&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;new&lt;/span&gt; ClassPathXmlApplicationContext(&lt;span class=&quot;string&quot;&gt;&quot;applicationContext.xml&quot;&lt;/span&gt;);
+System&lt;span class=&quot;built_in&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;built_in&quot;&gt;.&lt;/span&gt;println(context&lt;span class=&quot;built_in&quot;&gt;.&lt;/span&gt;getMessage(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;locale&lt;/span&gt;));
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果locale=Locale.US;将会输出messages_en_US.properties中的name属性&lt;/p&gt;
+&lt;h2 id=&quot;Spring打印日志信息&quot;&gt;Spring打印日志信息&lt;/h2&gt;&lt;p&gt;在applicationContext.xml中配置&lt;br&gt;如果全部JavaBean都是通过标签的方式注册则不会打印出来，但是如果有一个JavaBean在applicationContext.xml中注册则所有JavaBean的名字都会在创建时被打印到控制台   &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 打印日志，打印出所有spring创建的javabean --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;messageSource&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;org.springframework.context.support.ResourceBundleMessageSource&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;basename&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;messages&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Spring国际化&quot;&gt;Spring国际化&lt;/h2&gt;&lt;p&gt;本例将输出messages.properties中的name属性  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;static &lt;span class=&quot;built_in&quot;&gt;Locale&lt;/span&gt; &lt;span clas
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://jxust-cgs.github.io/categories/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://jxust-cgs.github.io/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习Spring记录(2)——IoC</title>
+    <link href="http://jxust-cgs.github.io/2015/10/24/%E5%AD%A6%E4%B9%A0Spring%E8%AE%B0%E5%BD%95%EF%BC%882%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/10/24/学习Spring记录（2）/</id>
+    <published>2015-10-24T07:28:43.000Z</published>
+    <updated>2015-10-24T08:16:47.985Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Spring使用BeanFactory和ApplicationContext两个接口来定义IoC&quot;&gt;Spring使用BeanFactory和ApplicationContext两个接口来定义IoC&lt;/h2&gt;&lt;h3 id=&quot;BeanFactory&quot;&gt;BeanFactory&lt;/h3&gt;&lt;p&gt;通过从xml配置文件或属性文件（.properties）中读取javaBean的定义，来实现JavaBean的创建、配置和管理。&lt;br&gt;例如  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Resource resource=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ClassPathResource(&lt;span class=&quot;string&quot;&gt;&quot;applicationContext.xml&quot;&lt;/span&gt;);  
+XmlBeanFactory &lt;span class=&quot;literal&quot;&gt;factory&lt;/span&gt;=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; XmlBeanFactory(resource);  
+LogFile log= (LogFile) &lt;span class=&quot;literal&quot;&gt;factory&lt;/span&gt;.getBean(&lt;span class=&quot;string&quot;&gt;&quot;log&quot;&lt;/span&gt;); 
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;ApplicationContext&quot;&gt;ApplicationContext&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;constant&quot;&gt;Application&lt;/span&gt;Context &lt;span class=&quot;literal&quot;&gt;context&lt;/span&gt;=new &lt;span class=&quot;constant&quot;&gt;File&lt;/span&gt;SystemXmlApplicationContext(&lt;span class=&quot;string&quot;&gt;&quot;src/applicationContext.xml&quot;&lt;/span&gt;);
+&lt;span class=&quot;constant&quot;&gt;Target&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;target&lt;/span&gt;=(&lt;span class=&quot;constant&quot;&gt;Target&lt;/span&gt;) &lt;span class=&quot;literal&quot;&gt;context&lt;/span&gt;.getBean(&lt;span class=&quot;string&quot;&gt;&quot;proxyFactoryBean&quot;&lt;/span&gt;);
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;xml文件的创建&quot;&gt;xml文件的创建&lt;/h2&gt;&lt;p&gt;本例中演示了xml中对JavaBean的初始化配置方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;beans&lt;/span&gt;
+&lt;span class=&quot;attribute&quot;&gt;xmlns&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;http://www.springframework.org/schema/beans&quot;&lt;/span&gt;
+&lt;span class=&quot;attribute&quot;&gt;xmlns:xsi&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&lt;/span&gt;
+&lt;span class=&quot;attribute&quot;&gt;xmlns:p&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;http://www.springframework.org/schema/p&quot;&lt;/span&gt;
+&lt;span class=&quot;attribute&quot;&gt;xsi:schemaLocation&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;CapGun&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;jxust.commen.entity.CapGun&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;constructor-arg&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;index&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;String&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 对构造方法赋值如有多个参数则写多个constructor-arg --&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;等待出厂检验&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;constructor-arg&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;RayBaby&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;jxust.commen.entity.RayBaby&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;info&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 对参数复制getset --&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;等待出厂检验&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;autowire&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;byType&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;Factory&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;jxust.commen.entity.Factory&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- autowire自动装配有5种类型（详情百度）使用自动装配factory类中的CapGun就不用设置了 --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- &amp;lt;property name=&quot;capGun&quot; ref=&quot;CapGun&quot;&amp;gt;
+            &amp;lt;ref bean=&quot;capGun&quot;/&amp;gt;ref引用已定义的javaBean，有两种方式，一种直接写在property中，一种写在property标签里面 
+        &amp;lt;/property&amp;gt; --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;名字&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;log&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;jxust.commen.entity.LogFile&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;workList&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;list&lt;/span&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;ref&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;bean&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;worker1&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;ref&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;bean&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;worker2&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;ref&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;bean&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;worker3&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;list&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;worker1&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;jxust.commen.entity.TempWorker&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;梅长苏&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;workType&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;正式员工&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;pay&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;600&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;worker2&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;jxust.commen.entity.TempWorker&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;飞流&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;worker3&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;jxust.commen.entity.TempWorker&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;蔺少阁主&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;pay&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;2700&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;beans&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;定制属性编辑器&quot;&gt;定制属性编辑器&lt;/h2&gt;&lt;p&gt;首先创建自己需要的编辑器，如对Date类型进行赋值  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MyDateEditor&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;PropertyEditorSupport&lt;/span&gt;{&lt;/span&gt;
+    &lt;span class=&quot;comment&quot;&gt;/**
+     * 用于测试jxust.main.userinfo中的birthday的输入
+     * 重写PropertyEditorSupport中的setAsText方法
+     */&lt;/span&gt;
+    public void setAsText(&lt;span class=&quot;type&quot;&gt;String&lt;/span&gt; text) &lt;span class=&quot;keyword&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;IllegalArgumentException&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;//参数不正确&lt;/span&gt;
+    {
+        &lt;span class=&quot;type&quot;&gt;SimpleDateFormat&lt;/span&gt; sdf = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;SimpleDateFormat&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;yyyy-MM-dd&quot;&lt;/span&gt;);
+        &lt;span class=&quot;type&quot;&gt;Date&lt;/span&gt; date=&lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;;
+        &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
+            date = sdf.parse(text);
+        } &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (&lt;span class=&quot;type&quot;&gt;ParseException&lt;/span&gt; e) {
+            e.printStackTrace();
+        }
+        setValue(date);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在applicationContext.xml中注册编辑器  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 配置属性编辑器 --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;customEditorConfigurer&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;org.springframework.beans.factory.config.CustomEditorConfigurer&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;customEditors&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;map&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;entry&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;key&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;java.util.Date&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;myDateEditor&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;jxust.service.MyDateEditor&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;entry&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;map&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;bean&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Spring使用BeanFactory和ApplicationContext两个接口来定义IoC&quot;&gt;Spring使用BeanFactory和ApplicationContext两个接口来定义IoC&lt;/h2&gt;&lt;h3 id=&quot;BeanFactory&quot;&gt;BeanFact
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://jxust-cgs.github.io/categories/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://jxust-cgs.github.io/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习Spring记录(1)</title>
+    <link href="http://jxust-cgs.github.io/2015/10/24/%E5%AD%A6%E4%B9%A0Spring%E8%AE%B0%E5%BD%95%EF%BC%881%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/10/24/学习Spring记录（1）/</id>
+    <published>2015-10-24T06:29:36.000Z</published>
+    <updated>2015-10-24T12:40:07.341Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;牢骚满腹&quot;&gt;牢骚满腹&lt;/h2&gt;&lt;p&gt;由于最近面试，被面试官打击到了,所以想系统的学习下spring。要不然怎敢言“掌握”。&lt;/p&gt;
+&lt;h2 id=&quot;进入正题&quot;&gt;进入正题&lt;/h2&gt;&lt;p&gt;Spring是一个轻量级的框架，Ioc容器（控制反转，依赖注入），AOP实现（切面编程），数据持久化，自带web框架，很方便就能集成其他框架&lt;br&gt;Spring包括七大模块：  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.核心模块：实现IoC，及BeanFactory&lt;br&gt;2.context模块:继承BeanFactory添加事务支持，国际化，资源装配等&lt;br&gt;3.aop模板：切面编程&lt;br&gt;4.dao模块：jdbc抽象层&lt;br&gt;5.orm映射模块：关系映射，简化配置，整合hibernate&lt;br&gt;6.web模块：context基础上&lt;br&gt;7.mvc模块  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Spring环境搭建&quot;&gt;Spring环境搭建&lt;/h2&gt;&lt;p&gt;Spring的jar文件  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;spring.jar&lt;br&gt;spring-core.jar&lt;br&gt;spring-aop.jar&lt;br&gt;spring-context.jar&lt;br&gt;spring-dao.jar&lt;br&gt;spring-orm.jar&lt;br&gt;spring-web.jar&lt;br&gt;spring-webmvc.jar  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;后期将会继续更新&quot;&gt;后期将会继续更新&lt;/h2&gt;&lt;p&gt;未完待续。。。  &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;牢骚满腹&quot;&gt;牢骚满腹&lt;/h2&gt;&lt;p&gt;由于最近面试，被面试官打击到了,所以想系统的学习下spring。要不然怎敢言“掌握”。&lt;/p&gt;
+&lt;h2 id=&quot;进入正题&quot;&gt;进入正题&lt;/h2&gt;&lt;p&gt;Spring是一个轻量级的框架，Ioc容器（控制反转，依赖注入），AOP实现（切
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://jxust-cgs.github.io/categories/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://jxust-cgs.github.io/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>给bootstrap的界面中添加同风格树状菜单</title>
+    <link href="http://jxust-cgs.github.io/2015/05/05/bootstrap_treeView/"/>
+    <id>http://jxust-cgs.github.io/2015/05/05/bootstrap_treeView/</id>
+    <published>2015-05-05T05:32:54.000Z</published>
+    <updated>2016-04-10T13:30:44.048Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;/photos/default.PNG&quot; alt=&quot;example&quot; align=&quot;left&quot; width=&quot;750&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;使用的方式&quot;&gt;使用的方式&lt;/h2&gt;&lt;p&gt;首先是需要下载到bootstrap-treeView的css和js文件（可以访问&lt;a href=&quot;https://github.com/jonmiles/bootstrap-treeview&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方github&lt;/a&gt;）&lt;br&gt;不过不知道是我弄错了还是官方的演示例子有问题。&lt;br&gt;在下载的文件中对js和css的导入有问题所有打开后看不到例子&lt;br&gt;我自己修改后的&lt;a href=&quot;http://pan.baidu.com/s/1i3CcK0t&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;百度网盘链接&lt;/a&gt;可以看看相对还是比较简单的&lt;br&gt;必要的文件有&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;css/bootstrap.css&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;css/bootstrap-treeview.css&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;http://libs.baidu.com/jquery/2.0.0/jquery.min.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;js/bootstrap-treeview.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;还有就是生成每个树状图数据&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; {&lt;/span&gt;
+    var defaultData = &lt;span class=&quot;matrix&quot;&gt;[
+      {
+        text: &lt;span class=&quot;string&quot;&gt;&#39;Parent 1&#39;&lt;/span&gt;,
+        href: &lt;span class=&quot;string&quot;&gt;&#39;#parent1&#39;&lt;/span&gt;,
+        tags: [&lt;span class=&quot;string&quot;&gt;&#39;4&#39;&lt;/span&gt;]&lt;/span&gt;,
+        nodes: &lt;span class=&quot;matrix&quot;&gt;[
+          {
+            text: &lt;span class=&quot;string&quot;&gt;&#39;Child 1&#39;&lt;/span&gt;,
+            href: &lt;span class=&quot;string&quot;&gt;&#39;#child1&#39;&lt;/span&gt;,
+            tags: [&lt;span class=&quot;string&quot;&gt;&#39;2&#39;&lt;/span&gt;]&lt;/span&gt;,
+            nodes: &lt;span class=&quot;matrix&quot;&gt;[
+              {
+                text: &lt;span class=&quot;string&quot;&gt;&#39;Grandchild 1&#39;&lt;/span&gt;,
+                href: &lt;span class=&quot;string&quot;&gt;&#39;#grandchild1&#39;&lt;/span&gt;,
+                tags: [&lt;span class=&quot;string&quot;&gt;&#39;0&#39;&lt;/span&gt;]&lt;/span&gt;
+              },
+              {
+                text: &lt;span class=&quot;string&quot;&gt;&#39;Grandchild 2&#39;&lt;/span&gt;,
+                href: &lt;span class=&quot;string&quot;&gt;&#39;#grandchild2&#39;&lt;/span&gt;,
+                tags: &lt;span class=&quot;matrix&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&#39;0&#39;&lt;/span&gt;]&lt;/span&gt;
+              }
+            ]
+          },
+          {
+            text: &lt;span class=&quot;string&quot;&gt;&#39;Child 2&#39;&lt;/span&gt;,
+            href: &lt;span class=&quot;string&quot;&gt;&#39;#child2&#39;&lt;/span&gt;,
+            tags: &lt;span class=&quot;matrix&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&#39;0&#39;&lt;/span&gt;]&lt;/span&gt;
+          }
+        ]
+      },
+      {
+        text: &lt;span class=&quot;string&quot;&gt;&#39;Parent 2&#39;&lt;/span&gt;,
+        href: &lt;span class=&quot;string&quot;&gt;&#39;#parent2&#39;&lt;/span&gt;,
+        tags: &lt;span class=&quot;matrix&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&#39;0&#39;&lt;/span&gt;]&lt;/span&gt;
+      },
+      {
+        text: &lt;span class=&quot;string&quot;&gt;&#39;Parent 3&#39;&lt;/span&gt;,
+        href: &lt;span class=&quot;string&quot;&gt;&#39;#parent3&#39;&lt;/span&gt;,
+         tags: &lt;span class=&quot;matrix&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&#39;0&#39;&lt;/span&gt;]&lt;/span&gt;
+      },
+      {
+        text: &lt;span class=&quot;string&quot;&gt;&#39;Parent 4&#39;&lt;/span&gt;,
+        href: &lt;span class=&quot;string&quot;&gt;&#39;#parent4&#39;&lt;/span&gt;,
+        tags: &lt;span class=&quot;matrix&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&#39;0&#39;&lt;/span&gt;]&lt;/span&gt;
+      },
+      {
+        text: &lt;span class=&quot;string&quot;&gt;&#39;Parent 5&#39;&lt;/span&gt;,
+        href: &lt;span class=&quot;string&quot;&gt;&#39;#parent5&#39;&lt;/span&gt;  ,
+        tags: &lt;span class=&quot;matrix&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&#39;0&#39;&lt;/span&gt;]&lt;/span&gt;
+      }
+    ];
+
+    var alternateData = &lt;span class=&quot;matrix&quot;&gt;[
+      {
+        text: &lt;span class=&quot;string&quot;&gt;&#39;Parent 1&#39;&lt;/span&gt;,
+        tags: [&lt;span class=&quot;string&quot;&gt;&#39;2&#39;&lt;/span&gt;]&lt;/span&gt;,
+        nodes: &lt;span class=&quot;matrix&quot;&gt;[
+          {
+            text: &lt;span class=&quot;string&quot;&gt;&#39;Child 1&#39;&lt;/span&gt;,
+            tags: [&lt;span class=&quot;string&quot;&gt;&#39;3&#39;&lt;/span&gt;]&lt;/span&gt;,
+            nodes: &lt;span class=&quot;matrix&quot;&gt;[//节点拥有子节点
+              {
+                text: &lt;span class=&quot;string&quot;&gt;&#39;Grandchild 1&#39;&lt;/span&gt;,
+                tags: [&lt;span class=&quot;string&quot;&gt;&#39;6&#39;&lt;/span&gt;]&lt;/span&gt;
+              },
+              {
+                text: &lt;span class=&quot;string&quot;&gt;&#39;Grandchild 2&#39;&lt;/span&gt;,
+                tags: &lt;span class=&quot;matrix&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&#39;3&#39;&lt;/span&gt;]&lt;/span&gt;
+              }
+            ]
+          },
+          {
+            text: &lt;span class=&quot;string&quot;&gt;&#39;Child 2&#39;&lt;/span&gt;,
+            tags: &lt;span class=&quot;matrix&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&#39;3&#39;&lt;/span&gt;]&lt;/span&gt;
+          }
+        ]
+      },
+      {
+        text: &lt;span class=&quot;string&quot;&gt;&#39;Parent 2&#39;&lt;/span&gt;,
+        tags: &lt;span class=&quot;matrix&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&#39;7&#39;&lt;/span&gt;]&lt;/span&gt;
+      },
+      {
+        text: &lt;span class=&quot;string&quot;&gt;&#39;Parent 3&#39;&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//节点的名字&lt;/span&gt;
+        icon: &lt;span class=&quot;string&quot;&gt;&#39;glyphicon glyphicon-earphone&#39;&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//个性化节点图标&lt;/span&gt;
+        href: &lt;span class=&quot;string&quot;&gt;&#39;#demo&#39;&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//节点的超链接&lt;/span&gt;
+        tags: &lt;span class=&quot;matrix&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&#39;11&#39;&lt;/span&gt;]&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;//节点的标签&lt;/span&gt;
+      },
+      {
+        text: &lt;span class=&quot;string&quot;&gt;&#39;Parent 4&#39;&lt;/span&gt;,
+        icon: &lt;span class=&quot;string&quot;&gt;&#39;glyphicon glyphicon-cloud-download&#39;&lt;/span&gt;,
+        href: &lt;span class=&quot;string&quot;&gt;&#39;/demo.html&#39;&lt;/span&gt;,
+        tags: &lt;span class=&quot;matrix&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&#39;19&#39;&lt;/span&gt;]&lt;/span&gt;,
+        selected: true
+      },
+      {
+        text: &lt;span class=&quot;string&quot;&gt;&#39;Parent 5&#39;&lt;/span&gt;,
+        icon: &lt;span class=&quot;string&quot;&gt;&#39;glyphicon glyphicon-certificate&#39;&lt;/span&gt;,
+        color: &lt;span class=&quot;string&quot;&gt;&#39;pink&#39;&lt;/span&gt;,
+        backColor: &lt;span class=&quot;string&quot;&gt;&#39;red&#39;&lt;/span&gt;,
+        href: &lt;span class=&quot;string&quot;&gt;&#39;http://www.tesco.com&#39;&lt;/span&gt;,
+        tags: &lt;span class=&quot;matrix&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&#39;available&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;0&#39;&lt;/span&gt;]&lt;/span&gt;
+      }
+    ];
+
+    var json = &lt;span class=&quot;string&quot;&gt;&#39;[&#39;&lt;/span&gt; +
+      &lt;span class=&quot;string&quot;&gt;&#39;{&#39;&lt;/span&gt; +
+        &lt;span class=&quot;string&quot;&gt;&#39;&quot;&lt;/span&gt;text&lt;span class=&quot;string&quot;&gt;&quot;: &quot;&lt;/span&gt;Parent &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;,&#39;&lt;/span&gt; +
+        &lt;span class=&quot;string&quot;&gt;&#39;&quot;&lt;/span&gt;nodes&lt;span class=&quot;string&quot;&gt;&quot;: [&#39;&lt;/span&gt; +
+          &lt;span class=&quot;string&quot;&gt;&#39;{&#39;&lt;/span&gt; +
+            &lt;span class=&quot;string&quot;&gt;&#39;&quot;&lt;/span&gt;text&lt;span class=&quot;string&quot;&gt;&quot;: &quot;&lt;/span&gt;Child &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;,&#39;&lt;/span&gt; +
+            &lt;span class=&quot;string&quot;&gt;&#39;&quot;&lt;/span&gt;nodes&lt;span class=&quot;string&quot;&gt;&quot;: [&#39;&lt;/span&gt; +
+              &lt;span class=&quot;string&quot;&gt;&#39;{&#39;&lt;/span&gt; +
+                &lt;span class=&quot;string&quot;&gt;&#39;&quot;&lt;/span&gt;text&lt;span class=&quot;string&quot;&gt;&quot;: &quot;&lt;/span&gt;Grandchild &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;&#39;&lt;/span&gt; +
+              &lt;span class=&quot;string&quot;&gt;&#39;},&#39;&lt;/span&gt; +
+              &lt;span class=&quot;string&quot;&gt;&#39;{&#39;&lt;/span&gt; +
+                &lt;span class=&quot;string&quot;&gt;&#39;&quot;&lt;/span&gt;text&lt;span class=&quot;string&quot;&gt;&quot;: &quot;&lt;/span&gt;Grandchild &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;&#39;&lt;/span&gt; +
+              &lt;span class=&quot;string&quot;&gt;&#39;}&#39;&lt;/span&gt; +
+            &lt;span class=&quot;string&quot;&gt;&#39;]&#39;&lt;/span&gt; +
+          &lt;span class=&quot;string&quot;&gt;&#39;},&#39;&lt;/span&gt; +
+          &lt;span class=&quot;string&quot;&gt;&#39;{&#39;&lt;/span&gt; +
+            &lt;span class=&quot;string&quot;&gt;&#39;&quot;&lt;/span&gt;text&lt;span class=&quot;string&quot;&gt;&quot;: &quot;&lt;/span&gt;Child &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;&#39;&lt;/span&gt; +
+          &lt;span class=&quot;string&quot;&gt;&#39;}&#39;&lt;/span&gt; +
+        &lt;span class=&quot;string&quot;&gt;&#39;]&#39;&lt;/span&gt; +
+      &lt;span class=&quot;string&quot;&gt;&#39;},&#39;&lt;/span&gt; +
+      &lt;span class=&quot;string&quot;&gt;&#39;{&#39;&lt;/span&gt; +
+        &lt;span class=&quot;string&quot;&gt;&#39;&quot;&lt;/span&gt;text&lt;span class=&quot;string&quot;&gt;&quot;: &quot;&lt;/span&gt;Parent &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;&#39;&lt;/span&gt; +
+      &lt;span class=&quot;string&quot;&gt;&#39;},&#39;&lt;/span&gt; +
+      &lt;span class=&quot;string&quot;&gt;&#39;{&#39;&lt;/span&gt; +
+        &lt;span class=&quot;string&quot;&gt;&#39;&quot;&lt;/span&gt;text&lt;span class=&quot;string&quot;&gt;&quot;: &quot;&lt;/span&gt;Parent &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;&#39;&lt;/span&gt; +
+      &lt;span class=&quot;string&quot;&gt;&#39;},&#39;&lt;/span&gt; +
+      &lt;span class=&quot;string&quot;&gt;&#39;{&#39;&lt;/span&gt; +
+        &lt;span class=&quot;string&quot;&gt;&#39;&quot;&lt;/span&gt;text&lt;span class=&quot;string&quot;&gt;&quot;: &quot;&lt;/span&gt;Parent &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;&#39;&lt;/span&gt; +
+      &lt;span class=&quot;string&quot;&gt;&#39;},&#39;&lt;/span&gt; +
+      &lt;span class=&quot;string&quot;&gt;&#39;{&#39;&lt;/span&gt; +
+        &lt;span class=&quot;string&quot;&gt;&#39;&quot;&lt;/span&gt;text&lt;span class=&quot;string&quot;&gt;&quot;: &quot;&lt;/span&gt;Parent &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;&#39;&lt;/span&gt; +
+      &lt;span class=&quot;string&quot;&gt;&#39;}&#39;&lt;/span&gt; +
+    &lt;span class=&quot;string&quot;&gt;&#39;]&#39;&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;对树状图进行配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; $(&lt;span class=&quot;string&quot;&gt;&#39;#treeview9&#39;&lt;/span&gt;).treeview({
+  expandIcon: &lt;span class=&quot;string&quot;&gt;&quot;glyphicon glyphicon-stop&quot;&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//关闭图标&lt;/span&gt;
+  collapseIcon: &lt;span class=&quot;string&quot;&gt;&quot;glyphicon glyphicon-unchecked&quot;&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//打开图标&lt;/span&gt;
+  nodeIcon: &lt;span class=&quot;string&quot;&gt;&quot;glyphicon glyphicon-user&quot;&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//用户图标（个性化节点图标在节点data中配置）&lt;/span&gt;
+  color: &lt;span class=&quot;string&quot;&gt;&quot;yellow&quot;&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//文字颜色&lt;/span&gt;
+  backColor: &lt;span class=&quot;string&quot;&gt;&quot;purple&quot;&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//背景颜色&lt;/span&gt;
+  onhoverColor: &lt;span class=&quot;string&quot;&gt;&quot;orange&quot;&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//鼠标经过显示颜色&lt;/span&gt;
+  borderColor: &lt;span class=&quot;string&quot;&gt;&quot;red&quot;&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//边缘颜色&lt;/span&gt;
+  showBorder: &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//是否显示边缘&lt;/span&gt;
+  showTags: &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//是否显示结尾标签&lt;/span&gt;
+  highlightSelected: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//选中高光&lt;/span&gt;
+  selectedColor: &lt;span class=&quot;string&quot;&gt;&quot;blue&quot;&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//选中文字颜色&lt;/span&gt;
+  selectedBackColor: &lt;span class=&quot;string&quot;&gt;&quot;darkorange&quot;&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//选中背景颜色&lt;/span&gt;
+  data: alternateData&lt;span class=&quot;comment&quot;&gt;//数据&lt;/span&gt;
+});
+
+$(&lt;span class=&quot;string&quot;&gt;&#39;#treeview10&#39;&lt;/span&gt;).treeview({
+  color: &lt;span class=&quot;string&quot;&gt;&quot;#428bca&quot;&lt;/span&gt;,
+  enableLinks: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//链接生效&lt;/span&gt;
+  data: defaultData
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;获取更多&quot;&gt;获取更多&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/jonmiles/bootstrap-treeview&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方网站&lt;/a&gt;  &lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/photos/default.PNG&quot; alt=&quot;example&quot; align=&quot;left&quot; width=&quot;750&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&quot;使用的方式&quot;
+    
+    </summary>
+    
+      <category term="web" scheme="http://jxust-cgs.github.io/categories/web/"/>
+    
+    
+      <category term="bootstrap" scheme="http://jxust-cgs.github.io/tags/bootstrap/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用groumble.js给页面添加泡泡提示框</title>
+    <link href="http://jxust-cgs.github.io/2015/04/21/grumble/"/>
+    <id>http://jxust-cgs.github.io/2015/04/21/grumble/</id>
+    <published>2015-04-21T10:15:31.000Z</published>
+    <updated>2015-05-05T05:59:51.538Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;/photos/grumble-js.png&quot; alt=&quot;example&quot;&gt;  &lt;/p&gt;
+&lt;h2 id=&quot;使用的方式&quot;&gt;使用的方式&lt;/h2&gt;&lt;p&gt;首先是需要下载到groumble的css和js文件（可以访问&lt;a href=&quot;https://github.com/jamescryer/grumble.js&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方github&lt;/a&gt;）&lt;br&gt;在页面中正确链接css和js文件&lt;br&gt;绑定页面的DOM元素或事件调用js&lt;br&gt;例如在密码是输入框选中是弹出提示框  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt;  
+    $(&lt;span class=&quot;string&quot;&gt;&quot;#userPassword&quot;&lt;/span&gt;).focus(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;{  
+        $(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;).grumble(  
+            {  
+                text: &lt;span class=&quot;string&quot;&gt;&#39;复杂度高的密码更加安全哟！&#39;&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//泡泡中的文本&lt;/span&gt;
+                angle: &lt;span class=&quot;number&quot;&gt;85&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//上偏右角度值&lt;/span&gt;
+                type: &lt;span class=&quot;string&quot;&gt;&#39;alt-&#39;&lt;/span&gt;, &lt;span class=&quot;comment&quot;&gt;//泡泡的外形类型&lt;/span&gt;
+                distance: &lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//离dom中心的距离&lt;/span&gt;
+                showAfter: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//触发后-ms后出现&lt;/span&gt;
+                hideAfter: &lt;span class=&quot;number&quot;&gt;2000&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//出现后-ms后消失，不消失为false&lt;/span&gt;
+                hasHideButton: &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;,&lt;span class=&quot;comment&quot;&gt;//有无消失按钮&lt;/span&gt;
+                buttonHideText: &lt;span class=&quot;string&quot;&gt;&#39;Pop!&#39;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;//点击后消失&lt;/span&gt;
+            }
+        );
+    });
+&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;配合jquery可以使web页面更加友好&quot;&gt;配合jquery可以使web页面更加友好&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.w3cschool.cc/jquery/jquery-events.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;jquery事件&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;获取更多&quot;&gt;获取更多&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.bootcss.com/p/grumblejs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方网站&lt;/a&gt; &lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/photos/grumble-js.png&quot; alt=&quot;example&quot;&gt;  &lt;/p&gt;
+&lt;h2 id=&quot;使用的方式&quot;&gt;使用的方式&lt;/h2&gt;&lt;p&gt;首先是需要下载到groumble的css和js文件（可以访问&lt;a href=&quot;https://github.
+    
+    </summary>
+    
+      <category term="web" scheme="http://jxust-cgs.github.io/categories/web/"/>
+    
+    
+      <category term="bootstrap" scheme="http://jxust-cgs.github.io/tags/bootstrap/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>test</title>
+    <link href="http://jxust-cgs.github.io/2015/03/23/test/"/>
+    <id>http://jxust-cgs.github.io/2015/03/23/test/</id>
+    <published>2015-03-23T03:29:56.198Z</published>
+    <updated>2015-03-23T03:29:56.198Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Whether_the_result_in_slow_page_load_because_language_is_Chinese?&quot;&gt;Whether the result in slow page load because language is Chinese?&lt;/h2&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Whether_the_result_in_slow_page_load_because_language_is_Chinese?&quot;&gt;Whether the result in slow page load because language is Chinese?
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>博客搭建完成</title>
+    <link href="http://jxust-cgs.github.io/2015/03/23/%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://jxust-cgs.github.io/2015/03/23/第一个博客/</id>
+    <published>2015-03-22T16:00:00.000Z</published>
+    <updated>2015-10-24T07:24:44.480Z</updated>
+    
+    <content type="html">&lt;p&gt;今天是2015年3月23日，由于看到好友陈辉有hexo搭建了自己的博客，自己也跟着弄了下，虽然有点麻烦，但是完成后还是感觉是值得的。&lt;/p&gt;
+&lt;h2 id=&quot;具体的细节还没弄懂&quot;&gt;具体的细节还没弄懂&lt;/h2&gt;&lt;p&gt;就是在测试部署是弄了我半天，到底部署是git还是github弄了半天&lt;br&gt;最后发现预览hexo的官网是有【简体中文】的，oh！我也是醉了&lt;/p&gt;
+&lt;h2 id=&quot;markdown语法入门&quot;&gt;markdown语法入门&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.maxwi.com/2014/03/20/learn-mardown-in-5-minutes/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;5分钟学markdown&lt;/a&gt;  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;后期将会继续更新和优化&quot;&gt;后期将会继续更新和优化&lt;/h2&gt;&lt;p&gt;未完待续。。。  &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天是2015年3月23日，由于看到好友陈辉有hexo搭建了自己的博客，自己也跟着弄了下，虽然有点麻烦，但是完成后还是感觉是值得的。&lt;/p&gt;
+&lt;h2 id=&quot;具体的细节还没弄懂&quot;&gt;具体的细节还没弄懂&lt;/h2&gt;&lt;p&gt;就是在测试部署是弄了我半天，到底部署是git还是github
+    
+    </summary>
+    
+      <category term="杂谈" scheme="http://jxust-cgs.github.io/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+      <category term="first" scheme="http://jxust-cgs.github.io/tags/first/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://jxust-cgs.github.io/2015/03/22/hello-world/"/>
+    <id>http://jxust-cgs.github.io/2015/03/22/hello-world/</id>
+    <published>2015-03-22T06:29:14.509Z</published>
+    <updated>2015-03-22T06:29:14.509Z</updated>
+    
+    <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;http://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;http://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick_Start&quot;&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create_a_new_post&quot;&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Run_server&quot;&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Generate_static_files&quot;&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Deploy_to_remote_sites&quot;&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;http://hexo.io
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
