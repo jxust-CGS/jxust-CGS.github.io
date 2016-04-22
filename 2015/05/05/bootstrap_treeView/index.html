@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta name="baidu-site-verification" content="7AB1qIzhnt" />
+    
+    <meta name="author" content="Jxust_CGS">
+    
+    <meta name="description" content="使用的方式首先是需要下载到bootstrap-treeView的css和js文件（可以访问官方github）不过不知道是我弄错了还是官方的演示例子有问题。在下载的文件中对js和css的导入有问题所有打开后看不到例子我自己修改后的百度网盘链接可以看看相对还是比较简单的必要的文件有
+&amp;lt;link h">
+    
+    
+
+    
+    <link rel="alternative" href="YOUR_RSS_ADDRESS" title="月下踟蹰" type="application/atom+xml">
+    
+    
+    
+	
+	
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>给bootstrap的界面中添加同风格树状菜单 | 月下踟蹰 · 遥想秦时月下，英豪追梦千里</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    <!-- Javascript -->
+    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery.backstretch.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/headroom.min.js"></script>
+    <script src="/js/jquery.headroom.min.js"></script> 
+    <script src="/js/common.js"></script>
+	
+	<link rel="stylesheet" href="/css/animate.css"></link>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://jxust-cgs.github.io" title="月下踟蹰">月下踟蹰</a>
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                <p class="navbar-text pull-right">遥想秦时月下，英豪追梦千里</p>
+
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/archives">归档</a></li>
+                    
+                    <li id="nav-tags"><a href="/tags">标签</a></li>
+                    
+                    <li id="nav-categories"><a href="/categories">分类</a></li>
+                    
+                    <li id="nav-curriculumvitae"><a href="/curriculumvitae">关于</a></li>
+                    
+                    <li id="nav-links"><a href="/links">链接</a></li>
+                    
+                    
+                    <li><a href="https://github.com/jxust-CGS" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <script>
+    var backRoot = "/images/background/";
+    var backArray = [ "1.jpg", "2.jpg", "3.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.jpg",  ];
+    //console.log(backArray);
+        
+    $(function() {
+        // page-id...
+        var pageId = "2015/05/05/bootstrap_treeView/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+    });
+    </script>
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>给bootstrap的界面中添加同风格树状菜单</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2015-05-05T05:32:54.000Z" itemprop="datePublished">2015-05-05</time>，更新于:<time datetime="2016-04-10T13:30:44.048Z" itemprop="dateModified">2016-04-10</time>，By <a href="http://jxust-cgs.github.io" title="Jxust_CGS">Jxust_CGS</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <strong class="toc-title">大纲</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用的方式"><span class="toc-number">1.</span> <span class="toc-text">使用的方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取更多"><span class="toc-number">2.</span> <span class="toc-text">获取更多</span></a></li></ol>
+            </div>
+            
+            <p><img src="/photos/default.PNG" alt="example" align="left" width="750"><br><br><br><br><br><br><br><br><br><br><br><br></p>
+<h2 id="使用的方式">使用的方式</h2><p>首先是需要下载到bootstrap-treeView的css和js文件（可以访问<a href="https://github.com/jonmiles/bootstrap-treeview" target="_blank" rel="external">官方github</a>）<br>不过不知道是我弄错了还是官方的演示例子有问题。<br>在下载的文件中对js和css的导入有问题所有打开后看不到例子<br>我自己修改后的<a href="http://pan.baidu.com/s/1i3CcK0t" target="_blank" rel="external">百度网盘链接</a>可以看看相对还是比较简单的<br>必要的文件有</p>
+<pre><code><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"css/bootstrap.css"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"css/bootstrap-treeview.css"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://libs.baidu.com/jquery/2.0.0/jquery.min.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/bootstrap-treeview.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</code></pre><p>还有就是生成每个树状图数据</p>
+<pre><code>$(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    var defaultData = <span class="matrix">[
+      {
+        text: <span class="string">'Parent 1'</span>,
+        href: <span class="string">'#parent1'</span>,
+        tags: [<span class="string">'4'</span>]</span>,
+        nodes: <span class="matrix">[
+          {
+            text: <span class="string">'Child 1'</span>,
+            href: <span class="string">'#child1'</span>,
+            tags: [<span class="string">'2'</span>]</span>,
+            nodes: <span class="matrix">[
+              {
+                text: <span class="string">'Grandchild 1'</span>,
+                href: <span class="string">'#grandchild1'</span>,
+                tags: [<span class="string">'0'</span>]</span>
+              },
+              {
+                text: <span class="string">'Grandchild 2'</span>,
+                href: <span class="string">'#grandchild2'</span>,
+                tags: <span class="matrix">[<span class="string">'0'</span>]</span>
+              }
+            ]
+          },
+          {
+            text: <span class="string">'Child 2'</span>,
+            href: <span class="string">'#child2'</span>,
+            tags: <span class="matrix">[<span class="string">'0'</span>]</span>
+          }
+        ]
+      },
+      {
+        text: <span class="string">'Parent 2'</span>,
+        href: <span class="string">'#parent2'</span>,
+        tags: <span class="matrix">[<span class="string">'0'</span>]</span>
+      },
+      {
+        text: <span class="string">'Parent 3'</span>,
+        href: <span class="string">'#parent3'</span>,
+         tags: <span class="matrix">[<span class="string">'0'</span>]</span>
+      },
+      {
+        text: <span class="string">'Parent 4'</span>,
+        href: <span class="string">'#parent4'</span>,
+        tags: <span class="matrix">[<span class="string">'0'</span>]</span>
+      },
+      {
+        text: <span class="string">'Parent 5'</span>,
+        href: <span class="string">'#parent5'</span>  ,
+        tags: <span class="matrix">[<span class="string">'0'</span>]</span>
+      }
+    ];
+
+    var alternateData = <span class="matrix">[
+      {
+        text: <span class="string">'Parent 1'</span>,
+        tags: [<span class="string">'2'</span>]</span>,
+        nodes: <span class="matrix">[
+          {
+            text: <span class="string">'Child 1'</span>,
+            tags: [<span class="string">'3'</span>]</span>,
+            nodes: <span class="matrix">[//节点拥有子节点
+              {
+                text: <span class="string">'Grandchild 1'</span>,
+                tags: [<span class="string">'6'</span>]</span>
+              },
+              {
+                text: <span class="string">'Grandchild 2'</span>,
+                tags: <span class="matrix">[<span class="string">'3'</span>]</span>
+              }
+            ]
+          },
+          {
+            text: <span class="string">'Child 2'</span>,
+            tags: <span class="matrix">[<span class="string">'3'</span>]</span>
+          }
+        ]
+      },
+      {
+        text: <span class="string">'Parent 2'</span>,
+        tags: <span class="matrix">[<span class="string">'7'</span>]</span>
+      },
+      {
+        text: <span class="string">'Parent 3'</span>,<span class="comment">//节点的名字</span>
+        icon: <span class="string">'glyphicon glyphicon-earphone'</span>,<span class="comment">//个性化节点图标</span>
+        href: <span class="string">'#demo'</span>,<span class="comment">//节点的超链接</span>
+        tags: <span class="matrix">[<span class="string">'11'</span>]</span><span class="comment">//节点的标签</span>
+      },
+      {
+        text: <span class="string">'Parent 4'</span>,
+        icon: <span class="string">'glyphicon glyphicon-cloud-download'</span>,
+        href: <span class="string">'/demo.html'</span>,
+        tags: <span class="matrix">[<span class="string">'19'</span>]</span>,
+        selected: true
+      },
+      {
+        text: <span class="string">'Parent 5'</span>,
+        icon: <span class="string">'glyphicon glyphicon-certificate'</span>,
+        color: <span class="string">'pink'</span>,
+        backColor: <span class="string">'red'</span>,
+        href: <span class="string">'http://www.tesco.com'</span>,
+        tags: <span class="matrix">[<span class="string">'available'</span>,<span class="string">'0'</span>]</span>
+      }
+    ];
+
+    var json = <span class="string">'['</span> +
+      <span class="string">'{'</span> +
+        <span class="string">'"</span>text<span class="string">": "</span>Parent <span class="number">1</span><span class="string">",'</span> +
+        <span class="string">'"</span>nodes<span class="string">": ['</span> +
+          <span class="string">'{'</span> +
+            <span class="string">'"</span>text<span class="string">": "</span>Child <span class="number">1</span><span class="string">",'</span> +
+            <span class="string">'"</span>nodes<span class="string">": ['</span> +
+              <span class="string">'{'</span> +
+                <span class="string">'"</span>text<span class="string">": "</span>Grandchild <span class="number">1</span><span class="string">"'</span> +
+              <span class="string">'},'</span> +
+              <span class="string">'{'</span> +
+                <span class="string">'"</span>text<span class="string">": "</span>Grandchild <span class="number">2</span><span class="string">"'</span> +
+              <span class="string">'}'</span> +
+            <span class="string">']'</span> +
+          <span class="string">'},'</span> +
+          <span class="string">'{'</span> +
+            <span class="string">'"</span>text<span class="string">": "</span>Child <span class="number">2</span><span class="string">"'</span> +
+          <span class="string">'}'</span> +
+        <span class="string">']'</span> +
+      <span class="string">'},'</span> +
+      <span class="string">'{'</span> +
+        <span class="string">'"</span>text<span class="string">": "</span>Parent <span class="number">2</span><span class="string">"'</span> +
+      <span class="string">'},'</span> +
+      <span class="string">'{'</span> +
+        <span class="string">'"</span>text<span class="string">": "</span>Parent <span class="number">3</span><span class="string">"'</span> +
+      <span class="string">'},'</span> +
+      <span class="string">'{'</span> +
+        <span class="string">'"</span>text<span class="string">": "</span>Parent <span class="number">4</span><span class="string">"'</span> +
+      <span class="string">'},'</span> +
+      <span class="string">'{'</span> +
+        <span class="string">'"</span>text<span class="string">": "</span>Parent <span class="number">5</span><span class="string">"'</span> +
+      <span class="string">'}'</span> +
+    <span class="string">']'</span>;
+</code></pre><p>对树状图进行配置</p>
+<pre><code> $(<span class="string">'#treeview9'</span>).treeview({
+  expandIcon: <span class="string">"glyphicon glyphicon-stop"</span>,<span class="comment">//关闭图标</span>
+  collapseIcon: <span class="string">"glyphicon glyphicon-unchecked"</span>,<span class="comment">//打开图标</span>
+  nodeIcon: <span class="string">"glyphicon glyphicon-user"</span>,<span class="comment">//用户图标（个性化节点图标在节点data中配置）</span>
+  color: <span class="string">"yellow"</span>,<span class="comment">//文字颜色</span>
+  backColor: <span class="string">"purple"</span>,<span class="comment">//背景颜色</span>
+  onhoverColor: <span class="string">"orange"</span>,<span class="comment">//鼠标经过显示颜色</span>
+  borderColor: <span class="string">"red"</span>,<span class="comment">//边缘颜色</span>
+  showBorder: <span class="literal">false</span>,<span class="comment">//是否显示边缘</span>
+  showTags: <span class="literal">false</span>,<span class="comment">//是否显示结尾标签</span>
+  highlightSelected: <span class="literal">true</span>,<span class="comment">//选中高光</span>
+  selectedColor: <span class="string">"blue"</span>,<span class="comment">//选中文字颜色</span>
+  selectedBackColor: <span class="string">"darkorange"</span>,<span class="comment">//选中背景颜色</span>
+  data: alternateData<span class="comment">//数据</span>
+});
+
+$(<span class="string">'#treeview10'</span>).treeview({
+  color: <span class="string">"#428bca"</span>,
+  enableLinks: <span class="literal">true</span>,<span class="comment">//链接生效</span>
+  data: defaultData
+});
+</code></pre><h2 id="获取更多">获取更多</h2><blockquote>
+<p><a href="https://github.com/jonmiles/bootstrap-treeview" target="_blank" rel="external">官方网站</a>  </p>
+</blockquote>
+
+            
+            <section class="comment">
+	<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a><a href="#" class="bds_mshare" data-cmd="mshare" title="分享到一键分享"></a></div>
+	<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{},"image":{"viewList":["tsina","tqq","weixin","qzone","renren","sqq","copy","mshare"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="post-bootstrap_treeView" data-title="给bootstrap的界面中添加同风格树状菜单" data-url="http://jxust-cgs.github.io/2015/05/05/bootstrap_treeView/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+		var duoshuoQuery = {short_name:"qq1055038041"};
+		(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	</script> 
+	<!-- 多说公共JS代码 end -->
+</section>
+	
+
+
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+    <div id="bottom-tip">
+        月下踟蹰 —— <small>遥想秦时月下，英豪追梦千里</small>
+    </div>
+		<small>该博客由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动，搭载 <a href="https://github.com/XadillaX/hexadillax" target="_blank">Hexadillax</a> 主题</small><br />
+		<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?41b077f24ab3ed7a0461260e0234943c";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+		</script>
+
+		<small>&copy; 2014 -2016 </small>
+    </footer>
+</body>
+</html>

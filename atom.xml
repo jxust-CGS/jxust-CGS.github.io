@@ -1,0 +1,1534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[月下踟蹰]]></title>
+  <subtitle><![CDATA[遥想秦时月下，英豪追梦千里]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://jxust-cgs.github.io/"/>
+  <updated>2016-04-10T13:47:31.048Z</updated>
+  <id>http://jxust-cgs.github.io/</id>
+  
+  <author>
+    <name><![CDATA[Jxust_CGS]]></name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[正则表达式]]></title>
+    <link href="http://jxust-cgs.github.io/2016/04/10/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <id>http://jxust-cgs.github.io/2016/04/10/正则表达式/</id>
+    <published>2016-04-10T03:45:54.000Z</published>
+    <updated>2016-04-10T13:47:31.048Z</updated>
+    <content type="html"><![CDATA[<h1 id="写在前面（参考网站）">写在前面（参考网站）</h1><ul>
+<li>(正则表达式语法)[<a href="https://msdn.microsoft.com/zh-cn/library/ae5bf541(VS.80).aspx" target="_blank" rel="external">https://msdn.microsoft.com/zh-cn/library/ae5bf541(VS.80).aspx</a>]</li>
+<li>(正则表达式 – 语法 | 菜鸟教程)[<a href="http://www.runoob.com/regexp/regexp-syntax.html" target="_blank" rel="external">http://www.runoob.com/regexp/regexp-syntax.html</a>]</li>
+<li>(Java正则表达式入门)[<a href="http://blog.csdn.net/kdnuggets/article/details/2526588" target="_blank" rel="external">http://blog.csdn.net/kdnuggets/article/details/2526588</a>]  </li>
+</ul>
+<h1 id="什么是正则表达式">什么是正则表达式</h1><p>正则表达式(regular expression)描述了一种字符串匹配的模式，可以用来检查一个串是否含有某种子串、将匹配的子串做替换或者从某个串中取出符合某个条件的子串等。<br>众所周知，在程序开发中，难免会遇到需要<strong>匹配、查找、替换、判断字符串</strong>的情况发生，而这些情况有时又比较复杂，如果用纯编码方式解决，往往会浪费程序员的时间及精力。因此，学习及使用正则表达式，便成了解决这一矛盾的主要手段。<br>Java正则的功用还有很多，事实上只要是字符处理，就没有正则做不到的事情存在。（当然，正则解释时较耗时间就是了|||……）    </p>
+<h1 id="正则表达式的语法">正则表达式的语法</h1><h4 id="具体语法请查看前面参考链接，此处只列出常见的例子">具体语法请查看前面参考链接，此处只列出常见的例子</h4><ul>
+<li>匹配手机号码：^1[3|4|5|7|8][0-9]{9}$<br>“\^1”表示开始手机号以“1”开头，[3|4|5|7|8]表示第二位只可能是“3、4、5、7、8”，[0-9]{9}表示之后会跟9位数字。</li>
+<li>匹配网址：[a-zA-Z]+://[^\s]<em><br>“[a-zA-Z]+”表示多个字母，紧接着是“://”接着是[^\s]</em>表示包含零或多个不为空格的字母或数字或其他符号</li>
+<li>匹配邮箱：^\w+([-+.]\w+)<em>@\w+([-.]\w+)</em>.\w+([-.]\w+)<em>$<br>“^\w+”表示以一或多个字符开始，“（）</em>”接着零或多个子表达式，“[-.]\w+”表示“-”或“.”接一或多个字符，“@\w+”表示@后接一或多个字符，“（）*”接着零或多个子表达式，“[-.]\w+”表示“-”或“.”接一或多个字符，“$”表示结束  </li>
+<li>匹配qq号：[1-9][0-9]{4,10}<br>以不为0的数字开头，接着是4到10位数字  </li>
+<li>匹配中文（包括了繁体的）：\^[\u4E00-\u9FFF]+$<br><a href="http://www.cnblogs.com/yitian/archive/2008/11/14/1333569.html" target="_blank" rel="external">正则表达式匹配非英语字符</a>  </li>
+<li>匹配用户名（字母加数字）：\^[a-zA-Z][a-zA-Z0-9_]{4,15}$<br>以字母开头，后接4到15位字符包含下划线  </li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="写在前面（参考网站）">写在前面（参考网站）</h1><ul>
+<li>(正则表达式语法)[<a href="https://msdn.microsoft.com/zh-cn/library/ae5bf541(VS.80).aspx" target="_blank]]>
+    </summary>
+    
+      <category term="正则表达式" scheme="http://jxust-cgs.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+      <category term="正则表达式" scheme="http://jxust-cgs.github.io/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[android学习笔记（4） ——多线程]]></title>
+    <link href="http://jxust-cgs.github.io/2016/04/08/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89%20%E2%80%94%E2%80%94%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    <id>http://jxust-cgs.github.io/2016/04/08/android学习笔记（4） ——多线程/</id>
+    <published>2016-04-08T03:45:54.000Z</published>
+    <updated>2016-04-10T13:34:25.477Z</updated>
+    <content type="html"><![CDATA[<h1 id="为什么要使用多线程">为什么要使用多线程</h1><p>Android中的Main线程的事件处理不能太耗时，否则后续的事件无法在5秒内得到响应，就会弹出ANR对话框。  </p>
+<ul>
+<li>常见的耗时的操作有：获取网络数据、批量操作数据库、绘图等。</li>
+<li>需要刷新UI。</li>
+</ul>
+<h1 id="java中线程的实现方法">java中线程的实现方法</h1><p>在java中可有两种方式实现多线程，一种是继承Thread类，一种是实现Runnable接口；Thread类是在java.lang包中定义的。一个类只要继承了Thread类同时覆写了本类中的run()方法就可以实现多线程操作了，但是一个类只能继承一个父类，这是此方法的局限。<br><a href="http://developer.51cto.com/art/201203/321042.htm" target="_blank" rel="external">Java中Runnable和Thread的区别</a>  </p>
+<h1 id="android中线程的实现方法">android中线程的实现方法</h1><p>在android中多线程的实现方法有：  </p>
+<ul>
+<li>Activity.runOnUiThread(Runnable)  </li>
+<li>View.post(Runnable) ;View.postDelay(Runnable , long)  </li>
+<li>Handler  </li>
+<li>AsyncTask  </li>
+</ul>
+<p><a href="http://blog.csdn.net/johnny901114/article/details/7536951" target="_blank" rel="external">Android中轻松使用线程</a>  </p>
+<h1 id="同步与异步">同步与异步</h1><ol>
+<li>同步，需要等待返回结果。例如用户点击了注册按钮，需要等待服务端返回结果，那么需要有一个进度条来提示用户你的程序正在运行没有死掉。一般与服务端交互的都要有进度条，例如系统自带的浏览器，URL跳转时会有进度条。</li>
+<li>异步，不需要等待返回结果。例如微博中的收藏功能，点击完收藏按钮后是否成功执行完成后告诉我就行了，我不想等它，这里最好实现为异步的。    </li>
+</ol>
+<h1 id="线程之间的通讯">线程之间的通讯</h1><h3 id="asyncTask：">asyncTask：</h3><p>简单的异步耗时操作</p>
+<h3 id="Handler：">Handler：</h3><p>刷新ui之算下progressbar</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="为什么要使用多线程">为什么要使用多线程</h1><p>Android中的Main线程的事件处理不能太耗时，否则后续的事件无法在5秒内得到响应，就会弹出ANR对话框。  </p>
+<ul>
+<li>常见的耗时的操作有：获取网络数据、批量操作数据库、绘图等。</li]]>
+    </summary>
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/tags/android/"/>
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/categories/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[android学习笔记（3） ——ListView]]></title>
+    <link href="http://jxust-cgs.github.io/2016/04/01/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89%20%E2%80%94%E2%80%94ListView/"/>
+    <id>http://jxust-cgs.github.io/2016/04/01/android学习笔记（3） ——ListView/</id>
+    <published>2016-04-01T03:45:54.000Z</published>
+    <updated>2016-04-10T13:52:40.045Z</updated>
+    <content type="html"><![CDATA[<h1 id="ListView">ListView</h1><h5 id="想要在应用中添加ListView控件需要怎样做？">想要在应用中添加ListView控件需要怎样做？</h5><ol>
+<li>在activity的xml布局文件中添加listView控件  </li>
+<li>新建item.xml文件为listView的子项进行布局（系统提供了一些也可直接使用）  </li>
+<li>在activity中使用adapter将数据填充到item.xml中并组合到ListView中   </li>
+</ol>
+<h5 id="什么是Adapter呢？">什么是Adapter呢？</h5><p>Adapter，适配器，是连接后端数据和前端显示的适配器接口，是数据和UI（View）之间一个重要的纽带。在常见的View(ListView,GridView)等地方都需要用到Adapter。如下图直观的表达了Data、Adapter、View三者的关系：  </p>
+<p><img src="http://pic002.cnblogs.com/images/2012/267603/2012012021592978.jpg" alt="adapter">  </p>
+<p>Adatper中有哪些实现类呢？    </p>
+<p><img src="http://dl2.iteye.com/upload/attachment/0040/8195/3d321acd-aec8-3f99-bde7-c7634d8f4ac3.png" alt="adapter">   </p>
+<p>其实我用过的也就只有ArrayAdapter和SimpleAdapter<br>我们需要定义自己的实现类MyAdapter重新实现下面的方法：  </p>
+<ul>
+<li>abstract Object getItem(int position)  </li>
+<li>abstract int getCount()  </li>
+<li>abstract long getItemId(int position)  </li>
+<li>abstract int getItemViewType(int position)  </li>
+<li><p>abstract View getView(int position,View convertVeiw,ViewGroup parent)    </p>
+<pre><code><span class="keyword">lv</span> = (ListView) findViewById(R.id.<span class="keyword">lv</span>);
+<span class="comment">//得到ListView对象的引用  </span>
+<span class="keyword">lv</span>.setAdapter(new ArrayAdapter&lt;Items&gt;(this,android.R.layout.item, Item[]));
+<span class="comment">//为ListView设置Adapter来绑定数据   </span>
+</code></pre></li>
+</ul>
+<p><a href="http://www.cnblogs.com/purediy/p/3267913.html" target="_blank" rel="external">Android开发优化-Adapter优化</a>  </p>
+<h1 id="最后附上自己实现的一个Demo">最后附上自己实现的一个Demo</h1><p><img src="http://jxust-cgs.github.io/photos/ListView.png" alt="ListView">   </p>
+<p>Person.java</p>
+<pre><code><span class="keyword">public</span> <span class="keyword">class</span> Person {
+    <span class="keyword">private</span> <span class="built_in">String</span> name;
+    <span class="keyword">private</span> int photo_id;
+    <span class="keyword">private</span> <span class="built_in">String</span> <span class="built_in">number</span>;
+    <span class="keyword">public</span> Person(){
+    }
+    <span class="keyword">public</span> Person(<span class="built_in">String</span> name,int photo_id,<span class="built_in">String</span> <span class="built_in">number</span>){
+        <span class="keyword">this</span>.name=name;
+        <span class="keyword">this</span>.photo_id=photo_id;
+        <span class="keyword">this</span>.number=<span class="built_in">number</span>;
+    }
+    <span class="keyword">public</span> <span class="built_in">String</span> getName() {
+        <span class="keyword">return</span> name;
+    }
+    <span class="keyword">public</span> <span class="built_in">void</span> setName(<span class="built_in">String</span> name) {
+        <span class="keyword">this</span>.name = name;
+    }
+    <span class="keyword">public</span> int getPhoto_id() {
+        <span class="keyword">return</span> photo_id;
+    }
+    <span class="keyword">public</span> <span class="built_in">void</span> setPhoto_id(int photo_id) {
+        <span class="keyword">this</span>.photo_id = photo_id;
+    }
+    <span class="keyword">public</span> <span class="built_in">String</span> getNumber() {
+        <span class="keyword">return</span> <span class="built_in">number</span>;
+    }
+    <span class="keyword">public</span> <span class="built_in">void</span> setNumber(<span class="built_in">String</span> <span class="built_in">number</span>) {
+        <span class="keyword">this</span>.number = <span class="built_in">number</span>;
+    }
+}
+</code></pre><p>MyAdapter.java</p>
+<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAdapter</span> <span class="keyword">extends</span> <span class="title">BaseAdapter</span></span>{
+
+    <span class="keyword">private</span> ArrayList&lt;Person&gt; persons;
+    Context context;
+
+    <span class="function"><span class="keyword">public</span> <span class="title">MyAdapter</span><span class="params">(Context context,ArrayList&lt;Person&gt; persons)</span> </span>{
+        <span class="keyword">this</span>.context=context;
+        <span class="keyword">this</span>.persons=persons;
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> persons==<span class="keyword">null</span>?<span class="number">0</span>:persons.size();
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function">Object <span class="title">getItem</span><span class="params">(<span class="keyword">int</span> position)</span> </span>{
+        <span class="function"><span class="keyword">return</span> persons.<span class="title">get</span><span class="params">(position)</span></span>;
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">long</span> <span class="title">getItemId</span><span class="params">(<span class="keyword">int</span> position)</span> </span>{
+        <span class="keyword">return</span> position;
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function">View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>{
+        <span class="keyword">final</span> Person person=(Person) getItem(position);
+        ViewHolder viewHolder=<span class="keyword">null</span>;
+        <span class="keyword">if</span>(viewHolder==<span class="keyword">null</span>){
+            convertView=LayoutInflater.from(context).inflate(R.layout.person_item, <span class="keyword">null</span>);
+            viewHolder=<span class="keyword">new</span> ViewHolder();
+            viewHolder.imageView_photo=(ImageView) convertView.findViewById(R.id.photo);
+            viewHolder.textView_name=(TextView) convertView.findViewById(R.id.name);
+            viewHolder.textView_number=(TextView) convertView.findViewById(R.id.number);
+            convertView.setTag(viewHolder);
+        }<span class="keyword">else</span>{
+            viewHolder=(ViewHolder) convertView.getTag();
+        }
+        viewHolder.textView_name.setText(person.getName());
+        viewHolder.textView_number.setText(person.getNumber());
+        viewHolder.imageView_photo.setImageResource(person.getPhoto_id());
+
+        convertView.setOnClickListener(<span class="keyword">new</span> OnClickListener() {
+
+            <span class="annotation">@Override</span>
+            <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
+                Toast.makeText(context, person.getName()+<span class="string">"的号码是"</span>+person.getNumber(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        <span class="keyword">return</span>  convertView;
+    }
+
+    <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> </span>{
+        TextView textView_name;
+        TextView textView_number;
+        ImageView imageView_photo;
+    }
+}
+</code></pre><p>MainActivity.java</p>
+<pre><code><span class="keyword">public</span> class MainActivity extends Activity {
+
+    <span class="keyword">private</span> ArrayList&lt;Person&gt; persons =<span class="keyword">new</span> ArrayList&lt;Person&gt;();
+
+    @Override
+    <span class="keyword">protected</span> <span class="keyword">void</span> onCreate(Bundle savedInstanceState) {
+        <span class="keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initPerson();
+        ListView listView=(ListView) findViewById(R.id.listView1);
+        MyAdapter myAdapter=<span class="keyword">new</span> MyAdapter(<span class="keyword">this</span>,persons);
+        listView.setAdapter(myAdapter);
+    }
+
+    <span class="keyword">private</span> <span class="keyword">void</span> initPerson() {
+        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"李华"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
+        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"丽华"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
+        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"利华"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
+        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"立华"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
+        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"小明"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
+        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"小红"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
+        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"天明"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
+        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"少羽"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
+        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"小莉"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
+        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"joke"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
+        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"Tom"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
+        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"Boby"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
+        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"Bob"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
+        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"小胡"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
+        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"小菜鸟"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
+    }
+}
+</code></pre><p>person_item.xml</p>
+<pre><code>    &lt;ImageView
+        android:<span class="variable">id=</span><span class="string">"@+id/photo"</span>
+        android:<span class="variable">layout_width=</span><span class="string">"50dp"</span>
+        android:<span class="variable">layout_height=</span><span class="string">"50dp"</span>
+        android:<span class="variable">contentDescription=</span><span class="string">"@string/image"</span>/&gt;
+
+    &lt;LinearLayout
+        android:<span class="variable">layout_width=</span><span class="string">"match_parent"</span>
+        android:<span class="variable">layout_height=</span><span class="string">"match_parent"</span>
+        android:<span class="variable">orientation=</span><span class="string">"vertical"</span>
+        android:<span class="variable">layout_gravity=</span><span class="string">"center_vertical"</span>&gt;
+
+        &lt;TextView
+            android:<span class="variable">id=</span><span class="string">"@+id/name"</span>
+            android:<span class="variable">layout_width=</span><span class="string">"wrap_content"</span>
+            android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
+            android:<span class="variable">textSize=</span><span class="string">"20sp"</span>
+            android:<span class="variable">textColor=</span><span class="string">"#48c0f0"</span> /&gt;
+
+        &lt;TextView
+            android:<span class="variable">id=</span><span class="string">"@+id/number"</span>
+            android:<span class="variable">layout_width=</span><span class="string">"wrap_content"</span>
+            android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
+            android:<span class="variable">textSize=</span><span class="string">"10sp"</span>
+            android:<span class="variable">textColor=</span><span class="string">"#48c0f0"</span> /&gt;
+    &lt;/LinearLayout&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre>]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="ListView">ListView</h1><h5 id="想要在应用中添加ListView控件需要怎样做？">想要在应用中添加ListView控件需要怎样做？</h5><ol>
+<li>在activity的xml布局文件中添加listView控件  </li>]]>
+    </summary>
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/tags/android/"/>
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/categories/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[android学习笔记（2） ——UI]]></title>
+    <link href="http://jxust-cgs.github.io/2016/04/01/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89%20%E2%80%94%E2%80%94UI/"/>
+    <id>http://jxust-cgs.github.io/2016/04/01/android学习笔记（2） ——UI/</id>
+    <published>2016-04-01T03:40:54.000Z</published>
+    <updated>2016-04-10T13:40:56.910Z</updated>
+    <content type="html"><![CDATA[<h1 id="UI布局">UI布局</h1><p>第一次开发安卓感觉和j2ee中的web编程有点像，mvc模式，layout布局就是view，activity就是controller，实体类就是model。<br>在android中布局文件是用xml文件编写通过ViewGroup和VIew组成。</p>
+<p><img src="http://hi.csdn.net/attachment/201108/21/0_1313928575W9Q0.gif" alt="photo">  </p>
+<h1 id="ViewGroup">ViewGroup</h1><ul>
+<li>GridLayout网格布局 ,必须声明几行几列，可以实现跨行显示（相对于表格的不同）  <pre><code><span class="label">android:</span>layout_row=<span class="string">"0"</span>  
+<span class="label">android:</span>layout_column=<span class="string">"1"</span>  
+<span class="label">android:</span>layout_columnSpan=<span class="string">"2"</span>  
+</code></pre></li>
+<li>LinnearLayout线形布局，通过orientation设置反向水平或竖直。<br>android:weightSum=”5”，android：layout_weight=”1”，android：layout_weith=”0dp”实现指定反向上按比例摆放。    </li>
+<li>RelativeLayout相对布局，对布局中的组件摆放比较复杂时使用，方便布局中组件位置的配置  </li>
+<li>FrameLayout帧布局，用于叠加的摆放</li>
+<li>TableLayout表格布局，每次都有加<tablerow>不加的话组件会独占一行</tablerow></li>
+<li>AbsoluteLayout绝对布局（官方不提倡使用）</li>
+<li>Include引用其他布局文件  </li>
+</ul>
+<h1 id="View">View</h1><ul>
+<li>TextView，文本控件，用于显示文本，额好吧不说了</li>
+<li>Button，按钮</li>
+<li>EditView，输入框，通过hint属性配置提示，通过background=“@null”去除横线</li>
+<li>CheckBox、RedioBox，多选和单选框</li>
+<li>ListView，列表显示，这就有的说了：<br>  1．ListVeiw 用来展示列表的View。<br>  2．适配器 用来把数据映射到ListView上的中介。<br>  3．数据具体的将被映射的字符串，图片，或者基本组件。<br><a href="http://jxust-cgs.github.io/2016/04/01/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89%20%E2%80%94%E2%80%94ListView/" target="_blank" rel="external">学习ListView的使用</a></li>
+<li>WebView,网络视图   </li>
+<li>progressBar，进度条<br><a href="http://jxust-cgs.github.io/2016/04/08/android学习笔记（4）%20——多线程/" target="_blank" rel="external">由webView,progressBar了解多线程</a>  </li>
+<li>ImageView,图片视图，通过src属性配置资源或者在程序中配置<pre><code>Bitmap bm = BitmapFactory.decodeStream(  
+        MainActivity.<span class="keyword">this</span>.getAssets().<span class="built_in">open</span>(<span class="string">"weather/100.png"</span>));  
+iv_logo.setImageBitmap(bm);  <span class="comment">// 通过获得assets目录下文件路径的方式设置图片资源  </span>
+</code></pre></li>
+<li>Fragment碎片，通过fragment能够很好的适应平板和手机，不过很少这么用，一般用于经常变动的页面替换</li>
+<li>scrollView滚动条，在显示很长的数据的时候可以轻松搞定</li>
+<li>…</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="UI布局">UI布局</h1><p>第一次开发安卓感觉和j2ee中的web编程有点像，mvc模式，layout布局就是view，activity就是controller，实体类就是model。<br>在android中布局文件是用xml文件编写通过ViewGrou]]>
+    </summary>
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/tags/android/"/>
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/categories/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[android学习笔记（1）——activity与intent]]></title>
+    <link href="http://jxust-cgs.github.io/2016/03/31/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89%20%E2%80%94%E2%80%94activity%E4%B8%8Eintent/"/>
+    <id>http://jxust-cgs.github.io/2016/03/31/android学习笔记（1） ——activity与intent/</id>
+    <published>2016-03-31T05:32:54.000Z</published>
+    <updated>2016-04-10T13:34:11.997Z</updated>
+    <content type="html"><![CDATA[<h1 id="activity">activity</h1><ul>
+<li>对于安卓的学习一开始无非就是安装软件配置开发环境，adt和android stdio我感觉都差不多。在eclipse中开发一次加载多个项目，而在android stdio中只对一个项目进行开发。 我比较喜欢查看以前项目中的代码或是写个小例子还是eclipse比较适合我^_^  </li>
+<li>说到activity就是要说activity的生命周期。<br><img src="http://hukai.me/android-training-course-in-chinese/basics/activity-lifecycle/basic-lifecycle-paused.png" alt="photo">  </li>
+<li>finish()结束activity，默认会返回到上一个activity。<br>（ps：acitvity是通过返回栈来管理的，不要用intent跳回去哟这样你按返回键又会返回回来的）  </li>
+</ul>
+<h1 id="intent">intent</h1><ul>
+<li>显式intent：显式就是意图非常明确，<br>指定跳转的activity，startActivity（<br>New Intent(MainActivity.this,OtherActivity.class)）。</li>
+<li><p>隐式intent：隐式就是意图不明确，<br>需要根据action和category匹配对应的activity   </p>
+<p>  <intent-filter></intent-filter></p>
+<pre><code>&lt;action android:<span class="property">name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;
+&lt;category android:<span class="property">name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;
+保证此activity入口出现在luncher中，一般出现在Mainactivity
+</code></pre><p>    </p>
+<p>  对于隐式的Intent的使用比较常见的就是调用系统的应用如：打电话   </p>
+<pre><code>Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_DIAL);
+intent.setData(<span class="built_in">Uri</span>.parse(<span class="string">"tel:10086"</span>));
+startActivity(intent);
+还有很多实践可以尝试：发短信，打开网页等
+</code></pre></li>
+</ul>
+<h1 id="intent可以用于发送和回传数据">intent可以用于发送和回传数据</h1><ul>
+<li><p>发送：  </p>
+<pre><code>button1.setOnClickListener(<span class="keyword">new</span> <span class="type">OnClickListener</span>() {
+  <span class="annotation">@Override</span>
+  public void onClick(<span class="type">View</span> v) {
+      <span class="type">String</span> data = <span class="string">"Hello SecondActivity"</span>;
+      <span class="type">Intent</span> intent = <span class="keyword">new</span> <span class="type">Intent</span>(<span class="type">FirstActivity</span>.<span class="keyword">this</span>, <span class="type">SecondActivity</span>.<span class="keyword">class</span>);
+      intent.putExtra(<span class="string">"extra_data"</span>, data);
+      <span class="comment">//发送需要的数据，发送对象是需要对对象进行序列化通过实现Serializable接口传递对象,一种是通过实现Parcelable接口传递对象</span>
+      startActivity(intent);
+    }
+});
+
+public <span class="class"><span class="keyword">class</span> <span class="title">SecondActivity</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Activity</span> {</span>
+  <span class="annotation">@Override</span>
+  <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> savedInstanceState) {
+      <span class="keyword">super</span>.onCreate(savedInstanceState);
+      requestWindowFeature(<span class="type">Window</span>.<span class="type">FEATURE_NO_TITLE</span>);<span class="comment">//去掉标题栏，一定要放在setContentView（）之前哟</span>
+      setContentView(<span class="type">R</span>.layout.second_layout);
+      <span class="type">Intent</span> intent = getIntent();
+      <span class="type">String</span> data = intent.getStringExtra(<span class="string">"extra_data"</span>);<span class="comment">//获取从firstactivity中传递来的数据</span>
+      <span class="type">Log</span>.d(<span class="string">"SecondActivity"</span>, data);
+  }
+}
+</code></pre></li>
+<li><p>返回数据：  </p>
+<pre><code>button1.setOnClickListener(<span class="keyword">new</span> OnClickListener() {
+    <span class="annotation">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
+        Intent intent = <span class="keyword">new</span> Intent(FirstActivity.<span class="keyword">this</span>, SecondActivity.class);
+        startActivityForResult(intent, <span class="number">1</span>);
+    }
+});
+<span class="annotation">@Override</span>
+<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span> </span>{
+    <span class="keyword">switch</span> (requestCode) {
+        <span class="keyword">case</span> <span class="number">1</span>:
+            <span class="keyword">if</span> (resultCode == RESULT_OK) {
+                String returnedData = data.getStringExtra(<span class="string">"data_return"</span>);
+                Log.d(<span class="string">"FirstActivity"</span>, returnedData);
+            }
+            <span class="keyword">break</span>;
+        <span class="keyword">default</span>:
+    }
+}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecondActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>{
+    <span class="annotation">@Override</span>
+    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>{
+        <span class="keyword">super</span>.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.second_layout);
+        Button button2 = (Button) findViewById(R.id.button_2);
+        button2.setOnClickListener(<span class="keyword">new</span> OnClickListener() {
+            <span class="annotation">@Override</span>
+            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
+                Intent intent = <span class="keyword">new</span> Intent();
+                intent.putExtra(<span class="string">"data_return"</span>, <span class="string">"Hello FirstActivity"</span>);
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
+    }
+}
+</code></pre></li>
+</ul>
+<h1 id="activity的启动模式">activity的启动模式</h1><p>启动模式一共有四种，分别是standard、singleTop、singleTask 和singleInstance ， 可以在AndroidManifest.xml 中通过给<activity> 标签指定android:launchMode 属性来选择启动模式。</activity></p>
+<ul>
+<li>standard 标准启动模式，使用返回栈管理activity，需要一层一层的返回，而且可能会创建多个相同activity的实例。  </li>
+<li>singleTop 在启动活动时如果发现返回栈的栈顶已经是该活动，则认为可以直接使用它，不会再创建新的活动实例。   </li>
+<li>singleTask 每次启动该活动时系统首先会在返回栈中检查是否存在该活动的实例，如果发现已经存在则直接使用该实例，并把在这个活动之上的所有活动统统出栈，如果没有发现就会创建一个新的活动实例。  </li>
+<li>singleInstance 在这种模式下会有一个单独的返回栈来管理这个活动，不管是哪个应用程序来访问这个活动，都共用的同一个返回栈，也就解决了共享活动实例的问题。  </li>
+</ul>
+<h1 id="快速结束activity">快速结束activity</h1><p>我们知道activity的返回是一个退栈的过程，但是如果当前是第N个activity中如何做到结束所有的activity呢？<br>你肯能会想用home键返回或调用系统的结束进程。但是我们程序自己是完全可以做得到的。<br>首先建立一个工具类ActivityCollector，在这个类中创建一个List<activity>的实例，提供静态方法addActivity（）和removeActivity（）方法来并在BaseActivity中onCreate（）和onDestory（）维护List<activity>。然后就是在ActivityCollector中提供一个finishAll的方法就OK了。  </activity></activity></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="activity">activity</h1><ul>
+<li>对于安卓的学习一开始无非就是安装软件配置开发环境，adt和android stdio我感觉都差不多。在eclipse中开发一次加载多个项目，而在android stdio中只对一个项目进行开发。 我比]]>
+    </summary>
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/tags/android/"/>
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/categories/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[学习Hibernate记录(6)——映射关联]]></title>
+    <link href="http://jxust-cgs.github.io/2015/11/23/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%886%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/11/23/学习Hibernate记录（6）/</id>
+    <published>2015-11-23T13:38:32.000Z</published>
+    <updated>2015-12-06T13:42:39.642Z</updated>
+    <content type="html"><![CDATA[<h2 id="映射关联配置">映射关联配置</h2><p>总体来说在Hibernate中对象的关系主要有：  </p>
+<ul>
+<li><p>一对一<br>依照映射方法不同，可分为主键关联映射和唯一外键关联映射。主键关联是维护两张表的主键一致，如有必要还可以在主键上再加上外键约束；唯一外键关联则类似于多对一关联，为表加入一个外键列，不过一对一关联会同时将这个外键加上唯一约束。<br>此处给出双向关联的实例代码：根据具体可以只使用单向的关联  </p>
+<ul>
+<li><p>主键双向关联  </p>
+<pre><code><span class="comment">&lt;!-- bean/User.hbm.xml --&gt;</span>
+<span class="tag">&lt;<span class="title">hibernate-mapping</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">class</span> <span class="attribute">name</span>=<span class="value">"bean.User"</span> <span class="attribute">table</span>=<span class="value">"t_user"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">id</span> <span class="attribute">name</span>=<span class="value">"id"</span>&gt;</span>
+      <span class="comment">&lt;!-- 指定主键生成策略为外键 --&gt;</span>
+      <span class="tag">&lt;<span class="title">generator</span> <span class="attribute">class</span>=<span class="value">"foreign"</span>&gt;</span>
+        <span class="comment">&lt;!-- 指定要参照的属性 --&gt;</span>
+        <span class="tag">&lt;<span class="title">param</span> <span class="attribute">name</span>=<span class="value">"property"</span>&gt;</span>group<span class="tag">&lt;/<span class="title">param</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">generator</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">id</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>/&gt;</span>
+    <span class="comment">&lt;!-- 使用&lt;one-to-one&gt;映射一对一关系。 --&gt;</span>
+    <span class="tag">&lt;<span class="title">one-to-one</span> <span class="attribute">name</span>=<span class="value">"group"</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">class</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">hibernate-mapping</span>&gt;</span>  
+<span class="comment">&lt;!-- bean/Group.hbm.xml --&gt;</span>
+<span class="tag">&lt;<span class="title">hibernate-mapping</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">class</span> <span class="attribute">name</span>=<span class="value">"bean.Group"</span> <span class="attribute">table</span>=<span class="value">"t_group"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">id</span> <span class="attribute">name</span>=<span class="value">"id"</span>&gt;</span><span class="tag">&lt;<span class="title">generator</span> <span class="attribute">class</span>=<span class="value">"native"</span>/&gt;</span><span class="tag">&lt;/<span class="title">id</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>/&gt;</span>
+        <span class="comment">&lt;!-- 使用&lt;one-to-one&gt;映射一对一关系 --&gt;</span>
+        <span class="tag">&lt;<span class="title">one-to-one</span> <span class="attribute">name</span>=<span class="value">"user"</span>/&gt;</span>
+    <span class="tag">&lt;/<span class="title">class</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">hibernate-mapping</span>&gt;</span>
+</code></pre></li>
+<li><p>唯一外键双向关联  </p>
+<pre><code><span class="comment">&lt;!-- bean/User.hbm.xml --&gt;</span>
+<span class="tag">&lt;<span class="title">hibernate-mapping</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">class</span> <span class="attribute">name</span>=<span class="value">"bean.User"</span> <span class="attribute">table</span>=<span class="value">"t_user"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">id</span> <span class="attribute">name</span>=<span class="value">"id"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">generator</span> <span class="attribute">class</span>=<span class="value">"native"</span>/&gt;</span>
+        <span class="tag">&lt;/<span class="title">id</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>/&gt;</span>
+        <span class="comment">&lt;!-- 为&lt;many-to-one&gt;加上unique就变成了一对一 --&gt;</span>
+        <span class="tag">&lt;<span class="title">many-to-one</span> <span class="attribute">name</span>=<span class="value">"group"</span> <span class="attribute">unique</span>=<span class="value">"true"</span> <span class="attribute">column</span>=<span class="value">"gid"</span>/&gt;</span>
+    <span class="tag">&lt;/<span class="title">class</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">hibernate-mapping</span>&gt;</span>
+<span class="comment">&lt;!-- bean/Group.hbm.xml --&gt;</span>
+<span class="tag">&lt;<span class="title">hibernate-mapping</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">class</span> <span class="attribute">name</span>=<span class="value">"bean.Group"</span> <span class="attribute">table</span>=<span class="value">"t_group"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">id</span> <span class="attribute">name</span>=<span class="value">"id"</span>&gt;</span><span class="tag">&lt;<span class="title">generator</span> <span class="attribute">class</span>=<span class="value">"native"</span>/&gt;</span><span class="tag">&lt;/<span class="title">id</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>/&gt;</span>
+        <span class="comment">&lt;!-- 使用&lt;one-to-one&gt;映射一对一 --&gt;</span>
+        <span class="tag">&lt;<span class="title">one-to-one</span> <span class="attribute">name</span>=<span class="value">"user"</span>/&gt;</span>
+    <span class="tag">&lt;/<span class="title">class</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">hibernate-mapping</span>&gt;</span>
+</code></pre></li>
+</ul>
+</li>
+<li><p>一对多<br>此处给出双向关联的实例代码：根据具体可以只使用单向的关联，特别强调的是要根据使用的场景不同注意级联关系的处理和抓取策略的选择。<br>一般一对多的使用用于集合包含的关系，亦可以自己对自己进行一对多的关联可以形成一个父子对象的关系  </p>
+<pre><code><span class="comment">&lt;!-- bean/User.hbm.xml --&gt;</span>
+<span class="tag">&lt;<span class="title">hibernate-mapping</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">class</span> <span class="attribute">name</span>=<span class="value">"bean.User"</span> <span class="attribute">table</span>=<span class="value">"t_user"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">id</span> <span class="attribute">name</span>=<span class="value">"id"</span>&gt;</span><span class="tag">&lt;<span class="title">generator</span> <span class="attribute">class</span>=<span class="value">"native"</span>/&gt;</span><span class="tag">&lt;/<span class="title">id</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>/&gt;</span>
+        <span class="comment">&lt;!-- 使用&lt;many-to-one&gt;映射多对一关系。导出ddl时将自动生成一个外键 --&gt;</span>
+        <span class="tag">&lt;<span class="title">many-to-one</span> <span class="attribute">name</span>=<span class="value">"group"</span> <span class="attribute">column</span>=<span class="value">"gid"</span>/&gt;</span>
+    <span class="tag">&lt;/<span class="title">class</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">hibernate-mapping</span>&gt;</span>
+
+<span class="comment">&lt;!-- bean/Group.hbm.xml --&gt;</span>
+<span class="tag">&lt;<span class="title">hibernate-mapping</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">class</span> <span class="attribute">name</span>=<span class="value">"bean.Group"</span> <span class="attribute">table</span>=<span class="value">"t_group"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">id</span> <span class="attribute">name</span>=<span class="value">"id"</span>&gt;</span><span class="tag">&lt;<span class="title">generator</span> <span class="attribute">class</span>=<span class="value">"native"</span>/&gt;</span><span class="tag">&lt;/<span class="title">id</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>/&gt;</span>
+        <span class="comment">&lt;!-- 使用&lt;set&gt;映射集合 --&gt;</span>
+        <span class="tag">&lt;<span class="title">set</span> <span class="attribute">name</span>=<span class="value">"users"</span>&gt;</span>
+            <span class="comment">&lt;!-- 使用&lt;key&gt;指定引用至自身的外键表（t_user）中的外键 --&gt;</span>
+            <span class="tag">&lt;<span class="title">key</span> <span class="attribute">column</span>=<span class="value">"gid"</span>/&gt;</span>
+            <span class="comment">&lt;!-- 使用&lt;one-to-many&gt;映射一对多关系 --&gt;</span>
+            <span class="tag">&lt;<span class="title">one-to-many</span> <span class="attribute">class</span>=<span class="value">"bean.User"</span>/&gt;</span>
+        <span class="tag">&lt;/<span class="title">set</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">class</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">hibernate-mapping</span>&gt;</span>
+</code></pre></li>
+<li><p>多对多<br>此处给出双向关联的实例代码：根据具体可以只使用单向的关联  </p>
+<pre><code><span class="comment">&lt;!-- bean/User.hbm.xml --&gt;</span>
+<span class="tag">&lt;<span class="title">hibernate-mapping</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">class</span> <span class="attribute">name</span>=<span class="value">"bean.User"</span> <span class="attribute">table</span>=<span class="value">"t_user"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">id</span> <span class="attribute">name</span>=<span class="value">"id"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">generator</span> <span class="attribute">class</span>=<span class="value">"native"</span>/&gt;</span>
+        <span class="tag">&lt;/<span class="title">id</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>/&gt;</span>
+        <span class="comment">&lt;!-- 使用&lt;set&gt;映射集合，在多对多关系中，Hibernate将生成第三张表 --&gt;</span>
+        <span class="tag">&lt;<span class="title">set</span> <span class="attribute">name</span>=<span class="value">"groups"</span> <span class="attribute">table</span>=<span class="value">"t_user_group"</span>&gt;</span>
+            <span class="comment">&lt;!-- 使用&lt;key&gt;指定引用至自身的外键表（t_user_group）中的外键 --&gt;</span>
+            <span class="tag">&lt;<span class="title">key</span> <span class="attribute">column</span>=<span class="value">"userid"</span>/&gt;</span>
+            <span class="comment">&lt;!-- 使用&lt;many-to-many&gt;映射多对多关系，column指定另一端在表t_user_group中的列 --&gt;</span>
+            <span class="tag">&lt;<span class="title">many-to-many</span> <span class="attribute">class</span>=<span class="value">"bean.Group"</span> <span class="attribute">column</span>=<span class="value">"groupid"</span>/&gt;</span>
+        <span class="tag">&lt;/<span class="title">set</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">class</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">hibernate-mapping</span>&gt;</span>
+
+<span class="comment">&lt;!-- bean/Group.hbm.xml --&gt;</span>
+<span class="tag">&lt;<span class="title">hibernate-mapping</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">class</span> <span class="attribute">name</span>=<span class="value">"bean.Group"</span> <span class="attribute">table</span>=<span class="value">"t_group"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">id</span> <span class="attribute">name</span>=<span class="value">"id"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">generator</span> <span class="attribute">class</span>=<span class="value">"native"</span>/&gt;</span>
+        <span class="tag">&lt;/<span class="title">id</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>/&gt;</span>
+        <span class="comment">&lt;!-- 使用&lt;set&gt;映射集合，在多对多关系中，Hibernate将生成第三张表 --&gt;</span>
+        <span class="tag">&lt;<span class="title">set</span> <span class="attribute">name</span>=<span class="value">"users"</span> <span class="attribute">table</span>=<span class="value">"t_user_group"</span>&gt;</span>
+            <span class="comment">&lt;!-- 使用&lt;key&gt;指定引用至自身的外键表（t_user_group）中的外键 --&gt;</span>
+            <span class="tag">&lt;<span class="title">key</span> <span class="attribute">column</span>=<span class="value">"group"</span>/&gt;</span>
+            <span class="comment">&lt;!-- 使用&lt;many-to-many&gt;映射多对多关系，column指定另一端在表t_user_group中的列 --&gt;</span>
+            <span class="tag">&lt;<span class="title">many-to-many</span> <span class="attribute">class</span>=<span class="value">"bean.User"</span> <span class="attribute">column</span>=<span class="value">"userid"</span>/&gt;</span>
+        <span class="tag">&lt;/<span class="title">set</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">class</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">hibernate-mapping</span>&gt;</span>
+</code></pre></li>
+</ul>
+<p>级联关系：casecde属性的相关介绍在<a href="http://jxust-cgs.github.io/2015/11/03/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%883%EF%BC%89/" target="_blank" rel="external">学习Hibernate记录（3）</a>中有介绍此处省略<br>多对多的双向关联同样可以在不想要维护关系的一端的<set>里设置inverse=”true”；但是必须有一端可以维护，也就是说只可以设置一个。<br><a href="http://blog.sina.com.cn/s/blog_6e5195850100oats.html" target="_blank" rel="external">Hibernate中的集合类的配置</a></set></p>
+<h2 id="Hibernate乐观锁和悲观锁">Hibernate乐观锁和悲观锁</h2><p><a href="http://www.cnblogs.com/Fskjb/archive/2010/04/10/1709269.html" target="_blank" rel="external">Hibernate乐观锁和悲观锁(转)</a>  </p>
+<h2 id="sql常用聚合查询">sql常用聚合查询</h2><ul>
+<li>count:SELECT COUNT(&lt;计数规范&gt;) FROM &lt;表名&gt;<br>其中，计数规范包括：<br>  ‘    * ’ 列名：计数所有选择的行，包括NULL值；<br>  ‘   ALL’ 列名：计数指定列的所有非空值行，如果不写，默认为ALL；<br>DISTINCT 列名：计数指定列的唯一非空值行。  </li>
+<li>sun:SELECT SUM(student_age) FROM t_student;   </li>
+<li>avg:SELECT AVG(student_age)FROM t_student;</li>
+<li>max:SELECT MAX(student_age) FROM t_student;  </li>
+<li>min:SELECT MIN(student_age) FROM t_student;  </li>
+<li>分组查询：SELECT student_class,COUNT(ALL student_name) AS 总人数 FROM t_student GROUP BY (student_class);   </li>
+<li>过滤查询: SELECT student_class,AVG(student_age) AS 平均年龄 FROM t_student GROUP BY (student_class) HAVING AVG(student_age)&gt;20;    </li>
+</ul>
+<p>SQL的执行顺序：<br>–第一步：执行FROM<br>–第二步：WHERE条件过滤<br>–第三步：GROUP BY分组<br>–第四步：执行SELECT投影列<br>–第五步：HAVING条件过滤<br>–第六步：执行ORDER BY 排序    </p>
+<h2 id="参考博客">参考博客</h2><p><a href="http://www.cnblogs.com/huxi/archive/2009/12/15/1624988.html" title="参考博客链接" target="_blank" rel="external">Hibernate关联映射</a><br><a href="http://www.cnblogs.com/ghost-xyx/p/3811036.html?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">SQL语句汇总（三）——聚合函数、分组、子查询及组合查询</a>  </p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="映射关联配置">映射关联配置</h2><p>总体来说在Hibernate中对象的关系主要有：  </p>
+<ul>
+<li><p>一对一<br>依照映射方法不同，可分为主键关联映射和唯一外键关联映射。主键关联是维护两张表的主键一致，如有必要还可以在主键上再加上外键]]>
+    </summary>
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/tags/Hibernate/"/>
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/categories/Hibernate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[学习Hibernate记录(5)——数据查询]]></title>
+    <link href="http://jxust-cgs.github.io/2015/11/22/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%885%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/11/22/学习Hibernate记录（5）/</id>
+    <published>2015-11-22T02:42:38.000Z</published>
+    <updated>2015-12-06T11:11:58.282Z</updated>
+    <content type="html"><![CDATA[<h2 id="Hibernate的查询方式主要由4种">Hibernate的查询方式主要由4种</h2><ul>
+<li>OID检索方式：利用Session的get()和load()方法加载指定OID对象    </li>
+<li>HQL检索方式：通过Query接口使用面向对象的HQL查询语言    </li>
+<li>QBC检索方式：使用QBC（Query by Criteria）API检索对象  </li>
+<li>本地SQL检索方式:使用SQLQuery接口使用SQL语言查询     </li>
+</ul>
+<h2 id="OID检索方式">OID检索方式</h2><ul>
+<li>User user=(User) session.get(“jxust.config.User”, 2);</li>
+<li>User user=(User) session.get(User.class, 2);</li>
+<li>User user=(User) session.load(“jxust.config.User”, 2);  </li>
+<li>User user=(User) session.load(User.class, 2);  </li>
+</ul>
+<p>对比Session.get()和Session.load()方法<br>get方法会在调用之后立即向数据库发出sql语句（不考虑缓存的情况下），返回持久化对象，不支持lazy延时加载；<br>load方法会在调用后返回一个代理对象，该代理对象只保存了实体对象的id，直到使用对象的非主键属性时才会发出sql语句。查询数据库中不存在的数据时，get方法返回null，load方法抛出异常：org.hibernate.ObjectNotFoundException,支持lazy延时加载;</p>
+<p><img src="/photos/Hibernate_5.1.jpg" alt="Hibernate">  </p>
+<h2 id="HQL检索方式">HQL检索方式</h2><pre><code>this.openSession();
+<span class="keyword">Query</span> <span class="keyword">query</span>=this.getSession().createQuery("from User <span class="keyword">u</span> where <span class="keyword">u</span>.name=:name);
+<span class="keyword">query</span>.<span class="keyword">set</span>(<span class="string">"name","cgs"</span>);
+<span class="keyword">List</span> <span class="keyword">list</span>=<span class="keyword">query</span>.<span class="keyword">list</span>();
+<span class="keyword">for</span>(int i=0;i&lt;<span class="keyword">list</span>.size();i++)
+{
+    User user=(User)<span class="keyword">list</span>.<span class="literal">get</span>(i);
+    System.<span class="keyword">out</span>.printf(<span class="string">"NAME="</span>+user.getName());
+}
+this.closeSession();
+</code></pre><p>只返回一个对象：</p>
+<pre><code><span class="type">Object</span> <span class="keyword">object</span>=this.getSession<span class="literal">()</span>.createQuery(<span class="string">"from User"</span>).setMaxResult(<span class="number">1</span>).uniqueResult<span class="literal">()</span>;
+</code></pre><p>批量检索对象（分页查询数据）：</p>
+<pre><code><span class="keyword">Query</span> <span class="keyword">query</span>=this.getSession().createQuery(<span class="string">"from User"</span>);
+<span class="keyword">query</span>.setFirstResult(0);<span class="comment">//第0条数据开始</span>
+<span class="keyword">query</span>.setMaxResult(6);<span class="comment">//结果最大包括6条数据</span>
+</code></pre><h2 id="QBC检索方式">QBC检索方式</h2><pre><code>this.openSession<span class="literal">()</span>;
+<span class="type">Criteria</span> criteria=this.getSession<span class="literal">()</span>.createCriteria(<span class="type">User</span>.<span class="keyword">class</span>);
+<span class="type">Criterion</span> c=<span class="type">Expression</span>.eq(<span class="string">"name"</span>,<span class="string">"cgs"</span>);
+criteria=criterion.add(c);
+<span class="type">List</span> <span class="built_in">list</span>=criteria.<span class="built_in">list</span><span class="literal">()</span>;
+<span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;<span class="built_in">list</span>.size<span class="literal">()</span>;i++)
+{
+    <span class="type">User</span> user=(<span class="type">User</span>)<span class="built_in">list</span>.get(i);
+    <span class="type">System</span>.out.printf(<span class="string">"NAME="</span>+user.getName<span class="literal">()</span>);
+}
+this.closeSession<span class="literal">()</span>;
+</code></pre><p><img src="/photos/Hibernate_5.2.jpg" alt="Hibernate"></p>
+<p>只返回一个对象：</p>
+<pre><code><span class="type">Object</span> <span class="keyword">object</span>=this.getSession<span class="literal">()</span>.createCriteria(<span class="string">"User.class"</span>).setMaxResult(<span class="number">1</span>).uniqueResult<span class="literal">()</span>;
+</code></pre><p>批量检索对象（分页查询数据）：</p>
+<pre><code><span class="keyword">Query</span> <span class="keyword">query</span>=this.getSession().createCriteria(<span class="string">"User.class"</span>);
+<span class="keyword">query</span>.setFirstResult(0);<span class="comment">//第0条数据开始</span>
+<span class="keyword">query</span>.setMaxResult(6);<span class="comment">//结果最大包括6条数据</span>
+</code></pre><p>数据设置排序  </p>
+<pre><code>criteria.addOrder(<span class="keyword">Order</span>.asc(<span class="string">"id"</span>));
+criteria.addOrder(<span class="keyword">Order</span>.<span class="keyword">desc</span>(<span class="string">"name"</span>));
+</code></pre><h2 id="本地SQL检索方式">本地SQL检索方式</h2><pre><code>this.openSession();
+<span class="keyword">Query</span> <span class="keyword">query</span>=this.getSession().createSQLQuery(<span class="string">"select * from user"</span>).addEntity(User.<span class="keyword">class</span>);
+<span class="comment">//Query query=this.getSession().createSQLQuery("select u.* from user u").addEntity("u",User.class);</span>
+<span class="keyword">List</span> <span class="keyword">list</span>=<span class="keyword">query</span>.<span class="keyword">list</span>();
+<span class="keyword">for</span>(int i=0;i&lt;<span class="keyword">list</span>.size();i++)
+{
+    User user=(User)<span class="keyword">list</span>.<span class="literal">get</span>(i);
+    System.<span class="keyword">out</span>.printf(<span class="string">"NAME="</span>+user.getName());
+}
+this.closeSession();
+</code></pre><h2 id="参考博客">参考博客</h2><p><a href="http://blog.csdn.net/chssheng2007/article/details/6701970" title="参考博客链接" target="_blank" rel="external">Hibernate数据查询</a><br><a href="http://www.cnblogs.com/luotaoyeah/p/3862974.html" title="参考博客链接" target="_blank" rel="external">Hibernate中Session的get和load</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="Hibernate的查询方式主要由4种">Hibernate的查询方式主要由4种</h2><ul>
+<li>OID检索方式：利用Session的get()和load()方法加载指定OID对象    </li>
+<li>HQL检索方式：通过Query接口使用面向对象]]>
+    </summary>
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/tags/Hibernate/"/>
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/categories/Hibernate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[学习Hibernate记录(4)——事务管理]]></title>
+    <link href="http://jxust-cgs.github.io/2015/11/16/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%884%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/11/16/学习Hibernate记录（4）/</id>
+    <published>2015-11-16T03:19:52.000Z</published>
+    <updated>2015-11-17T09:11:27.089Z</updated>
+    <content type="html"><![CDATA[<h2 id="事务的特性">事务的特性</h2><ul>
+<li>原子性  </li>
+<li>一致性  </li>
+<li>隔离性  </li>
+<li>持久性   </li>
+</ul>
+<h2 id="事务的缺陷">事务的缺陷</h2><ul>
+<li>脏读取  </li>
+<li>不可重复读取  </li>
+<li>幻影行  </li>
+</ul>
+<h2 id="事务的传播行为">事务的传播行为</h2><ol>
+<li>PROPAGATION_REQUIRED: 如果存在一个事务，则支持当前事务。如果没有事务则开启；  </li>
+<li>PROPAGATION_SUPPORTS: 如果存在一个事务，支持当前事务。如果没有事务，则非事务的执行；  </li>
+<li>PROPAGATION_MANDATORY: 如果已经存在一个事务，支持当前事务。如果没有一个活动的事务，则抛出异常；   </li>
+<li>PROPAGATION_REQUIRES_NEW: 总是开启一个新的事务。如果一个事务已经存在，则将这个存在的事务挂起；   </li>
+<li>PROPAGATION_NOT_SUPPORTED: 总是非事务地执行，并挂起任何存在的事务；  </li>
+<li>PROPAGATION_NEVER: 总是非事务地执行，如果存在一个活动事务，则抛出异常；  </li>
+<li>PROPAGATION_NESTED：如果一个活动的事务存在，则运行在一个嵌套的事务中. 如果没有活动事务, 则按TransactionDefinition.PROPAGATION_REQUIRED 属性执行。  </li>
+</ol>
+<h2 id="事务的隔离级别">事务的隔离级别</h2><p>使用Hibernate设置数据库隔离级别<br>在Hibernate的配置文件中可以显示的配置数据库事务隔离级别。每一个隔离级别用一个整数表示：<br>8 - Serializable 串行化<br>4 - Repeatable Read 可重复读<br>2 - Read Commited 可读已提交<br>1 - Read Uncommited 可读未提交<br>在hibernate.cfg.xml中使用hibernate.connection.isolation参数配置数据库事务隔离级别。</p>
+<p><img src="/photos/Hibernate_4.1.png" alt="Hibernate"></p>
+<p>事务的只读属性以及超时属性的配置</p>
+<pre><code>&lt;<span class="keyword">prop</span> key=<span class="string">"query*"</span>&gt;PROPAGATION_REQUIRED,timeout_5,readOnly&lt;<span class="keyword">prop</span>&gt;  
+</code></pre><h2 id="基本的事务">基本的事务</h2><pre><code><span class="keyword">try</span> {
+    Session session = HibernateUtil.currentSession();
+    Transaction tx = session.beginTransaction();  <span class="comment">//在默认情况下，开启一个JDBC事物</span>
+    <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++)  {
+        Student stu = <span class="keyword">new</span> Student();
+        stu.setName(<span class="string">"Student"</span> + i);
+        session.<span class="built_in">save</span>(stu);
+    }
+    tx.commit(); <span class="comment">//提交事务</span>
+    session.close();
+} <span class="keyword">catch</span>(Exception e) {…
+    tx.rollback();   <span class="comment">//事务回滚</span>
+}
+</code></pre><h2 id="Spring的事务管理器">Spring的事务管理器</h2><p>事务管理器的实例<br>Org.springframwork.jdbc.datasource.DataSourceTransactionManagert 用JDBC的 DataSource 去管理事务<br>Org.springframwork.orm.hibernate.HibernateTransactionManager 当持久机制是Hibernate时的事务管理器<br>Org.springframework.orm.jdoTransactionManager 当持久机制是JDO时的事务管理器<br>Org.springframework.transaction.jta.JtaTransactionManager 用JTA管理事务<br>Org.springframwork.orm.ojb.PersistenceBrokerTransactionManager 当持久机制是apache的OJB时的事务管理器  </p>
+<h2 id="参考博客">参考博客</h2><p><a href="http://www.blogjava.net/robbie/archive/2009/04/05/264003.html" title="参考博客链接" target="_blank" rel="external">Spring事务配置的五种方式</a><br><a href="http://www.cnblogs.com/otomedaybreak/archive/2012/01/27/2330008.html#C5" target="_blank" rel="external">Hibernate事务与并发问题处理（乐观锁与悲观锁）</a><br><a href="http://www.cnblogs.com/rushoooooo/archive/2011/08/28/2155960.html" target="_blank" rel="external">Spring声明式事务配置管理方法</a>  </p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="事务的特性">事务的特性</h2><ul>
+<li>原子性  </li>
+<li>一致性  </li>
+<li>隔离性  </li>
+<li>持久性   </li>
+</ul>
+<h2 id="事务的缺陷">事务的缺陷</h2><ul>
+<li>脏读取  </li]]>
+    </summary>
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/tags/Hibernate/"/>
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/categories/Hibernate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[学习Hibernate记录(3)——操纵实体]]></title>
+    <link href="http://jxust-cgs.github.io/2015/11/03/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%883%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/11/03/学习Hibernate记录（3）/</id>
+    <published>2015-11-03T08:52:17.000Z</published>
+    <updated>2015-12-06T11:49:17.954Z</updated>
+    <content type="html"><![CDATA[<h2 id="创建工厂、获取Session、开启事务">创建工厂、获取Session、开启事务</h2><pre><code><span class="type">Configuration</span> configuration=<span class="keyword">new</span> <span class="type">Configuration</span><span class="literal">()</span>.configure<span class="literal">()</span>;
+sessionFactory=configuration.buildSessionFactory<span class="literal">()</span>;
+session=sessionFactory.openSession<span class="literal">()</span>;  
+<span class="type">Transaction</span> tx=session.beginTransaction<span class="literal">()</span>;
+tx.commit<span class="literal">()</span>;
+</code></pre><h2 id="Hibernate对象的三种状态">Hibernate对象的三种状态</h2><p><img src="/photos/Hibernate_3.1.jpg" alt="Hibernate">   </p>
+<ul>
+<li><p>临时状态<br>不在Session的缓存中，不与Session对象实例相关联；<br>在数据库中没有与之对应的记录  </p>
+</li>
+<li><p>持久化状态<br>在Session缓存中与Session实例相关联；<br>在数据库中存在与之对应的记录<br>Session在清理缓存时会根据持久化对象的属性变化更新数据库  </p>
+</li>
+<li><p>游离状态<br>不在Session的缓存中，不与任何Session实例相关联<br>数据库中存在与之相对应的记录  </p>
+</li>
+</ul>
+<h2 id="清除Session的缓存">清除Session的缓存</h2><p>Session.evict(ClassesName);从Session中清除指定持久化对象。<br>Session.clear();清除Session中所有持久化对象。</p>
+<h2 id="级联操作">级联操作</h2><p>Hibernate的一大优点是可以级联操作相关的持久化对象，可以非常方便的从当前的操作对象转而操作另一个与之相关的对象。</p>
+<p><many-to-one>都有casecde属性<br>none:默认值，所有情况下均不进行关联操作。（将子对象中的关联属性改为null）<br>all :所有情况下均进行关联操作。<br>save-update:在执行save/update/saveOrUpdate时进行关联操作。<br>delete:在执行delete时进行关联操作。（删除子对象）<br>delete-orphan: 当save/update/saveOrUpdate时，相当于save-update ;当删除操作时，相当于delete;  </many-to-one></p>
+<h2 id="抓取策略">抓取策略</h2><p>当fetch设置抓取策略的值为‘join’时，lazy=”true”不起作用了<br><a href="http://blog.sina.com.cn/s/blog_4586764e0100ri21.html" target="_blank" rel="external">Hibernate的fetch</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="创建工厂、获取Session、开启事务">创建工厂、获取Session、开启事务</h2><pre><code><span class="type">Configuration</span> configuration=<span class="keyword">]]>
+    </summary>
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/tags/Hibernate/"/>
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/categories/Hibernate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[学习Hibernate记录(2)——配置文件]]></title>
+    <link href="http://jxust-cgs.github.io/2015/11/01/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%882%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/11/01/学习Hibernate记录（2）/</id>
+    <published>2015-11-01T12:28:40.000Z</published>
+    <updated>2015-12-06T12:55:42.595Z</updated>
+    <content type="html"><![CDATA[<h2 id="创建Hibernate项目">创建Hibernate项目</h2><p>第一步：当然是添加jar包<br>第二步：编辑Hibernate的配置文件  </p>
+<pre><code><span class="pi">&lt;?xml version='1.0' encoding='UTF-8'?&gt;</span>
+<span class="doctype">&lt;!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"&gt;</span>
+<span class="comment">&lt;!-- Generated by MyEclipse Hibernate Tools.                   --&gt;</span>
+<span class="tag">&lt;<span class="title">hibernate-configuration</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">session-factory</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"dialect"</span>&gt;</span>org.hibernate.dialect.MySQLDialect<span class="tag">&lt;/<span class="title">property</span>&gt;</span><span class="comment">&lt;!-- 设置方言 --&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"connection.url"</span>&gt;</span>jdbc:mysql://localhost:3306/test<span class="tag">&lt;/<span class="title">property</span>&gt;</span><span class="comment">&lt;!-- 设置连接 --&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"connection.username"</span>&gt;</span>root<span class="tag">&lt;/<span class="title">property</span>&gt;</span><span class="comment">&lt;!-- 用户名 --&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"connection.password"</span>&gt;</span>root<span class="tag">&lt;/<span class="title">property</span>&gt;</span><span class="comment">&lt;!-- 密码 --&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"connection.driver_class"</span>&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/<span class="title">property</span>&gt;</span><span class="comment">&lt;!-- 设置驱动 --&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"myeclipse.connection.profile"</span>&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/<span class="title">property</span>&gt;</span><span class="comment">&lt;!-- 无关紧要的参数，Eclipse的数据库视图【MyEclipse database explorer】中定义的链接database的一个连接 --&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"show_sql"</span>&gt;</span>true<span class="tag">&lt;/<span class="title">property</span>&gt;</span><span class="comment">&lt;!-- 输出sql语句 --&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"format_sql"</span>&gt;</span>true<span class="tag">&lt;/<span class="title">property</span>&gt;</span><span class="comment">&lt;!-- 格式化sql语句 --&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"use_sql_comments"</span>&gt;</span>true<span class="tag">&lt;/<span class="title">property</span>&gt;</span><span class="comment">&lt;!-- 输出便于调试的注释 --&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"hibernate.transaction.factory_class"</span>&gt;</span>org.hibernate.trasaction.JDBCTrasactionFactory<span class="tag">&lt;/<span class="title">property</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">mapping</span> <span class="attribute">resource</span>=<span class="value">"User.hbm.xml"</span>/&gt;</span><span class="comment">&lt;!-- 配置的方式 --&gt;</span>
+        <span class="tag">&lt;<span class="title">mapping</span> <span class="attribute">class</span>=<span class="value">"jxust.config.Classes"</span>/&gt;</span><span class="comment">&lt;!-- 标签注释的方式 --&gt;</span>
+    <span class="tag">&lt;/<span class="title">session-factory</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">hibernate-configuration</span>&gt;</span>
+</code></pre><p>第三步：持久化类和映射文件<br>持久化类略过…<br>直接上映射文件</p>
+<pre><code><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="doctype">&lt;!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"&gt;</span>
+<span class="comment">&lt;!--
+    Mapping file autogenerated by MyEclipse Persistence Tools
+--&gt;</span>
+<span class="tag">&lt;<span class="title">hibernate-mapping</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">class</span> <span class="attribute">name</span>=<span class="value">"jxust.config.Classes_1"</span> <span class="attribute">table</span>=<span class="value">"classes"</span> <span class="attribute">catalog</span>=<span class="value">"test"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">id</span> <span class="attribute">name</span>=<span class="value">"id"</span> <span class="attribute">type</span>=<span class="value">"java.lang.Integer"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">column</span> <span class="attribute">name</span>=<span class="value">"id"</span> /&gt;</span>
+            <span class="tag">&lt;<span class="title">generator</span> <span class="attribute">class</span>=<span class="value">"identity"</span>/&gt;</span><span class="comment">&lt;!-- 自增 --&gt;</span>
+                <span class="comment">&lt;!--
+                    increment  
+                    identity  
+                    sequence  
+                    hilo  
+                    native  
+                    uuid.hex  
+                    assigned  具体含义百度去吧^_^
+                 --&gt;</span>
+        <span class="tag">&lt;/<span class="title">id</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span> <span class="attribute">type</span>=<span class="value">"java.lang.String"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">column</span> <span class="attribute">name</span>=<span class="value">"name"</span> <span class="attribute">length</span>=<span class="value">"20"</span> /&gt;</span>
+        <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">set</span> <span class="attribute">name</span>=<span class="value">"students"</span> <span class="attribute">cascade</span>=<span class="value">"none"</span> &gt;</span>
+            <span class="tag">&lt;<span class="title">key</span> <span class="attribute">column</span>=<span class="value">"class_id"</span>&gt;</span><span class="tag">&lt;/<span class="title">key</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">one-to-many</span> <span class="attribute">class</span>=<span class="value">"jxust.config.Student"</span>/&gt;</span>
+        <span class="tag">&lt;/<span class="title">set</span>&gt;</span>
+         <span class="tag">&lt;<span class="title">list</span> <span class="attribute">name</span>=<span class="value">"students"</span> <span class="attribute">cascade</span>=<span class="value">"none"</span> &gt;</span>配置的方式写的list需要配置<span class="tag">&lt;<span class="title">index</span>&gt;</span>选项用于
+            <span class="tag">&lt;<span class="title">key</span> <span class="attribute">column</span>=<span class="value">"class_id"</span>&gt;</span><span class="tag">&lt;/<span class="title">key</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">index</span> <span class="attribute">column</span>=<span class="value">"id"</span> <span class="attribute">type</span>=<span class="value">"java.lang.Integer"</span>&gt;</span><span class="tag">&lt;/<span class="title">index</span>&gt;</span>从表的主键用于设置list中的顺序，如果1号位的数据不是你所查找的会返回为null，这样有一个弊端，如果有1000条数据的表你之遥查询特定的几条，最后一条为第800条数据，会开辟一个长度为800的list其中大部分都是null，所以一般用set，转化为list
+            <span class="comment">&lt;!-- &lt;list-index column="id"&gt;&lt;/list-index&gt; --&gt;</span>
+            <span class="tag">&lt;<span class="title">one-to-many</span> <span class="attribute">class</span>=<span class="value">"jxust.config.Student"</span>/&gt;</span>
+        <span class="tag">&lt;/<span class="title">list</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">class</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">hibernate-mapping</span>&gt;</span>
+</code></pre><p>标签注释法映射</p>
+<pre><code><span class="keyword">package</span> jxust.config;
+
+<span class="keyword">import</span> java.util.ArrayList;
+<span class="keyword">import</span> java.util.List;
+
+<span class="keyword">import</span> javax.persistence.CascadeType;
+<span class="keyword">import</span> javax.persistence.Column;
+<span class="keyword">import</span> javax.persistence.Entity;
+<span class="keyword">import</span> javax.persistence.FetchType;
+<span class="keyword">import</span> javax.persistence.GeneratedValue;
+<span class="keyword">import</span> javax.persistence.Id;
+<span class="keyword">import</span> javax.persistence.JoinColumn;
+<span class="keyword">import</span> javax.persistence.OneToMany;
+<span class="keyword">import</span> javax.persistence.Table;
+
+<span class="keyword">import</span> org.hibernate.annotations.GenericGenerator;
+<span class="annotation">@Entity</span>
+<span class="annotation">@Table</span>(name = <span class="string">"classes"</span>)
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Classes</span> </span>{
+    <span class="keyword">private</span> Integer id;
+    <span class="keyword">private</span> String name;
+    <span class="keyword">private</span> List&lt;Student&gt; students=<span class="keyword">new</span> ArrayList&lt;Student&gt;();
+
+    <span class="annotation">@Id</span>
+    <span class="annotation">@GenericGenerator</span>(name=<span class="string">"idGenerator"</span>,strategy=<span class="string">"identity"</span>)
+    <span class="annotation">@GeneratedValue</span>(generator=<span class="string">"idGenerator"</span>)
+    <span class="annotation">@Column</span>(name=<span class="string">"id"</span>,length=<span class="number">11</span>)
+    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> id;
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>{
+        <span class="keyword">this</span>.id = id;
+    }
+    <span class="annotation">@Column</span>(name=<span class="string">"name"</span>,length=<span class="number">12</span>)
+    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> name;
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>{
+        <span class="keyword">this</span>.name = name;
+    }
+
+    <span class="comment">//@OneToMany(fetch = FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE}, mappedBy="class_id")</span>
+    <span class="annotation">@OneToMany</span>(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+    <span class="annotation">@JoinColumn</span>(name=<span class="string">"class_id"</span>)
+    <span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">getStudents</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> students;
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStudents</span><span class="params">(List&lt;Student&gt; students)</span> </span>{
+        <span class="keyword">this</span>.students = students;
+    }
+
+}
+</code></pre><h2 id="更多相关博客">更多相关博客</h2><p><a href="http://www.07net01.com/linux/Hibernate_zhujie_Annotation__depeizhi_50352_1357527742.html" target="_blank" rel="external">Hibernate注解(Annotation)的配置</a>  </p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="创建Hibernate项目">创建Hibernate项目</h2><p>第一步：当然是添加jar包<br>第二步：编辑Hibernate的配置文件  </p>
+<pre><code><span class="pi">&lt;?xml version='1.0' e]]>
+    </summary>
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/tags/Hibernate/"/>
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/categories/Hibernate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[学习Hibernate记录(1)——概念]]></title>
+    <link href="http://jxust-cgs.github.io/2015/11/01/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%881%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/11/01/学习Hibernate记录（1）/</id>
+    <published>2015-11-01T11:14:20.000Z</published>
+    <updated>2015-11-03T08:49:08.169Z</updated>
+    <content type="html"><![CDATA[<h2 id="什么是ORM">什么是ORM</h2><p>ORM(Object-Relational Mapping)是对象到关系的映射，简单的说就是ORM是通过使用描述对象和数据库之间映射的元数据，将java程序中的对象自动持久化到关系数据库中。</p>
+<h2 id="ORM的优缺点">ORM的优缺点</h2><p>优点：     </p>
+<ul>
+<li>提高开发效率,由于ORM可以对实体对象与数据库中的表进行字段与属性的映射，所以实际操作中已经不再需要一个专用的、庞大的数据库访问层。  </li>
+<li>ORM提供了对数据库的映射，能够像操作对象一样从数据库中获取数据，而不用直接进行SQL编程。    </li>
+</ul>
+<p>缺点：  </p>
+<ul>
+<li>系统架构方面，采用ORM的系统的一般都是多层系统，系统的层次增加了，效率就会降低。  </li>
+<li>性能方面，主要体现在对持久化对象的提取和对数据的加工处理上。采用ORM是，系统可能将全部的数据提取到内存对象之中，然后在进行过滤和加工处理，这样就很容易产生性能问题。   </li>
+<li>对象持久化方面，ORM一般会持久化所有的属性，这对有些是不希望发生的<h2 id="域对象的关系">域对象的关系</h2>一共有4种：关联（类之间引用）、依赖（类之间访问）、聚集（整体与部分）、一般化（类之间的继承）。  <h2 id="Hibernate特点">Hibernate特点</h2></li>
+<li>它负责协调软件与数据库的交互，提供了管理持久性数据的完整方案。让开发者能够专注于业务逻辑的开发；  </li>
+<li>应用者不需要才、遵循太多的规则和设计模式，能够灵活地运用；  </li>
+<li>它是一个开源代码的映射框架，对JDBC只做了轻量级的封装，让java程序员可以随心所欲地运用面向对象的思想操纵数据库，无需考虑资源的问题。<h2 id="Hibernate核心接口">Hibernate核心接口</h2></li>
+<li>Configuation接口</li>
+<li>SessionFactory接口</li>
+<li>Session接口</li>
+<li>Transaction接口</li>
+<li>Query和Criteria接口<br>详细信息不解释，百度去^_^  </li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="什么是ORM">什么是ORM</h2><p>ORM(Object-Relational Mapping)是对象到关系的映射，简单的说就是ORM是通过使用描述对象和数据库之间映射的元数据，将java程序中的对象自动持久化到关系数据库中。</p>
+<h2 id="OR]]>
+    </summary>
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/tags/Hibernate/"/>
+    
+      <category term="Hibernate" scheme="http://jxust-cgs.github.io/categories/Hibernate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[学习Spring记录(4)——aop]]></title>
+    <link href="http://jxust-cgs.github.io/2015/10/24/%E5%AD%A6%E4%B9%A0Spring%E8%AE%B0%E5%BD%95%EF%BC%884%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/10/24/学习Spring记录（4）/</id>
+    <published>2015-10-24T08:18:39.000Z</published>
+    <updated>2015-10-24T12:36:21.217Z</updated>
+    <content type="html"><![CDATA[<h2 id="相关概念">相关概念</h2><p>AOP：Aspect Oriented Program，面向切面编程；<br>切面：操作过程中的截面；<br>连接点：对象操作过程中的某个阶段点；<br>切入点：切入点是连接点的集合，切面与程序的“交叉点”；<br>通知：切入点被横切都所采取的处理逻辑；<br>目标对象：被通知的对象；<br>织入：将切面功能应用到目标对象中，一般有3种，编译织入、加载织入、执行织入；<br>引入：动态的向类里加入属性或方法。  </p>
+<h2 id="aop实现">aop实现</h2><p>首先创建目标类</p>
+<pre><code>@Repository(<span class="string">"target"</span>)
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Target</span> {
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span>
+    </span>{
+        System.<span class="keyword">out</span>.println(<span class="string">"doing execute"</span>); 
+    }
+}
+</code></pre><p>创建通知（本例是around通知）</p>
+<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoggerExecute</span> <span class="keyword">implements</span> <span class="title">MethodInterceptor</span></span>{<span class="comment">//around通知必须实现MethodInterceptor</span>
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function">Object <span class="title">invoke</span><span class="params">(MethodInvocation arg0)</span> <span class="keyword">throws</span> Throwable </span>{
+        <span class="keyword">before</span>();
+    <span class="comment">//    System.out.println(arg0.getClass().getName());</span>
+        arg0.<span class="keyword">proceed</span>();
+        <span class="keyword">after</span>();
+        <span class="keyword">return</span> <span class="keyword">null</span>;
+    }
+
+    <span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">after</span><span class="params">()</span> </span>{
+        System.out.println(<span class="string">"do this before "</span>);
+    }
+
+    <span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">before</span><span class="params">()</span> </span>{
+        System.out.println(<span class="string">"do this after "</span>);
+    }
+
+}
+</code></pre><p>创建代理</p>
+<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">Aop_test_1</span> </span>{
+    public <span class="literal">static</span> <span class="keyword">void</span> main(<span class="built_in">String</span>[] args) {
+        Target target=<span class="keyword">new</span> Target();<span class="comment">//创建目标对象</span>
+        ProxyFactory <span class="literal">factory</span>=<span class="keyword">new</span> ProxyFactory();<span class="comment">//创建代理工厂</span>
+        <span class="literal">factory</span>.addAdvice(<span class="keyword">new</span> LoggerExecute());<span class="comment">//添加通知</span>
+        <span class="literal">factory</span>.setTarget(target);<span class="comment">//注册目标</span>
+        Target proxy=(Target) <span class="literal">factory</span>.getProxy();<span class="comment">//从工厂获得目标类</span>
+        proxy.execute();<span class="comment">//执行目标，织入通知</span>
+    }
+}
+</code></pre><p>运行结果</p>
+<pre><code>do this after 
+doing<span class="instruction"> execute
+</span>do this before 
+</code></pre><h2 id="其他具体通知">其他具体通知</h2><p>通知一共分为5种：前置Before Advice、后置After Returning Advice、周围Interception Around Advice、异常Throws Advice、引入通知Introduction Advice;<br>同样需要目标类</p>
+<pre><code>@Repository(<span class="string">"target"</span>)
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Target</span> {
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span>
+    </span>{
+        System.<span class="keyword">out</span>.println(<span class="string">"doing execute"</span>); 
+    }
+}
+</code></pre><p>通知类</p>
+<pre><code>@<span class="type">Repository</span>(<span class="string">"beforeAdviceExample"</span>)
+public class <span class="type">BeforeAdviceExample</span> implements <span class="type">MethodBeforeAdvice</span>{
+//此处展示的是<span class="type">Before</span> <span class="type">Advice</span>
+//如果是after则需要实现<span class="type">AfterReturningAdvice</span>中的public <span class="type">void</span> afterReturning(<span class="type">Object</span> returnValue, <span class="type">Method</span> <span class="keyword">method</span>, <span class="type">Object</span>[] arg2,<span class="type">Object</span> target) throws <span class="type">Throwable</span>
+    @<span class="type">Override</span>
+    public <span class="type">void</span> before(<span class="type">Method</span> <span class="keyword">method</span>, <span class="type">Object</span>[] arg1, <span class="type">Object</span> target)
+            throws <span class="type">Throwable</span> {
+        <span class="type">System</span>.<span class="keyword">out</span>.println(target.getClass());
+        <span class="type">System</span>.<span class="keyword">out</span>.println(<span class="keyword">method</span>+<span class="string">" will runing!"</span>);
+    }
+}
+
+public class <span class="type">LoggerExecute</span> implements <span class="type">MethodInterceptor</span>{//around通知
+    @<span class="type">Override</span>
+    public <span class="type">Object</span> invoke(<span class="type">MethodInvocation</span> arg0) throws <span class="type">Throwable</span> {
+        before();
+        //<span class="type">System</span>.<span class="keyword">out</span>.println(arg0.getClass().getName());
+        arg0.proceed();//此行代码表示执行目标代码，之前的为前置通知，之后的为后置通知
+        after();
+        <span class="keyword">return</span> null;
+    }
+    private <span class="type">void</span> after() {
+        <span class="type">System</span>.<span class="keyword">out</span>.println(<span class="string">"do this before "</span>);
+    }
+    private <span class="type">void</span> before() {
+        <span class="type">System</span>.<span class="keyword">out</span>.println(<span class="string">"do this after "</span>);
+    }
+}
+另外的异常通知和引入通知，略^_^
+</code></pre><p>代理工厂</p>
+<pre><code><span class="comment">&lt;!-- 注册代理工厂，进行切面编程 --&gt;</span>
+<span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"proxyFactoryBean"</span> <span class="attribute">class</span>=<span class="value">"org.springframework.aop.framework.ProxyFactoryBean"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"target"</span> <span class="attribute">ref</span>=<span class="value">"target"</span>&gt;</span><span class="tag">&lt;/<span class="title">property</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"interceptorNames"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">list</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">value</span>&gt;</span>beforeAdviceExample<span class="tag">&lt;/<span class="title">value</span>&gt;</span><span class="comment">&lt;!-- 添加前置通知 --&gt;</span>
+            <span class="tag">&lt;<span class="title">value</span>&gt;</span>afterAdviceExample<span class="tag">&lt;/<span class="title">value</span>&gt;</span><span class="comment">&lt;!-- 添加后置通知 --&gt;</span>
+        <span class="tag">&lt;/<span class="title">list</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
+</code></pre><h2 id="自动代理">自动代理</h2><p>BeanNameAutoProxyCreator类允许开发者指定适当的Bean名称，这样的Spring会自动用指定的通知代理这些bean；</p>
+<pre><code><span class="tag">&lt;<span class="title">bean</span>  <span class="attribute">id</span>= "<span class="attribute">beanNameProxyCreater</span>" <span class="attribute">class</span>=<span class="value">"org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator"</span>&gt;</span>    
+     <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"beanNames"</span>&gt;</span>    
+         <span class="tag">&lt;<span class="title">list</span>&gt;</span>    
+             <span class="tag">&lt;<span class="title">value</span>&gt;</span>Test*<span class="tag">&lt;/<span class="title">value</span>&gt;</span>//所有Test开头的方法会被拦截   
+         <span class="tag">&lt;/<span class="title">list</span>&gt;</span>    
+     <span class="tag">&lt;/<span class="title">property</span>&gt;</span>    
+     <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"interceptorNames"</span>&gt;</span>    
+         <span class="tag">&lt;<span class="title">list</span>&gt;</span>    
+             <span class="tag">&lt;<span class="title">value</span>&gt;</span>BeforeAdvice<span class="tag">&lt;/<span class="title">value</span>&gt;</span>//对代理bean添加before通知  
+         <span class="tag">&lt;/<span class="title">list</span>&gt;</span>    
+     <span class="tag">&lt;/<span class="title">property</span>&gt;</span>    
+ <span class="tag">&lt;/<span class="title">bean</span>&gt;</span>  
+</code></pre><p>使用DefaultAdviceAutoProxyCreater类只需创建相应的通知者就可以在applicationContext.xml中通知任何bean了</p>
+<pre><code><span class="comment">&lt;!-- 自动代理所有的advisor --&gt;</span>  
+<span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"autoProxyCreator"</span> <span class="attribute">class</span>=<span class="value">"org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"</span>&gt;</span><span class="tag">&lt;/<span class="title">bean</span>&gt;</span> 
+
+<span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"WelcomeAdvice"</span> <span class="attribute">class</span>=<span class="value">"AutoProxyTwo.WelcomeAdvice"</span>/&gt;</span>  
+
+<span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"advisor"</span> <span class="attribute">class</span>=<span class="value">"org.springframework.aop.support.RegexpMethodPointcutAdvisor"</span>&gt;</span>  
+<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"pointcut"</span>&gt;</span>  
+   <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">class</span>=<span class="value">"spring.aop.PointCut"</span>&gt;</span><span class="tag">&lt;/<span class="title">bean</span>&gt;</span> 
+<span class="tag">&lt;/<span class="title">property</span>&gt;</span>  
+<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"advice"</span>&gt;</span>  
+    <span class="tag">&lt;<span class="title">ref</span> <span class="attribute">bean</span>=<span class="value">"WelcomeAdvice"</span>/&gt;</span>  
+<span class="tag">&lt;/<span class="title">property</span>&gt;</span>  
+<span class="tag">&lt;/<span class="title">bean</span>&gt;</span> 
+</code></pre>]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="相关概念">相关概念</h2><p>AOP：Aspect Oriented Program，面向切面编程；<br>切面：操作过程中的截面；<br>连接点：对象操作过程中的某个阶段点；<br>切入点：切入点是连接点的集合，切面与程序的“交叉点”；<br>通知：切入点]]>
+    </summary>
+    
+      <category term="Spring" scheme="http://jxust-cgs.github.io/tags/Spring/"/>
+    
+      <category term="Spring" scheme="http://jxust-cgs.github.io/categories/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[学习Spring记录(3)——国际化、日志]]></title>
+    <link href="http://jxust-cgs.github.io/2015/10/24/%E5%AD%A6%E4%B9%A0Spring%E8%AE%B0%E5%BD%95%EF%BC%883%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/10/24/学习Spring记录（3）/</id>
+    <published>2015-10-24T07:57:08.000Z</published>
+    <updated>2015-10-24T08:19:15.467Z</updated>
+    <content type="html"><![CDATA[<h2 id="Spring国际化">Spring国际化</h2><p>本例将输出messages.properties中的name属性  </p>
+<pre><code>static <span class="built_in">Locale</span> <span class="built_in">locale</span><span class="subst">=</span><span class="built_in">Locale</span><span class="built_in">.</span>getDefault();
+ApplicationContext context<span class="subst">=</span><span class="literal">new</span> ClassPathXmlApplicationContext(<span class="string">"applicationContext.xml"</span>);
+System<span class="built_in">.</span>out<span class="built_in">.</span>println(context<span class="built_in">.</span>getMessage(<span class="string">"name"</span>, <span class="built_in">null</span>, <span class="built_in">locale</span>));
+</code></pre><p>如果locale=Locale.US;将会输出messages_en_US.properties中的name属性</p>
+<h2 id="Spring打印日志信息">Spring打印日志信息</h2><p>在applicationContext.xml中配置<br>如果全部JavaBean都是通过标签的方式注册则不会打印出来，但是如果有一个JavaBean在applicationContext.xml中注册则所有JavaBean的名字都会在创建时被打印到控制台   </p>
+<pre><code><span class="comment">&lt;!-- 打印日志，打印出所有spring创建的javabean --&gt;</span>
+<span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"messageSource"</span> <span class="attribute">class</span>=<span class="value">"org.springframework.context.support.ResourceBundleMessageSource"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"basename"</span> <span class="attribute">value</span>=<span class="value">"messages"</span>&gt;</span><span class="tag">&lt;/<span class="title">property</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
+</code></pre>]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="Spring国际化">Spring国际化</h2><p>本例将输出messages.properties中的name属性  </p>
+<pre><code>static <span class="built_in">Locale</span> <span clas]]>
+    </summary>
+    
+      <category term="Spring" scheme="http://jxust-cgs.github.io/tags/Spring/"/>
+    
+      <category term="Spring" scheme="http://jxust-cgs.github.io/categories/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[学习Spring记录(2)——IoC]]></title>
+    <link href="http://jxust-cgs.github.io/2015/10/24/%E5%AD%A6%E4%B9%A0Spring%E8%AE%B0%E5%BD%95%EF%BC%882%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/10/24/学习Spring记录（2）/</id>
+    <published>2015-10-24T07:28:43.000Z</published>
+    <updated>2015-10-24T08:16:47.985Z</updated>
+    <content type="html"><![CDATA[<h2 id="Spring使用BeanFactory和ApplicationContext两个接口来定义IoC">Spring使用BeanFactory和ApplicationContext两个接口来定义IoC</h2><h3 id="BeanFactory">BeanFactory</h3><p>通过从xml配置文件或属性文件（.properties）中读取javaBean的定义，来实现JavaBean的创建、配置和管理。<br>例如  </p>
+<pre><code>Resource resource=<span class="keyword">new</span> ClassPathResource(<span class="string">"applicationContext.xml"</span>);  
+XmlBeanFactory <span class="literal">factory</span>=<span class="keyword">new</span> XmlBeanFactory(resource);  
+LogFile log= (LogFile) <span class="literal">factory</span>.getBean(<span class="string">"log"</span>); 
+</code></pre><h3 id="ApplicationContext">ApplicationContext</h3><pre><code><span class="constant">Application</span>Context <span class="literal">context</span>=new <span class="constant">File</span>SystemXmlApplicationContext(<span class="string">"src/applicationContext.xml"</span>);
+<span class="constant">Target</span> <span class="literal">target</span>=(<span class="constant">Target</span>) <span class="literal">context</span>.getBean(<span class="string">"proxyFactoryBean"</span>);
+</code></pre><h2 id="xml文件的创建">xml文件的创建</h2><p>本例中演示了xml中对JavaBean的初始化配置方法</p>
+<pre><code><span class="pi">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="tag">&lt;<span class="title">beans</span>
+<span class="attribute">xmlns</span>=<span class="value">"http://www.springframework.org/schema/beans"</span>
+<span class="attribute">xmlns:xsi</span>=<span class="value">"http://www.w3.org/2001/XMLSchema-instance"</span>
+<span class="attribute">xmlns:p</span>=<span class="value">"http://www.springframework.org/schema/p"</span>
+<span class="attribute">xsi:schemaLocation</span>=<span class="value">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd"</span>&gt;</span>
+
+    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"CapGun"</span> <span class="attribute">class</span>=<span class="value">"jxust.commen.entity.CapGun"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">constructor-arg</span> <span class="attribute">index</span>=<span class="value">"0"</span> <span class="attribute">type</span>=<span class="value">"String"</span>&gt;</span><span class="comment">&lt;!-- 对构造方法赋值如有多个参数则写多个constructor-arg --&gt;</span>
+            <span class="tag">&lt;<span class="title">value</span>&gt;</span>等待出厂检验<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">constructor-arg</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"RayBaby"</span> <span class="attribute">class</span>=<span class="value">"jxust.commen.entity.RayBaby"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"info"</span>&gt;</span><span class="comment">&lt;!-- 对参数复制getset --&gt;</span>
+            <span class="tag">&lt;<span class="title">value</span>&gt;</span>等待出厂检验<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">autowire</span>=<span class="value">"byType"</span> <span class="attribute">id</span>=<span class="value">"Factory"</span> <span class="attribute">class</span>=<span class="value">"jxust.commen.entity.Factory"</span>&gt;</span><span class="comment">&lt;!-- autowire自动装配有5种类型（详情百度）使用自动装配factory类中的CapGun就不用设置了 --&gt;</span>
+        <span class="comment">&lt;!-- &lt;property name="capGun" ref="CapGun"&gt;
+            &lt;ref bean="capGun"/&gt;ref引用已定义的javaBean，有两种方式，一种直接写在property中，一种写在property标签里面 
+        &lt;/property&gt; --&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">value</span>&gt;</span>名字<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
+
+    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"log"</span> <span class="attribute">class</span>=<span class="value">"jxust.commen.entity.LogFile"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"workList"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">list</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">ref</span> <span class="attribute">bean</span>=<span class="value">"worker1"</span> /&gt;</span>
+                <span class="tag">&lt;<span class="title">ref</span> <span class="attribute">bean</span>=<span class="value">"worker2"</span> /&gt;</span>
+                <span class="tag">&lt;<span class="title">ref</span> <span class="attribute">bean</span>=<span class="value">"worker3"</span> /&gt;</span>
+            <span class="tag">&lt;/<span class="title">list</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
+
+    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"worker1"</span> <span class="attribute">class</span>=<span class="value">"jxust.commen.entity.TempWorker"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">value</span>&gt;</span>梅长苏<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"workType"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">value</span>&gt;</span>正式员工<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"pay"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">value</span>&gt;</span>600<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"worker2"</span> <span class="attribute">class</span>=<span class="value">"jxust.commen.entity.TempWorker"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">value</span>&gt;</span>飞流<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"worker3"</span> <span class="attribute">class</span>=<span class="value">"jxust.commen.entity.TempWorker"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">value</span>&gt;</span>蔺少阁主<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"pay"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">value</span>&gt;</span>2700<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">beans</span>&gt;</span>
+</code></pre><h2 id="定制属性编辑器">定制属性编辑器</h2><p>首先创建自己需要的编辑器，如对Date类型进行赋值  </p>
+<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">MyDateEditor</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">PropertyEditorSupport</span>{</span>
+    <span class="comment">/**
+     * 用于测试jxust.main.userinfo中的birthday的输入
+     * 重写PropertyEditorSupport中的setAsText方法
+     */</span>
+    public void setAsText(<span class="type">String</span> text) <span class="keyword">throws</span> <span class="type">IllegalArgumentException</span><span class="comment">//参数不正确</span>
+    {
+        <span class="type">SimpleDateFormat</span> sdf = <span class="keyword">new</span> <span class="type">SimpleDateFormat</span>(<span class="string">"yyyy-MM-dd"</span>);
+        <span class="type">Date</span> date=<span class="literal">null</span>;
+        <span class="keyword">try</span> {
+            date = sdf.parse(text);
+        } <span class="keyword">catch</span> (<span class="type">ParseException</span> e) {
+            e.printStackTrace();
+        }
+        setValue(date);
+    }
+}
+</code></pre><p>在applicationContext.xml中注册编辑器  </p>
+<pre><code><span class="comment">&lt;!-- 配置属性编辑器 --&gt;</span>
+<span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"customEditorConfigurer"</span> <span class="attribute">class</span>=<span class="value">"org.springframework.beans.factory.config.CustomEditorConfigurer"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"customEditors"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">map</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">entry</span> <span class="attribute">key</span>=<span class="value">"java.util.Date"</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"myDateEditor"</span> <span class="attribute">class</span>=<span class="value">"jxust.service.MyDateEditor"</span>&gt;</span><span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
+            <span class="tag">&lt;/<span class="title">entry</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">map</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
+</code></pre>]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="Spring使用BeanFactory和ApplicationContext两个接口来定义IoC">Spring使用BeanFactory和ApplicationContext两个接口来定义IoC</h2><h3 id="BeanFactory">BeanFact]]>
+    </summary>
+    
+      <category term="Spring" scheme="http://jxust-cgs.github.io/tags/Spring/"/>
+    
+      <category term="Spring" scheme="http://jxust-cgs.github.io/categories/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[学习Spring记录(1)]]></title>
+    <link href="http://jxust-cgs.github.io/2015/10/24/%E5%AD%A6%E4%B9%A0Spring%E8%AE%B0%E5%BD%95%EF%BC%881%EF%BC%89/"/>
+    <id>http://jxust-cgs.github.io/2015/10/24/学习Spring记录（1）/</id>
+    <published>2015-10-24T06:29:36.000Z</published>
+    <updated>2015-10-24T12:40:07.341Z</updated>
+    <content type="html"><![CDATA[<h2 id="牢骚满腹">牢骚满腹</h2><p>由于最近面试，被面试官打击到了,所以想系统的学习下spring。要不然怎敢言“掌握”。</p>
+<h2 id="进入正题">进入正题</h2><p>Spring是一个轻量级的框架，Ioc容器（控制反转，依赖注入），AOP实现（切面编程），数据持久化，自带web框架，很方便就能集成其他框架<br>Spring包括七大模块：  </p>
+<blockquote>
+<p>1.核心模块：实现IoC，及BeanFactory<br>2.context模块:继承BeanFactory添加事务支持，国际化，资源装配等<br>3.aop模板：切面编程<br>4.dao模块：jdbc抽象层<br>5.orm映射模块：关系映射，简化配置，整合hibernate<br>6.web模块：context基础上<br>7.mvc模块  </p>
+</blockquote>
+<h2 id="Spring环境搭建">Spring环境搭建</h2><p>Spring的jar文件  </p>
+<blockquote>
+<p>spring.jar<br>spring-core.jar<br>spring-aop.jar<br>spring-context.jar<br>spring-dao.jar<br>spring-orm.jar<br>spring-web.jar<br>spring-webmvc.jar  </p>
+</blockquote>
+<h2 id="后期将会继续更新">后期将会继续更新</h2><p>未完待续。。。  </p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="牢骚满腹">牢骚满腹</h2><p>由于最近面试，被面试官打击到了,所以想系统的学习下spring。要不然怎敢言“掌握”。</p>
+<h2 id="进入正题">进入正题</h2><p>Spring是一个轻量级的框架，Ioc容器（控制反转，依赖注入），AOP实现（切]]>
+    </summary>
+    
+      <category term="Spring" scheme="http://jxust-cgs.github.io/tags/Spring/"/>
+    
+      <category term="Spring" scheme="http://jxust-cgs.github.io/categories/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[给bootstrap的界面中添加同风格树状菜单]]></title>
+    <link href="http://jxust-cgs.github.io/2015/05/05/bootstrap_treeView/"/>
+    <id>http://jxust-cgs.github.io/2015/05/05/bootstrap_treeView/</id>
+    <published>2015-05-05T05:32:54.000Z</published>
+    <updated>2016-04-10T13:30:44.048Z</updated>
+    <content type="html"><![CDATA[<p><img src="/photos/default.PNG" alt="example" align="left" width="750"><br><br><br><br><br><br><br><br><br><br><br><br></p>
+<h2 id="使用的方式">使用的方式</h2><p>首先是需要下载到bootstrap-treeView的css和js文件（可以访问<a href="https://github.com/jonmiles/bootstrap-treeview" target="_blank" rel="external">官方github</a>）<br>不过不知道是我弄错了还是官方的演示例子有问题。<br>在下载的文件中对js和css的导入有问题所有打开后看不到例子<br>我自己修改后的<a href="http://pan.baidu.com/s/1i3CcK0t" target="_blank" rel="external">百度网盘链接</a>可以看看相对还是比较简单的<br>必要的文件有</p>
+<pre><code><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"css/bootstrap.css"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"css/bootstrap-treeview.css"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://libs.baidu.com/jquery/2.0.0/jquery.min.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/bootstrap-treeview.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</code></pre><p>还有就是生成每个树状图数据</p>
+<pre><code>$(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+    var defaultData = <span class="matrix">[
+      {
+        text: <span class="string">'Parent 1'</span>,
+        href: <span class="string">'#parent1'</span>,
+        tags: [<span class="string">'4'</span>]</span>,
+        nodes: <span class="matrix">[
+          {
+            text: <span class="string">'Child 1'</span>,
+            href: <span class="string">'#child1'</span>,
+            tags: [<span class="string">'2'</span>]</span>,
+            nodes: <span class="matrix">[
+              {
+                text: <span class="string">'Grandchild 1'</span>,
+                href: <span class="string">'#grandchild1'</span>,
+                tags: [<span class="string">'0'</span>]</span>
+              },
+              {
+                text: <span class="string">'Grandchild 2'</span>,
+                href: <span class="string">'#grandchild2'</span>,
+                tags: <span class="matrix">[<span class="string">'0'</span>]</span>
+              }
+            ]
+          },
+          {
+            text: <span class="string">'Child 2'</span>,
+            href: <span class="string">'#child2'</span>,
+            tags: <span class="matrix">[<span class="string">'0'</span>]</span>
+          }
+        ]
+      },
+      {
+        text: <span class="string">'Parent 2'</span>,
+        href: <span class="string">'#parent2'</span>,
+        tags: <span class="matrix">[<span class="string">'0'</span>]</span>
+      },
+      {
+        text: <span class="string">'Parent 3'</span>,
+        href: <span class="string">'#parent3'</span>,
+         tags: <span class="matrix">[<span class="string">'0'</span>]</span>
+      },
+      {
+        text: <span class="string">'Parent 4'</span>,
+        href: <span class="string">'#parent4'</span>,
+        tags: <span class="matrix">[<span class="string">'0'</span>]</span>
+      },
+      {
+        text: <span class="string">'Parent 5'</span>,
+        href: <span class="string">'#parent5'</span>  ,
+        tags: <span class="matrix">[<span class="string">'0'</span>]</span>
+      }
+    ];
+
+    var alternateData = <span class="matrix">[
+      {
+        text: <span class="string">'Parent 1'</span>,
+        tags: [<span class="string">'2'</span>]</span>,
+        nodes: <span class="matrix">[
+          {
+            text: <span class="string">'Child 1'</span>,
+            tags: [<span class="string">'3'</span>]</span>,
+            nodes: <span class="matrix">[//节点拥有子节点
+              {
+                text: <span class="string">'Grandchild 1'</span>,
+                tags: [<span class="string">'6'</span>]</span>
+              },
+              {
+                text: <span class="string">'Grandchild 2'</span>,
+                tags: <span class="matrix">[<span class="string">'3'</span>]</span>
+              }
+            ]
+          },
+          {
+            text: <span class="string">'Child 2'</span>,
+            tags: <span class="matrix">[<span class="string">'3'</span>]</span>
+          }
+        ]
+      },
+      {
+        text: <span class="string">'Parent 2'</span>,
+        tags: <span class="matrix">[<span class="string">'7'</span>]</span>
+      },
+      {
+        text: <span class="string">'Parent 3'</span>,<span class="comment">//节点的名字</span>
+        icon: <span class="string">'glyphicon glyphicon-earphone'</span>,<span class="comment">//个性化节点图标</span>
+        href: <span class="string">'#demo'</span>,<span class="comment">//节点的超链接</span>
+        tags: <span class="matrix">[<span class="string">'11'</span>]</span><span class="comment">//节点的标签</span>
+      },
+      {
+        text: <span class="string">'Parent 4'</span>,
+        icon: <span class="string">'glyphicon glyphicon-cloud-download'</span>,
+        href: <span class="string">'/demo.html'</span>,
+        tags: <span class="matrix">[<span class="string">'19'</span>]</span>,
+        selected: true
+      },
+      {
+        text: <span class="string">'Parent 5'</span>,
+        icon: <span class="string">'glyphicon glyphicon-certificate'</span>,
+        color: <span class="string">'pink'</span>,
+        backColor: <span class="string">'red'</span>,
+        href: <span class="string">'http://www.tesco.com'</span>,
+        tags: <span class="matrix">[<span class="string">'available'</span>,<span class="string">'0'</span>]</span>
+      }
+    ];
+
+    var json = <span class="string">'['</span> +
+      <span class="string">'{'</span> +
+        <span class="string">'"</span>text<span class="string">": "</span>Parent <span class="number">1</span><span class="string">",'</span> +
+        <span class="string">'"</span>nodes<span class="string">": ['</span> +
+          <span class="string">'{'</span> +
+            <span class="string">'"</span>text<span class="string">": "</span>Child <span class="number">1</span><span class="string">",'</span> +
+            <span class="string">'"</span>nodes<span class="string">": ['</span> +
+              <span class="string">'{'</span> +
+                <span class="string">'"</span>text<span class="string">": "</span>Grandchild <span class="number">1</span><span class="string">"'</span> +
+              <span class="string">'},'</span> +
+              <span class="string">'{'</span> +
+                <span class="string">'"</span>text<span class="string">": "</span>Grandchild <span class="number">2</span><span class="string">"'</span> +
+              <span class="string">'}'</span> +
+            <span class="string">']'</span> +
+          <span class="string">'},'</span> +
+          <span class="string">'{'</span> +
+            <span class="string">'"</span>text<span class="string">": "</span>Child <span class="number">2</span><span class="string">"'</span> +
+          <span class="string">'}'</span> +
+        <span class="string">']'</span> +
+      <span class="string">'},'</span> +
+      <span class="string">'{'</span> +
+        <span class="string">'"</span>text<span class="string">": "</span>Parent <span class="number">2</span><span class="string">"'</span> +
+      <span class="string">'},'</span> +
+      <span class="string">'{'</span> +
+        <span class="string">'"</span>text<span class="string">": "</span>Parent <span class="number">3</span><span class="string">"'</span> +
+      <span class="string">'},'</span> +
+      <span class="string">'{'</span> +
+        <span class="string">'"</span>text<span class="string">": "</span>Parent <span class="number">4</span><span class="string">"'</span> +
+      <span class="string">'},'</span> +
+      <span class="string">'{'</span> +
+        <span class="string">'"</span>text<span class="string">": "</span>Parent <span class="number">5</span><span class="string">"'</span> +
+      <span class="string">'}'</span> +
+    <span class="string">']'</span>;
+</code></pre><p>对树状图进行配置</p>
+<pre><code> $(<span class="string">'#treeview9'</span>).treeview({
+  expandIcon: <span class="string">"glyphicon glyphicon-stop"</span>,<span class="comment">//关闭图标</span>
+  collapseIcon: <span class="string">"glyphicon glyphicon-unchecked"</span>,<span class="comment">//打开图标</span>
+  nodeIcon: <span class="string">"glyphicon glyphicon-user"</span>,<span class="comment">//用户图标（个性化节点图标在节点data中配置）</span>
+  color: <span class="string">"yellow"</span>,<span class="comment">//文字颜色</span>
+  backColor: <span class="string">"purple"</span>,<span class="comment">//背景颜色</span>
+  onhoverColor: <span class="string">"orange"</span>,<span class="comment">//鼠标经过显示颜色</span>
+  borderColor: <span class="string">"red"</span>,<span class="comment">//边缘颜色</span>
+  showBorder: <span class="literal">false</span>,<span class="comment">//是否显示边缘</span>
+  showTags: <span class="literal">false</span>,<span class="comment">//是否显示结尾标签</span>
+  highlightSelected: <span class="literal">true</span>,<span class="comment">//选中高光</span>
+  selectedColor: <span class="string">"blue"</span>,<span class="comment">//选中文字颜色</span>
+  selectedBackColor: <span class="string">"darkorange"</span>,<span class="comment">//选中背景颜色</span>
+  data: alternateData<span class="comment">//数据</span>
+});
+
+$(<span class="string">'#treeview10'</span>).treeview({
+  color: <span class="string">"#428bca"</span>,
+  enableLinks: <span class="literal">true</span>,<span class="comment">//链接生效</span>
+  data: defaultData
+});
+</code></pre><h2 id="获取更多">获取更多</h2><blockquote>
+<p><a href="https://github.com/jonmiles/bootstrap-treeview" target="_blank" rel="external">官方网站</a>  </p>
+</blockquote>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><img src="/photos/default.PNG" alt="example" align="left" width="750"><br><br><br><br><br><br><br><br><br><br><br><br></p>
+<h2 id="使用的方式"]]>
+    </summary>
+    
+      <category term="bootstrap" scheme="http://jxust-cgs.github.io/tags/bootstrap/"/>
+    
+      <category term="web" scheme="http://jxust-cgs.github.io/categories/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[使用groumble.js给页面添加泡泡提示框]]></title>
+    <link href="http://jxust-cgs.github.io/2015/04/21/grumble/"/>
+    <id>http://jxust-cgs.github.io/2015/04/21/grumble/</id>
+    <published>2015-04-21T10:15:31.000Z</published>
+    <updated>2015-05-05T05:59:51.538Z</updated>
+    <content type="html"><![CDATA[<p><img src="/photos/grumble-js.png" alt="example">  </p>
+<h2 id="使用的方式">使用的方式</h2><p>首先是需要下载到groumble的css和js文件（可以访问<a href="https://github.com/jamescryer/grumble.js" target="_blank" rel="external">官方github</a>）<br>在页面中正确链接css和js文件<br>绑定页面的DOM元素或事件调用js<br>例如在密码是输入框选中是弹出提示框  </p>
+<pre><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">  
+    $(<span class="string">"#userPassword"</span>).focus(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{  
+        $(<span class="keyword">this</span>).grumble(  
+            {  
+                text: <span class="string">'复杂度高的密码更加安全哟！'</span>,<span class="comment">//泡泡中的文本</span>
+                angle: <span class="number">85</span>,<span class="comment">//上偏右角度值</span>
+                type: <span class="string">'alt-'</span>, <span class="comment">//泡泡的外形类型</span>
+                distance: <span class="number">50</span>,<span class="comment">//离dom中心的距离</span>
+                showAfter: <span class="number">0</span>,<span class="comment">//触发后-ms后出现</span>
+                hideAfter: <span class="number">2000</span>,<span class="comment">//出现后-ms后消失，不消失为false</span>
+                hasHideButton: <span class="literal">false</span>,<span class="comment">//有无消失按钮</span>
+                buttonHideText: <span class="string">'Pop!'</span><span class="comment">//点击后消失</span>
+            }
+        );
+    });
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</code></pre><h2 id="配合jquery可以使web页面更加友好">配合jquery可以使web页面更加友好</h2><blockquote>
+<p><a href="http://www.w3cschool.cc/jquery/jquery-events.html" target="_blank" rel="external">jquery事件</a></p>
+</blockquote>
+<h2 id="获取更多">获取更多</h2><blockquote>
+<p><a href="http://www.bootcss.com/p/grumblejs/" target="_blank" rel="external">官方网站</a> </p>
+</blockquote>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><img src="/photos/grumble-js.png" alt="example">  </p>
+<h2 id="使用的方式">使用的方式</h2><p>首先是需要下载到groumble的css和js文件（可以访问<a href="https://github.]]>
+    </summary>
+    
+      <category term="bootstrap" scheme="http://jxust-cgs.github.io/tags/bootstrap/"/>
+    
+      <category term="web" scheme="http://jxust-cgs.github.io/categories/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[test]]></title>
+    <link href="http://jxust-cgs.github.io/2015/03/23/test/"/>
+    <id>http://jxust-cgs.github.io/2015/03/23/test/</id>
+    <published>2015-03-23T03:29:56.198Z</published>
+    <updated>2015-03-23T03:29:56.198Z</updated>
+    <content type="html"><![CDATA[<h2 id="Whether_the_result_in_slow_page_load_because_language_is_Chinese?">Whether the result in slow page load because language is Chinese?</h2>]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="Whether_the_result_in_slow_page_load_because_language_is_Chinese?">Whether the result in slow page load because language is Chinese?]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[博客搭建完成]]></title>
+    <link href="http://jxust-cgs.github.io/2015/03/23/%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://jxust-cgs.github.io/2015/03/23/第一个博客/</id>
+    <published>2015-03-22T16:00:00.000Z</published>
+    <updated>2015-10-24T07:24:44.480Z</updated>
+    <content type="html"><![CDATA[<p>今天是2015年3月23日，由于看到好友陈辉有hexo搭建了自己的博客，自己也跟着弄了下，虽然有点麻烦，但是完成后还是感觉是值得的。</p>
+<h2 id="具体的细节还没弄懂">具体的细节还没弄懂</h2><p>就是在测试部署是弄了我半天，到底部署是git还是github弄了半天<br>最后发现预览hexo的官网是有【简体中文】的，oh！我也是醉了</p>
+<h2 id="markdown语法入门">markdown语法入门</h2><blockquote>
+<p><a href="http://blog.maxwi.com/2014/03/20/learn-mardown-in-5-minutes/" target="_blank" rel="external">5分钟学markdown</a>  </p>
+</blockquote>
+<h2 id="后期将会继续更新和优化">后期将会继续更新和优化</h2><p>未完待续。。。  </p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>今天是2015年3月23日，由于看到好友陈辉有hexo搭建了自己的博客，自己也跟着弄了下，虽然有点麻烦，但是完成后还是感觉是值得的。</p>
+<h2 id="具体的细节还没弄懂">具体的细节还没弄懂</h2><p>就是在测试部署是弄了我半天，到底部署是git还是github]]>
+    </summary>
+    
+      <category term="first" scheme="http://jxust-cgs.github.io/tags/first/"/>
+    
+      <category term="杂谈" scheme="http://jxust-cgs.github.io/categories/%E6%9D%82%E8%B0%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <link href="http://jxust-cgs.github.io/2015/03/22/hello-world/"/>
+    <id>http://jxust-cgs.github.io/2015/03/22/hello-world/</id>
+    <published>2015-03-22T06:29:14.509Z</published>
+    <updated>2015-03-22T06:29:14.509Z</updated>
+    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
+    </summary>
+    
+  </entry>
+  
+</feed>
