@@ -88,7 +88,7 @@
         
     $(function() {
         // page-id...
-        var pageId = "archives/2015/04/index.html";
+        var pageId = "page/3/index.html";
         pageId = pageId.substr(0, pageId.indexOf("/"));
         if(pageId === "") pageId = "index";
         
@@ -96,53 +96,42 @@
     });
     </script>
     
+<article class="post container animated rollIn">
+    <div class="jumbotron">
+        <h1><a href="/2015/03/22/hello-world/" title="Hello World">Hello World</a></h1>
 
-<div class="container archive-body">
-    <div class="row">
-        <div class="col-xs-2 well">
-            <h2 class="archive-icon">2015/4</h2>
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">3</span></li></ul>
-        </div>
         
-        <div class="col-xs-10">
-            
-            <article class="post animated rollIn">
-                <div class="jumbotron">
-                    <h1><a href="/2015/04/21/grumble/" title="使用groumble.js给页面添加泡泡提示框">使用groumble.js给页面添加泡泡提示框</a></h1>
+            <p>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the </p>
+        
+		<!--  没事乱改
+        <p class="say-title">
+            —— <img src="/images/avatar.gif" class="img-circle index-post-avatar" />
+            <a href="http://jxust-cgs.github.io" target="_blank" title="Jxust_CGS">Jxust_CGS</a>
+            于2015-03-22自豪地唠嗑
+        </p>
+		 -->
+		  <p class="say-title">
+            —— <img src="/images/avatar.gif" class="img-circle index-post-avatar" />
+            <a href="http://jxust-cgs.github.io" target="_blank" title="Jxust_CGS">Jxust_CGS</a>
+            于2015-03-22很高兴与您一起学习分享 
+        </p>
+    </div>
+</article>
 
-                    
-                        <p>使用的方式首先是需要下载到groumble的css和js文件（可以访问官方github）在页面中正确链接css和js文件绑定页面的DOM元素或事件调用js例如在密码是输入框选中是弹出提示框  
-&amp;lt;script&amp;gt;  
-    $(&quot;#userPassword&quot;).foc</p>
-                    
 
-                   <!--  没事乱改
-					<p class="say-title">
-						—— <img src="/images/avatar.gif" class="img-circle index-post-avatar" />
-						<a href="http://jxust-cgs.github.io" target="_blank" title="Jxust_CGS">Jxust_CGS</a>
-						于2015-04-21自豪地以 <a class="article-tag-link" href="/tags/bootstrap/">bootstrap</a> 唠嗑
-					</p>
-					 -->
-					  <p class="say-title">
-						—— <img src="/images/avatar.gif" class="img-circle index-post-avatar" />
-						<a href="http://jxust-cgs.github.io" target="_blank" title="Jxust_CGS">Jxust_CGS</a>
-						于2015-04-21很高兴与您一起学习分享<a class="article-tag-link" href="/tags/bootstrap/">bootstrap</a>  
-					</p>
-                </div>
-            </article>
-            
-            
-            
-        </div>
+
+<div class="container pagination-div">
+    <div class="well">
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
     </div>
 </div>
 
+
 <script>
 $(function() {
-    $(".archive-list-count").addClass("badge");
+    $("article:first").addClass("first-post");
 });
 </script>
-
     <footer id="footer">
     <div id="bottom-tip">
         月下踟蹰 —— <small>遥想秦时月下，英豪追梦千里</small>

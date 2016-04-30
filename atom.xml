@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jxust-cgs.github.io/"/>
-  <updated>2016-04-10T13:47:31.048Z</updated>
+  <updated>2016-04-30T08:31:48.001Z</updated>
   <id>http://jxust-cgs.github.io/</id>
   
   <author>
@@ -14,6 +14,183 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>android学习笔记（4） ——文件操作</title>
+    <link href="http://jxust-cgs.github.io/2016/04/29/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89%E2%80%94%E2%80%94%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"/>
+    <id>http://jxust-cgs.github.io/2016/04/29/Android学习笔记（5）——文件操作/</id>
+    <published>2016-04-29T03:36:00.000Z</published>
+    <updated>2016-04-30T08:31:48.001Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;读写文件&quot;&gt;读写文件&lt;/h1&gt;&lt;p&gt;在Android中文件的读写用的是java中的file类，所以读写操作和java中是一样的。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;写入操作&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;String data = editText.&lt;span class=&quot;keyword&quot;&gt;getText&lt;/span&gt;().toString();
+FileOutputStream fileOutputStream = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
+BufferedWriter bufferedWriter = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
+&lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
+    fileOutputStream = openFileOutput(&lt;span class=&quot;string&quot;&gt;&quot;date&quot;&lt;/span&gt;, Context.MODE_PRIVATE);
+    bufferedWriter = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; BufferedWriter(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; OutputStreamWriter(fileOutputStream));
+    bufferedWriter.&lt;span class=&quot;keyword&quot;&gt;write&lt;/span&gt;(data);
+    &lt;span class=&quot;comment&quot;&gt;//Toast.makeText(this, &quot;shuru &quot;+data, Toast.LENGTH_SHORT).show();&lt;/span&gt;
+} &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (IOException e) {
+    e.printStackTrace();
+} &lt;span class=&quot;keyword&quot;&gt;finally&lt;/span&gt; {
+    &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
+        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (bufferedWriter != &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) {
+            bufferedWriter.close();
+        }
+    } &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (IOException e) {
+        e.printStackTrace();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;读出操作&lt;pre&gt;&lt;code&gt;FileInputStream fileInputStream = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
+    &lt;span class=&quot;keyword&quot;&gt;BufferedReader&lt;/span&gt; bufferedReader = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
+    StringBuilder content = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; StringBuilder();
+    &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
+        fileInputStream = openFileInput(&lt;span class=&quot;string&quot;&gt;&quot;date&quot;&lt;/span&gt;);
+        bufferedReader = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;BufferedReader&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; InputStreamReader(fileInputStream));
+        &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;line&lt;/span&gt; = &lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;;
+        &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; ((&lt;span class=&quot;built_in&quot;&gt;line&lt;/span&gt; = bufferedReader.readLine()) != &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) {
+            content.&lt;span class=&quot;built_in&quot;&gt;append&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;line&lt;/span&gt;);
+        }
+        textView.setText(content.toString());
+        &lt;span class=&quot;comment&quot;&gt;//Toast.makeText(this, &quot;输出 &quot;+content.toString(), Toast.LENGTH_SHORT).show();&lt;/span&gt;
+    } &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (IOException e) {
+        e.printStackTrace();
+    } &lt;span class=&quot;keyword&quot;&gt;finally&lt;/span&gt; {
+        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (bufferedReader != &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) {
+            &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
+                bufferedReader.close();
+            } &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;SharedPreference&quot;&gt;SharedPreference&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;private SharedPreferences preferences;&lt;span class=&quot;comment&quot;&gt;//声明preferences变量&lt;/span&gt;
+private SharedPreferences.Editor &lt;span class=&quot;keyword&quot;&gt;editor&lt;/span&gt;;&lt;span class=&quot;comment&quot;&gt;//声明editor变量&lt;/span&gt;
+preferences=getSharedPreferences(&lt;span class=&quot;string&quot;&gt;&quot;username&quot;&lt;/span&gt;, Activity.MODE_PRIVATE);&lt;span class=&quot;comment&quot;&gt;//初始化&lt;/span&gt;
+preferences.getString(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;)&lt;span class=&quot;comment&quot;&gt;//获取preferences中的name值&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;editor&lt;/span&gt;=preferences.edit();&lt;span class=&quot;comment&quot;&gt;//初始化编辑器&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;editor&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;clear&lt;/span&gt;();&lt;span class=&quot;comment&quot;&gt;//清空编辑器内容&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;editor&lt;/span&gt;.putString(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;, name);&lt;span class=&quot;comment&quot;&gt;//设置编辑器的值&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;editor&lt;/span&gt;.commit();&lt;span class=&quot;comment&quot;&gt;//应用编辑器的更改&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;ps：跨程序操作sharedPreference&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Context &lt;span class=&quot;variable&quot;&gt;context =&lt;/span&gt; &lt;span class=&quot;constant&quot;&gt;null&lt;/span&gt;;
+    try {
+        &lt;span class=&quot;variable&quot;&gt;context =&lt;/span&gt; createPackageContext(&lt;span class=&quot;string&quot;&gt;&quot;com.android.deskclock&quot;&lt;/span&gt;,Context.CONTEXT_IGNORE_SECURITY);
+    } catch (NameNotFoundException e) {
+        e.printStackTrace();
+    }
+    SharedPreferences &lt;span class=&quot;variable&quot;&gt;preferences2=&lt;/span&gt;context.getSharedPreferences(&lt;span class=&quot;string&quot;&gt;&quot;alarm_mute_flag&quot;&lt;/span&gt;, Activity.MODE_WORLD_READABLE);
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;SQLite&quot;&gt;SQLite&lt;/h1&gt;&lt;p&gt;在Android中使用数据库通过继承SQLiteOpenHelper类进行数据库的操作&lt;br&gt;    public class SQLiteHelper extends SQLiteOpenHelper{&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; String CREATE_ADDRESS_BOOK=&lt;span class=&quot;string&quot;&gt;&quot;create table address_book (&quot;&lt;/span&gt;
+            + &lt;span class=&quot;string&quot;&gt;&quot;id integer primary key autoincrement,&quot;&lt;/span&gt;
+            + &lt;span class=&quot;string&quot;&gt;&quot;name text not null,&quot;&lt;/span&gt;
+            + &lt;span class=&quot;string&quot;&gt;&quot;phone_number text not null)&quot;&lt;/span&gt;;
+
+    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Context context;
+
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SQLiteHelper&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Context context, String name, CursorFactory factory, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; version)&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;(context, name, factory, version);
+        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.context=context;
+    }
+
+    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(SQLiteDatabase db)&lt;/span&gt; &lt;/span&gt;{&lt;span class=&quot;comment&quot;&gt;//数据库创建，只会在软件安装第一次启动时执行，之后更新软件不执行&lt;/span&gt;
+        db.execSQL(CREATE_ADDRESS_BOOK);
+        Toast.makeText(context, &lt;span class=&quot;string&quot;&gt;&quot;创建数据库文件完成！&quot;&lt;/span&gt;, Toast.LENGTH_SHORT).show();
+    }
+
+    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onUpgrade&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(SQLiteDatabase db, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; oldVersion, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; newVersion)&lt;/span&gt; &lt;/span&gt;{&lt;span class=&quot;comment&quot;&gt;//更新软件后第一次启动执行&lt;/span&gt;
+        db.execSQL(&lt;span class=&quot;string&quot;&gt;&quot;dorp table if exists address_book&quot;&lt;/span&gt;);
+        onCreate(db);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;具体操作数据库可以单独写一个dao类（我开发j2ee的习惯）不知道在安卓中这样规范不？&lt;br&gt;      public class AddressBookDao {&lt;br&gt;          private SQLiteHelper helper;&lt;br&gt;          private SQLiteDatabase db;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; AddressBookDao(Context context) {
+        helper = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SQLiteHelper(context, &lt;span class=&quot;string&quot;&gt;&quot;AddressBook&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//实例化helper&lt;/span&gt;
+        db = helper.getWritableDatabase();&lt;span class=&quot;comment&quot;&gt;//获得db&lt;/span&gt;
+    }
+
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; List&amp;lt;AddressBook&amp;gt; getAll() {
+        List&amp;lt;AddressBook&amp;gt; addressBooks = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;AddressBook&amp;gt;();
+        AddressBook addressBook = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
+        Cursor &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt; = db.query(&lt;span class=&quot;string&quot;&gt;&quot;address_book&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);
+        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.moveToFirst()) {
+            do {
+                &lt;span class=&quot;comment&quot;&gt;// 遍历Cursor对象，取出数据并打印&lt;/span&gt;
+                addressBook=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AddressBook();
+                &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; id = &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getInt(&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getColumnIndex(&lt;span class=&quot;string&quot;&gt;&quot;id&quot;&lt;/span&gt;));
+                addressBook.setId(Integer.valueOf(id));
+                &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; name = &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getString(&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getColumnIndex(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;));
+                addressBook.setName(name);
+                &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; phone_number = &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getString(&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getColumnIndex(&lt;span class=&quot;string&quot;&gt;&quot;phone_number&quot;&lt;/span&gt;));
+                addressBook.setPhone_number(phone_number);
+                addressBooks.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(addressBook);
+            } &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.moveToNext());
+        }
+        &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.close();
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; addressBooks;
+    }
+
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; List&amp;lt;AddressBook&amp;gt; findByName(&lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; filter_name) {
+        Log.d(&lt;span class=&quot;string&quot;&gt;&quot;search&quot;&lt;/span&gt;, filter_name);
+        List&amp;lt;AddressBook&amp;gt; addressBooks = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;AddressBook&amp;gt;();
+        AddressBook addressBook = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
+        Cursor &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt; = db.query(&lt;span class=&quot;string&quot;&gt;&quot;address_book&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;name like ? or phone_number like ?&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt;[]{&lt;span class=&quot;string&quot;&gt;&quot;%&quot;&lt;/span&gt;+filter_name+&lt;span class=&quot;string&quot;&gt;&quot;%&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;%&quot;&lt;/span&gt;+filter_name+&lt;span class=&quot;string&quot;&gt;&quot;%&quot;&lt;/span&gt;}, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);
+        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.moveToFirst()) {
+            do {
+                &lt;span class=&quot;comment&quot;&gt;// 遍历Cursor对象，取出数据并打印&lt;/span&gt;
+                addressBook=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AddressBook();
+                &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; id = &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getInt(&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getColumnIndex(&lt;span class=&quot;string&quot;&gt;&quot;id&quot;&lt;/span&gt;));
+                addressBook.setId(Integer.valueOf(id));
+                &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; name = &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getString(&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getColumnIndex(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;));
+                addressBook.setName(name);
+                &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; phone_number = &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getString(&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getColumnIndex(&lt;span class=&quot;string&quot;&gt;&quot;phone_number&quot;&lt;/span&gt;));
+                addressBook.setPhone_number(phone_number);
+                addressBooks.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(addressBook);
+            } &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.moveToNext());
+        }
+        &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.close();
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; addressBooks;
+    }
+
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; addOrUpdate(Integer id,&lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; name, &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; phone_number) {
+        ContentValues values = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ContentValues();
+        values.put(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;, name);
+        values.put(&lt;span class=&quot;string&quot;&gt;&quot;phone_number&quot;&lt;/span&gt;,phone_number);
+        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;==id){
+            db.insert(&lt;span class=&quot;string&quot;&gt;&quot;address_book&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, values);
+        }&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;{
+            values.put(&lt;span class=&quot;string&quot;&gt;&quot;id&quot;&lt;/span&gt;, id.toString());
+            db.update(&lt;span class=&quot;string&quot;&gt;&quot;address_book&quot;&lt;/span&gt;, values, &lt;span class=&quot;string&quot;&gt;&quot;id=?&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt;[]{id.toString()});
+        }
+    }
+
+
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; deleteById(&lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; id) {
+        db.execSQL(&lt;span class=&quot;string&quot;&gt;&quot;delete from address_book where id=?&quot;&lt;/span&gt;,&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt;[]{id});
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      记录Android应用中文件的存储：读写文件、sharedpreference、Sqlite
+    
+    </summary>
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/categories/android/"/>
+    
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/tags/android/"/>
+    
+  </entry>
   
   <entry>
     <title>正则表达式</title>
@@ -1602,33 +1779,6 @@ $(&lt;span class=&quot;string&quot;&gt;&#39;#treeview10&#39;&lt;/span&gt;).treev
     
     
       <category term="first" scheme="http://jxust-cgs.github.io/tags/first/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://jxust-cgs.github.io/2015/03/22/hello-world/"/>
-    <id>http://jxust-cgs.github.io/2015/03/22/hello-world/</id>
-    <published>2015-03-22T06:29:14.509Z</published>
-    <updated>2015-03-22T06:29:14.509Z</updated>
-    
-    <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;http://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;http://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick_Start&quot;&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create_a_new_post&quot;&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Run_server&quot;&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Generate_static_files&quot;&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Deploy_to_remote_sites&quot;&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;http://hexo.io
-    
-    </summary>
-    
     
   </entry>
   
