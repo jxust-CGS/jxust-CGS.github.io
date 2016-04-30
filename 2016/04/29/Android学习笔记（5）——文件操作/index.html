@@ -100,7 +100,7 @@
         <h1>android学习笔记（4） ——文件操作</h1>
         
         <div class="time-info">
-发表于:<time datetime="2016-04-29T03:36:00.000Z" itemprop="datePublished">2016-04-29</time>，更新于:<time datetime="2016-04-30T08:31:48.001Z" itemprop="dateModified">2016-04-30</time>，By <a href="http://jxust-cgs.github.io" title="Jxust_CGS">Jxust_CGS</a>
+发表于:<time datetime="2016-04-29T03:36:00.000Z" itemprop="datePublished">2016-04-29</time>，更新于:<time datetime="2016-04-30T09:08:38.716Z" itemprop="dateModified">2016-04-30</time>，By <a href="http://jxust-cgs.github.io" title="Jxust_CGS">Jxust_CGS</a>
         </div>
         
         <div class="post-body-inner">
@@ -198,8 +198,12 @@ preferences.getString(<span class="string">"name"</span>, <span class="string">"
         onCreate(db);
     }
 }
-</code></pre><p>具体操作数据库可以单独写一个dao类（我开发j2ee的习惯）不知道在安卓中这样规范不？<br>      public class AddressBookDao {<br>          private SQLiteHelper helper;<br>          private SQLiteDatabase db;</p>
-<pre><code>    <span class="keyword">public</span> AddressBookDao(Context context) {
+</code></pre><p>具体操作数据库可以单独写一个dao类（我开发j2ee的习惯）不知道在安卓中这样规范不？  </p>
+<pre><code>  <span class="keyword">public</span> class AddressBookDao {
+    <span class="keyword">private</span> SQLiteHelper helper;
+    <span class="keyword">private</span> SQLiteDatabase db;
+
+    <span class="keyword">public</span> AddressBookDao(Context context) {
         helper = <span class="keyword">new</span> SQLiteHelper(context, <span class="string">"AddressBook"</span>, <span class="keyword">null</span>, <span class="number">1</span>);<span class="comment">//实例化helper</span>
         db = helper.getWritableDatabase();<span class="comment">//获得db</span>
     }

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jxust-cgs.github.io/"/>
-  <updated>2016-04-30T08:31:48.001Z</updated>
+  <updated>2016-04-30T09:08:38.716Z</updated>
   <id>http://jxust-cgs.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://jxust-cgs.github.io/2016/04/29/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89%E2%80%94%E2%80%94%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"/>
     <id>http://jxust-cgs.github.io/2016/04/29/Android学习笔记（5）——文件操作/</id>
     <published>2016-04-29T03:36:00.000Z</published>
-    <updated>2016-04-30T08:31:48.001Z</updated>
+    <updated>2016-04-30T09:08:38.716Z</updated>
     
     <content type="html">&lt;h1 id=&quot;读写文件&quot;&gt;读写文件&lt;/h1&gt;&lt;p&gt;在Android中文件的读写用的是java中的file类，所以读写操作和java中是一样的。&lt;/p&gt;
 &lt;ul&gt;
@@ -111,8 +111,12 @@ preferences.getString(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/
         onCreate(db);
     }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;具体操作数据库可以单独写一个dao类（我开发j2ee的习惯）不知道在安卓中这样规范不？&lt;br&gt;      public class AddressBookDao {&lt;br&gt;          private SQLiteHelper helper;&lt;br&gt;          private SQLiteDatabase db;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; AddressBookDao(Context context) {
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;具体操作数据库可以单独写一个dao类（我开发j2ee的习惯）不知道在安卓中这样规范不？  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; class AddressBookDao {
+    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; SQLiteHelper helper;
+    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; SQLiteDatabase db;
+
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; AddressBookDao(Context context) {
         helper = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SQLiteHelper(context, &lt;span class=&quot;string&quot;&gt;&quot;AddressBook&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//实例化helper&lt;/span&gt;
         db = helper.getWritableDatabase();&lt;span class=&quot;comment&quot;&gt;//获得db&lt;/span&gt;
     }
