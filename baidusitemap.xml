@@ -4,12 +4,72 @@
 
     
   <url>
-    <loc>http://jxust-cgs.github.io/2016/04/29/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89%E2%80%94%E2%80%94%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</loc>
-    <lastmod>2016-04-30T09:08:38.716Z</lastmod>
+    <loc>http://jxust-cgs.github.io/2016/04/29/%E4%BF%AE%E6%94%B9%E6%97%A5%E5%8E%86%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2016-05-05T12:44:25.847Z</lastmod>
     <data>
         <display>
-        <title>android学习笔记（4） ——文件操作</title>
+        <title>android源码修改（1） ——日历中显示农历、日历图标随时间改变</title>
         <pubTime>2016-04-29T03:36:00.000Z</pubTime>
+        
+        <tag>android源码</tag>
+         
+         
+           
+             
+              <breadCrumb title="android源码" url="http://jxust-cgs.github.io/categories/android%E6%BA%90%E7%A0%81/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jxust-cgs.github.io/2016/05/05/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%887%EF%BC%89%E2%80%94%E2%80%94Bitmap/</loc>
+    <lastmod>2016-05-05T12:41:04.589Z</lastmod>
+    <data>
+        <display>
+        <title>android学习笔记（7） ——Bitmap</title>
+        <pubTime>2016-05-05T09:36:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+         
+           
+             
+              <breadCrumb title="android" url="http://jxust-cgs.github.io/categories/android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jxust-cgs.github.io/2016/04/29/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89%E2%80%94%E2%80%94%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2016-05-05T12:35:35.767Z</lastmod>
+    <data>
+        <display>
+        <title>android学习笔记（5） ——文件操作</title>
+        <pubTime>2016-04-29T03:36:00.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+         
+           
+             
+              <breadCrumb title="android" url="http://jxust-cgs.github.io/categories/android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jxust-cgs.github.io/2016/05/05/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%886%EF%BC%89%E2%80%94%E2%80%94Animation%E5%8A%A8%E7%94%BB/</loc>
+    <lastmod>2016-05-05T02:51:16.000Z</lastmod>
+    <data>
+        <display>
+        <title>android学习笔记（6） ——Animation动画</title>
+        <pubTime>2016-05-05T03:36:00.000Z</pubTime>
         
         <tag>android</tag>
          

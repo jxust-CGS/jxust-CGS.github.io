@@ -88,7 +88,7 @@
         
     $(function() {
         // page-id...
-        var pageId = "archives/2015/05/index.html";
+        var pageId = "tags/android源码/index.html";
         pageId = pageId.substr(0, pageId.indexOf("/"));
         if(pageId === "") pageId = "index";
         
@@ -96,36 +96,38 @@
     });
     </script>
     
-
 <div class="container archive-body">
     <div class="row">
-        <div class="col-xs-2 well">
-            <h2 class="archive-icon">2015/5</h2>
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">3</span></li></ul>
+        <div class="col-xs-3 well">
+            <div class="archive-title" >
+                <h2 class="tag-icon">android源码</h2>
+                <div>
+                    <a href="/tags"><< 返回标签列表</a> 
+                </div>
+            </div>
         </div>
         
-        <div class="col-xs-10">
+        <div class="col-xs-9" id="tag-list-body">
             
-            <article class="post animated rollIn">
+            <article class="post  animated rollIn">
                 <div class="jumbotron">
-                    <h1><a href="/2015/05/05/bootstrap_treeView/" title="给bootstrap的界面中添加同风格树状菜单">给bootstrap的界面中添加同风格树状菜单</a></h1>
+                    <h1><a href="/2016/04/29/修改日历操作记录/" title="android源码修改（1） ——日历中显示农历、日历图标随时间改变">android源码修改（1） ——日历中显示农历、日历图标随时间改变</a></h1>
 
                     
-                        <p>使用的方式首先是需要下载到bootstrap-treeView的css和js文件（可以访问官方github）不过不知道是我弄错了还是官方的演示例子有问题。在下载的文件中对js和css的导入有问题所有打开后看不到例子我自己修改后的百度网盘链接可以看看相对还是比较简单的必要的文件有
-</p>
+                        <p>记录老师布置的小练习之修改android源码中的日历，为日历添加农历显示选项和让日历的图标随日期更改</p>
                     
 
                    <!--  没事乱改
 					<p class="say-title">
 						—— <img src="/images/avatar.gif" class="img-circle index-post-avatar" />
 						<a href="http://jxust-cgs.github.io" target="_blank" title="Jxust_CGS">Jxust_CGS</a>
-						于2015-05-05自豪地以 <a class="article-tag-link" href="/tags/bootstrap/">bootstrap</a> 唠嗑
+						于2016-04-29自豪地以 <a class="article-tag-link" href="/tags/android源码/">android源码</a> 唠嗑
 					</p>
 					 -->
 					  <p class="say-title">
 						—— <img src="/images/avatar.gif" class="img-circle index-post-avatar" />
 						<a href="http://jxust-cgs.github.io" target="_blank" title="Jxust_CGS">Jxust_CGS</a>
-						于2015-05-05很高兴与您一起学习分享<a class="article-tag-link" href="/tags/bootstrap/">bootstrap</a>  
+						于2016-04-29很高兴与您一起学习分享<a class="article-tag-link" href="/tags/android源码/">android源码</a>  
 					</p>
                 </div>
             </article>
@@ -134,14 +136,10 @@
             
         </div>
     </div>
+        
+    <div class="col-xs-19 all-list-box">
+    </div>
 </div>
-
-<script>
-$(function() {
-    $(".archive-list-count").addClass("badge");
-});
-</script>
-
     <footer id="footer">
     <div id="bottom-tip">
         月下踟蹰 —— <small>遥想秦时月下，英豪追梦千里</small>
