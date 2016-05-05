@@ -522,7 +522,7 @@ preferences.getString(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/
     <link href="http://jxust-cgs.github.io/2016/04/29/%E4%BF%AE%E6%94%B9%E6%97%A5%E5%8E%86%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/"/>
     <id>http://jxust-cgs.github.io/2016/04/29/修改日历操作记录/</id>
     <published>2016-04-29T03:36:00.000Z</published>
-    <updated>2016-05-05T12:44:25.847Z</updated>
+    <updated>2016-05-05T13:02:07.822Z</updated>
     
     <content type="html">&lt;h1 id=&quot;显示农历&quot;&gt;显示农历&lt;/h1&gt;&lt;h2 id=&quot;写出公历与农历的转换函数&quot;&gt;写出公历与农历的转换函数&lt;/h2&gt;&lt;p&gt;参考文章：&lt;a href=&quot;http://blog.csdn.net/liangguo03/article/details/7097388&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;日历农历算法&lt;/a&gt;&lt;br&gt;算法由参考文章中获得，不过我有点强迫症看着算法是对的,美中不足是输出格式不是很好，必须修改修改^_^  &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; main;
@@ -1468,7 +1468,7 @@ nemuItem.setTitle((Utils.getSharedPrefersence(&lt;span class=&quot;keyword&quot;
   }
   &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; resources.getDrawable(identify);
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;实现的效果是&lt;br&gt;图片素材&lt;br&gt;&lt;img src=&quot;photos/calendar_sucai.png&quot; alt=&quot;效果&quot;&gt;&lt;br&gt;实现效果&lt;br&gt;&lt;img src=&quot;photos/calendar_logo.png&quot; alt=&quot;素材&quot;&gt;   &lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;实现的效果是&lt;br&gt;图片素材&lt;br&gt;&lt;img src=&quot;http://jxust-cgs.github.io/photos/calendar_sucai.png&quot; alt=&quot;效果&quot;&gt;&lt;br&gt;实现效果&lt;br&gt;&lt;img src=&quot;http://jxust-cgs.github.io/photos/calendar_logo.png&quot; alt=&quot;素材&quot;&gt;   &lt;/p&gt;
 </content>
     
     <summary type="html">
