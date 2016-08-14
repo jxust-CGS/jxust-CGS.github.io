@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jxust-cgs.github.io/"/>
-  <updated>2016-08-11T16:26:03.593Z</updated>
+  <updated>2016-08-14T15:14:05.840Z</updated>
   <id>http://jxust-cgs.github.io/</id>
   
   <author>
@@ -14,6 +14,71 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android源码学习——Android L中系统设置的搜索功能</title>
+    <link href="http://jxust-cgs.github.io/2016/08/14/Android%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94Android%20L%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE%E4%B8%AD%E7%9A%84%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/"/>
+    <id>http://jxust-cgs.github.io/2016/08/14/Android源码学习——Android L系统设置中的搜索功能/</id>
+    <published>2016-08-14T08:18:39.000Z</published>
+    <updated>2016-08-14T15:14:05.840Z</updated>
+    
+    <content type="html">&lt;p&gt;本文参考文章:&lt;a href=&quot;http://www.gimoo.net/t/1604/5722e52a8cf7a.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;android5.0系统设置搜索功能简析&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;目的及问题由来&quot;&gt;目的及问题由来&lt;/h1&gt;&lt;p&gt;前几天在rendmine上收到一个bug任务，在系统设置中搜索，搜索不到“触碰付款”这一项。&lt;br&gt;于是需要查看设置中搜索这部分功能并进行修改解决这个bug。  &lt;/p&gt;
+&lt;h1 id=&quot;找到问题代码位置&quot;&gt;找到问题代码位置&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt;&lt;span class=&quot;regexp&quot;&gt;/apps/&lt;/span&gt;Settings&lt;span class=&quot;regexp&quot;&gt;/src/&lt;/span&gt;com&lt;span class=&quot;regexp&quot;&gt;/android/&lt;/span&gt;settings&lt;span class=&quot;regexp&quot;&gt;/search/I&lt;/span&gt;ndexDateBaseHelper.java
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;查看部分代码对问题进行分析&quot;&gt;查看部分代码对问题进行分析&lt;/h1&gt;&lt;p&gt;发现这部分功能是通过将数据初始化到数据库文件中，在&lt;code&gt;date/date/com.android.setings/datebases/search_index.db&lt;/code&gt;我们可以导出手机中的数据库文件进行查看，可以发现确实缺少了我们需要的“触碰付款”。&lt;/p&gt;
+&lt;h1 id=&quot;找到数据库初始化代码的位置&quot;&gt;找到数据库初始化代码的位置&lt;/h1&gt;&lt;p&gt;我们可以发现系统设置对数据项的构建是在&lt;code&gt;searchIndexableResources&lt;/code&gt;类中。&lt;br&gt;对照此类中的其他搜索项的加载方式，例如“wifi设置”和“wifi高级项”  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sResMap.put(WifiSettings.&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;.getName(),                
+    &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SearchIndexableResource(                        
+    Ranking.getRankForClassName(WifiSettings.&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;.getName()),&lt;span class=&quot;comment&quot;&gt;//需要在Ranking类中添加对应的项                        &lt;/span&gt;
+    NO_DATA_RES_ID,                        
+    WifiSettings.&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;.getName(),                        
+    R.drawable.ic_settings_wireless));
+sResMap.put(AdvancedWifiSettings.&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;.getName(),                
+    &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SearchIndexableResource(                        
+    Ranking.getRankForClassName(AdvancedWifiSettings.&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;.getName()),                        
+    R.xml.wifi_advanced_settings,                        
+    AdvancedWifiSettings.&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;.getName(),                        
+    R.drawable.ic_settings_wireless)
+);
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;加载需要解析的xml文件的搜索项&quot;&gt;加载需要解析的xml文件的搜索项&lt;/h1&gt;&lt;p&gt;我们发现连段代码有一点轻微的差别，“NO_DATA_RES_ID”表示此搜索项匹配没有需要解析的xml文件，“R.xml.wifi_advanced_settings”表示需要加载和解析对应的xml文件中的title，只要搜索对应的title机会将链接到此xml的界面，此xml的解析在&lt;code&gt;Index.java&lt;/code&gt;中&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!nodeName.equals(NODE_NAME_CHECK_BOX_PREFERENCE)) {
+  summary = getDataSummary(context, attrs);
+  &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; entries = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
+    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (nodeName.endsWith(NODE_NAME_LIST_PREFERENCE)) {
+    entries = getDataEntries(context, attrs);
+    }
+  &lt;span class=&quot;comment&quot;&gt;// Insert rows for the child nodes of PreferenceScreen&lt;/span&gt;
+  updateOneRowWithFilteredData(database, localeStr, title, summary, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, entries,
+  fragmentName, screenTitle, iconResId, rank,
+  keywords, intentAction, intentTargetPackage, intentTargetClass,
+  &lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;, &lt;span class=&quot;variable&quot;&gt;key&lt;/span&gt;, -&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;/* default user id */&lt;/span&gt;);
+} &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; {
+    &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; summaryOn = getDataSummaryOn(context, attrs);
+    &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; summaryOff = getDataSummaryOff(context, attrs);
+      &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (TextUtils.isEmpty(summaryOn) &amp;amp;&amp;amp; TextUtils.isEmpty(summaryOff)) {
+        summaryOn = getDataSummary(context, attrs);
+      }
+    updateOneRowWithFilteredData(database, localeStr, title, summaryOn, summaryOff,
+    &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, fragmentName, screenTitle, iconResId, rank,
+    keywords, intentAction, intentTargetPackage, intentTargetClass,
+    &lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;, &lt;span class=&quot;variable&quot;&gt;key&lt;/span&gt;, -&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;/* default user id */&lt;/span&gt;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;加载NO_DATA_RES_ID的搜索项&quot;&gt;加载NO_DATA_RES_ID的搜索项&lt;/h1&gt;&lt;p&gt;对于没有xml的“NO_DATA_RES_ID”那么就需要其会使其类中实现（implement）Indexable并在其类中定义名称为：SEARCH_INDEX_DATA_PROVIDER的SearchIndexProvider，在其中会定义加载那些设置项。&lt;/p&gt;
+&lt;h1 id=&quot;注意&quot;&gt;注意&lt;/h1&gt;&lt;p&gt;在调试阶段由于这段代码是在数据库初始化的时候执行的，所以我们调试代码的时候请将数据库的版本号&lt;code&gt;+1&lt;/code&gt;，这样数据库就会重新构建我们添加或修改的代码才会被执行。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      在Android L中的系统设置的搜索功能解析，了解系统如何实现都应用中搜索选项功能的实现方法。
+    
+    </summary>
+    
+      <category term="android源码" scheme="http://jxust-cgs.github.io/categories/android%E6%BA%90%E7%A0%81/"/>
+    
+    
+      <category term="android源码" scheme="http://jxust-cgs.github.io/tags/android%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
   
   <entry>
     <title>Java学习笔记(1)——解析json</title>
@@ -3157,49 +3222,6 @@ tx.commit&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;
     
       &lt;h2 id=&quot;创建Hibernate项目&quot;&gt;创建Hibernate项目&lt;/h2&gt;&lt;p&gt;第一步：当然是添加jar包&lt;br&gt;第二步：编辑Hibernate的配置文件  &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;&amp;lt;?xml version=&#39;1.0&#39; e
-    
-    </summary>
-    
-      <category term="Hibernate" scheme="http://jxust-cgs.github.io/categories/Hibernate/"/>
-    
-    
-      <category term="Hibernate" scheme="http://jxust-cgs.github.io/tags/Hibernate/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>学习Hibernate记录(1)——概念</title>
-    <link href="http://jxust-cgs.github.io/2015/11/01/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%881%EF%BC%89/"/>
-    <id>http://jxust-cgs.github.io/2015/11/01/学习Hibernate记录（1）/</id>
-    <published>2015-11-01T11:14:20.000Z</published>
-    <updated>2015-11-03T08:49:08.169Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;什么是ORM&quot;&gt;什么是ORM&lt;/h2&gt;&lt;p&gt;ORM(Object-Relational Mapping)是对象到关系的映射，简单的说就是ORM是通过使用描述对象和数据库之间映射的元数据，将java程序中的对象自动持久化到关系数据库中。&lt;/p&gt;
-&lt;h2 id=&quot;ORM的优缺点&quot;&gt;ORM的优缺点&lt;/h2&gt;&lt;p&gt;优点：     &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;提高开发效率,由于ORM可以对实体对象与数据库中的表进行字段与属性的映射，所以实际操作中已经不再需要一个专用的、庞大的数据库访问层。  &lt;/li&gt;
-&lt;li&gt;ORM提供了对数据库的映射，能够像操作对象一样从数据库中获取数据，而不用直接进行SQL编程。    &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;缺点：  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;系统架构方面，采用ORM的系统的一般都是多层系统，系统的层次增加了，效率就会降低。  &lt;/li&gt;
-&lt;li&gt;性能方面，主要体现在对持久化对象的提取和对数据的加工处理上。采用ORM是，系统可能将全部的数据提取到内存对象之中，然后在进行过滤和加工处理，这样就很容易产生性能问题。   &lt;/li&gt;
-&lt;li&gt;对象持久化方面，ORM一般会持久化所有的属性，这对有些是不希望发生的&lt;h2 id=&quot;域对象的关系&quot;&gt;域对象的关系&lt;/h2&gt;一共有4种：关联（类之间引用）、依赖（类之间访问）、聚集（整体与部分）、一般化（类之间的继承）。  &lt;h2 id=&quot;Hibernate特点&quot;&gt;Hibernate特点&lt;/h2&gt;&lt;/li&gt;
-&lt;li&gt;它负责协调软件与数据库的交互，提供了管理持久性数据的完整方案。让开发者能够专注于业务逻辑的开发；  &lt;/li&gt;
-&lt;li&gt;应用者不需要才、遵循太多的规则和设计模式，能够灵活地运用；  &lt;/li&gt;
-&lt;li&gt;它是一个开源代码的映射框架，对JDBC只做了轻量级的封装，让java程序员可以随心所欲地运用面向对象的思想操纵数据库，无需考虑资源的问题。&lt;h2 id=&quot;Hibernate核心接口&quot;&gt;Hibernate核心接口&lt;/h2&gt;&lt;/li&gt;
-&lt;li&gt;Configuation接口&lt;/li&gt;
-&lt;li&gt;SessionFactory接口&lt;/li&gt;
-&lt;li&gt;Session接口&lt;/li&gt;
-&lt;li&gt;Transaction接口&lt;/li&gt;
-&lt;li&gt;Query和Criteria接口&lt;br&gt;详细信息不解释，百度去^_^  &lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;什么是ORM&quot;&gt;什么是ORM&lt;/h2&gt;&lt;p&gt;ORM(Object-Relational Mapping)是对象到关系的映射，简单的说就是ORM是通过使用描述对象和数据库之间映射的元数据，将java程序中的对象自动持久化到关系数据库中。&lt;/p&gt;
-&lt;h2 id=&quot;OR
     
     </summary>
     
