@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jxust-cgs.github.io/"/>
-  <updated>2016-08-14T15:14:05.840Z</updated>
+  <updated>2016-09-04T14:36:26.762Z</updated>
   <id>http://jxust-cgs.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://jxust-cgs.github.io/2016/08/14/Android%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94Android%20L%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE%E4%B8%AD%E7%9A%84%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/"/>
     <id>http://jxust-cgs.github.io/2016/08/14/Android源码学习——Android L系统设置中的搜索功能/</id>
     <published>2016-08-14T08:18:39.000Z</published>
-    <updated>2016-08-14T15:14:05.840Z</updated>
+    <updated>2016-09-04T14:36:26.762Z</updated>
     
     <content type="html">&lt;p&gt;本文参考文章:&lt;a href=&quot;http://www.gimoo.net/t/1604/5722e52a8cf7a.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;android5.0系统设置搜索功能简析&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&quot;目的及问题由来&quot;&gt;目的及问题由来&lt;/h1&gt;&lt;p&gt;前几天在rendmine上收到一个bug任务，在系统设置中搜索，搜索不到“触碰付款”这一项。&lt;br&gt;于是需要查看设置中搜索这部分功能并进行修改解决这个bug。  &lt;/p&gt;
@@ -85,7 +85,7 @@ sResMap.put(AdvancedWifiSettings.&lt;span class=&quot;keyword&quot;&gt;class&lt;
     <link href="http://jxust-cgs.github.io/2016/08/12/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89%E2%80%94%E2%80%94%E8%A7%A3%E6%9E%90json/"/>
     <id>http://jxust-cgs.github.io/2016/08/12/Java学习笔记（1）——解析json/</id>
     <published>2016-08-12T09:18:39.000Z</published>
-    <updated>2016-08-11T16:26:03.593Z</updated>
+    <updated>2016-09-04T14:40:36.466Z</updated>
     
     <content type="html">&lt;p&gt;参看文章:&lt;a href=&quot;http://www.cnblogs.com/pen-ink/archive/2011/10/06/2199715.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;解析json&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.bejson.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;在线JSON校验格式化工具（Be JSON）&lt;/a&gt;&lt;br&gt;在android中默认自带了JSONObject和JSONArray解析json数据  &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;{
@@ -170,7 +170,7 @@ sResMap.put(AdvancedWifiSettings.&lt;span class=&quot;keyword&quot;&gt;class&lt;
     <link href="http://jxust-cgs.github.io/2016/08/12/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%8810%EF%BC%89%E2%80%94%E2%80%94Volley/"/>
     <id>http://jxust-cgs.github.io/2016/08/12/Android学习笔记（10）——Volley/</id>
     <published>2016-08-12T08:18:39.000Z</published>
-    <updated>2016-08-11T16:33:52.361Z</updated>
+    <updated>2016-09-04T14:39:41.822Z</updated>
     
     <content type="html">&lt;p&gt;本文参考文章：&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/zyw-205520/p/4950357.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android Volley框架的使用（一）&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/zyw-205520/p/4950464.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android Volley框架的使用（二）&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/zyw-205520/p/4950535.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android Volley框架的使用（三）&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&quot;Volley简介&quot;&gt;Volley简介&lt;/h1&gt;&lt;p&gt;Volley是谷歌在2013年推出的网络通信框架，对于android应用需要获取网络数据是很方便的。&lt;br&gt;相对于原始的使用HttpURLConnection或httpClient的方式进行了简化，不需要我们去写太多的新线程和io操作。&lt;br&gt;使用Volley可以使我们的代码更加少并更加清晰。&lt;br&gt;Volley的特点有：  &lt;/p&gt;
@@ -434,7 +434,7 @@ ImageLoader imageLoader=VolleyManager.getInstance(MainActivity.&lt;span class=&q
     <link href="http://jxust-cgs.github.io/2016/07/13/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://jxust-cgs.github.io/2016/07/13/git学习笔记/</id>
     <published>2016-07-13T03:45:54.000Z</published>
-    <updated>2016-07-13T15:56:36.374Z</updated>
+    <updated>2016-09-04T14:41:34.471Z</updated>
     
     <content type="html">&lt;p&gt;本文参考自：&lt;a href=&quot;http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Git教程 - 廖雪峰的官方网站&lt;/a&gt;、&lt;a href=&quot;http://www.bootcss.com/p/git-guide/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;git简易指南&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&quot;git的介绍&quot;&gt;git的介绍&lt;/h1&gt;&lt;p&gt;进行过团队编程的都是用过版本管理工具，比如我之前学习j2ee时就会和同学组成团队进行编程&lt;br&gt;完成web项目。当时使用的是svn感觉还是挺好用的。后来在网上搜索”版本工具时发现svn不是最好&lt;br&gt;的版本管理工具（个人觉得挺好用的呀），不管了既然git更好的话，我就了解下。和网上介绍一样&lt;br&gt;git是分布式的，而svn是集中式的。具体的介绍还是百度吧。&lt;/p&gt;
@@ -524,7 +524,7 @@ $ git config --global alias.lg &lt;span class=&quot;string&quot;&gt;&quot;log --
     <link href="http://jxust-cgs.github.io/2016/06/29/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%889%EF%BC%89%E2%80%94%E2%80%94%E5%B9%BF%E6%92%AD/"/>
     <id>http://jxust-cgs.github.io/2016/06/29/Android学习笔记（9）——广播/</id>
     <published>2016-06-29T08:18:39.000Z</published>
-    <updated>2016-06-29T13:34:24.488Z</updated>
+    <updated>2016-09-04T14:43:18.496Z</updated>
     
     <content type="html">&lt;h1 id=&quot;广播的分类&quot;&gt;广播的分类&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;有序&lt;ul&gt;
@@ -644,7 +644,7 @@ public &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt
     <link href="http://jxust-cgs.github.io/2016/06/28/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%888%EF%BC%89%E2%80%94%E2%80%94%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/"/>
     <id>http://jxust-cgs.github.io/2016/06/28/Android学习笔记（8）——自定义控件/</id>
     <published>2016-06-28T08:18:39.000Z</published>
-    <updated>2016-06-29T13:34:35.035Z</updated>
+    <updated>2016-09-04T14:42:23.608Z</updated>
     
     <content type="html">&lt;h1 id=&quot;如何实现一个自定义控件&quot;&gt;如何实现一个自定义控件&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;定义自定义属性&lt;/li&gt;
@@ -836,7 +836,7 @@ public &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt
     <link href="http://jxust-cgs.github.io/2016/05/05/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%887%EF%BC%89%E2%80%94%E2%80%94Bitmap/"/>
     <id>http://jxust-cgs.github.io/2016/05/05/Android学习笔记（7）——Bitmap/</id>
     <published>2016-05-05T09:36:00.000Z</published>
-    <updated>2016-05-05T12:41:04.589Z</updated>
+    <updated>2016-09-04T14:45:01.774Z</updated>
     
     <content type="html">&lt;p&gt;参考文章：&lt;a href=&quot;http://www.jb51.net/article/32366.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android Bitmap详细介绍&lt;/a&gt;  &lt;/p&gt;
 &lt;h1 id=&quot;首先我们需要获得Bitmap对象&quot;&gt;首先我们需要获得Bitmap对象&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Bitmap getBitmapByDrawable(Context context,&lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; drawableId){
@@ -989,7 +989,7 @@ public &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt
     <link href="http://jxust-cgs.github.io/2016/05/05/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%886%EF%BC%89%E2%80%94%E2%80%94Animation%E5%8A%A8%E7%94%BB/"/>
     <id>http://jxust-cgs.github.io/2016/05/05/Android学习笔记（6）——Animation动画/</id>
     <published>2016-05-05T03:36:00.000Z</published>
-    <updated>2016-05-05T02:51:16.000Z</updated>
+    <updated>2016-09-04T14:47:35.432Z</updated>
     
     <content type="html">&lt;p&gt;参考文章：&lt;a href=&quot;http://www.cnblogs.com/qiengo/archive/2012/05/03/2480386.html#Animations&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android Animation - Qiengo - 博客园&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&quot;这一部分也没多少东西就直接上代码了&quot;&gt;这一部分也没多少东西就直接上代码了&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; com.example.animationsdemo;
@@ -1157,7 +1157,7 @@ public &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt
     <link href="http://jxust-cgs.github.io/2016/04/29/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89%E2%80%94%E2%80%94%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"/>
     <id>http://jxust-cgs.github.io/2016/04/29/Android学习笔记（5）——文件操作/</id>
     <published>2016-04-29T03:36:00.000Z</published>
-    <updated>2016-05-05T12:35:35.767Z</updated>
+    <updated>2016-09-04T14:46:12.579Z</updated>
     
     <content type="html">&lt;h1 id=&quot;读写文件&quot;&gt;读写文件&lt;/h1&gt;&lt;p&gt;在Android中文件的读写用的是java中的file类，所以读写操作和java中是一样的。&lt;/p&gt;
 &lt;ul&gt;
@@ -1338,7 +1338,7 @@ preferences.getString(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/
     <link href="http://jxust-cgs.github.io/2016/04/29/%E4%BF%AE%E6%94%B9%E6%97%A5%E5%8E%86%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/"/>
     <id>http://jxust-cgs.github.io/2016/04/29/修改日历操作记录/</id>
     <published>2016-04-29T03:36:00.000Z</published>
-    <updated>2016-05-05T13:02:07.822Z</updated>
+    <updated>2016-09-04T14:44:10.120Z</updated>
     
     <content type="html">&lt;h1 id=&quot;显示农历&quot;&gt;显示农历&lt;/h1&gt;&lt;h2 id=&quot;写出公历与农历的转换函数&quot;&gt;写出公历与农历的转换函数&lt;/h2&gt;&lt;p&gt;参考文章：&lt;a href=&quot;http://blog.csdn.net/liangguo03/article/details/7097388&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;日历农历算法&lt;/a&gt;&lt;br&gt;算法由参考文章中获得，不过我有点强迫症看着算法是对的,美中不足是输出格式不是很好，必须修改修改^_^  &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; main;
@@ -2305,7 +2305,7 @@ nemuItem.setTitle((Utils.getSharedPrefersence(&lt;span class=&quot;keyword&quot;
     <link href="http://jxust-cgs.github.io/2016/04/10/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     <id>http://jxust-cgs.github.io/2016/04/10/正则表达式/</id>
     <published>2016-04-10T03:45:54.000Z</published>
-    <updated>2016-04-10T13:47:31.048Z</updated>
+    <updated>2016-09-04T15:08:55.544Z</updated>
     
     <content type="html">&lt;h1 id=&quot;写在前面（参考网站）&quot;&gt;写在前面（参考网站）&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;(正则表达式语法)[&lt;a href=&quot;https://msdn.microsoft.com/zh-cn/library/ae5bf541(VS.80).aspx&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://msdn.microsoft.com/zh-cn/library/ae5bf541(VS.80).aspx&lt;/a&gt;]&lt;/li&gt;
@@ -2325,8 +2325,7 @@ nemuItem.setTitle((Utils.getSharedPrefersence(&lt;span class=&quot;keyword&quot;
     
     <summary type="html">
     
-      &lt;h1 id=&quot;写在前面（参考网站）&quot;&gt;写在前面（参考网站）&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;(正则表达式语法)[&lt;a href=&quot;https://msdn.microsoft.com/zh-cn/library/ae5bf541(VS.80).aspx&quot; target=&quot;_blank
+      在日常的开发和学习中经常遇到正则表达式的相关知识，所以抽个时间学习学习，写下来方便以后自己再需要时可以快速记起来。正则表达式就是用于对一些数据进行匹配和检测，最常用的就是表单验证。
     
     </summary>
     
@@ -2342,7 +2341,7 @@ nemuItem.setTitle((Utils.getSharedPrefersence(&lt;span class=&quot;keyword&quot;
     <link href="http://jxust-cgs.github.io/2016/04/08/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89%20%E2%80%94%E2%80%94%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     <id>http://jxust-cgs.github.io/2016/04/08/android学习笔记（4） ——多线程/</id>
     <published>2016-04-08T03:45:54.000Z</published>
-    <updated>2016-04-10T13:34:25.477Z</updated>
+    <updated>2016-09-04T15:09:23.331Z</updated>
     
     <content type="html">&lt;h1 id=&quot;为什么要使用多线程&quot;&gt;为什么要使用多线程&lt;/h1&gt;&lt;p&gt;Android中的Main线程的事件处理不能太耗时，否则后续的事件无法在5秒内得到响应，就会弹出ANR对话框。  &lt;/p&gt;
 &lt;ul&gt;
@@ -2368,9 +2367,7 @@ nemuItem.setTitle((Utils.getSharedPrefersence(&lt;span class=&quot;keyword&quot;
     
     <summary type="html">
     
-      &lt;h1 id=&quot;为什么要使用多线程&quot;&gt;为什么要使用多线程&lt;/h1&gt;&lt;p&gt;Android中的Main线程的事件处理不能太耗时，否则后续的事件无法在5秒内得到响应，就会弹出ANR对话框。  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;常见的耗时的操作有：获取网络数据、批量操作数据库、绘图等。&lt;/li
+      在安卓中多线程运用的特别多，因为为了让安卓跑的更加流畅所以对于一些比较耗时的操作我们都会开辟新的线程去执行以避免对UI线程的阻塞。是不是很重要，这里认真的学习下^_^
     
     </summary>
     
@@ -2386,7 +2383,7 @@ nemuItem.setTitle((Utils.getSharedPrefersence(&lt;span class=&quot;keyword&quot;
     <link href="http://jxust-cgs.github.io/2016/04/01/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89%20%E2%80%94%E2%80%94ListView/"/>
     <id>http://jxust-cgs.github.io/2016/04/01/android学习笔记（3） ——ListView/</id>
     <published>2016-04-01T03:45:54.000Z</published>
-    <updated>2016-04-10T13:52:40.045Z</updated>
+    <updated>2016-09-04T14:50:12.713Z</updated>
     
     <content type="html">&lt;h1 id=&quot;ListView&quot;&gt;ListView&lt;/h1&gt;&lt;h5 id=&quot;想要在应用中添加ListView控件需要怎样做？&quot;&gt;想要在应用中添加ListView控件需要怎样做？&lt;/h5&gt;&lt;ol&gt;
 &lt;li&gt;在activity的xml布局文件中添加listView控件  &lt;/li&gt;
@@ -2569,8 +2566,7 @@ nemuItem.setTitle((Utils.getSharedPrefersence(&lt;span class=&quot;keyword&quot;
     
     <summary type="html">
     
-      &lt;h1 id=&quot;ListView&quot;&gt;ListView&lt;/h1&gt;&lt;h5 id=&quot;想要在应用中添加ListView控件需要怎样做？&quot;&gt;想要在应用中添加ListView控件需要怎样做？&lt;/h5&gt;&lt;ol&gt;
-&lt;li&gt;在activity的xml布局文件中添加listView控件  &lt;/li&gt;
+      总结下自己学习ListView控件的一些知识，互相分享学习。
     
     </summary>
     
@@ -2586,7 +2582,7 @@ nemuItem.setTitle((Utils.getSharedPrefersence(&lt;span class=&quot;keyword&quot;
     <link href="http://jxust-cgs.github.io/2016/04/01/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89%20%E2%80%94%E2%80%94UI/"/>
     <id>http://jxust-cgs.github.io/2016/04/01/android学习笔记（2） ——UI/</id>
     <published>2016-04-01T03:40:54.000Z</published>
-    <updated>2016-04-10T13:40:56.910Z</updated>
+    <updated>2016-09-04T15:09:48.498Z</updated>
     
     <content type="html">&lt;h1 id=&quot;UI布局&quot;&gt;UI布局&lt;/h1&gt;&lt;p&gt;第一次开发安卓感觉和j2ee中的web编程有点像，mvc模式，layout布局就是view，activity就是controller，实体类就是model。&lt;br&gt;在android中布局文件是用xml文件编写通过ViewGroup和VIew组成。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://hi.csdn.net/attachment/201108/21/0_1313928575W9Q0.gif&quot; alt=&quot;photo&quot;&gt;  &lt;/p&gt;
@@ -2622,7 +2618,7 @@ iv_logo.setImageBitmap(bm);  &lt;span class=&quot;comment&quot;&gt;// 通过获�
     
     <summary type="html">
     
-      &lt;h1 id=&quot;UI布局&quot;&gt;UI布局&lt;/h1&gt;&lt;p&gt;第一次开发安卓感觉和j2ee中的web编程有点像，mvc模式，layout布局就是view，activity就是controller，实体类就是model。&lt;br&gt;在android中布局文件是用xml文件编写通过ViewGrou
+      介绍安卓中界面的构成，总体就是树状的结构，在Viewgroup中嵌套Viewgroup或View，是不是感觉和html的div一样一层层的叠在一起。其实差不多，不过Android中对每个不同的View进行了封装提供了很多常用的View和ViewGroup，不过当然我们还是可以自定义View的，这个暂且不说，之后看到了在写。
     
     </summary>
     
@@ -2638,7 +2634,7 @@ iv_logo.setImageBitmap(bm);  &lt;span class=&quot;comment&quot;&gt;// 通过获�
     <link href="http://jxust-cgs.github.io/2016/03/31/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89%20%E2%80%94%E2%80%94activity%E4%B8%8Eintent/"/>
     <id>http://jxust-cgs.github.io/2016/03/31/android学习笔记（1） ——activity与intent/</id>
     <published>2016-03-31T05:32:54.000Z</published>
-    <updated>2016-04-10T13:34:11.997Z</updated>
+    <updated>2016-09-04T15:05:54.278Z</updated>
     
     <content type="html">&lt;h1 id=&quot;activity&quot;&gt;activity&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;对于安卓的学习一开始无非就是安装软件配置开发环境，adt和android stdio我感觉都差不多。在eclipse中开发一次加载多个项目，而在android stdio中只对一个项目进行开发。 我比较喜欢查看以前项目中的代码或是写个小例子还是eclipse比较适合我^_^  &lt;/li&gt;
@@ -2737,8 +2733,7 @@ public &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt
     
     <summary type="html">
     
-      &lt;h1 id=&quot;activity&quot;&gt;activity&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;对于安卓的学习一开始无非就是安装软件配置开发环境，adt和android stdio我感觉都差不多。在eclipse中开发一次加载多个项目，而在android stdio中只对一个项目进行开发。 我比
+      在安卓中activity是最主要的类是每个界面的控制器，而intent这是意图，应用发出intent通过系统将intent通过intent进行匹配以启动对应的activity这样就可以实现跨应用的调用是不是很酷。
     
     </summary>
     
