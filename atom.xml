@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jxust-cgs.github.io/"/>
-  <updated>2016-09-04T14:36:26.762Z</updated>
+  <updated>2016-11-02T14:14:01.645Z</updated>
   <id>http://jxust-cgs.github.io/</id>
   
   <author>
@@ -14,6 +14,101 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android学习笔记（11）——RecyclerView</title>
+    <link href="http://jxust-cgs.github.io/2016/11/02/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%8811%EF%BC%89%E2%80%94%E2%80%94RecyclerView/"/>
+    <id>http://jxust-cgs.github.io/2016/11/02/Android学习笔记（11）——RecyclerView/</id>
+    <published>2016-11-02T08:18:39.000Z</published>
+    <updated>2016-11-02T14:14:01.645Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;为什么recyclerview是一个容器&quot;&gt;为什么recyclerview是一个容器&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;可以自定义显示的位置——layoutmanager&lt;/li&gt;
+&lt;li&gt;可以自定义的item之间分隔——ItemDecoration&lt;/li&gt;
+&lt;li&gt;可以自定义增删动画——ItemAnimator&lt;/li&gt;
+&lt;li&gt;仅仅控制item的回收与复用——adapter针对的不是view而是ViewHolder&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;那recyclerview到底是什么样子呢&quot;&gt;那recyclerview到底是什么样子呢&lt;/h2&gt;&lt;p&gt;既可以实现ListView也可以实现GridView，还能实现瀑布流。&lt;br&gt;是不是感觉很神奇\^_^&lt;br&gt;&lt;img src=&quot;http://oeb33qix3.bkt.clouddn.com/16-10-10/23778082.jpg&quot; alt=&quot;image&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://oeb33qix3.bkt.clouddn.com/16-10-10/23593608.jpg&quot; alt=&quot;image&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://oeb33qix3.bkt.clouddn.com/16-10-10/88905249.jpg&quot; alt=&quot;image&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://oeb33qix3.bkt.clouddn.com/16-10-9/17122114.jpg&quot; alt=&quot;image&quot;&gt;  &lt;/p&gt;
+&lt;h2 id=&quot;如何实现recyclerview&quot;&gt;如何实现recyclerview&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;首先需要导入v7的recyclerview的资源包&lt;/li&gt;
+&lt;li&gt;在layout文件中放置recyclerview&lt;/li&gt;
+&lt;li&gt;在activity中配置recycleview&lt;ul&gt;
+&lt;li&gt;layoutmanager&lt;/li&gt;
+&lt;li&gt;ItemDecoration&lt;/li&gt;
+&lt;li&gt;ItemAnimator&lt;/li&gt;
+&lt;li&gt;adapter&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;上代码&quot;&gt;上代码&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
+&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Bundle savedInstanceState)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    initData();&lt;span class=&quot;comment&quot;&gt;//初始化数据&lt;/span&gt;
+    recyclerView= (RecyclerView) findViewById(R.id.myRecyclerView);&lt;span class=&quot;comment&quot;&gt;//绑定recyclerview&lt;/span&gt;
+    &lt;span class=&quot;comment&quot;&gt;//recyclerView.setLayoutManager(new LinearLayoutManager(this));//按类似listview的方式展示数据&lt;/span&gt;
+    &lt;span class=&quot;comment&quot;&gt;//recyclerView.setLayoutManager(new GridLayoutManager(this,4));//按类似GridVIew的方式展示数据&lt;/span&gt;
+    recyclerView.setLayoutManager(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; StaggeredGridLayoutManager(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,
+            StaggeredGridLayoutManager.VERTICAL));&lt;span class=&quot;comment&quot;&gt;//按瀑布流的方式展示数据&lt;/span&gt;
+    recyclerAdapter=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; RecyclerAdapter();
+    recyclerView.setAdapter(recyclerAdapter);&lt;span class=&quot;comment&quot;&gt;//绑定数据填充器&lt;/span&gt;
+    recyclerView.setItemAnimator(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; DefaultItemAnimator());&lt;span class=&quot;comment&quot;&gt;//设置添加删除动画效果&lt;/span&gt;
+    &lt;span class=&quot;comment&quot;&gt;//recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL_LIST));//设置listview形式的边框&lt;/span&gt;
+    &lt;span class=&quot;comment&quot;&gt;//recyclerView.addItemDecoration(new DividerGridItemDecoration(this));//设置gridView形式的边框&lt;/span&gt;
+}
+
+
+&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;RecyclerAdapter&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;RecyclerView&lt;/span&gt;.&lt;span class=&quot;title&quot;&gt;Adapter&lt;/span&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;RecyclerAdapter&lt;/span&gt;.&lt;span class=&quot;title&quot;&gt;MyViewHolder&lt;/span&gt;&amp;gt;&lt;/span&gt;{
+    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; MyViewHolder &lt;span class=&quot;title&quot;&gt;onCreateViewHolder&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(ViewGroup parent, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; viewType)&lt;/span&gt; &lt;/span&gt;{
+        MyViewHolder holder = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; MyViewHolder(LayoutInflater.from(
+                MainActivity.&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;).inflate(R.layout.item_recycler, parent,
+                &lt;span class=&quot;keyword&quot;&gt;false&lt;/span&gt;));
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; holder;
+    }
+    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onBindViewHolder&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(MyViewHolder holder, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; position)&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;comment&quot;&gt;//holder.text_recy.setHeight();&lt;/span&gt;
+        holder.text_recy.setText(dataList.get(position));
+        holder.text_recy.getLayoutParams().height=dataHeight.get(position);
+    }
+    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;getItemCount&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; dataList.size();
+    }
+    &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MyViewHolder&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;RecyclerView&lt;/span&gt;.&lt;span class=&quot;title&quot;&gt;ViewHolder&lt;/span&gt; &lt;/span&gt;{
+        TextView text_recy;
+        &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MyViewHolder&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View itemView)&lt;/span&gt; &lt;/span&gt;{
+            &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;(itemView);
+            text_recy= (TextView) itemView.findViewById(R.id.text_recy);
+        }
+    }
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;addData&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; position)&lt;/span&gt;&lt;/span&gt;{
+        dataList.add(position,&lt;span class=&quot;string&quot;&gt;&quot;inset&quot;&lt;/span&gt;);
+        dataHeight.add(position,(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;)(Math.random()*&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;)+&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//添加子模块设置随机高度，实现瀑布流效果&lt;/span&gt;
+        notifyItemInserted(position);
+    }
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;delData&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; position)&lt;/span&gt;&lt;/span&gt;{
+        dataList.remove(position);
+        dataHeight.remove(position);&lt;span class=&quot;comment&quot;&gt;//维护每个子模块的高度，避免重新加载时修改了高度&lt;/span&gt;
+        notifyItemRemoved(position);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;参考文章&quot;&gt;参考文章&lt;/h2&gt;&lt;p&gt;最后附上hongyang大神的链接：&lt;a href=&quot;http://blog.csdn.net/lmj623565791/article/details/45059587&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android RecyclerView 使用完全解析 体验艺术般的控件&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      recyclerview是android的v7包中的一个组件，相当于一个容器。
+    
+    </summary>
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/categories/android/"/>
+    
+    
+      <category term="android" scheme="http://jxust-cgs.github.io/tags/android/"/>
+    
+  </entry>
   
   <entry>
     <title>Android源码学习——Android L中系统设置的搜索功能</title>
@@ -3081,142 +3176,6 @@ tx.commit&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;
     <summary type="html">
     
       &lt;h2 id=&quot;创建工厂、获取Session、开启事务&quot;&gt;创建工厂、获取Session、开启事务&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;type&quot;&gt;Configuration&lt;/span&gt; configuration=&lt;span class=&quot;keyword&quot;&gt;
-    
-    </summary>
-    
-      <category term="Hibernate" scheme="http://jxust-cgs.github.io/categories/Hibernate/"/>
-    
-    
-      <category term="Hibernate" scheme="http://jxust-cgs.github.io/tags/Hibernate/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>学习Hibernate记录(2)——配置文件</title>
-    <link href="http://jxust-cgs.github.io/2015/11/01/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%882%EF%BC%89/"/>
-    <id>http://jxust-cgs.github.io/2015/11/01/学习Hibernate记录（2）/</id>
-    <published>2015-11-01T12:28:40.000Z</published>
-    <updated>2015-12-06T12:55:42.595Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;创建Hibernate项目&quot;&gt;创建Hibernate项目&lt;/h2&gt;&lt;p&gt;第一步：当然是添加jar包&lt;br&gt;第二步：编辑Hibernate的配置文件  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;&amp;lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;doctype&quot;&gt;&amp;lt;!DOCTYPE hibernate-configuration PUBLIC
-          &quot;-//Hibernate/Hibernate Configuration DTD 3.0//EN&quot;
-          &quot;http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd&quot;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- Generated by MyEclipse Hibernate Tools.                   --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-configuration&lt;/span&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;session-factory&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;dialect&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;org.hibernate.dialect.MySQLDialect&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 设置方言 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;connection.url&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;jdbc:mysql://localhost:3306/test&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 设置连接 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;connection.username&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;root&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 用户名 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;connection.password&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;root&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 密码 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;connection.driver_class&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;com.mysql.jdbc.Driver&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 设置驱动 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;myeclipse.connection.profile&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;com.mysql.jdbc.Driver&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 无关紧要的参数，Eclipse的数据库视图【MyEclipse database explorer】中定义的链接database的一个连接 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;show_sql&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;true&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 输出sql语句 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;format_sql&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;true&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 格式化sql语句 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;use_sql_comments&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;true&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 输出便于调试的注释 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;hibernate.transaction.factory_class&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;org.hibernate.trasaction.JDBCTrasactionFactory&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;mapping&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;resource&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;User.hbm.xml&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 配置的方式 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;mapping&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;jxust.config.Classes&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 标签注释的方式 --&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;session-factory&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-configuration&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;第三步：持久化类和映射文件&lt;br&gt;持久化类略过…&lt;br&gt;直接上映射文件&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;doctype&quot;&gt;&amp;lt;!DOCTYPE hibernate-mapping PUBLIC &quot;-//Hibernate/Hibernate Mapping DTD 3.0//EN&quot;
-&quot;http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd&quot;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;&amp;lt;!--
-    Mapping file autogenerated by MyEclipse Persistence Tools
---&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;jxust.config.Classes_1&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;classes&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;catalog&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;test&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;java.lang.Integer&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;column&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;identity&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 自增 --&amp;gt;&lt;/span&gt;
-                &lt;span class=&quot;comment&quot;&gt;&amp;lt;!--
-                    increment  
-                    identity  
-                    sequence  
-                    hilo  
-                    native  
-                    uuid.hex  
-                    assigned  具体含义百度去吧^_^
-                 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;java.lang.String&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;column&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;length&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;20&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;students&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;cascade&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;none&quot;&lt;/span&gt; &amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;class_id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;one-to-many&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;jxust.config.Student&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;set&lt;/span&gt;&amp;gt;&lt;/span&gt;
-         &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;students&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;cascade&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;none&quot;&lt;/span&gt; &amp;gt;&lt;/span&gt;配置的方式写的list需要配置&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;index&lt;/span&gt;&amp;gt;&lt;/span&gt;选项用于
-            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;class_id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;java.lang.Integer&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;index&lt;/span&gt;&amp;gt;&lt;/span&gt;从表的主键用于设置list中的顺序，如果1号位的数据不是你所查找的会返回为null，这样有一个弊端，如果有1000条数据的表你之遥查询特定的几条，最后一条为第800条数据，会开辟一个长度为800的list其中大部分都是null，所以一般用set，转化为list
-            &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- &amp;lt;list-index column=&quot;id&quot;&amp;gt;&amp;lt;/list-index&amp;gt; --&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;one-to-many&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;jxust.config.Student&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;list&lt;/span&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;标签注释法映射&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; jxust.config;
-
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.util.ArrayList;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.util.List;
-
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; javax.persistence.CascadeType;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; javax.persistence.Column;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; javax.persistence.Entity;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; javax.persistence.FetchType;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; javax.persistence.GeneratedValue;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; javax.persistence.Id;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; javax.persistence.JoinColumn;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; javax.persistence.OneToMany;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; javax.persistence.Table;
-
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; org.hibernate.annotations.GenericGenerator;
-&lt;span class=&quot;annotation&quot;&gt;@Entity&lt;/span&gt;
-&lt;span class=&quot;annotation&quot;&gt;@Table&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&quot;classes&quot;&lt;/span&gt;)
-&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Classes&lt;/span&gt; &lt;/span&gt;{
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Integer id;
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; String name;
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; List&amp;lt;Student&amp;gt; students=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;Student&amp;gt;();
-
-    &lt;span class=&quot;annotation&quot;&gt;@Id&lt;/span&gt;
-    &lt;span class=&quot;annotation&quot;&gt;@GenericGenerator&lt;/span&gt;(name=&lt;span class=&quot;string&quot;&gt;&quot;idGenerator&quot;&lt;/span&gt;,strategy=&lt;span class=&quot;string&quot;&gt;&quot;identity&quot;&lt;/span&gt;)
-    &lt;span class=&quot;annotation&quot;&gt;@GeneratedValue&lt;/span&gt;(generator=&lt;span class=&quot;string&quot;&gt;&quot;idGenerator&quot;&lt;/span&gt;)
-    &lt;span class=&quot;annotation&quot;&gt;@Column&lt;/span&gt;(name=&lt;span class=&quot;string&quot;&gt;&quot;id&quot;&lt;/span&gt;,length=&lt;span class=&quot;number&quot;&gt;11&lt;/span&gt;)
-    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Integer &lt;span class=&quot;title&quot;&gt;getId&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
-        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; id;
-    }
-    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setId&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Integer id)&lt;/span&gt; &lt;/span&gt;{
-        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.id = id;
-    }
-    &lt;span class=&quot;annotation&quot;&gt;@Column&lt;/span&gt;(name=&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;,length=&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;)
-    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; String &lt;span class=&quot;title&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
-        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; name;
-    }
-    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setName&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String name)&lt;/span&gt; &lt;/span&gt;{
-        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name;
-    }
-
-    &lt;span class=&quot;comment&quot;&gt;//@OneToMany(fetch = FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE}, mappedBy=&quot;class_id&quot;)&lt;/span&gt;
-    &lt;span class=&quot;annotation&quot;&gt;@OneToMany&lt;/span&gt;(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-    &lt;span class=&quot;annotation&quot;&gt;@JoinColumn&lt;/span&gt;(name=&lt;span class=&quot;string&quot;&gt;&quot;class_id&quot;&lt;/span&gt;)
-    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; List&amp;lt;Student&amp;gt; &lt;span class=&quot;title&quot;&gt;getStudents&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
-        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; students;
-    }
-    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setStudents&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(List&amp;lt;Student&amp;gt; students)&lt;/span&gt; &lt;/span&gt;{
-        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.students = students;
-    }
-
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;更多相关博客&quot;&gt;更多相关博客&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.07net01.com/linux/Hibernate_zhujie_Annotation__depeizhi_50352_1357527742.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hibernate注解(Annotation)的配置&lt;/a&gt;  &lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;创建Hibernate项目&quot;&gt;创建Hibernate项目&lt;/h2&gt;&lt;p&gt;第一步：当然是添加jar包&lt;br&gt;第二步：编辑Hibernate的配置文件  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;&amp;lt;?xml version=&#39;1.0&#39; e
     
     </summary>
     

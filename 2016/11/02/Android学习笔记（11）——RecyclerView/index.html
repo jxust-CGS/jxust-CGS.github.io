@@ -1,0 +1,237 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta name="baidu-site-verification" content="7AB1qIzhnt" />
+    
+    <meta name="author" content="Jxust_CGS">
+    
+    <meta name="description" itemprop="description" content="recyclerview是android的v7包中的一个组件，相当于一个容器。">
+    
+	
+	<meta name="Keywords" content="android,RecyclerView教程,RecyclerView,安卓">
+    
+
+    
+    <link rel="alternative" href="YOUR_RSS_ADDRESS" title="月下踟蹰" type="application/atom+xml">
+    
+    
+    
+	
+	
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Android学习笔记（11）——RecyclerView | 月下踟蹰 · 遥想秦时月下，英豪追梦千里</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    <!-- Javascript -->
+    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery.backstretch.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/headroom.min.js"></script>
+    <script src="/js/jquery.headroom.min.js"></script> 
+    <script src="/js/common.js"></script>
+	<script src="/js/busuanzi.pure.mini.js"></script>
+	
+	<link rel="stylesheet" href="/css/animate.css"></link>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://jxust-cgs.github.io" title="月下踟蹰">月下踟蹰</a>
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                <p class="navbar-text pull-right">遥想秦时月下，英豪追梦千里</p>
+
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/archives">归档</a></li>
+                    
+                    <li id="nav-tags"><a href="/tags">标签</a></li>
+                    
+                    <li id="nav-categories"><a href="/categories">分类</a></li>
+                    
+                    <li id="nav-curriculumvitae"><a href="/curriculumvitae">关于</a></li>
+                    
+                    <li id="nav-links"><a href="/links">链接</a></li>
+                    
+                    
+                    <li><a href="https://github.com/jxust-CGS" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <script>
+    var backRoot = "/images/background/";
+    var backArray = [ "1.jpg", "2.jpg", "3.jpg", "4.jpg",  ];
+    //console.log(backArray);
+        
+    $(function() {
+        // page-id...
+        var pageId = "2016/11/02/Android学习笔记（11）——RecyclerView/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+    });
+    </script>
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>Android学习笔记（11）——RecyclerView</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2016-11-02T08:18:39.000Z" itemprop="datePublished">2016-11-02</time>，更新于:<time datetime="2016-11-02T14:14:01.645Z" itemprop="dateModified">2016-11-02</time>，By <a href="http://jxust-cgs.github.io" title="Jxust_CGS">Jxust_CGS</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <strong class="toc-title">大纲</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么recyclerview是一个容器"><span class="toc-number">1.</span> <span class="toc-text">为什么recyclerview是一个容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#那recyclerview到底是什么样子呢"><span class="toc-number">2.</span> <span class="toc-text">那recyclerview到底是什么样子呢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何实现recyclerview"><span class="toc-number">3.</span> <span class="toc-text">如何实现recyclerview</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上代码"><span class="toc-number">4.</span> <span class="toc-text">上代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文章"><span class="toc-number">5.</span> <span class="toc-text">参考文章</span></a></li></ol>
+            </div>
+            
+            <h2 id="为什么recyclerview是一个容器">为什么recyclerview是一个容器</h2><ul>
+<li>可以自定义显示的位置——layoutmanager</li>
+<li>可以自定义的item之间分隔——ItemDecoration</li>
+<li>可以自定义增删动画——ItemAnimator</li>
+<li>仅仅控制item的回收与复用——adapter针对的不是view而是ViewHolder</li>
+</ul>
+<h2 id="那recyclerview到底是什么样子呢">那recyclerview到底是什么样子呢</h2><p>既可以实现ListView也可以实现GridView，还能实现瀑布流。<br>是不是感觉很神奇\^_^<br><img src="http://oeb33qix3.bkt.clouddn.com/16-10-10/23778082.jpg" alt="image"><br><img src="http://oeb33qix3.bkt.clouddn.com/16-10-10/23593608.jpg" alt="image"><br><img src="http://oeb33qix3.bkt.clouddn.com/16-10-10/88905249.jpg" alt="image"><br><img src="http://oeb33qix3.bkt.clouddn.com/16-10-9/17122114.jpg" alt="image">  </p>
+<h2 id="如何实现recyclerview">如何实现recyclerview</h2><ul>
+<li>首先需要导入v7的recyclerview的资源包</li>
+<li>在layout文件中放置recyclerview</li>
+<li>在activity中配置recycleview<ul>
+<li>layoutmanager</li>
+<li>ItemDecoration</li>
+<li>ItemAnimator</li>
+<li>adapter</li>
+</ul>
+</li>
+</ul>
+<h2 id="上代码">上代码</h2><pre><code><span class="annotation">@Override</span>
+<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>{
+    <span class="keyword">super</span>.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    initData();<span class="comment">//初始化数据</span>
+    recyclerView= (RecyclerView) findViewById(R.id.myRecyclerView);<span class="comment">//绑定recyclerview</span>
+    <span class="comment">//recyclerView.setLayoutManager(new LinearLayoutManager(this));//按类似listview的方式展示数据</span>
+    <span class="comment">//recyclerView.setLayoutManager(new GridLayoutManager(this,4));//按类似GridVIew的方式展示数据</span>
+    recyclerView.setLayoutManager(<span class="keyword">new</span> StaggeredGridLayoutManager(<span class="number">3</span>,
+            StaggeredGridLayoutManager.VERTICAL));<span class="comment">//按瀑布流的方式展示数据</span>
+    recyclerAdapter=<span class="keyword">new</span> RecyclerAdapter();
+    recyclerView.setAdapter(recyclerAdapter);<span class="comment">//绑定数据填充器</span>
+    recyclerView.setItemAnimator(<span class="keyword">new</span> DefaultItemAnimator());<span class="comment">//设置添加删除动画效果</span>
+    <span class="comment">//recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL_LIST));//设置listview形式的边框</span>
+    <span class="comment">//recyclerView.addItemDecoration(new DividerGridItemDecoration(this));//设置gridView形式的边框</span>
+}
+
+
+<span class="class"><span class="keyword">class</span> <span class="title">RecyclerAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerAdapter</span>.<span class="title">MyViewHolder</span>&gt;</span>{
+    <span class="annotation">@Override</span>
+    <span class="function"><span class="keyword">public</span> MyViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>{
+        MyViewHolder holder = <span class="keyword">new</span> MyViewHolder(LayoutInflater.from(
+                MainActivity.<span class="keyword">this</span>).inflate(R.layout.item_recycler, parent,
+                <span class="keyword">false</span>));
+        <span class="keyword">return</span> holder;
+    }
+    <span class="annotation">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(MyViewHolder holder, <span class="keyword">int</span> position)</span> </span>{
+        <span class="comment">//holder.text_recy.setHeight();</span>
+        holder.text_recy.setText(dataList.get(position));
+        holder.text_recy.getLayoutParams().height=dataHeight.get(position);
+    }
+    <span class="annotation">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> dataList.size();
+    }
+    <span class="class"><span class="keyword">class</span> <span class="title">MyViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>{
+        TextView text_recy;
+        <span class="function"><span class="keyword">public</span> <span class="title">MyViewHolder</span><span class="params">(View itemView)</span> </span>{
+            <span class="keyword">super</span>(itemView);
+            text_recy= (TextView) itemView.findViewById(R.id.text_recy);
+        }
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addData</span><span class="params">(<span class="keyword">int</span> position)</span></span>{
+        dataList.add(position,<span class="string">"inset"</span>);
+        dataHeight.add(position,(<span class="keyword">int</span>)(Math.random()*<span class="number">200</span>)+<span class="number">100</span>);<span class="comment">//添加子模块设置随机高度，实现瀑布流效果</span>
+        notifyItemInserted(position);
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delData</span><span class="params">(<span class="keyword">int</span> position)</span></span>{
+        dataList.remove(position);
+        dataHeight.remove(position);<span class="comment">//维护每个子模块的高度，避免重新加载时修改了高度</span>
+        notifyItemRemoved(position);
+    }
+}
+</code></pre><h2 id="参考文章">参考文章</h2><p>最后附上hongyang大神的链接：<a href="http://blog.csdn.net/lmj623565791/article/details/45059587" target="_blank" rel="external">Android RecyclerView 使用完全解析 体验艺术般的控件</a></p>
+
+            
+            <section class="comment">
+	<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a><a href="#" class="bds_mshare" data-cmd="mshare" title="分享到一键分享"></a></div>
+	<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{},"image":{"viewList":["tsina","tqq","weixin","qzone","renren","sqq","copy","mshare"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="post-Android学习笔记（11）——RecyclerView" data-title="Android学习笔记（11）——RecyclerView" data-url="http://jxust-cgs.github.io/2016/11/02/Android学习笔记（11）——RecyclerView/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+		var duoshuoQuery = {short_name:"qq1055038041"};
+		(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	</script> 
+	<!-- 多说公共JS代码 end -->
+</section>
+	
+
+
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+    <div id="bottom-tip">
+        月下踟蹰 —— <small>遥想秦时月下，英豪追梦千里</small>
+    </div>
+		<small>
+		<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+		<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+		该博客由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动，搭载 <a href="https://github.com/XadillaX/hexadillax" target="_blank">Hexadillax</a> 主题</small>
+		<small>&copy; 2014 -2016 </small>
+    </footer>
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?41b077f24ab3ed7a0461260e0234943c";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+</body>
+</html>
