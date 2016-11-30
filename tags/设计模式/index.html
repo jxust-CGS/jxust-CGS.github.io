@@ -90,7 +90,7 @@
         
     $(function() {
         // page-id...
-        var pageId = "archives/2015/05/index.html";
+        var pageId = "tags/设计模式/index.html";
         pageId = pageId.substr(0, pageId.indexOf("/"));
         if(pageId === "") pageId = "index";
         
@@ -98,35 +98,38 @@
     });
     </script>
     
-
 <div class="container archive-body">
     <div class="row">
-        <div class="col-xs-2 well">
-            <h2 class="archive-icon">2015/5</h2>
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">2</span></li></ul>
+        <div class="col-xs-3 well">
+            <div class="archive-title" >
+                <h2 class="tag-icon">设计模式</h2>
+                <div>
+                    <a href="/tags"><< 返回标签列表</a> 
+                </div>
+            </div>
         </div>
         
-        <div class="col-xs-10">
+        <div class="col-xs-9" id="tag-list-body">
             
-            <article class="post animated rollIn">
+            <article class="post  animated rollIn">
                 <div class="jumbotron">
-                    <h1><a href="/2015/05/05/bootstrap_treeView/" title="给bootstrap的界面中添加同风格树状菜单">给bootstrap的界面中添加同风格树状菜单</a></h1>
+                    <h1><a href="/2016/11/30/学习设计模式/" title="设计模式">设计模式</a></h1>
 
                     
-                        <p>bootstrap-treeView是一个bootstrap的树状图组件。在使用bootstrap时可以使用它很简单就能实现一个树状结构的菜单。</p>
+                        <p>设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。</p>
                     
 
                    <!--  没事乱改
 					<p class="say-title">
 						—— <img src="/images/avatar.gif" class="img-circle index-post-avatar" />
 						<a href="http://jxust-cgs.github.io" target="_blank" title="Jxust_CGS">Jxust_CGS</a>
-						于2015-05-05自豪地以 <a class="article-tag-link" href="/tags/bootstrap/">bootstrap</a> 唠嗑
+						于2016-11-30自豪地以 <a class="article-tag-link" href="/tags/设计模式/">设计模式</a> 唠嗑
 					</p>
 					 -->
 					  <p class="say-title">
 						—— <img src="/images/avatar.gif" class="img-circle index-post-avatar" />
 						<a href="http://jxust-cgs.github.io" target="_blank" title="Jxust_CGS">Jxust_CGS</a>
-						于2015-05-05很高兴与您一起学习分享<a class="article-tag-link" href="/tags/bootstrap/">bootstrap</a>  
+						于2016-11-30很高兴与您一起学习分享<a class="article-tag-link" href="/tags/设计模式/">设计模式</a>  
 					</p>
                 </div>
             </article>
@@ -135,14 +138,10 @@
             
         </div>
     </div>
+        
+    <div class="col-xs-19 all-list-box">
+    </div>
 </div>
-
-<script>
-$(function() {
-    $(".archive-list-count").addClass("badge");
-});
-</script>
-
     <footer id="footer">
     <div id="bottom-tip">
         月下踟蹰 —— <small>遥想秦时月下，英豪追梦千里</small>

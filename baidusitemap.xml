@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>http://jxust-cgs.github.io/2016/11/30/%E5%AD%A6%E4%B9%A0%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2016-11-30T13:02:07.868Z</lastmod>
+    <data>
+        <display>
+        <title>设计模式</title>
+        <pubTime>2016-11-30T13:02:07.868Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="http://jxust-cgs.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://jxust-cgs.github.io/2016/11/02/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%8811%EF%BC%89%E2%80%94%E2%80%94RecyclerView/</loc>
-    <lastmod>2016-11-02T14:14:01.645Z</lastmod>
+    <lastmod>2016-11-02T14:28:23.994Z</lastmod>
     <data>
         <display>
         <title>Android学习笔记（11）——RecyclerView</title>
