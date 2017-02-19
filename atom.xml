@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jxust-cgs.github.io/"/>
-  <updated>2016-11-30T13:02:07.868Z</updated>
+  <updated>2017-02-19T14:06:23.390Z</updated>
   <id>http://jxust-cgs.github.io/</id>
   
   <author>
@@ -17,13 +17,14 @@
   
   <entry>
     <title>设计模式</title>
-    <link href="http://jxust-cgs.github.io/2016/11/30/%E5%AD%A6%E4%B9%A0%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://jxust-cgs.github.io/2016/11/30/学习设计模式/</id>
-    <published>2016-11-30T13:02:07.868Z</published>
-    <updated>2016-11-30T13:02:07.868Z</updated>
+    <link href="http://jxust-cgs.github.io/2017/02/19/%E5%AD%A6%E4%B9%A0%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://jxust-cgs.github.io/2017/02/19/学习设计模式/</id>
+    <published>2017-02-19T14:06:23.390Z</published>
+    <updated>2017-02-19T14:06:23.390Z</updated>
     
     <content type="html">&lt;h1 id=&quot;设计模式&quot;&gt;设计模式&lt;/h1&gt;&lt;p&gt;本篇基本为自己参考其他博客文章以及自己的一些理解所写，此处保留原文链接。&lt;br&gt;参考博客：&lt;a href=&quot;http://www.cnblogs.com/maowang1991/archive/2013/04/15/3023236.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Java开发中的23种设计模式详解&lt;/a&gt;&lt;br&gt;另参考&lt;a href=&quot;http://www.runoob.com/design-pattern/design-pattern-tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;设计模式——菜鸟教程&lt;/a&gt;  &lt;/p&gt;
-&lt;h2 id=&quot;设计模式的分类&quot;&gt;设计模式的分类&lt;/h2&gt;&lt;p&gt;总体来说设计模式分为三大类：&lt;br&gt;创建型模式，共五种：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式。&lt;br&gt;结构型模式，共七种：适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式。&lt;br&gt;行为型模式，共十一种：策略模式、模板方法模式、观察者模式、迭代器模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。&lt;br&gt;&lt;img src=&quot;http://oeb33qix3.bkt.clouddn.com/public/16-11-27/39431889.jpg&quot; alt=&quot;设计模式&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;设计模式的分类&quot;&gt;设计模式的分类&lt;/h2&gt;&lt;p&gt;总体来说设计模式分为三大类：&lt;br&gt;创建型模式，共五种：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式。&lt;br&gt;结构型模式，共七种：适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式。&lt;br&gt;行为型模式，共十一种：策略模式、模板方法模式、观察者模式、迭代器模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。  &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://oeb33qix3.bkt.clouddn.com/public/16-11-27/39431889.jpg&quot; alt=&quot;设计模式&quot;&gt;  &lt;/p&gt;
 &lt;h2 id=&quot;设计原则&quot;&gt;设计原则&lt;/h2&gt;&lt;p&gt;设计模式的六大原则&lt;br&gt;1、开闭原则（Open Close Principle）&lt;br&gt;开闭原则就是说对&lt;strong&gt;扩展开放&lt;/strong&gt;，对&lt;strong&gt;修改关闭&lt;/strong&gt;。在程序需要进行拓展的时候，不能去修改原有的代码，实现一个热插拔的效果。所以一句话概括就是：为了使程序的扩展性好，易于维护和升级。想要达到这样的效果，我们需要使用接口和抽象类，后面的具体设计中我们会提到这点。&lt;br&gt;2、里氏代换原则（Liskov Substitution Principle）&lt;br&gt;在子类中实现父类的抽象方法&lt;strong&gt;不要覆盖掉父类中已经实现的方法&lt;/strong&gt;，这样会导致父类的方法被重写，之后父类如果做修改会给程序带来隐患。&lt;br&gt;里氏代换原则(Liskov Substitution Principle LSP)面向对象设计的基本原则之一。   里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。   LSP是继承复用的基石，只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为。里氏代换原则是对“开-闭”原则的补充。实现“开-闭”原则的关键步骤就是抽象化。而基类与子类的继承关系就是抽象化的具体实现，所以里氏代换原则是对实现抽象化的具体步骤的规范。—— From Baidu 百科&lt;br&gt;3、依赖倒转原则（Dependence Inversion Principle）&lt;br&gt;这个是开闭原则的基础，具体内容：真对接口编程，&lt;strong&gt;依赖于抽象&lt;/strong&gt;而不依赖于具体。&lt;br&gt;4、接口隔离原则（Interface Segregation Principle）&lt;br&gt;这个原则的意思是：使用&lt;strong&gt;多个隔离的接口&lt;/strong&gt;，比使用单个接口要好。还是一个降低类之间的耦合度的意思，从这儿我们看出，其实设计模式就是一个软件的设计思想，从大型软件架构出发，为了升级和维护方便。所以上文中多次出现：降低依赖，降低耦合。&lt;br&gt;5、迪米特法则（最少知道原则）（Demeter Principle）&lt;br&gt;为什么叫最少知道原则，就是说：一个实体应当尽量少的与其他实体之间发生相互作用，使得系统功能&lt;strong&gt;模块相对独立&lt;/strong&gt;。&lt;br&gt;6、合成复用原则（Composite Reuse Principle）&lt;br&gt;原则是尽量使用&lt;strong&gt;合成/聚合&lt;/strong&gt;的方式，而不是使用继承。  &lt;/p&gt;
 &lt;h2 id=&quot;介绍下自己对各个模式的理解&quot;&gt;介绍下自己对各个模式的理解&lt;/h2&gt;&lt;h3 id=&quot;创建型模式&quot;&gt;创建型模式&lt;/h3&gt;&lt;h4 id=&quot;工厂模式&quot;&gt;工厂模式&lt;/h4&gt;&lt;p&gt;用于对功能的扩展的场景：就是对需要完成的事情的不同实现，也就是通过工厂用不同的方式去完成同一件事情。如：发送，有两种实现，发送信息，发送邮件，而工厂就会提供这两种不同的方式去完成发送的任务。用于扩展功能的时候只需要添加&lt;strong&gt;&lt;em&gt;不同的实现&lt;/em&gt;&lt;/strong&gt;到工厂类中即可。&lt;br&gt;1、您需要一辆汽车，可以直接从工厂里面提货，而不用去管这辆汽车是怎么做出来的，以及这个汽车里面的具体实现。&lt;br&gt;2、Hibernate 换数据库只需换方言和驱动就可以。  &lt;/p&gt;
 &lt;h4 id=&quot;抽象工厂模式&quot;&gt;抽象工厂模式&lt;/h4&gt;&lt;p&gt;及在工厂模式的基础上，创建不同的工厂分别以对应的方式去完成相同的任务。用于扩展功能的时候添加&lt;strong&gt;&lt;em&gt;不同的工厂&lt;/em&gt;&lt;/strong&gt;即可。&lt;br&gt;1、QQ 换皮肤，一整套一起换。&lt;br&gt;2、生成不同操作系统的程序。  &lt;/p&gt;
@@ -213,6 +214,95 @@
     
     
       <category term="设计模式" scheme="http://jxust-cgs.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用selenium+python自动化操作浏览器</title>
+    <link href="http://jxust-cgs.github.io/2017/02/19/%E4%BD%BF%E7%94%A8selenium+python%E8%87%AA%E5%8A%A8%E5%8C%96%E6%93%8D%E4%BD%9C%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    <id>http://jxust-cgs.github.io/2017/02/19/使用selenium+python自动化操作浏览器/</id>
+    <published>2017-02-19T13:57:37.649Z</published>
+    <updated>2017-02-19T13:57:37.649Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;了解selenium&quot;&gt;了解selenium&lt;/h1&gt;&lt;p&gt;Selenium 是ThoughtWorks专门为Web应用程序编写的一个验收测试工具。也就是会自动操作浏览器去访问网页，并能获取页面上的数据。&lt;br&gt;&lt;a href=&quot;http://www.seleniumhq.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Selenium官网&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.yiibai.com/selenium/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Selenium教程&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.51testing.com/zhuanti/selenium.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;功能自动化测试工具——Selenium篇&lt;/a&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;环境搭建&quot;&gt;环境搭建&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;安装python2.7  &lt;/li&gt;
+&lt;li&gt;安装谷歌浏览器及谷歌浏览器驱动（也可以是&lt;a href=&quot;http://www.seleniumhq.org/projects/webdriver/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;其他浏览器&lt;/a&gt;）  &lt;/li&gt;
+&lt;li&gt;配置环境变量  &lt;ul&gt;
+&lt;li&gt;x:\Python27;  &lt;/li&gt;
+&lt;li&gt;x:\Python27\Scripts;  &lt;/li&gt;
+&lt;li&gt;x:\Program Files (x86)\Google\Chrome\Application;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;安装pip 执行easy_install pip 在线安装&lt;/li&gt;
+&lt;li&gt;安装selenium for python，执行pip install selenium  &lt;/li&gt;
+&lt;li&gt;测试一段程序，调用浏览器驱动启动浏览器&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;from selenium import webdriver&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import &lt;span class=&quot;tag&quot;&gt;time&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;def &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    b=webdriver.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;Chrome&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;b&lt;/span&gt;.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;string&quot;&gt;&#39;http://www.baidu.com&#39;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;time&lt;/span&gt;.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;b&lt;/span&gt;.&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;quit&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; __name__ == &lt;span class=&quot;string&quot;&gt;&#39;__main__&#39;&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;自动执行动作&quot;&gt;自动执行动作&lt;/h1&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;动作&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;代码&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;打开浏览器&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;b=webdriver.Chrome()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;打开网址&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;b.get(‘&lt;a href=&quot;http://www.baidu.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.baidu.com&lt;/a&gt;‘)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;最大化浏览器&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;self.browser.maximize_window()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;关闭浏览器&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;self.browser.quit()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;等待浏览器响应，直到对应element出现&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;WebDriverWait(self.browser,1000).until(EC.visibility_of_element_located((By.NAME,’username’)))&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;在输入框输入数据&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;self.browser.find_element_by_name(‘username’).send_keys(userName)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;浏览器显示页面停留到对应element所在处&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;self.browser.find_element_by_id(‘main_menu_dashboard’).location_once_scrolled_into_view&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;获得数据&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;value=self.browser.find_element_by_id(‘option_1’).get_attribute(‘value’)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;点击动作&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;self.browser.find_element_by_id(‘button’).click()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;有时click命令不能找到element时可以尝试用script来执行click动作  &lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;tmp=self&lt;span class=&quot;class&quot;&gt;.browser&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.find_element_by_xpath&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;//option[@value=&#39;25&#39;]&quot;&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;self&lt;span class=&quot;class&quot;&gt;.browser&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.execute_script&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;$(arguments[0]).click()&#39;&lt;/span&gt;,tmp)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;定位页面元素——xpath&quot;&gt;定位页面元素——xpath&lt;/h1&gt;&lt;p&gt;在执行完动作后打开了我们需要的页面，我们就需要获取页面上的元素，这时就要定位到页面的元素，熟悉css的同学就知道了element元素，可以像css类似的方式定位，也可以使用xpath去定位。  &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.w3school.com.cn/xpath/index.asp&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;xpath教程&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      自动化操作浏览器，在需要经常操作浏览器查询数据，可以通过selenium+python写一个脚本自动运行操作浏览器获取网页上的数据。
+    
+    </summary>
+    
+      <category term="python" scheme="http://jxust-cgs.github.io/categories/python/"/>
+    
+    
+      <category term="selenium" scheme="http://jxust-cgs.github.io/tags/selenium/"/>
     
   </entry>
   
@@ -3270,74 +3360,6 @@ this.closeSession();
       &lt;h2 id=&quot;Hibernate的查询方式主要由4种&quot;&gt;Hibernate的查询方式主要由4种&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;OID检索方式：利用Session的get()和load()方法加载指定OID对象    &lt;/li&gt;
 &lt;li&gt;HQL检索方式：通过Query接口使用面向对象
-    
-    </summary>
-    
-      <category term="Hibernate" scheme="http://jxust-cgs.github.io/categories/Hibernate/"/>
-    
-    
-      <category term="Hibernate" scheme="http://jxust-cgs.github.io/tags/Hibernate/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>学习Hibernate记录(4)——事务管理</title>
-    <link href="http://jxust-cgs.github.io/2015/11/16/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%884%EF%BC%89/"/>
-    <id>http://jxust-cgs.github.io/2015/11/16/学习Hibernate记录（4）/</id>
-    <published>2015-11-16T03:19:52.000Z</published>
-    <updated>2015-11-17T09:11:27.089Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;事务的特性&quot;&gt;事务的特性&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;原子性  &lt;/li&gt;
-&lt;li&gt;一致性  &lt;/li&gt;
-&lt;li&gt;隔离性  &lt;/li&gt;
-&lt;li&gt;持久性   &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;事务的缺陷&quot;&gt;事务的缺陷&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;脏读取  &lt;/li&gt;
-&lt;li&gt;不可重复读取  &lt;/li&gt;
-&lt;li&gt;幻影行  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;事务的传播行为&quot;&gt;事务的传播行为&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;PROPAGATION_REQUIRED: 如果存在一个事务，则支持当前事务。如果没有事务则开启；  &lt;/li&gt;
-&lt;li&gt;PROPAGATION_SUPPORTS: 如果存在一个事务，支持当前事务。如果没有事务，则非事务的执行；  &lt;/li&gt;
-&lt;li&gt;PROPAGATION_MANDATORY: 如果已经存在一个事务，支持当前事务。如果没有一个活动的事务，则抛出异常；   &lt;/li&gt;
-&lt;li&gt;PROPAGATION_REQUIRES_NEW: 总是开启一个新的事务。如果一个事务已经存在，则将这个存在的事务挂起；   &lt;/li&gt;
-&lt;li&gt;PROPAGATION_NOT_SUPPORTED: 总是非事务地执行，并挂起任何存在的事务；  &lt;/li&gt;
-&lt;li&gt;PROPAGATION_NEVER: 总是非事务地执行，如果存在一个活动事务，则抛出异常；  &lt;/li&gt;
-&lt;li&gt;PROPAGATION_NESTED：如果一个活动的事务存在，则运行在一个嵌套的事务中. 如果没有活动事务, 则按TransactionDefinition.PROPAGATION_REQUIRED 属性执行。  &lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;事务的隔离级别&quot;&gt;事务的隔离级别&lt;/h2&gt;&lt;p&gt;使用Hibernate设置数据库隔离级别&lt;br&gt;在Hibernate的配置文件中可以显示的配置数据库事务隔离级别。每一个隔离级别用一个整数表示：&lt;br&gt;8 - Serializable 串行化&lt;br&gt;4 - Repeatable Read 可重复读&lt;br&gt;2 - Read Commited 可读已提交&lt;br&gt;1 - Read Uncommited 可读未提交&lt;br&gt;在hibernate.cfg.xml中使用hibernate.connection.isolation参数配置数据库事务隔离级别。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/photos/Hibernate_4.1.png&quot; alt=&quot;Hibernate&quot;&gt;&lt;/p&gt;
-&lt;p&gt;事务的只读属性以及超时属性的配置&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;&lt;span class=&quot;keyword&quot;&gt;prop&lt;/span&gt; key=&lt;span class=&quot;string&quot;&gt;&quot;query*&quot;&lt;/span&gt;&amp;gt;PROPAGATION_REQUIRED,timeout_5,readOnly&amp;lt;&lt;span class=&quot;keyword&quot;&gt;prop&lt;/span&gt;&amp;gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;基本的事务&quot;&gt;基本的事务&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
-    Session session = HibernateUtil.currentSession();
-    Transaction tx = session.beginTransaction();  &lt;span class=&quot;comment&quot;&gt;//在默认情况下，开启一个JDBC事物&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; i=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i&amp;lt;&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;; i++)  {
-        Student stu = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Student();
-        stu.setName(&lt;span class=&quot;string&quot;&gt;&quot;Student&quot;&lt;/span&gt; + i);
-        session.&lt;span class=&quot;built_in&quot;&gt;save&lt;/span&gt;(stu);
-    }
-    tx.commit(); &lt;span class=&quot;comment&quot;&gt;//提交事务&lt;/span&gt;
-    session.close();
-} &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt;(Exception e) {…
-    tx.rollback();   &lt;span class=&quot;comment&quot;&gt;//事务回滚&lt;/span&gt;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;Spring的事务管理器&quot;&gt;Spring的事务管理器&lt;/h2&gt;&lt;p&gt;事务管理器的实例&lt;br&gt;Org.springframwork.jdbc.datasource.DataSourceTransactionManagert 用JDBC的 DataSource 去管理事务&lt;br&gt;Org.springframwork.orm.hibernate.HibernateTransactionManager 当持久机制是Hibernate时的事务管理器&lt;br&gt;Org.springframework.orm.jdoTransactionManager 当持久机制是JDO时的事务管理器&lt;br&gt;Org.springframework.transaction.jta.JtaTransactionManager 用JTA管理事务&lt;br&gt;Org.springframwork.orm.ojb.PersistenceBrokerTransactionManager 当持久机制是apache的OJB时的事务管理器  &lt;/p&gt;
-&lt;h2 id=&quot;参考博客&quot;&gt;参考博客&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.blogjava.net/robbie/archive/2009/04/05/264003.html&quot; title=&quot;参考博客链接&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Spring事务配置的五种方式&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/otomedaybreak/archive/2012/01/27/2330008.html#C5&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hibernate事务与并发问题处理（乐观锁与悲观锁）&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/rushoooooo/archive/2011/08/28/2155960.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Spring声明式事务配置管理方法&lt;/a&gt;  &lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;事务的特性&quot;&gt;事务的特性&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;原子性  &lt;/li&gt;
-&lt;li&gt;一致性  &lt;/li&gt;
-&lt;li&gt;隔离性  &lt;/li&gt;
-&lt;li&gt;持久性   &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;事务的缺陷&quot;&gt;事务的缺陷&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;脏读取  &lt;/li
     
     </summary>
     

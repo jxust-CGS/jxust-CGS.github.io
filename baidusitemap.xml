@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>http://jxust-cgs.github.io/2016/11/30/%E5%AD%A6%E4%B9%A0%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2016-11-30T13:02:07.868Z</lastmod>
+    <loc>http://jxust-cgs.github.io/2017/02/19/%E5%AD%A6%E4%B9%A0%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2017-02-19T14:06:23.390Z</lastmod>
     <data>
         <display>
         <title>设计模式</title>
-        <pubTime>2016-11-30T13:02:07.868Z</pubTime>
+        <pubTime>2017-02-19T14:06:23.390Z</pubTime>
         
         <tag>设计模式</tag>
          
@@ -17,6 +17,26 @@
            
              
               <breadCrumb title="设计模式" url="http://jxust-cgs.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jxust-cgs.github.io/2017/02/19/%E4%BD%BF%E7%94%A8selenium+python%E8%87%AA%E5%8A%A8%E5%8C%96%E6%93%8D%E4%BD%9C%E6%B5%8F%E8%A7%88%E5%99%A8/</loc>
+    <lastmod>2017-02-19T13:57:37.649Z</lastmod>
+    <data>
+        <display>
+        <title>使用selenium+python自动化操作浏览器</title>
+        <pubTime>2017-02-19T13:57:37.649Z</pubTime>
+        
+        <tag>selenium</tag>
+         
+         
+           
+             
+              <breadCrumb title="python" url="http://jxust-cgs.github.io/categories/python/"/>
           
         </display>
     </data>
