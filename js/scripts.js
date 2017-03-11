@@ -82,7 +82,7 @@ $(document).ready(function($) {
 		            var st = $(this).scrollTop();
 		            divs.css({
 		                'margin-top': -(st / 0) + "px",
-		                'opacity': 0.9 - st / 1600
+		                'opacity': 0.6 - st / 1600
 		            });
 		        });
 		    });
