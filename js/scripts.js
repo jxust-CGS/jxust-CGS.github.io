@@ -37,7 +37,7 @@ $(document).ready(function($) {
 	        cursorborderradius: "5px",
 	        cursorwidth: 9,
 	        enablemousewheel: true,
-	        background: "rgba(255,255,255,0.7)",
+	        background: "rgba(255,255,255,0.6)",
 		});
 
 		// Page transitions
@@ -94,7 +94,7 @@ $(document).ready(function($) {
 		            var st = $(this).scrollTop();
 		            divs.css({
 		                'margin-top': -(st / 0) + "px",
-		                'opacity': 0.8 - st / 1600
+		                'opacity': 0.6 - st / 1600
 		            });
 		        });
 		    });
@@ -106,7 +106,7 @@ $(document).ready(function($) {
 		            var st = $(this).scrollTop();
 		            divs.css({
 		                'margin-top': -(st / 0) + "px",
-		                'opacity': 0.9 - st / 300
+		                'opacity': 0.6 - st / 300
 		            });
 		        });
 		    });
