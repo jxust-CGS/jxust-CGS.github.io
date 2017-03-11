@@ -1,179 +1,286 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
 
-    <html lang="zh-Hans">
-  
 <head>
-  <meta charset="utf-8">
-  
-  <title>android学习笔记（2） ——UI | 月下踟蹰</title>
-  <meta name="author" content="Jxust_CGS">
-  
-  <meta name="description" content="介绍安卓中界面的构成，总体就是树状的结构，在Viewgroup中嵌套Viewgroup或View，是不是感觉和html的div一样一层层的叠在一起。其实差不多，不过Android中对每个不同的View进行了封装提供了很多常用的View和ViewGroup，不过当然我们还是可以自定义View的，这个暂且不说，之后看到了在写。">
-  
-  <meta name="keywords" content="UI,android,安卓,ViewGroup,View,安卓组件">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <meta property="og:title" content="android学习笔记（2） ——UI"/>
-  <meta property="og:site_name" content="月下踟蹰"/>
-
-  
-    <meta property="og:image" content="undefined"/>
-  
-
-  
-    <meta http-equiv="Content-Language" content="zh-Hans"/>
-  
-
-  <link href="/img/favicon.png" rel="icon">
-  
-    <link rel="apple-touch-icon" href="/img/apple-icon.ico">
-    <link rel="apple-touch-icon-precomposed" href="/img/apple-icon.ico">
+  <title>android学习笔记（2） ——UI | 极光轨迹</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="极光轨迹">
+    
+    <meta name="author" content="Jxust_CGS">
+    
+    <meta name="description" itemprop="description" content="介绍安卓中界面的构成，总体就是树状的结构，在Viewgroup中嵌套Viewgroup或View，是不是感觉和html的div一样一层层的叠在一起。其实差不多，不过Android中对每个不同的View进行了封装提供了很多常用的View和ViewGroup，不过当然我们还是可以自定义View的，这个暂且不说，之后看到了在写。">
+    
+	
+	<meta name="Keywords" content="UI,android,安卓,ViewGroup,View,安卓组件">
     
 
-  <link rel="alternate" href="atom.xml" title="月下踟蹰" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
 
-  
-  <!-- Chinese readability improment -->
-  <style type="text/css">
-    article {font-weight: 400;letter-spacing: .01rem;}
-    article .entry{line-height:2;}
-  </style>
-  
-  
-  <style type="text/css">
-  /* Tim Pietrusky advanced checkbox hack (Android <= 4.1.2) */
-body{ -webkit-animation: bugfix infinite 1s; }
-@-webkit-keyframes bugfix { from {padding:0;} to {padding:0;} }
-</style>
+    <link rel="alternate" href="/atom.xml" title="极光轨迹" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
 
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-48887175-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-
-
-  
-    <!-- 360 Font and Baidu CDN in China -->
     
-      <link href='http://fonts.lug.ustc.edu.cn/css?family=Open+Sans:300,400|Playball' rel='stylesheet' type='text/css'>
-    
-  <link href='http://apps.bdimg.com/libs/fontawesome/4.1.0/css/font-awesome.css' rel='stylesheet' type='text/css'>
-  <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Custom stylesheet, (add custom styles here, always load last) -->
+    <!-- Load our stylesheet for IE8 -->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- Google Webfonts (Monserrat 400/700, Open Sans 400/600) -->
+    <link href='//fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.useso.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+    <!-- Load our fonts individually if IE8+, to avoid faux bold & italic rendering -->
+    <!--[if IE]>
+    <link href='http://fonts.useso.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+
+
+
+
+
+  
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="atom.xml">
+  
+  
+  <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+  
+  
+
   
   <script src="/js/busuanzi.pure.mini.js"></script>
-
-
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 </head>
 
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
 
-<body>
-  <header id="header" class="inner"><div class="padding">
-	<div class="alignleft logo">
-	  <h1><a href="/">月下踟蹰</a></h1>
-	</div>
-	<nav id="main-nav" class="alignright">
-		<input type="checkbox" id="toggle" />
-		<label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick><i class="fa fa-bars"></i></label>
-	  <ul class="menu">
-	    
-	      <li><a href="/">首页</a></li>
-	    
-	      <li><a href="/archives">归档</a></li>
-	    
-	      <li><a href="/curriculumvitae">关于</a></li>
-	    
-	      <li><a href="/links">链接</a></li>
-	    
-	    
-	    	<li><a href="http://www.chenguangsong.online/atom.xml" target="_blank" title="bruce tan blog rss" class="rss-top"><i class="fa fa-rss"></i></a></li>
-	    
-	  </ul>
-	</nav>
-	<div class="clearfix"></div>
-</div>
-</header>
-  <div id="page-heading-wrap">
-  	<div class="inner">
-      <div class="padding">
-    		
-          <h1>android学习笔记（2） ——UI</h1>
-          <ul>
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">首页</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">文章</a></li>
+            <!-- Dropdown Menu -->
+            
+        	<li>
+        		<a class="sb-toggle-submenu">分类<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Hibernate/" class="animsition-link">Hibernate<small>(6)</small></a></li>
+				    
+				    <li><a href="/categories/Java/" class="animsition-link">Java<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Spring/" class="animsition-link">Spring<small>(4)</small></a></li>
+				    
+				    <li><a href="/categories/android/" class="animsition-link">android<small>(11)</small></a></li>
+				    
+				    <li><a href="/categories/android源码/" class="animsition-link">android源码<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/git/" class="animsition-link">git<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/python/" class="animsition-link">python<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/web/" class="animsition-link">web<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/杂谈/" class="animsition-link">杂谈<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/正则表达式/" class="animsition-link">正则表达式<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/设计模式/" class="animsition-link">设计模式<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+			
+        	<li>
+        		<a class="sb-toggle-submenu">标签<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/tags/Hibernate/" class="animsition-link">Hibernate<small>(6)</small></a></li>
+				    
+				    <li><a href="/tags/Json/" class="animsition-link">Json<small>(1)</small></a></li>
+				    
+				    <li><a href="/tags/Spring/" class="animsition-link">Spring<small>(4)</small></a></li>
+				    
+				    <li><a href="/tags/android/" class="animsition-link">android<small>(11)</small></a></li>
+				    
+				    <li><a href="/tags/android源码/" class="animsition-link">android源码<small>(2)</small></a></li>
+				    
+				    <li><a href="/tags/bootstrap/" class="animsition-link">bootstrap<small>(2)</small></a></li>
+				    
+				    <li><a href="/tags/first/" class="animsition-link">first<small>(1)</small></a></li>
+				    
+				    <li><a href="/tags/git/" class="animsition-link">git<small>(1)</small></a></li>
+				    
+				    <li><a href="/tags/selenium/" class="animsition-link">selenium<small>(1)</small></a></li>
+				    
+				    <li><a href="/tags/正则表达式/" class="animsition-link">正则表达式<small>(1)</small></a></li>
+				    
+				    <li><a href="/tags/设计模式/" class="animsition-link">设计模式<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+			
             <li>
-              <span class="heading-span">Posted on: </span>
-              <time datetime="2016-04-01T03:40:54.000Z">2016-04-01</time>
+                <a class="sb-toggle-submenu">其他<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/links" target="_BLANK" class="animsition-link">导航</a></li>
+                    
+                </ul>
             </li>
             
-              <li>
-                <span class="heading-span">By: </span>
-
-                
-                  <a href="/">Jxust_CGS</a>
-                
-
-              </li>
             
             <li>
-              <span class="heading-span">With: </span>
-              
-
-                <a href="#ds-thread"><span class="ds-thread-count" data-thread-key="2016/04/01/android学习笔记（2） ——UI/" data-count-type="comments"></span></a>
-              
+                <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    
+                </ul>
             </li>
-          </ul>
-        
-      </div>
-  	</div>
-  </div>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper" class="padding"><article class="post">
-  
-  
-    <div class="post-content">
-  
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">关于</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">极光轨迹</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/jxust-CGS" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li><a href="http://weibo.com/jxustCGS" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">更多</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <!-- ============================ Hero Image =========================== -->
+
+        <section id="hero" class="scrollme">
+            <div class="container-fluid element-img" style="background: url(/img/1.jpg) no-repeat center center fixed">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                        <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                            <div>
+                            	
+                                <h2>ON THE WAY TO MEET YOU, I NO LONGER LONELY, WELCOME.</h2>
+                                <p></p>
+				    			
+                                <h2></h2>
+                                <p>往昔的努力不可辜负，憧憬的未来不可辜负。</p>
+				    			
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // .col-md-12 -->
+                </div>
+                <div class="herofade beige-dk"></div>
+            </div>
+        </section>
+
+        <!-- Height spacing helper -->
+        <div class="heightblock"></div>
+        <!-- // End height spacing helper -->
+
+        <!-- ============================ END Hero Image =========================== -->
       
-      <div class="entry">
-        
-          <h1 id="UI布局">UI布局</h1><p>第一次开发安卓感觉和j2ee中的web编程有点像，mvc模式，layout布局就是view，activity就是controller，实体类就是model。<br>在android中布局文件是用xml文件编写通过ViewGroup和VIew组成。</p>
+<section id="intro">
+    <div class="container">
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="UI布局">UI布局</h1><p>第一次开发安卓感觉和j2ee中的web编程有点像，mvc模式，layout布局就是view，activity就是controller，实体类就是model。<br>在android中布局文件是用xml文件编写通过ViewGroup和VIew组成。</p>
 <p><img src="http://hi.csdn.net/attachment/201108/21/0_1313928575W9Q0.gif" alt="photo">  </p>
 <h1 id="ViewGroup">ViewGroup</h1><ul>
 <li>GridLayout网格布局 ,必须声明几行几列，可以实现跨行显示（相对于表格的不同）  <pre><code><span class="label">android:</span>layout_row=<span class="string">"0"</span>  
@@ -204,244 +311,127 @@ iv_logo.setImageBitmap(bm);  <span class="comment">// 通过获得assets目录�
 <li>…</li>
 </ul>
 
-        
-      </div>
-      <footer>
-        
-          
-  
-  <div class="categories">
-    <a href="/categories/android/">android</a>
-  </div>
-
-          
-  
-  <div class="tags">
-    <a href="/tags/android/">android</a>
-  </div>
-
-          <div class="share">
-  
-
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+		<div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2016-04-01T03:40:54.000Z" itemprop="datePublished">
+          2016-04-01
+      </time>
+	
     
-      <div class="bdsharebuttonbox"><a href="#" class="bds_twi" data-cmd="twi" title="Share to Twitter"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="Share to Facebook"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="Share to Wechat"></a><a href="#" class="bds_mail" data-cmd="mail" title="分享到邮件分享"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="Share to QQ Friends"></a><a href="#" class="bds_linkedin" data-cmd="linkedin" title="Share to linkedin"></a><a href="#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a></div>
-	  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","bdysc","tqq","bdxc","kaixin001","tqf","tieba","douban","tsohu","bdhome","sqq","thx","qq","ibaidu","taobao","hi","baidu","sohu","t163","qy","meilishuo","mogujie","diandian","huaban","leho","share189","duitang","hx","tfh","fx","youdao","sdo","qingbiji","ifeng","people","xinhua","ff","mail","kanshou","isohu","yaolan","wealink","xg","ty","iguba","fbook","twi","deli","s51","s139","linkedin","copy","print"],"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{},"image":{"viewList":["twi","fbook","tsina","weixin","mail","copy","sqq","linkedin","youdao","qzone","renren","douban"],"viewText":"Share to","viewSize":"24"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-    
-
-    
-
-    
-  
-</div>
-          
-
-        
-        <div class="clearfix"></div>
-      </footer>
-    </div>
-</article>
-
-
-
-<nav id="pagination" >
-    
-    <a href="/2016/04/01/android学习笔记（3） ——ListView/" class="alignleft prev" >上一页</a>
+    | 分类：
+    <a href='/categories/android/'>android</a>
     
     
-    <a href="/2016/03/31/android学习笔记（1） ——activity与intent/" class="alignright next" >下一页</a>
     
-    <div class="clearfix"></div>
+    
+    | 标签：
+    <a href='/tags/android/'>android</a>
+    
+    
+</span>
+                <!-- <h1>android学习笔记（2） ——UI</h1> -->
+            </div>
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2016/04/01/android学习笔记（3） ——ListView/" style="float: left;">
+        ← android学习笔记（3） ——ListView
+    </a>
+    
+    
+    <a class="pull-right" href="/2016/03/31/android学习笔记（1） ——activity与intent/">
+        android学习笔记（1）——activity与intent →
+    </a>
+    
+	<br/>
 </nav>
 
-<section id="comment">
-  <h2 class="title">留言</h2>
-
-  
-
-  <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="post-android学习笔记（2） ——UI" data-title="android学习笔记（2） ——UI" data-url="http://www.chenguangsong.online/2016/04/01/android学习笔记（2） ——UI/"></div>
-  <!-- 多说评论框 end -->
-  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-  <script type="text/javascript">
-  var duoshuoQuery = {short_name:"qq1055038041"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-  </script>
-  <!-- 多说公共JS代码 end -->
-
-  
-</section>
-
-</div></div>
-    <aside id="sidebar" class="alignright"><div class="padding">
-	
-	  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" autocomplete="off" name="q" maxlength="20" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:www.chenguangsong.online">
-  </form>
-</div>
-	
-	  
-<div class="widget recent-post">
-  <h3 class="title">最新文章</h3>
-  <ul class="entry">
-    
-      <li>
-        <a href="/2017/02/19/学习设计模式/">设计模式</a>
-      </li>
-    
-      <li>
-        <a href="/2017/02/19/使用selenium+python自动化操作浏览器/">使用selenium+python自动化操作浏览器</a>
-      </li>
-    
-      <li>
-        <a href="/2016/11/02/Android学习笔记（11）——RecyclerView/">Android学习笔记（11）——RecyclerView</a>
-      </li>
-    
-      <li>
-        <a href="/2016/08/14/Android源码学习——Android L系统设置中的搜索功能/">Android源码学习——Android L中系统设置的搜索功能</a>
-      </li>
-    
-      <li>
-        <a href="/2016/08/12/Java学习笔记（1）——解析json/">Java学习笔记(1)——解析json</a>
-      </li>
-    
-  </ul>
-</div>
-
-	
-	  
-<div class="widget category">
-  <h3 class="title">分类</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/Hibernate/">Hibernate</a><small>6</small></li>
-  
-    <li><a href="/categories/Java/">Java</a><small>1</small></li>
-  
-    <li><a href="/categories/Spring/">Spring</a><small>4</small></li>
-  
-    <li><a href="/categories/android/">android</a><small>11</small></li>
-  
-    <li><a href="/categories/android源码/">android源码</a><small>2</small></li>
-  
-    <li><a href="/categories/git/">git</a><small>1</small></li>
-  
-    <li><a href="/categories/python/">python</a><small>1</small></li>
-  
-    <li><a href="/categories/web/">web</a><small>2</small></li>
-  
-    <li><a href="/categories/杂谈/">杂谈</a><small>1</small></li>
-  
-    <li><a href="/categories/正则表达式/">正则表达式</a><small>1</small></li>
-  
-    <li><a href="/categories/设计模式/">设计模式</a><small>1</small></li>
-  
-  </ul>
-</div>
-
-	
-	  
-<div class="widget tagcloud">
-  <h3 class="title">标签云</h3>
-  <div class="entry">
-    <a href="/tags/Hibernate/" style="font-size: 17.5px;">Hibernate</a><a href="/tags/Json/" style="font-size: 10px;">Json</a><a href="/tags/Spring/" style="font-size: 15px;">Spring</a><a href="/tags/android/" style="font-size: 20px;">android</a><a href="/tags/android源码/" style="font-size: 12.5px;">android源码</a><a href="/tags/bootstrap/" style="font-size: 12.5px;">bootstrap</a><a href="/tags/first/" style="font-size: 10px;">first</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/selenium/" style="font-size: 10px;">selenium</a><a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a><a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
-  </div>
-</div>
-
-	
-	  <div class="widget category">
-	<h3 class="title">Link</h3>
-	<ul class="entry">
-		<li><a href="http://ykzhai.top/" title="cqjn Blog">cqjn's Blog</a></li>
-	</ul>
-</div>
-	
-	  <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="yes" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=1&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=3217883255&verifier=5c6bff53&dpc=1"></iframe>
-	
-</div></aside>
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div class="padding">
-	<div class="alignleft">
-	  
-	  Copyright&copy;2015-2017 <a href="http://www.chenguangsong.online">Jxust_CGS</a>
-	  
-	  | 由 <a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动
-	  主题采用 <a href="https://github.com/hijiangtao/dark-tech/" target="_blank">Dark-Tech</a> | <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-	  <span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
-	</div>
-
-	<div class="alignright">
-		
-		
-			<a href="https://github.com/jxust-CGS" target="_blank" title="Jxust_CGS Github"><i class="fa fa-github-square"></i></a>	
-		
-		
-		
-			<a href="http://weibo.com/jxustCGS" target="_blank" title="Jxust_CGS Weibo"><i class="fa fa-weibo"></i></a>	
-		
-		
-		
-		
-			<a href="http://www.chenguangsong.online/atom.xml" target="_blank" title="Jxust_CGS RSS"><i class="fa fa-rss-square"></i></a>
-		
-	</div>
-
-	<div class="clearfix"></div>
-	<script>
-		var _hmt = _hmt || [];
-		(function() {
-		  var hm = document.createElement("script");
-		  hm.src = "//hm.baidu.com/hm.js?41b077f24ab3ed7a0461260e0234943c";
-		  var s = document.getElementsByTagName("script")[0]; 
-		  s.parentNode.insertBefore(hm, s);
-		})();
-	</script>
-</div>
-
-<div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div></footer>
-  
-
+        <div class="duoshuo">
+<div class="ds-thread" data-thread-key="2016/04/01/android学习笔记（2） ——UI/" data-title="android学习笔记（2） ——UI" data-url="http://www.chenguangsong.online/2016/04/01/android学习笔记（2） ——UI/"></div>
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"qq1055038041"};
 (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
 })();
 </script>
+</div>
+    </div>
+</section>
 
 
+      
+<!-- ============================ Footer =========================== -->
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
-<script src="/js/gallery.js"></script>
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
+					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/jxust-CGS" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="http://weibo.com/jxustCGS" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
 
-
-
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+        
+<!-- Resizable 'on-demand' full-height hero -->
 <script type="text/javascript">
-$(window).scroll(function() {
+    
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+    
+    resizeHero();
+    
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
 
-    if($(this).scrollTop() > 400) {
-        $('.scroll-top').fadeIn(200);
-    } else {
-        $('.scroll-top').fadeOut(200);
-    }
-});
-
-$('.scroll-top').bind('click', function(e) {
-    e.preventDefault();
-    $('body,html').animate({scrollTop:0},200);
-});
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
 </script>
 
 </body>
