@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenguangsong.online/"/>
-  <updated>2017-02-19T14:06:23.390Z</updated>
+  <updated>2017-03-16T14:59:12.874Z</updated>
   <id>http://www.chenguangsong.online/</id>
   
   <author>
@@ -14,6 +14,83 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux学习——命令行颜色配置及环境变量配置</title>
+    <link href="http://www.chenguangsong.online/2017/03/16/linux%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%91%BD%E4%BB%A4%E8%A1%8C%E9%A2%9C%E8%89%B2%E9%85%8D%E7%BD%AE%E5%8F%8A%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/"/>
+    <id>http://www.chenguangsong.online/2017/03/16/linux学习——命令行颜色配置及环境变量配置/</id>
+    <published>2017-03-16T14:59:12.996Z</published>
+    <updated>2017-03-16T14:59:12.874Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;具体步骤&quot;&gt;具体步骤&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;编辑更目录下的.bashrc文件配置颜色显示方案&lt;/li&gt;
+&lt;li&gt;启用颜色配置方案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;编辑配色方案&quot;&gt;编辑配色方案&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/menlsh/archive/2012/08/27/2659101.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;修改linux终端命令行颜色&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;启用配色方案&quot;&gt;启用配色方案&lt;/h1&gt;&lt;p&gt;编辑完成后即可执行&lt;code&gt;source ~/.bashrc&lt;/code&gt;启用配色方案，但是一旦你退出命令行之后颜色方案又没有被启用，这时肯定是没有将配色方案放到环境变量中去，需要在&lt;code&gt;~/.bash_profile&lt;/code&gt;中配置，如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; [ &lt;span class=&quot;operator&quot;&gt;-f&lt;/span&gt; ~/.bashrc ]; &lt;span class=&quot;keyword&quot;&gt;then&lt;/span&gt;  
+. ~/.bashrc  
+&lt;span class=&quot;keyword&quot;&gt;fi&lt;/span&gt;  
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;参考：&lt;a href=&quot;http://www.2cto.com/os/201305/213759.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;.bashrc设置后无效解决&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;环境变量&quot;&gt;环境变量&lt;/h1&gt;&lt;p&gt;/etc/profile，/etc/bashrc 是系统全局环境变量设定&lt;br&gt;~/.profile可以设定本用户专有的路径，环境变量，等，它只能登入的时候执行一次&lt;br&gt;~/.bashrc也是某用户专有设定文档，可以设定路径，命令别名  &lt;/p&gt;
+&lt;h2 id=&quot;添加目录到环境变量中&quot;&gt;添加目录到环境变量中&lt;/h2&gt;&lt;p&gt;在&lt;code&gt;~/.bashrc或~/.profile&lt;/code&gt;中加入如下代码  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;built_in&quot;&gt;PATH&lt;/span&gt;=~/private_shll:$&lt;span class=&quot;built_in&quot;&gt;PATH&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      在linux使用过程中一定会使用到命令行，合理配置命令行中的字符颜色显示对于日常使用十分重要，一个好看的界面还是很重要的，嘿嘿!
+    
+    </summary>
+    
+      <category term="linux" scheme="http://www.chenguangsong.online/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="http://www.chenguangsong.online/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安卓源码学习（2）——内置系统app</title>
+    <link href="http://www.chenguangsong.online/2017/03/03/%E5%AE%89%E5%8D%93%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94%E5%86%85%E7%BD%AE%E7%B3%BB%E7%BB%9Fapp/"/>
+    <id>http://www.chenguangsong.online/2017/03/03/安卓源码学习（2）——内置系统app/</id>
+    <published>2017-03-03T03:45:54.000Z</published>
+    <updated>2017-03-16T14:59:12.791Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/suofeng1234/article/details/51801008&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;android预置apk，覆盖原生apk总结 - suofeng的专栏 - 博客频道 - CSDN.NET&lt;/a&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;如何将带源码的APK预置进系统？&quot;&gt;如何将带源码的APK预置进系统？&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;在 packages/apps 下面以需要预置的 APK的 名字创建一个新文件夹，以预制一个名为RecordingCar的APK 为例&lt;/li&gt;
+&lt;li&gt;将 的Source code 拷贝到 RecordingCar文件夹下，删除 /bin 和 /gen 目录&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在 RecordingCar目录下创建一个名为 Android.mk的文件，内容如下：  &lt;/p&gt;
+&lt;figure class=&quot;highlight makefile&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;constant&quot;&gt;OCAL_PATH&lt;/span&gt;:= &lt;span class=&quot;variable&quot;&gt;$(call my-dir)&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;include $(CLEAR_VARS)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;constant&quot;&gt;LOCAL_MODULE_TAGS&lt;/span&gt; := optional&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;constant&quot;&gt;LOCAL_SRC_FILES&lt;/span&gt; := &lt;span class=&quot;variable&quot;&gt;$(call all-java-files-under, src)&lt;/span&gt; \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;constant&quot;&gt;LOCAL_PACKAGE_NAME&lt;/span&gt; := Recorderingcar&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;constant&quot;&gt;LOCAL_JAVA_LIBRARIES&lt;/span&gt; := telephony-common   //所需要的库文件，没有的话，可以不写&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;include $(BUILD_PACKAGE)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;mtk打开文件 build/target/product/${Project}.mk （其中 ${Project} 表示工程名）&lt;br&gt;将 Recorderingcar添加到 PRODUCT_PACKAGES 里面。&lt;br&gt;如果是高通平台，可以在device，或者build的mkfile文件加入编译选项。&lt;br&gt;另外一种方法就是mk文件中将LOCAL_MODULE_TAGS 属性值设为:= eng user debug，这样不管编译什么版本，该apk都可以编译进去。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;make　clean 然后重新编译整个工程。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;如何将无源码的_APK_预置进系统？&quot;&gt;如何将无源码的 APK 预置进系统？&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;在配置文件中，如device/qcom/project下加入3rdApp文件夹，在该文件夹下创建app,lib和Android.mk文件。&lt;/li&gt;
+&lt;li&gt;将  Recorderingcar.apk 放到app目录 下面&lt;/li&gt;
+&lt;li&gt;将库文件放到lib目录下&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在修改 Android.mk，文件内容如下：&lt;/p&gt;
+  &lt;figure class=&quot;highlight elixir&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;constant&quot;&gt;LOCAL_PATH &lt;/span&gt;&lt;span class=&quot;symbol&quot;&gt;:&lt;/span&gt;= &lt;span class=&quot;variable&quot;&gt;$(&lt;/span&gt;call my-dir)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;constant&quot;&gt;CLEAR_VARS)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;# Module name should match apk name to be installed&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;constant&quot;&gt;LOCAL_MODULE &lt;/span&gt;&lt;span class=&quot;symbol&quot;&gt;:&lt;/span&gt;= &lt;span class=&quot;constant&quot;&gt;Test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;constant&quot;&gt;LOCAL_MODULE_TAGS &lt;/span&gt;&lt;span class=&quot;symbol&quot;&gt;:&lt;/span&gt;= optional&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;constant&quot;&gt;LOCAL_SRC_FILES &lt;/span&gt;&lt;span class=&quot;symbol&quot;&gt;:&lt;/span&gt;= &lt;span class=&quot;variable&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;constant&quot;&gt;LOCAL_MODULE)&lt;/span&gt;.apk&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;constant&quot;&gt;LOCAL_MODULE_CLASS &lt;/span&gt;&lt;span class=&quot;symbol&quot;&gt;:&lt;/span&gt;= &lt;span class=&quot;constant&quot;&gt;APPS&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;constant&quot;&gt;LOCAL_MODULE_SUFFIX &lt;/span&gt;&lt;span class=&quot;symbol&quot;&gt;:&lt;/span&gt;= &lt;span class=&quot;variable&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;constant&quot;&gt;COMMON_ANDROID_PACKAGE_SUFFIX)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;constant&quot;&gt;LOCAL_CERTIFICATE &lt;/span&gt;&lt;span class=&quot;symbol&quot;&gt;:&lt;/span&gt;= &lt;span class=&quot;constant&quot;&gt;PRESIGNED&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;constant&quot;&gt;BUILD_PREBUILT)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ```  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* 在mk文件中，将lib目录下的库文件copy到system/lib目录下  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    其余的步骤和上面类似。  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    如果预置的同时，要覆盖原生apk，则关于android.mk中的&lt;span class=&quot;constant&quot;&gt;LOCAL_OVERRIDES_PACKAGES需&lt;/span&gt;要说明一下，此变量可以使其他的模块不加入编译，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    如&lt;span class=&quot;symbol&quot;&gt;:&lt;/span&gt; 需要预置第三方的&lt;span class=&quot;constant&quot;&gt;Launcher启&lt;/span&gt;动器，则在预置apk的mk文件中加入：&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  LOCAL_OVERRIDES_PACKAGES := Luancher2&lt;br&gt;  ```&lt;br&gt;  这样系统就不会将原生的Launcher编译进去，当然也可以在mk文件中编译开关中将相应Launcher注释掉。&lt;br&gt;  KK-android4.4版本上应用权限无法获取的问题是预置apk以后发现原因查了下,发现现在增加了一个priv-app的文件夹，对于android:protectionLevel=”signature|system”的权限，并且签名不一致的情况下，建议放在priv-app下面，否则PackageManager 会拒绝分配给你权限。（有兴趣的同学可以参见：PackageManagerService 的 grantSignaturePermission 方法）&lt;br&gt;  加入priv-app方法：在Android.mk中增加 LOCAL_PRIVILEGED_MODULE := true&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      在进行app源码开发的时候经常会遇到需求就是内置系统app，那么如果才能将一个app内置的系统中去呢？
+    
+    </summary>
+    
+      <category term="android" scheme="http://www.chenguangsong.online/categories/android/"/>
+    
+    
+      <category term="android源码" scheme="http://www.chenguangsong.online/tags/android%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
   
   <entry>
     <title>设计模式</title>
@@ -3128,245 +3205,6 @@ public &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt
     
     
       <category term="android" scheme="http://www.chenguangsong.online/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>学习Hibernate记录(6)——映射关联</title>
-    <link href="http://www.chenguangsong.online/2015/11/23/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%886%EF%BC%89/"/>
-    <id>http://www.chenguangsong.online/2015/11/23/学习Hibernate记录（6）/</id>
-    <published>2015-11-23T13:38:32.000Z</published>
-    <updated>2015-12-06T13:42:39.642Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;映射关联配置&quot;&gt;映射关联配置&lt;/h2&gt;&lt;p&gt;总体来说在Hibernate中对象的关系主要有：  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;一对一&lt;br&gt;依照映射方法不同，可分为主键关联映射和唯一外键关联映射。主键关联是维护两张表的主键一致，如有必要还可以在主键上再加上外键约束；唯一外键关联则类似于多对一关联，为表加入一个外键列，不过一对一关联会同时将这个外键加上唯一约束。&lt;br&gt;此处给出双向关联的实例代码：根据具体可以只使用单向的关联  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;主键双向关联  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- bean/User.hbm.xml --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.User&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_user&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 指定主键生成策略为外键 --&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;foreign&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 指定要参照的属性 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;param&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;property&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;group&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;param&lt;/span&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;one-to-one&amp;gt;映射一对一关系。 --&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;one-to-one&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;group&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;  
-&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- bean/Group.hbm.xml --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.Group&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_group&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;native&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;one-to-one&amp;gt;映射一对一关系 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;one-to-one&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;user&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;唯一外键双向关联  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- bean/User.hbm.xml --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.User&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_user&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;native&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 为&amp;lt;many-to-one&amp;gt;加上unique就变成了一对一 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;many-to-one&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;group&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;unique&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;true&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;gid&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- bean/Group.hbm.xml --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.Group&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_group&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;native&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;one-to-one&amp;gt;映射一对一 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;one-to-one&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;user&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;一对多&lt;br&gt;此处给出双向关联的实例代码：根据具体可以只使用单向的关联，特别强调的是要根据使用的场景不同注意级联关系的处理和抓取策略的选择。&lt;br&gt;一般一对多的使用用于集合包含的关系，亦可以自己对自己进行一对多的关联可以形成一个父子对象的关系  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- bean/User.hbm.xml --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.User&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_user&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;native&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;many-to-one&amp;gt;映射多对一关系。导出ddl时将自动生成一个外键 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;many-to-one&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;group&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;gid&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- bean/Group.hbm.xml --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.Group&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_group&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;native&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;set&amp;gt;映射集合 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;users&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;key&amp;gt;指定引用至自身的外键表（t_user）中的外键 --&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;gid&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;one-to-many&amp;gt;映射一对多关系 --&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;one-to-many&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.User&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;set&lt;/span&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;多对多&lt;br&gt;此处给出双向关联的实例代码：根据具体可以只使用单向的关联  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- bean/User.hbm.xml --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.User&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_user&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;native&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;set&amp;gt;映射集合，在多对多关系中，Hibernate将生成第三张表 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;groups&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_user_group&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;key&amp;gt;指定引用至自身的外键表（t_user_group）中的外键 --&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;userid&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;many-to-many&amp;gt;映射多对多关系，column指定另一端在表t_user_group中的列 --&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;many-to-many&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.Group&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;groupid&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;set&lt;/span&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- bean/Group.hbm.xml --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.Group&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_group&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;id&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;native&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;id&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;name&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;set&amp;gt;映射集合，在多对多关系中，Hibernate将生成第三张表 --&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;users&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;table&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;t_user_group&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;key&amp;gt;指定引用至自身的外键表（t_user_group）中的外键 --&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;group&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 使用&amp;lt;many-to-many&amp;gt;映射多对多关系，column指定另一端在表t_user_group中的列 --&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;many-to-many&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;bean.User&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;column&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;userid&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;set&lt;/span&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;class&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;hibernate-mapping&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;级联关系：casecde属性的相关介绍在&lt;a href=&quot;http://jxust-cgs.github.io/2015/11/03/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%883%EF%BC%89/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;学习Hibernate记录（3）&lt;/a&gt;中有介绍此处省略&lt;br&gt;多对多的双向关联同样可以在不想要维护关系的一端的&lt;set&gt;里设置inverse=”true”；但是必须有一端可以维护，也就是说只可以设置一个。&lt;br&gt;&lt;a href=&quot;http://blog.sina.com.cn/s/blog_6e5195850100oats.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hibernate中的集合类的配置&lt;/a&gt;&lt;/set&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Hibernate乐观锁和悲观锁&quot;&gt;Hibernate乐观锁和悲观锁&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/Fskjb/archive/2010/04/10/1709269.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hibernate乐观锁和悲观锁(转)&lt;/a&gt;  &lt;/p&gt;
-&lt;h2 id=&quot;sql常用聚合查询&quot;&gt;sql常用聚合查询&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;count:SELECT COUNT(&amp;lt;计数规范&amp;gt;) FROM &amp;lt;表名&amp;gt;&lt;br&gt;其中，计数规范包括：&lt;br&gt;  ‘    * ’ 列名：计数所有选择的行，包括NULL值；&lt;br&gt;  ‘   ALL’ 列名：计数指定列的所有非空值行，如果不写，默认为ALL；&lt;br&gt;DISTINCT 列名：计数指定列的唯一非空值行。  &lt;/li&gt;
-&lt;li&gt;sun:SELECT SUM(student_age) FROM t_student;   &lt;/li&gt;
-&lt;li&gt;avg:SELECT AVG(student_age)FROM t_student;&lt;/li&gt;
-&lt;li&gt;max:SELECT MAX(student_age) FROM t_student;  &lt;/li&gt;
-&lt;li&gt;min:SELECT MIN(student_age) FROM t_student;  &lt;/li&gt;
-&lt;li&gt;分组查询：SELECT student_class,COUNT(ALL student_name) AS 总人数 FROM t_student GROUP BY (student_class);   &lt;/li&gt;
-&lt;li&gt;过滤查询: SELECT student_class,AVG(student_age) AS 平均年龄 FROM t_student GROUP BY (student_class) HAVING AVG(student_age)&amp;gt;20;    &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;SQL的执行顺序：&lt;br&gt;–第一步：执行FROM&lt;br&gt;–第二步：WHERE条件过滤&lt;br&gt;–第三步：GROUP BY分组&lt;br&gt;–第四步：执行SELECT投影列&lt;br&gt;–第五步：HAVING条件过滤&lt;br&gt;–第六步：执行ORDER BY 排序    &lt;/p&gt;
-&lt;h2 id=&quot;参考博客&quot;&gt;参考博客&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/huxi/archive/2009/12/15/1624988.html&quot; title=&quot;参考博客链接&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hibernate关联映射&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/ghost-xyx/p/3811036.html?utm_source=tuicool&amp;amp;utm_medium=referral&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SQL语句汇总（三）——聚合函数、分组、子查询及组合查询&lt;/a&gt;  &lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;映射关联配置&quot;&gt;映射关联配置&lt;/h2&gt;&lt;p&gt;总体来说在Hibernate中对象的关系主要有：  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;一对一&lt;br&gt;依照映射方法不同，可分为主键关联映射和唯一外键关联映射。主键关联是维护两张表的主键一致，如有必要还可以在主键上再加上外键
-    
-    </summary>
-    
-      <category term="Hibernate" scheme="http://www.chenguangsong.online/categories/Hibernate/"/>
-    
-    
-      <category term="Hibernate" scheme="http://www.chenguangsong.online/tags/Hibernate/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>学习Hibernate记录(5)——数据查询</title>
-    <link href="http://www.chenguangsong.online/2015/11/22/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%885%EF%BC%89/"/>
-    <id>http://www.chenguangsong.online/2015/11/22/学习Hibernate记录（5）/</id>
-    <published>2015-11-22T02:42:38.000Z</published>
-    <updated>2015-12-06T11:11:58.282Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;Hibernate的查询方式主要由4种&quot;&gt;Hibernate的查询方式主要由4种&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;OID检索方式：利用Session的get()和load()方法加载指定OID对象    &lt;/li&gt;
-&lt;li&gt;HQL检索方式：通过Query接口使用面向对象的HQL查询语言    &lt;/li&gt;
-&lt;li&gt;QBC检索方式：使用QBC（Query by Criteria）API检索对象  &lt;/li&gt;
-&lt;li&gt;本地SQL检索方式:使用SQLQuery接口使用SQL语言查询     &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;OID检索方式&quot;&gt;OID检索方式&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;User user=(User) session.get(“jxust.config.User”, 2);&lt;/li&gt;
-&lt;li&gt;User user=(User) session.get(User.class, 2);&lt;/li&gt;
-&lt;li&gt;User user=(User) session.load(“jxust.config.User”, 2);  &lt;/li&gt;
-&lt;li&gt;User user=(User) session.load(User.class, 2);  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;对比Session.get()和Session.load()方法&lt;br&gt;get方法会在调用之后立即向数据库发出sql语句（不考虑缓存的情况下），返回持久化对象，不支持lazy延时加载；&lt;br&gt;load方法会在调用后返回一个代理对象，该代理对象只保存了实体对象的id，直到使用对象的非主键属性时才会发出sql语句。查询数据库中不存在的数据时，get方法返回null，load方法抛出异常：org.hibernate.ObjectNotFoundException,支持lazy延时加载;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/photos/Hibernate_5.1.jpg&quot; alt=&quot;Hibernate&quot;&gt;  &lt;/p&gt;
-&lt;h2 id=&quot;HQL检索方式&quot;&gt;HQL检索方式&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;this.openSession();
-&lt;span class=&quot;keyword&quot;&gt;Query&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;=this.getSession().createQuery(&quot;from User &lt;span class=&quot;keyword&quot;&gt;u&lt;/span&gt; where &lt;span class=&quot;keyword&quot;&gt;u&lt;/span&gt;.name=:name);
-&lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;,&quot;cgs&quot;&lt;/span&gt;);
-&lt;span class=&quot;keyword&quot;&gt;List&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;list&lt;/span&gt;=&lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;list&lt;/span&gt;();
-&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(int i=0;i&amp;lt;&lt;span class=&quot;keyword&quot;&gt;list&lt;/span&gt;.size();i++)
-{
-    User user=(User)&lt;span class=&quot;keyword&quot;&gt;list&lt;/span&gt;.&lt;span class=&quot;literal&quot;&gt;get&lt;/span&gt;(i);
-    System.&lt;span class=&quot;keyword&quot;&gt;out&lt;/span&gt;.printf(&lt;span class=&quot;string&quot;&gt;&quot;NAME=&quot;&lt;/span&gt;+user.getName());
-}
-this.closeSession();
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;只返回一个对象：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;type&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;object&lt;/span&gt;=this.getSession&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;.createQuery(&lt;span class=&quot;string&quot;&gt;&quot;from User&quot;&lt;/span&gt;).setMaxResult(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;).uniqueResult&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;批量检索对象（分页查询数据）：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;Query&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;=this.getSession().createQuery(&lt;span class=&quot;string&quot;&gt;&quot;from User&quot;&lt;/span&gt;);
-&lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;.setFirstResult(0);&lt;span class=&quot;comment&quot;&gt;//第0条数据开始&lt;/span&gt;
-&lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;.setMaxResult(6);&lt;span class=&quot;comment&quot;&gt;//结果最大包括6条数据&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;QBC检索方式&quot;&gt;QBC检索方式&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;this.openSession&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;
-&lt;span class=&quot;type&quot;&gt;Criteria&lt;/span&gt; criteria=this.getSession&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;.createCriteria(&lt;span class=&quot;type&quot;&gt;User&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;);
-&lt;span class=&quot;type&quot;&gt;Criterion&lt;/span&gt; c=&lt;span class=&quot;type&quot;&gt;Expression&lt;/span&gt;.eq(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;cgs&quot;&lt;/span&gt;);
-criteria=criterion.add(c);
-&lt;span class=&quot;type&quot;&gt;List&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;list&lt;/span&gt;=criteria.&lt;span class=&quot;built_in&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;
-&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; i=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;i&amp;lt;&lt;span class=&quot;built_in&quot;&gt;list&lt;/span&gt;.size&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;i++)
-{
-    &lt;span class=&quot;type&quot;&gt;User&lt;/span&gt; user=(&lt;span class=&quot;type&quot;&gt;User&lt;/span&gt;)&lt;span class=&quot;built_in&quot;&gt;list&lt;/span&gt;.get(i);
-    &lt;span class=&quot;type&quot;&gt;System&lt;/span&gt;.out.printf(&lt;span class=&quot;string&quot;&gt;&quot;NAME=&quot;&lt;/span&gt;+user.getName&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;);
-}
-this.closeSession&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;/photos/Hibernate_5.2.jpg&quot; alt=&quot;Hibernate&quot;&gt;&lt;/p&gt;
-&lt;p&gt;只返回一个对象：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;type&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;object&lt;/span&gt;=this.getSession&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;.createCriteria(&lt;span class=&quot;string&quot;&gt;&quot;User.class&quot;&lt;/span&gt;).setMaxResult(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;).uniqueResult&lt;span class=&quot;literal&quot;&gt;()&lt;/span&gt;;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;批量检索对象（分页查询数据）：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;Query&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;=this.getSession().createCriteria(&lt;span class=&quot;string&quot;&gt;&quot;User.class&quot;&lt;/span&gt;);
-&lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;.setFirstResult(0);&lt;span class=&quot;comment&quot;&gt;//第0条数据开始&lt;/span&gt;
-&lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;.setMaxResult(6);&lt;span class=&quot;comment&quot;&gt;//结果最大包括6条数据&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;数据设置排序  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;criteria.addOrder(&lt;span class=&quot;keyword&quot;&gt;Order&lt;/span&gt;.asc(&lt;span class=&quot;string&quot;&gt;&quot;id&quot;&lt;/span&gt;));
-criteria.addOrder(&lt;span class=&quot;keyword&quot;&gt;Order&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;desc&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;));
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;本地SQL检索方式&quot;&gt;本地SQL检索方式&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;this.openSession();
-&lt;span class=&quot;keyword&quot;&gt;Query&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;=this.getSession().createSQLQuery(&lt;span class=&quot;string&quot;&gt;&quot;select * from user&quot;&lt;/span&gt;).addEntity(User.&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;);
-&lt;span class=&quot;comment&quot;&gt;//Query query=this.getSession().createSQLQuery(&quot;select u.* from user u&quot;).addEntity(&quot;u&quot;,User.class);&lt;/span&gt;
-&lt;span class=&quot;keyword&quot;&gt;List&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;list&lt;/span&gt;=&lt;span class=&quot;keyword&quot;&gt;query&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;list&lt;/span&gt;();
-&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(int i=0;i&amp;lt;&lt;span class=&quot;keyword&quot;&gt;list&lt;/span&gt;.size();i++)
-{
-    User user=(User)&lt;span class=&quot;keyword&quot;&gt;list&lt;/span&gt;.&lt;span class=&quot;literal&quot;&gt;get&lt;/span&gt;(i);
-    System.&lt;span class=&quot;keyword&quot;&gt;out&lt;/span&gt;.printf(&lt;span class=&quot;string&quot;&gt;&quot;NAME=&quot;&lt;/span&gt;+user.getName());
-}
-this.closeSession();
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;参考博客&quot;&gt;参考博客&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/chssheng2007/article/details/6701970&quot; title=&quot;参考博客链接&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hibernate数据查询&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/luotaoyeah/p/3862974.html&quot; title=&quot;参考博客链接&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hibernate中Session的get和load&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Hibernate的查询方式主要由4种&quot;&gt;Hibernate的查询方式主要由4种&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;OID检索方式：利用Session的get()和load()方法加载指定OID对象    &lt;/li&gt;
-&lt;li&gt;HQL检索方式：通过Query接口使用面向对象
-    
-    </summary>
-    
-      <category term="Hibernate" scheme="http://www.chenguangsong.online/categories/Hibernate/"/>
-    
-    
-      <category term="Hibernate" scheme="http://www.chenguangsong.online/tags/Hibernate/"/>
     
   </entry>
   

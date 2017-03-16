@@ -117,11 +117,13 @@
 				    
 				    <li><a href="/categories/Spring/" class="animsition-link">Spring<small>(4)</small></a></li>
 				    
-				    <li><a href="/categories/android/" class="animsition-link">android<small>(11)</small></a></li>
+				    <li><a href="/categories/android/" class="animsition-link">android<small>(12)</small></a></li>
 				    
 				    <li><a href="/categories/android源码/" class="animsition-link">android源码<small>(2)</small></a></li>
 				    
 				    <li><a href="/categories/git/" class="animsition-link">git<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/linux/" class="animsition-link">linux<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/python/" class="animsition-link">python<small>(1)</small></a></li>
 				    
@@ -149,13 +151,15 @@
 				    
 				    <li><a href="/tags/android/" class="animsition-link">android<small>(11)</small></a></li>
 				    
-				    <li><a href="/tags/android源码/" class="animsition-link">android源码<small>(2)</small></a></li>
+				    <li><a href="/tags/android源码/" class="animsition-link">android源码<small>(3)</small></a></li>
 				    
 				    <li><a href="/tags/bootstrap/" class="animsition-link">bootstrap<small>(2)</small></a></li>
 				    
 				    <li><a href="/tags/first/" class="animsition-link">first<small>(1)</small></a></li>
 				    
 				    <li><a href="/tags/git/" class="animsition-link">git<small>(1)</small></a></li>
+				    
+				    <li><a href="/tags/linux/" class="animsition-link">linux<small>(1)</small></a></li>
 				    
 				    <li><a href="/tags/selenium/" class="animsition-link">selenium<small>(1)</small></a></li>
 				    
@@ -280,6 +284,100 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2015/11/23/学习Hibernate记录（6）/">学习Hibernate记录(6)——映射关联</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2015-11-23T13:38:32.000Z" itemprop="datePublished">
+          2015-11-23
+      </time>
+	
+    
+    | 分类：
+    <a href='/categories/Hibernate/'>Hibernate</a>
+    
+    
+    
+    
+    | 标签：
+    <a href='/tags/Hibernate/'>Hibernate</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+						
+							<p>映射关联配置总体来说在Hibernate中对象的关系主要有：  
+
+一对一依照映射方法不同，可分为主键关联映射和唯一外键关联映射。主键关联是维护两张表的主键一致，如有必要还可以在主键上再加上外键约束；唯一外键关联则类似于多对一关联，为表加入一个外键列，不过一对一关联会同时将这个外键加上唯一约束。此处给出双向关联的实例代码：根据具体可以只使用单向的关联  
+
+主键双向关联  
+&amp;lt;!-- bea</p>
+						
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2015/11/23/学习Hibernate记录（6）/">查看全文...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2015/11/22/学习Hibernate记录（5）/">学习Hibernate记录(5)——数据查询</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2015-11-22T02:42:38.000Z" itemprop="datePublished">
+          2015-11-22
+      </time>
+	
+    
+    | 分类：
+    <a href='/categories/Hibernate/'>Hibernate</a>
+    
+    
+    
+    
+    | 标签：
+    <a href='/tags/Hibernate/'>Hibernate</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+						
+							<p>Hibernate的查询方式主要由4种
+OID检索方式：利用Session的get()和load()方法加载指定OID对象    
+HQL检索方式：通过Query接口使用面向对象的HQL查询语言    
+QBC检索方式：使用QBC（Query by Criteria）API检索对象  
+本地SQL检索方式:使用SQLQuery接口使用SQL语言查询     
+
+OID检索方式
+User user=</p>
+						
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2015/11/22/学习Hibernate记录（5）/">查看全文...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -636,93 +734,6 @@ Xml</p>
                     
                     <p class="pull-right readMore">
                         <a href="/2015/10/24/学习Spring记录（1）/">查看全文...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/05/05/bootstrap_treeView/">给bootstrap的界面中添加同风格树状菜单</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-05-05T05:32:54.000Z" itemprop="datePublished">
-          2015-05-05
-      </time>
-	
-    
-    | 分类：
-    <a href='/categories/web/'>web</a>
-    
-    
-    
-    
-    | 标签：
-    <a href='/tags/bootstrap/'>bootstrap</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-						
-							<p>bootstrap-treeView是一个bootstrap的树状图组件。在使用bootstrap时可以使用它很简单就能实现一个树状结构的菜单。</p>
-						
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/05/05/bootstrap_treeView/">查看全文...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2015/04/21/grumble/">使用groumble.js给页面添加泡泡提示框</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2015-04-21T10:15:31.000Z" itemprop="datePublished">
-          2015-04-21
-      </time>
-	
-    
-    | 分类：
-    <a href='/categories/web/'>web</a>
-    
-    
-    
-    
-    | 标签：
-    <a href='/tags/bootstrap/'>bootstrap</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-						
-							<p>使用的方式首先是需要下载到groumble的css和js文件（可以访问官方github）在页面中正确链接css和js文件绑定页面的DOM元素或事件调用js例如在密码是输入框选中是弹出提示框  
-&amp;lt;script&amp;gt;  
-    $(&quot;#userPassword&quot;).focus(function(){  
-        $(this).grumble(  
-            {  
-</p>
-						
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2015/04/21/grumble/">查看全文...</a>
                     </p>
                     
                 </div>
