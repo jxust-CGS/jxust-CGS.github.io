@@ -7,7 +7,7 @@
 jQuery(document).ready(function ($) {
     $("#xiaoren").mousedown(function (e) {
         if(e.which==3){
-        showMessage("秘密通道:<br />    <a href=\"http://www.chenguangsong.online/" title=\"首页\">首页</a>    <a href=\"http://www.chenguangsong.online/" title=\"友情链接\">友情链接</a>    <a href=\"http://www.chenguangsong.online/" title=\"RSS\">RSS</a> ",10000);
+        showMessage("秘密通道:<br />    <a href=\"http://www.chenguangsong.online/\" title=\"首页\">首页</a>    <a href=\"http://www.chenguangsong.online/\" title=\"友情链接\">友情链接</a>    <a href=\"http://www.chenguangsong.online/\" title=\"RSS\">RSS</a> ",10000);
 }
 });
 $("#xiaoren").bind("contextmenu", function(e) {
@@ -39,7 +39,7 @@ jQuery(document).ready(function ($) {
 
 //开始
 jQuery(document).ready(function ($) {
-    if (isindex) { //如果是主页
+    /*if (isindex) { //如果是主页
         var now = (new Date()).getHours();
         if (now > 0 && now <= 6) {
             showMessage(visitor + ' 你是夜猫子呀？还不睡觉，明天起的来么你？', 6000);
@@ -55,10 +55,12 @@ jQuery(document).ready(function ($) {
     }
     else {
         showMessage('欢迎' + visitor + '来到Anotherhome阅读 ' + title + ' ', 6000);
-    }
+    }*/
+	showMessage('欢迎来到“极光轨迹”阅读，小路飞还在测试过程中，偶尔卖萌勿怪^_^ ', 6000);
     $(".xiaoren").animate({
-        top: $(".xiaoren").offset().top + 300,
-        left: document.body.offsetWidth - 160
+        top: $(".xiaoren").offset().top + 500,
+		left: 160
+        //left: document.body.offsetWidth - 160
     },
 	{
 	    queue: false,
