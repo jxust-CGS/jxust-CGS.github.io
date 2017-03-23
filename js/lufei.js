@@ -7,7 +7,10 @@
 jQuery(document).ready(function ($) {
     $("#xiaoren").mousedown(function (e) {
         if(e.which==3){
-        showMessage("秘密通道:<br />    <a href=\"http://www.chenguangsong.online/\" title=\"首页\">首页</a>    <a href=\"http://www.chenguangsong.online/\" title=\"友情链接\">友情链接</a>    <a href=\"http://www.chenguangsong.online/\" title=\"RSS\">RSS</a> ",10000);
+        showMessage("秘密通道:<br /> "+
+		" <a href=\"http://www.chenguangsong.online/\" title=\"首页\">首页</a> "+
+		" <a href=\"http://www.chenguangsong.online/links\" title=\"友情链接\">友情链接</a> "+
+		" <a href=\"http://www.chenguangsong.online/atom.xml\" title=\"RSS\">RSS</a>  ",10000);
 }
 });
 $("#xiaoren").bind("contextmenu", function(e) {
@@ -28,7 +31,7 @@ jQuery(document).ready(function ($) {
     //$(".lufei").jrumble({rangeX: 2,rangeY: 2,rangeRot: 1});
     $(".lufei").mouseover(function () {
        $(".lufei").fadeTo("300", 0.3);
-       msgs = ["我隐身了，你看不到我", "我会隐身哦！嘿嘿！", "别动手动脚的，把手拿开！", "把手拿开我才出来！"];
+       msgs = ["我隐身了，你看不到我", "我会隐身哦！嘿嘿！", "别动手动脚的，把手拿开！", "把手拿开我才出来！","不要点我，我会生气的！","你再点我，我叫主人拉黑你，哼！","你再点我，我就不跟你玩儿了！"];
        var i = Math.floor(Math.random() * msgs.length);
         showMessage(msgs[i]);
     });
@@ -39,24 +42,25 @@ jQuery(document).ready(function ($) {
 
 //开始
 jQuery(document).ready(function ($) {
-    /*if (isindex) { //如果是主页
-        var now = (new Date()).getHours();
-        if (now > 0 && now <= 6) {
-            showMessage(visitor + ' 你是夜猫子呀？还不睡觉，明天起的来么你？', 6000);
-        } else if (now > 6 && now <= 11) {
-            showMessage(visitor + ' 早上好，早起的鸟儿有虫吃噢！早起的虫儿被鸟吃，你是鸟儿还是虫儿？嘻嘻！', 6000);
-        } else if (now > 11 && now <= 14) {
-            showMessage(visitor + ' 中午了，吃饭了么？不要饿着了，饿死了谁来挺我呀！', 6000);
-        } else if (now > 14 && now <= 18) {
-            showMessage(visitor + ' 中午的时光真难熬！还好有你在！', 6000);
-        } else {
-            showMessage(visitor + ' 快来逗我玩吧！', 6000);
-        }
-    }
-    else {
-        showMessage('欢迎' + visitor + '来到Anotherhome阅读 ' + title + ' ', 6000);
-    }*/
-	showMessage('欢迎来到“极光轨迹”阅读，小路飞还在测试过程中，偶尔卖萌勿怪^_^ ', 6000);
+	if(1==Math.floor(Math.random() * 2)){
+		var now = (new Date()).getHours();
+		if (now > 0 && now <= 6) {
+			showMessage(' 你是夜猫子呀？还不睡觉，明天起的来么你？', 6000);
+		} else if (now > 6 && now <= 9) {
+			showMessage(' 早上好，早起的鸟儿有虫吃噢！早起的虫儿被鸟吃，你是鸟儿还是虫儿？嘻嘻！', 6000);
+		} else if (now > 11 && now <= 14) {
+			showMessage(' 中午了，吃饭了么？不要饿着了，饿死了谁来挺我呀！', 6000);
+		} else if (now > 14 && now <= 18) {
+			showMessage(' 下午的时光真难熬！还好有你在！', 6000);
+		} else if (now > 18 && now <= 20) {
+			showMessage(' 我要开始加班了，你呢？', 6000);
+		} else {
+			showMessage(' 我要开始卖萌了！', 6000);
+		}
+	}else{
+		showMessage(' 欢迎来到“极光轨迹”阅读，偶嘞哇凯Zi磕哒   ^_^ ', 6000);
+	}
+	
     $(".xiaoren").animate({
         top: $(".xiaoren").offset().top + 500,
 		left: 160
@@ -66,68 +70,74 @@ jQuery(document).ready(function ($) {
 	    queue: false,
 	    duration: 1000
 	});
-//    window.setTimeout(function () {
-//        showMessage("下面播报明日天气<iframe name=\"xidie\" src=\"http://t.xidie.com/skin/2010-0601.html\"frameborder=\“0\” scrolling=\"no\" height=\"15px\"  width=\"130px\" allowtransparency=\"true\" ></iframe>", 10000);
-//    },
-//	4000);
 });
 
 //鼠标在某些元素上方时
 jQuery(document).ready(function ($) {
-    $('h2 a').click(function () {//标题被点击时
+    $('h3 a').click(function () {//标题被点击时
         showMessage('正在用吃奶的劲加载《<span style="color:#0099cc;">' + $(this).text() + '</span>》请稍候');
     });
-    $('h2 a').mouseover(function () {
-        showMessage('要看看《<span style="color:#0099cc;">' + $(this).text() + '</span>》这篇文章么？');
+    $('h3 a').mouseover(function () {
+		msgs=['要看看《<span style=\"color:#0099cc;\">' + $(this).text() + '</span>》这篇文章么？'
+		,'要瞅一眼《<span style=\"color:#0099cc;\">' + $(this).text() + '</span>》篇文章吧！'
+		,'看看《<span style=\"color:#0099cc;\">' + $(this).text() + '</span>》里面究竟写了啥？'
+		,'对这篇《<span style=\"color:#0099cc;\">' + $(this).text() + '</span>》感兴趣？']
+        showMessage(msgs[Math.floor(Math.random() * msgs.length)]);
     });
-    $('#prev-page').mouseover(function(){
-        showMessage('要翻到上一页吗?');
+	$('.tags').mouseover(function () {
+		msgs=['你不瞅一眼带有《<span style=\"color:#0099cc;\">' + $(this).text() + '</span>》这一标签的其它文章吗？'
+		,'再瞅瞅《<span style=\"color:#0099cc;\">' + $(this).text() + '</span>》标签的文章吧！'
+		,'带有《<span style=\"color:#0099cc;\">' + $(this).text() + '</span>》标签的文章还有很多哟！'
+		,'查看带有《<span style=\"color:#0099cc;\">' + $(this).text() + '</span>》标签的文章列表！'
+		,'你猜猜带有《<span style=\"color:#0099cc;\">' + $(this).text() + '</span>》标签的文章会有几篇？']
+        showMessage(msgs[Math.floor(Math.random() * msgs.length)]);
     });
-    $('#next-page').mouseover(function(){
-        showMessage('要翻到下一页吗?');
+	$('.categories').mouseover(function () {
+		msgs=['再看看《<span style=\"color:#0099cc;\">' + $(this).text() + '</span>》分类的文章吧！'
+		,'再瞅瞅《<span style=\"color:#0099cc;\">' + $(this).text() + '</span>》分类的文章吧！'
+		,'《<span style=\"color:#0099cc;\">' + $(this).text() + '</span>》分类的文章还有很多哟！'
+		,'查看《<span style=\"color:#0099cc;\">' + $(this).text() + '</span>》分类的文章列表！'
+		,'你猜猜《<span style=\"color:#0099cc;\">' + $(this).text() + '</span>》分类的文章会有几篇？']
+        showMessage(msgs[Math.floor(Math.random() * msgs.length)]);
     });
-    $('#index-links li a').mouseover(function () {
+	$('.readmore').mouseover(function () {
+		msgs=["对这篇文章有兴趣？","想看就赶紧点开","你不点一下吗？","就知道你想看"]
+        showMessage(msgs[Math.floor(Math.random() * msgs.length)]);
+    });
+    $('.pagination .pull-left').mouseover(function(){
+		msgs=["要翻到上一页吗?","还是想回到上一页？","上一页写了什么来着？","还是回到上一页吧！"]
+        showMessage(msgs[Math.floor(Math.random() * msgs.length)]);
+    });
+    $('.pagination .pull-right').mouseover(function(){
+		msgs=["要翻到下一页吗?","下一页更精彩！","下一页会写着什么？","下一页肯定有你想看的","下一页给你好看！"]
+        showMessage(msgs[Math.floor(Math.random() * msgs.length)]);
+    });
+	$('.icon-github').mouseover(function(){
+		msgs=["去我的github逛逛？","github一个神奇的网站","你猜github上都有啥？","我不会告诉你，点一下就进了我的github主页的！","你有注册过github吗？"]
+        showMessage(msgs[Math.floor(Math.random() * msgs.length)]);
+    });
+	$('.icon-sina-weibo').mouseover(function(){
+		msgs=["欢迎关注我的新浪微博？","我的粉丝好少哟！","你要关注我呀！","其实我的微博没什么内容","你也玩微博？"]
+        showMessage(msgs[Math.floor(Math.random() * msgs.length)]);
+    });
+    $('#intro > div > div.col-md-8.col-md-offset-2 > p > a').mouseover(function () {
         showMessage('去 <span style="color:#0099cc;">' + $(this).text() + '</span> 逛逛');
     });
-    $('.comments').mouseover(function () {
-        showMessage('<span style="color:#0099cc;">' + visitor + '</span> 向评论栏出发吧！');
+    $('.textareawrap').mouseover(function () {
+        showMessage('看完了文章说点什么吧！');
     });
-    $('#submit').mouseover(function () {
+    $('#postsubmit').mouseover(function () {
         showMessage('确认提交了么？');
     });
-    $('#s').focus(function () {
-        showMessage('输入你想搜索的关键词再按Enter(回车)键就可以搜索啦!');
+    $('.logo').mouseover(function () {
+        msgs=["点它就可以回到首页了","回到首页","这是哪呀？返回首页","去首页看看","首页是否会有惊喜呢？"]
+        showMessage(msgs[Math.floor(Math.random() * msgs.length)]);
     });
-    $('#go-prev').mouseover(function () {
-        showMessage('点它可以后退哦！');
+	$('.animsition-link').mouseover(function () {
+        msgs=["点它就可以回到首页了","回到首页","这是哪呀？返回首页","去首页看看","首页是否会有惊喜呢？"]
+        showMessage(msgs[Math.floor(Math.random() * msgs.length)]);
     });
-    $('#go-next').mouseover(function () {
-        showMessage('点它可以前进哦！');
-    });
-    $('#refresh').mouseover(function () {
-        showMessage('点它可以重新载入此页哦！');
-    });
-    $('#go-home').mouseover(function () {
-        showMessage('点它就可以回到首页啦！');
-    });
-    $('#addfav').mouseover(function () {
-        showMessage('点它可以把此页加入书签哦！');
-    });
-    $('#nav-two a').mouseover(function () {
-        showMessage('嘘，从这里可以进入控制面板的哦！');
-    });
-    $('.post-category a').mouseover(function () {
-        showMessage('点击查看此分类下得所有文章');
-    });
-    $('.post-heat a').mouseover(function () {
-        showMessage('点它可以直接跳到评论列表处.');
-    });
-    $('#tho-shareto span a').mouseover(function () {
-        showMessage('你知道吗?点它可以分享本文到'+$(this).attr('title'));
-    });
-    $('#switch-to-wap').mouseover(function(){
-        showMessage('点击可以切换到手机版博客版面');
-    });
+	
 });
 
 
@@ -135,16 +145,16 @@ jQuery(document).ready(function ($) {
 jQuery(document).ready(function ($) {
 
     window.setInterval(function () {
-        msgs = ["播报明日天气<iframe name=\"xidie\" src=\"http://t.xidie.com/skin/2010-0601.html\"frameborder=\“0\” scrolling=\"no\" height=\"15px\"  width=\"130px\" allowtransparency=\"true\" ></iframe>", "陪我聊天吧！", "好无聊哦，你都不陪我玩！", "…@……!………", "^%#&*!@*(&#)(!)(", "我可爱吧！嘻嘻!~^_^!~~","谁淫荡呀?~谁淫荡?，你淫荡呀!~~你淫荡！~~","从前有座山，山上有座庙，庙里有个老和尚给小和尚讲故事，讲：“从前有座……”"];
+        msgs = ["爱我，你就点我呀！", "陪我聊天吧！", "好无聊哦，你都不陪我玩！", "…@……!………", "^%#&*!@*(&#)(!)(", "我可爱吧！嘻嘻!~^_^!~~","生活不止眼前的苟且，还有诗与远方的田野...","从前有座山，山上有座庙，庙里有个老和尚给小和尚讲故事，讲：“从前有座……”","我要睡觉了别打扰我","是不是有我的陪伴读文章有变得好玩了！","你知道你会喜欢我","你看到了什么？","主人好久都没有来了！","我就只会自娱自乐...","你要常来看我哟","我会想念你的！","卖个萌~~","你最近在学习什么内容呀","来我们交个朋友吧","你gg还是mm呀？","你说是java是不是最好的程序语言？","我在上海，你在哪呀？"];
         var i = Math.floor(Math.random() * msgs.length);
-        showMessage(msgs[i], 10000);
-    }, 35000);
+        showMessage(msgs[i], 5000);
+    }, 10000);
 });
 
 //无聊动动
 jQuery(document).ready(function ($) {
     window.setInterval(function () {
-        msgs = ["播报明日天气<iframe name=\"xidie\" src=\"http://t.xidie.com/skin/2010-0601.html\"frameborder=\“0\” scrolling=\"no\" height=\"15px\"  width=\"130px\" allowtransparency=\"true\" ></iframe>", "乾坤大挪移！", "我飘过来了！~", "我飘过去了", "我得意地飘！~飘！~"];
+        msgs = ["你抓不到我！", "乾坤大挪移！", "我飘过来了！~", "我飘过去了", "我得意地飘！~飘！~","我轻轻地来，又轻轻的走 ~","来逗我玩儿呀！","我打扰看文章了吗，Oh，sorry！","看我凌波微步！"];
         var i = Math.floor(Math.random() * msgs.length);
         s = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6,0.7,0.75,-0.1, -0.2, -0.3, -0.4, -0.5, -0.6,-0.7,-0.75];
         var i1 = Math.floor(Math.random() * s.length);
