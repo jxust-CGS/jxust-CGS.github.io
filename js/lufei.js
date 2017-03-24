@@ -137,6 +137,10 @@ jQuery(document).ready(function ($) {
         msgs=["点它就可以回到首页了","回到首页","这是哪呀？返回首页","去首页看看","首页是否会有惊喜呢？"]
         showMessage(msgs[Math.floor(Math.random() * msgs.length)]);
     });
+	$('#wumiiMainNav > a:nth-child(2)').mouseover(function () {
+        msgs=["看看其他文章还有那些有意思的评论","回到首页","这是哪呀？返回首页","去首页看看","首页是否会有惊喜呢？"]
+        showMessage(msgs[Math.floor(Math.random() * msgs.length)]);
+    });
 	
 });
 
