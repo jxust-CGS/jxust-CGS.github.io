@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenguangsong.online/"/>
-  <updated>2017-03-16T14:59:12.874Z</updated>
+  <updated>2017-05-25T05:56:20.440Z</updated>
   <id>http://www.chenguangsong.online/</id>
   
   <author>
@@ -14,6 +14,340 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>学习别人代码之多彩资讯</title>
+    <link href="http://www.chenguangsong.online/2017/05/25/%E5%AD%A6%E4%B9%A0%E5%88%AB%E4%BA%BA%E4%BB%A3%E7%A0%81%E4%B9%8B%E5%A4%9A%E5%BD%A9%E8%B5%84%E8%AE%AF/"/>
+    <id>http://www.chenguangsong.online/2017/05/25/学习别人代码之多彩资讯/</id>
+    <published>2017-05-25T05:56:20.440Z</published>
+    <updated>2017-05-25T05:56:20.440Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;多彩资讯是什么？&quot;&gt;多彩资讯是什么？&lt;/h2&gt;&lt;p&gt;多彩资讯是&lt;a href=&quot;https://github.com/kaku2015/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;咖枯&lt;/a&gt;写的一个遵循material design风格的新闻类app、其中使用了很多开源库Dagger2、RxJava、Retrofit2、Butterknife、Greendao、PhotoView、Glide、Picasso…&lt;br&gt;多彩资讯源码链接:&lt;a href=&quot;https://github.com/kaku2015/ColorfulNews&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;kaku2015/ColorfulNews: A news-reading App &lt;/a&gt;&lt;br&gt;最近没怎么写android代码了，希望自己不要荒废，因此借着拜读别人的代码来学习下关于material design风格app，也学习下一些比较新的开源库，还有就是熟悉用android studio尤其是用gradle构建工程。  &lt;/p&gt;
+&lt;h2 id=&quot;Butterknife&quot;&gt;Butterknife&lt;/h2&gt;&lt;p&gt;1、首先需要添加依赖包  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;在项目mode对应的.gradle文件顶部中添加：&lt;/p&gt;
+  &lt;figure class=&quot;highlight groovy&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apply &lt;span class=&quot;string&quot;&gt;plugin:&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;com.neenbedankt.android-apt&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在dependencies{}中添加：&lt;/p&gt;
+  &lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;apt &lt;span class=&quot;string&quot;&gt;&#39;com.jakewharton:butterknife-compiler:8.0.1&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;com.jakewharton:butterknife:8.0.1&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2、通过@BindView绑定页面元素&lt;br&gt;3、在onCreate方法中setContentView之后添加ButterKnife.bind(this);&lt;br&gt;&lt;figure class=&quot;highlight scala&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; butterknife.&lt;span class=&quot;type&quot;&gt;BindView&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; butterknife.&lt;span class=&quot;type&quot;&gt;ButterKnife&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ExampleActivity&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Activity&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;annotation&quot;&gt;@BindView&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;R&lt;/span&gt;.id.user) &lt;span class=&quot;type&quot;&gt;EditText&lt;/span&gt; username;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;annotation&quot;&gt;@BindView&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;R&lt;/span&gt;.id.pass) &lt;span class=&quot;type&quot;&gt;EditText&lt;/span&gt; password;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;annotation&quot;&gt;@BindString&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;R&lt;/span&gt;.string.login_error) &lt;span class=&quot;type&quot;&gt;String&lt;/span&gt; loginErrorMessage;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;annotation&quot;&gt;@OnClick&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;R&lt;/span&gt;.id.submit) void submit() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// TODO call server...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  public void onCreate(&lt;span class=&quot;type&quot;&gt;Bundle&lt;/span&gt; savedInstanceState) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    setContentView(&lt;span class=&quot;type&quot;&gt;R&lt;/span&gt;.layout.simple_activity);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//以前用的是ButterKnife.inject()来绑定Activity,现在用的是ButterKnife.bind()，版本不同相应的方法不同&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;type&quot;&gt;ButterKnife&lt;/span&gt;.bind(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// TODO Use fields...&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  public void onDestroyView() &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onDestroyView();  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;type&quot;&gt;ButterKnife&lt;/span&gt;.unbind(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//解绑  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/JakeWharton/butterknife&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github-JakeWharton/butterknife&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/itjianghuxiaoxiong/article/details/50177549&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ButterKnife使用详解&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;ButterknifeZelezny在AndroidStudio中的配置与使用方法&quot;&gt;ButterknifeZelezny在AndroidStudio中的配置与使用方法&lt;/a&gt;  &lt;/p&gt;
+&lt;h2 id=&quot;AnimationUtils和ValueAnimator&quot;&gt;AnimationUtils和ValueAnimator&lt;/h2&gt;&lt;p&gt;(1)Frame Animation(帧动画)主要用于播放一帧帧准备好的图片，类似GIF图片，优点是使用简单方便、缺点是需要事先准备好每一帧图片；&lt;br&gt;(2)Tween Animation(补间动画)仅需定义开始与结束的关键帧，而变化的中间帧由系统补上，优点是不用准备每一帧，缺点是只改变了对象绘制，而没有改变View本身属性。因此如果改变了按钮的位置，还是需要点击原来按钮所在位置才有效。&lt;br&gt;(3)Property Animation(属性动画)是3.0后推出的动画，优点是使用简单、降低实现的复杂度、直接更改对象的属性、几乎可适用于任何对象而仅非View类，缺点是需要3.0以上的API支持，限制较大！但是目前国外有个开源库，可以提供低版本支持！  &lt;/p&gt;
+&lt;h2 id=&quot;Android_View_Animations&quot;&gt;Android View Animations&lt;/h2&gt;&lt;p&gt;1、首先需要添加依赖包&lt;br&gt;2、就使用YoYo类来选择动画、时间、绑定对象&lt;br&gt;&lt;figure class=&quot;highlight vhdl&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;compile &lt;span class=&quot;attribute&quot;&gt;&#39;com&lt;/span&gt;.nineoldandroids:&lt;span class=&quot;keyword&quot;&gt;library&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;2.4&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;.0&lt;/span&gt;&#39;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;compile &lt;span class=&quot;attribute&quot;&gt;&#39;com&lt;/span&gt;.daimajia.easing:&lt;span class=&quot;keyword&quot;&gt;library&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;.1&lt;/span&gt;@aar&#39;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;compile &lt;span class=&quot;attribute&quot;&gt;&#39;com&lt;/span&gt;.daimajia.androidanimations:&lt;span class=&quot;keyword&quot;&gt;library&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;1.1&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;.3&lt;/span&gt;@aar&#39;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;YoYo.&lt;span class=&quot;keyword&quot;&gt;with&lt;/span&gt;(Techniques.Tada)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .duration(&lt;span class=&quot;number&quot;&gt;700&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .playOn(findViewById(R.id.edit_area));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;YoYo的设计采用了访问者模式把数据结构和作用于结构上的操作解耦合，使得操作集合可相对自由地演化。访问者模式适用于数据结构相对稳定算法又易变化的系统。因为访问者模式使得算法操作增加变得容易。  &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/daimajia/AndroidViewAnimations&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github-daimajia/AndroidViewAnimations&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;MVP&quot;&gt;MVP&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/vector_yi/article/details/24719873&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MVP模式在Android开发中的应用&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/end/archive/2011/06/02/2068512.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MVC和MVP的区别 - 风生水起 - 博客园&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;RxJava&quot;&gt;RxJava&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://gank.io/post/560e15be2dca930e00da1083&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;给 Android 开发者的 RxJava 详解&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;RxBus&quot;&gt;RxBus&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/ca090f6e2fe2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;用RxJava实现事件总线(Event Bus)&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;annotation注解&quot;&gt;annotation注解&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/peida/archive/2013/04/24/3036689.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;深入理解Java：注解（Annotation）自定义注解入门 - peida - 博客园&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Dagger2&quot;&gt;Dagger2&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/u012943767/article/details/51897247&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Dagger2 这次入门就不用放弃了 - Jaml - 博客频道 - CSDN.NET&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;android-support-v4-widget-DrawerLayout&quot;&gt;android.support.v4.widget.DrawerLayout&lt;/h1&gt;&lt;p&gt;图片显示&lt;/p&gt;
+&lt;h1 id=&quot;android-support-design-widget-NavigationView&quot;&gt;android.support.design.widget.NavigationView&lt;/h1&gt;&lt;p&gt;侧划出菜单&lt;/p&gt;
+&lt;h1 id=&quot;include&quot;&gt;include&lt;/h1&gt;&lt;p&gt;加载xml组合显示&lt;/p&gt;
+&lt;h1 id=&quot;android-support-design-widget-FloatingActionButton&quot;&gt;android.support.design.widget.FloatingActionButton&lt;/h1&gt;&lt;p&gt;协调(Coordinate)其他组件, 实现联动.&lt;/p&gt;
+&lt;h1 id=&quot;android-support-design-widget-AppBarLayout&quot;&gt;android.support.design.widget.AppBarLayout&lt;/h1&gt;&lt;p&gt;app的actionbar&lt;/p&gt;
+&lt;h1 id=&quot;android-support-v7-widget-Toolbar&quot;&gt;android.support.v7.widget.Toolbar&lt;/h1&gt;&lt;p&gt;侧滑按键，实现动画效果&lt;/p&gt;
+&lt;h1 id=&quot;android-support-design-widget-TabLayout&quot;&gt;android.support.design.widget.TabLayout&lt;/h1&gt;&lt;p&gt;显示选显卡，android.support.v4.view.ViewPager&lt;/p&gt;
+&lt;h1 id=&quot;android-support-v4-view-ViewPager&quot;&gt;android.support.v4.view.ViewPager&lt;/h1&gt;&lt;h1 id=&quot;Snackbar&quot;&gt;Snackbar&lt;/h1&gt;&lt;h1 id=&quot;LeakCanary&quot;&gt;LeakCanary&lt;/h1&gt;&lt;p&gt;用于检测软件的内存泄漏，&lt;br&gt;&lt;a href=&quot;https://www.liaohuqiu.net/cn/posts/leak-canary-read-me/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;LeakCanary 中文使用说明 | Yet Another Summer Rain&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;RefWatcher&quot;&gt;RefWatcher&lt;/h1&gt;&lt;h1 id=&quot;ActivityLifecycleCallbacks&quot;&gt;ActivityLifecycleCallbacks&lt;/h1&gt;&lt;p&gt;android 4.0 之后在application类中提供接口ActivityLifecycleCallbacks&lt;br&gt;用于监听activity的生命周期、打log，用于跟踪activity运行流程。&lt;/p&gt;
+&lt;h1 id=&quot;Klog&quot;&gt;Klog&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/1115/3685.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android专用Log开源项目——KLog - 泡在网上的日子&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      多彩资讯是咖枯写的一个遵循material design风格的新闻类app、其中使用了很多开源库Dagger2、RxJava、Retrofit2、Butterknife、Greendao、PhotoView、Glide、Picasso…
+    
+    </summary>
+    
+      <category term="android" scheme="http://www.chenguangsong.online/categories/android/"/>
+    
+    
+      <category term="android" scheme="http://www.chenguangsong.online/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android源码学习——开机过程</title>
+    <link href="http://www.chenguangsong.online/2017/05/25/Android%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%BC%80%E6%9C%BA%E8%BF%87%E7%A8%8B/"/>
+    <id>http://www.chenguangsong.online/2017/05/25/Android源码学习——开机过程/</id>
+    <published>2017-05-25T05:45:57.198Z</published>
+    <updated>2017-05-25T05:45:57.198Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;从开机到注册APN的过程分析&quot;&gt;从开机到注册APN的过程分析&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;手机启动&quot;&gt;手机启动&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://oeb33qix3.bkt.clouddn.com/16-12-16/21583324-file_1481868417041_61ad.png&quot; alt=&quot;&quot;&gt;  &lt;/p&gt;
+&lt;h2 id=&quot;SystemServer-java&quot;&gt;SystemServer.java&lt;/h2&gt;&lt;p&gt;SystemServer.java类是java的系统服务类，在开机后首先会实例化一个SystemServer&lt;br&gt;1、执行main方法，new SystemServer().run();&lt;br&gt;2、执行run方法，调用startBootstrapServices()&lt;br&gt;3、在startBootstrapServices()中调用&lt;br&gt;&lt;img src=&quot;http://oeb33qix3.bkt.clouddn.com/16-12-11/77821418-file_1481434774122_16d6a.png&quot; alt=&quot;&quot;&gt;   &lt;/p&gt;
+&lt;h2 id=&quot;ActivityManagerService-java&quot;&gt;ActivityManagerService.java&lt;/h2&gt;&lt;p&gt;通过AndroidManagerService中的方法将启动配置了属性&lt;code&gt;andriod:persistion=&amp;quot;true&amp;quot;;&lt;/code&gt;的app&lt;/p&gt;
+&lt;h2 id=&quot;PhoneApp&quot;&gt;PhoneApp&lt;/h2&gt;&lt;figure class=&quot;highlight actionscript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;PhoneApp.onCreate()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; PhoneGlobals(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;PhoneGlobals&quot;&gt;PhoneGlobals&lt;/h2&gt;&lt;figure class=&quot;highlight roboconf&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;component&quot;&gt;PhoneGlobals.onCreate()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    PhoneFactory&lt;span class=&quot;string&quot;&gt;.makeDefultPhones(this)&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight aspectj&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;makeDefaultPhone&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Context context)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    sPhoneNotifier = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; DefaultPhoneNotifier();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    sProxyPhone = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; PhoneProxy(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; GSMPhone(context,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    sCommandsInterface, sPhoneNotifier));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;GSMPhone&quot;&gt;GSMPhone&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://oeb33qix3.bkt.clouddn.com/16-12-11/92278190-file_1481436430080_e396.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;DcTracker&quot;&gt;DcTracker&lt;/h2&gt;&lt;p&gt;DataConnectionTracker：数据连接跟踪者&lt;br&gt;DcTracker是Telephony框架中负责数据业务的核心(类似于GsmCallTracker是通话业务核心，GsmServiceStateTracker是网络CS业务的核心)，所有对数据网络的请求(打开关闭数据开关、切换数据卡、修改APN参数等)都会发送到该处理中心来处理。&lt;br&gt;DcTracker的初始化&lt;br&gt;1、初始化各种监听器；&lt;br&gt;//2、初始化TelephonyNetworkFactory对象；&lt;br&gt;3、初始化一些基本的APN参数；  &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://oeb33qix3.bkt.clouddn.com/16-12-16/63555222-file_1481858289936_a47d.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;figure class=&quot;highlight processing&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; DcTracker(PhoneBase p) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;(p);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (DBG) &lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;DcTracker.constructor&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mDataConnectionTracker = &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//更新状态&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	update();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;/** M: create worker handler to handle DB/IO access */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	createWorkerHandler();&lt;span class=&quot;comment&quot;&gt;//这里是mtk改的，另启一个线程去添加紧急apn&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//M: Move register all event from update to construct, to avoid register more times.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	registerForAllEvents();&lt;span class=&quot;comment&quot;&gt;//注册事件监听（从update方法中移动到这里，为了节省时间）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mApnObserver = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ApnChangeObserver();&lt;span class=&quot;comment&quot;&gt;//监听apn的变化&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	p.getContext().getContentResolver().registerContentObserver(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			Telephony.Carriers.CONTENT_URI, &lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;, mApnObserver);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	initApnContexts();&lt;span class=&quot;comment&quot;&gt;//初始化apn&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (ApnContext apnContext : mApnContexts.values()) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;comment&quot;&gt;// Register the reconnect and restart actions.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		IntentFilter &lt;span class=&quot;built_in&quot;&gt;filter&lt;/span&gt; = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; IntentFilter();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;built_in&quot;&gt;filter&lt;/span&gt;.addAction(INTENT_RECONNECT_ALARM + &lt;span class=&quot;string&quot;&gt;&#39;.&#39;&lt;/span&gt; + apnContext.getApnType());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;built_in&quot;&gt;filter&lt;/span&gt;.addAction(INTENT_RESTART_TRYSETUP_ALARM + &lt;span class=&quot;string&quot;&gt;&#39;.&#39;&lt;/span&gt; + apnContext.getApnType());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		mPhone.getContext().registerReceiver(mIntentReceiver, &lt;span class=&quot;built_in&quot;&gt;filter&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, mPhone);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// M: Fast Dormancy init&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mFdMgr = FdManager.getInstance(p);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//MTK START: Add Plug in&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!BSP_PACKAGE) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			mGsmDctExt =&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				MPlugin.createInstance(IGsmDCTExt.class.getName(), mPhone.getContext());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125; &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (Exception e) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (DBG) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				&lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;mGsmDctExt init fail&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			e.printStackTrace();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//MTK END&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mProvisionActionName = &lt;span class=&quot;string&quot;&gt;&quot;com.android.internal.telephony.PROVISION&quot;&lt;/span&gt; + p.getPhoneId();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;update&quot;&gt;update&lt;/h3&gt;&lt;figure class=&quot;highlight processing&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; update() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;update sub = &quot;&lt;/span&gt; + mPhone.getSubId());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// M: remove for redundantly register that cause ANR&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//log(&quot;update(): Active DDS, register for all events now!&quot;);&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//registerForAllEvents();&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	onUpdateIcc();&lt;span class=&quot;comment&quot;&gt;//注册监听sim卡状态、添加了sim载入监听、和fdn定向拨号功能&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mUserDataEnabled = getDataEnabled();&lt;span class=&quot;comment&quot;&gt;//获取用户设置网络的开关状态&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (mPhone &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; CDMALTEPhone) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		((CDMALTEPhone)mPhone).updateCurrentCarrierInProvider();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (mPhone &lt;span class=&quot;keyword&quot;&gt;instanceof&lt;/span&gt; GSMPhone) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		((GSMPhone)mPhone).updateCurrentCarrierInProvider();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Phone object is not MultiSim. This should not hit!!!!&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;createWorkerHandler&quot;&gt;createWorkerHandler&lt;/h3&gt;&lt;figure class=&quot;highlight scala&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/** M: worker handler to handle DB/IO access */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; void createWorkerHandler() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (mWorkerHandler == &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;type&quot;&gt;Thread&lt;/span&gt; thread = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;Thread&lt;/span&gt;() &amp;#123;&lt;span class=&quot;comment&quot;&gt;//另开了一个新的工作线程&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			public void run() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				&lt;span class=&quot;type&quot;&gt;Looper&lt;/span&gt;.prepare();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				mWorkerHandler = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;WorkerHandler&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				mWorkerHandler.sendEmptyMessage(&lt;span class=&quot;type&quot;&gt;DctConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;EVENT_INIT_EMERGENCY_APN_SETTINGS&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				&lt;span class=&quot;type&quot;&gt;Looper&lt;/span&gt;.loop();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		thread.start();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;WorkerHandler&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Handler&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public void handleMessage(&lt;span class=&quot;type&quot;&gt;Message&lt;/span&gt; msg) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		switch (msg.what) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;DctConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;EVENT_INIT_EMERGENCY_APN_SETTINGS&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				&lt;span class=&quot;comment&quot;&gt;// Add Emergency APN to APN setting list by default to support EPDN in sim absent cases&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				log(&lt;span class=&quot;string&quot;&gt;&quot;WorkerHandler received EVENT_INIT_EMERGENCY_APN_SETTINGS&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				initEmergencyApnSetting();&lt;span class=&quot;comment&quot;&gt;//在新的线程中进行紧急apn的初始化和添加&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				addEmergencyApnSetting();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				&lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;registerForAllEvents&quot;&gt;registerForAllEvents&lt;/h3&gt;&lt;figure class=&quot;highlight aspectj&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;registerForAllEvents&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (DBG) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		log(&lt;span class=&quot;string&quot;&gt;&quot;registerForAllEvents: mPhone = &quot;&lt;/span&gt; + mPhone);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//监听射频是否打开&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mPhone.mCi.registerForAvailable(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;, DctConstants.EVENT_RADIO_AVAILABLE, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//监听射频是否可用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mPhone.mCi.registerForOffOrNotAvailable(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		   DctConstants.EVENT_RADIO_OFF_OR_NOT_AVAILABLE, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//监听当前链接状态&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mPhone.mCi.registerForDataNetworkStateChanged(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		   DctConstants.EVENT_DATA_STATE_CHANGED, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// Note, this is fragile - the Phone is now presenting a merged picture&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// of PS (volte) &amp;amp; CS and by diving into its internals you&#39;re just seeing&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// the CS data.  This works well for the purposes this is currently used for&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// but that may not always be the case.  Should probably be redesigned to&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// accurately reflect what we&#39;re really interested in (registerForCSVoiceCallEnded).&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// M: Remove below section for the reason that new PS/CS design has been applied.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//mPhone.getCallTracker().registerForVoiceCallEnded (this,&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//       DctConstants.EVENT_VOICE_CALL_ENDED, null);&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//mPhone.getCallTracker().registerForVoiceCallStarted (this,&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//       DctConstants.EVENT_VOICE_CALL_STARTED, null);&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// M: End&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//数据连接驻网&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mPhone.getServiceStateTracker().registerForDataConnectionAttached(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		   DctConstants.EVENT_DATA_CONNECTION_ATTACHED, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mPhone.getServiceStateTracker().registerForDataConnectionDetached(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		   DctConstants.EVENT_DATA_CONNECTION_DETACHED, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//数据漫游&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mPhone.getServiceStateTracker().registerForDataRoamingOn(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		   DctConstants.EVENT_ROAMING_ON, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mPhone.getServiceStateTracker().registerForDataRoamingOff(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		   DctConstants.EVENT_ROAMING_OFF, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//ps域注册&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mPhone.getServiceStateTracker().registerForPsRestrictedEnabled(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			DctConstants.EVENT_PS_RESTRICT_ENABLED, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mPhone.getServiceStateTracker().registerForPsRestrictedDisabled(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			DctConstants.EVENT_PS_RESTRICT_DISABLED, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;comment&quot;&gt;//   SubscriptionManager.registerForDdsSwitch(this,&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;comment&quot;&gt;//          DctConstants.EVENT_CLEAN_UP_ALL_CONNECTIONS, null);&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// M: cc33&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mPhone.mCi.registerForRemoveRestrictEutran(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;, DctConstants.EVENT_REMOVE_RESTRICT_EUTRAN&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			,&lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;//M: Reset Attach Apn重新注册apn&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mPhone.mCi.registerForResetAttachApn(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;, DctConstants.EVENT_RESET_ATTACH_APN, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// M: [LTE][Low Power][UL traffic shaping] Start&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mPhone.mCi.registerForLteAccessStratumState(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			DctConstants.EVENT_LTE_ACCESS_STRATUM_STATE, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// M: [LTE][Low Power][UL traffic shaping] End&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//监听网络技术(LTE/GSM/UMTS)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mPhone.getServiceStateTracker().registerForDataRegStateOrRatChanged(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			DctConstants.EVENT_DATA_RAT_CHANGED, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;initApnContent&quot;&gt;initApnContent&lt;/h3&gt;&lt;figure class=&quot;highlight haskell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;65&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;66&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;67&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;68&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;69&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;70&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;71&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;72&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;73&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;74&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;75&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;76&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;77&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;78&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;79&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;title&quot;&gt;protected&lt;/span&gt; void initApnContexts() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	log(&lt;span class=&quot;string&quot;&gt;&quot;initApnContexts: E&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	// &lt;span class=&quot;type&quot;&gt;Load&lt;/span&gt; device network attributes from resources&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;type&quot;&gt;String&lt;/span&gt;[] networkConfigStrings = mPhone.getContext().getResources().getStringArray(//获得配置的默认apn参数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			com.android.internal.&lt;span class=&quot;type&quot;&gt;R&lt;/span&gt;.array.networkAttributes);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	for (&lt;span class=&quot;type&quot;&gt;String&lt;/span&gt; networkConfigString : networkConfigStrings) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;type&quot;&gt;NetworkConfig&lt;/span&gt; networkConfig = new &lt;span class=&quot;type&quot;&gt;NetworkConfig&lt;/span&gt;(networkConfigString);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;type&quot;&gt;ApnContext&lt;/span&gt; apnContext = null;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		switch (networkConfig.&lt;span class=&quot;typedef&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;type&lt;/span&gt;) &lt;span class=&quot;container&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;title&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_MOBILE&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;apnContext&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;addApnContext&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;PhoneConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;APN_TYPE_DEFAULT&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;networkConfig&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;title&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_MOBILE_MMS&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;apnContext&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;addApnContext&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;PhoneConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;APN_TYPE_MMS&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;networkConfig&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;title&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_MOBILE_SUPL&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;apnContext&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;addApnContext&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;PhoneConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;APN_TYPE_SUPL&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;networkConfig&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;title&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_MOBILE_DUN&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;apnContext&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;addApnContext&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;PhoneConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;APN_TYPE_DUN&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;networkConfig&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;title&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_MOBILE_HIPRI&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;apnContext&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;addApnContext&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;PhoneConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;APN_TYPE_HIPRI&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;networkConfig&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;title&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_MOBILE_FOTA&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;apnContext&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;addApnContext&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;PhoneConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;APN_TYPE_FOTA&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;networkConfig&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;title&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_MOBILE_IMS&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;apnContext&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;addApnContext&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;PhoneConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;APN_TYPE_IMS&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;networkConfig&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;title&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_MOBILE_CBS&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;apnContext&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;addApnContext&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;PhoneConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;APN_TYPE_CBS&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;networkConfig&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;title&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_MOBILE_IA&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;apnContext&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;addApnContext&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;PhoneConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;APN_TYPE_IA&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;networkConfig&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		/** &lt;span class=&quot;type&quot;&gt;M&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;start&lt;/span&gt; */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;title&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_MOBILE_DM&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;apnContext&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;addApnContext&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;PhoneConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;APN_TYPE_DM&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;networkConfig&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;title&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_MOBILE_NET&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;apnContext&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;addApnContext&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;PhoneConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;APN_TYPE_NET&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;networkConfig&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;title&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_MOBILE_WAP&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;apnContext&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;addApnContext&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;PhoneConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;APN_TYPE_WAP&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;networkConfig&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;title&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_MOBILE_CMMAIL&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;apnContext&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;addApnContext&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;PhoneConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;APN_TYPE_CMMAIL&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;networkConfig&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;title&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_MOBILE_RCSE&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;apnContext&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;addApnContext&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;PhoneConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;APN_TYPE_RCSE&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;networkConfig&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;title&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_MOBILE_XCAP&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;apnContext&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;addApnContext&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;PhoneConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;APN_TYPE_XCAP&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;networkConfig&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;title&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_MOBILE_RCS&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;apnContext&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;addApnContext&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;PhoneConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;APN_TYPE_RCS&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;networkConfig&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		/** &lt;span class=&quot;type&quot;&gt;M&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;end&lt;/span&gt;*/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;title&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_MOBILE_EMERGENCY&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;apnContext&lt;/span&gt; = &lt;span class=&quot;title&quot;&gt;addApnContext&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;PhoneConstants&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;APN_TYPE_EMERGENCY&lt;/span&gt;, &lt;span class=&quot;title&quot;&gt;networkConfig&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;title&quot;&gt;default&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;log&lt;/span&gt;(&quot;&lt;span class=&quot;title&quot;&gt;initApnContexts&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;skipping&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;unknown&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;type&lt;/span&gt;=&quot; + &lt;span class=&quot;title&quot;&gt;networkConfig&lt;/span&gt;.&lt;span class=&quot;title&quot;&gt;type&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;title&quot;&gt;continue&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		log(&lt;span class=&quot;string&quot;&gt;&quot;initApnContexts: apnContext=&quot;&lt;/span&gt; + apnContext);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	//&lt;span class=&quot;type&quot;&gt;The&lt;/span&gt; implement &lt;span class=&quot;keyword&quot;&gt;of&lt;/span&gt; priorityQueue &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; is incorrect, we sort the list by ourself对apn进行排序&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;type&quot;&gt;Collections&lt;/span&gt;.sort(mPrioritySortedApnContexts, new &lt;span class=&quot;type&quot;&gt;Comparator&lt;/span&gt;&amp;lt;&lt;span class=&quot;type&quot;&gt;ApnContext&lt;/span&gt;&amp;gt;() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		public int compare(&lt;span class=&quot;type&quot;&gt;ApnContext&lt;/span&gt; c1, &lt;span class=&quot;type&quot;&gt;ApnContext&lt;/span&gt; c2) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			return c2.priority - c1.priority;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	log(&lt;span class=&quot;string&quot;&gt;&quot;initApnContexts: mPrioritySortedApnContexts=&quot;&lt;/span&gt; + mPrioritySortedApnContexts);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	log(&lt;span class=&quot;string&quot;&gt;&quot;initApnContexts: X mApnContexts=&quot;&lt;/span&gt; + mApnContexts);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;至此apn的初始化完成&lt;/p&gt;
+&lt;h2 id=&quot;apn参数的创建&quot;&gt;apn参数的创建&lt;/h2&gt;&lt;p&gt;当sim卡载入完毕后就会触发监听进行apn的创建onRecordsLoaded()&lt;br&gt;当apn改变也会触发监听onApnChanged()  &lt;/p&gt;
+&lt;h2 id=&quot;onReecordsLoaded()&quot;&gt;onReecordsLoaded()&lt;/h2&gt;&lt;p&gt;createAllApnlist()  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;获取当前sim卡的apn参数及紧急apn&lt;ul&gt;
+&lt;li&gt;operater获取sim卡的PLMN&lt;/li&gt;
+&lt;li&gt;创建mAllApnSetting列表&lt;/li&gt;
+&lt;li&gt;添加紧急apn&lt;/li&gt;
+&lt;li&gt;合并apn&lt;/li&gt;
+&lt;li&gt;寻找适合的apn&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;合并相同的apn&lt;/li&gt;
+&lt;li&gt;寻找当前适合的apn&lt;br&gt;setInitialAttachApn()设置默认apn&lt;br&gt;向modem设置Attach默认的apn&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;apn参数激活&quot;&gt;apn参数激活&lt;/h2&gt;&lt;h2 id=&quot;数据连接请求&quot;&gt;数据连接请求&lt;/h2&gt;</content>
+    
+    <summary type="html">
+    
+      本篇介绍一下安卓手机从开机进入java层运行到启动网络注册apn的过程，用于分析手机网络问题
+    
+    </summary>
+    
+      <category term="android源码" scheme="http://www.chenguangsong.online/categories/android%E6%BA%90%E7%A0%81/"/>
+    
+    
+      <category term="android源码,android" scheme="http://www.chenguangsong.online/tags/android%E6%BA%90%E7%A0%81-android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux学习（1）——sh脚本</title>
+    <link href="http://www.chenguangsong.online/2017/05/25/linux%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89%E2%80%94%E2%80%94sh%E8%84%9A%E6%9C%AC/"/>
+    <id>http://www.chenguangsong.online/2017/05/25/linux学习（1）——sh脚本/</id>
+    <published>2017-05-25T05:38:29.018Z</published>
+    <updated>2017-05-25T05:38:29.018Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;记录常用的shell命令&quot;&gt;记录常用的shell命令&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;grep查询语句&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;grep -rn “keyword”查找keyword&lt;/li&gt;
+&lt;li&gt;grep -rin “keyword”查找keyword，并忽略大小写&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;rm删除语句&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;rm -f filename&lt;/li&gt;
+&lt;li&gt;rmdir dirname&lt;/li&gt;
+&lt;li&gt;rm -rf dirname/filename 删除文件，或删除文件夹及文件夹中的文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;mkdir创建文件夹&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;mkdir -p dirname/dirname 连续创建多级目录&lt;/li&gt;
+&lt;li&gt;mkdir -m 777 test3 创建对应权限的文件夹&lt;/li&gt;
+&lt;li&gt;mkdir -v test4 创建并显示文件夹信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;chmod修改文件权限&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;chmod 777 filename 设置filename文件的所有权限全部开放&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;cd&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;cd - 返回前一次的目录&lt;/li&gt;
+&lt;li&gt;cd ~ 返回home目录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;pwd 输出当前目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;echo 控制台输出&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;sleep 5s 进程休眠5秒&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;exit 退出当前进程&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;diff 比较不同&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;printf 类似C语言中的 &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;printf ‘%d %s\n’ 1 “abc” 输出数字1和字符串abc并回车&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;read flag 读取控制台输入赋值给flag&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;`` 表示运行输出进行赋值&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;current_path=`pwd`&lt;/li&gt;
+&lt;li&gt;result = `expr $a + $b`&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;let与expr&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;let x=5+6&lt;/li&gt;
+&lt;li&gt;let x=$x+1&lt;/li&gt;
+&lt;li&gt;let not found原因  /bin/sh指向了dash而不是bash，dash不支持let命令。&lt;/li&gt;
+&lt;li&gt;x=`expr 5+6` &lt;/li&gt;
+&lt;li&gt;expr运算符注意:符号和参数之间要有空格分开；通配符号(*),在作为乘法运算符时要用\、“”、‘’符号修饰&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;`ps -ef | grep -E “xxx.sh” | grep -v “grep” | grep -v “$$” | wc -l`&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ps -rf 查看正在活动的进程列表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;find dirpath -type f | wc -l&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/wanqieddy/archive/2011/06/09/2076785.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Linux find 用法示例 - wanqi - 博客园&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;du -ah filepath&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;显示文件大小&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;bash xxx.sh  执行xxx.sh脚本&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;spawn、expect自动交互 &lt;/p&gt;
+  &lt;figure class=&quot;highlight d&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;shebang&quot;&gt;#!/usr/bin/expect   &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    　　set timeout &lt;span class=&quot;number&quot;&gt;30&lt;/span&gt;                                      &lt;span class=&quot;comment&quot;&gt;//  设置超时时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    　　spawn ssh -l username &lt;span class=&quot;number&quot;&gt;192.168&lt;/span&gt;.1.1                   &lt;span class=&quot;comment&quot;&gt;//  通过spawn执行ssh语句&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    　　expect &lt;span class=&quot;string&quot;&gt;&quot;password:&quot;&lt;/span&gt;                                  &lt;span class=&quot;comment&quot;&gt;//  开始检查终端输出“password:”&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    　　send &lt;span class=&quot;string&quot;&gt;&quot;ispass\r&quot;&lt;/span&gt;                                     &lt;span class=&quot;comment&quot;&gt;//  自动向终端发送 “ispass” 并回车&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    　　interact                                            &lt;span class=&quot;comment&quot;&gt;//  交还终端控制权&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;mv移动&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;mv dir1 new_dir 重命名/移动 一个目录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;tar解压&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;tar –xvf file.tar 解压 tar包&lt;/li&gt;
+&lt;li&gt;tar -xzvf file.tar.gz 解压tar.gz&lt;/li&gt;
+&lt;li&gt;tar -xjvf file.tar.bz2   解压 tar.bz2tar –xZvf file.tar.Z 解压tar.Z&lt;/li&gt;
+&lt;li&gt;tar zxvf jdk-8u73-linux-x64.gz -C /usr/java/jdk 解压文件jdk-8u73-linux-x64.gz到目录/usr/java/jdk  &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/jyaray/archive/2011/04/30/2033362.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;tar压缩解压缩命令详解 - jyaray - 博客园&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;wget下载&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;wget &lt;a href=&quot;http://www.linuxsense.org/xxxx/xxx.tar.gz&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.linuxsense.org/xxxx/xxx.tar.gz&lt;/a&gt; 通过url下载文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;apt-get 安装管理&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;apt-get update 定期运行这一命令以确保您的软件包列表是最新的&lt;/li&gt;
+&lt;li&gt;apt-get install packagename 安装一个新软件&lt;/li&gt;
+&lt;li&gt;apt-get autoremove —purge packagname 删除包及其依赖的软件包+配置文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;sed&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/dong008259/archive/2011/12/07/2279897.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;linux之sed用法 - 东方雨中漫步者 - 博客园&lt;/a&gt;  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;cat&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/perfy/archive/2012/07/23/2605550.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;linux下cat命令详解 - 路人浅笑 - 博客园&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/fnlingnzb-learner/p/5831284.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Linux常用命令大全&lt;/a&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;shell脚本语法&quot;&gt;shell脚本语法&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;h1 id=&quot;!/bin/sh&quot;&gt;!/bin/sh&lt;/h1&gt;  符号#!用来告诉系统它后面的参数是用来执行该文件的程序。注意文件必须是unix格式的，如果不是系统会将脚本当成一串命令而不是在一个线程中执行&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;if&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; [ &lt;span class=&quot;operator&quot;&gt;-e&lt;/span&gt; file ] || [ &lt;span class=&quot;string&quot;&gt;&quot;x&lt;span class=&quot;variable&quot;&gt;$flag&lt;/span&gt;&quot;&lt;/span&gt; = &lt;span class=&quot;string&quot;&gt;&quot;xyes&quot;&lt;/span&gt; ] ; &lt;span class=&quot;keyword&quot;&gt;then&lt;/span&gt;    //判断字符串相等用&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;个“=”而不是&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;个&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; yes&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;elif&lt;/span&gt; [ &lt;span class=&quot;string&quot;&gt;&quot;x&lt;span class=&quot;variable&quot;&gt;$flag&lt;/span&gt;&quot;&lt;/span&gt; = &lt;span class=&quot;string&quot;&gt;&quot;xno&quot;&lt;/span&gt; ] ;&lt;span class=&quot;keyword&quot;&gt;then&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; no&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; other&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;fi&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;while&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; :     //无限循环 或者&lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;是否继续执行?（yes/no）&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;built_in&quot;&gt;read&lt;/span&gt; flag&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; [ &lt;span class=&quot;string&quot;&gt;&quot;x&lt;span class=&quot;variable&quot;&gt;$flag&lt;/span&gt;&quot;&lt;/span&gt; = &lt;span class=&quot;string&quot;&gt;&quot;xyes&quot;&lt;/span&gt; ]; &lt;span class=&quot;keyword&quot;&gt;then&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;跳出循环，继续执行&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;built_in&quot;&gt;break&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;elif&lt;/span&gt; [ &lt;span class=&quot;string&quot;&gt;&quot;x&lt;span class=&quot;variable&quot;&gt;$flag&lt;/span&gt;&quot;&lt;/span&gt; = &lt;span class=&quot;string&quot;&gt;&quot;xno&quot;&lt;/span&gt; ]; &lt;span class=&quot;keyword&quot;&gt;then&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;停止执行，结束程序&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;built_in&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;built_in&quot;&gt;continue&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;fi&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;done&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;for  &lt;/p&gt;
+  &lt;figure class=&quot;highlight stata&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; `&lt;span class=&quot;keyword&quot;&gt;ls&lt;/span&gt;`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        echo &lt;span class=&quot;keyword&quot;&gt;file&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    done&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; 1 2 3 4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        echo &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    done&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (( ; ; ))&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;case&lt;/p&gt;
+  &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;输入 1 到 4 之间的数字:&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;你输入的数字为:&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;read&lt;/span&gt; aNum&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;$aNum&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)  &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;你选择了 1&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)  &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;你选择了 2&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;)  &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;你选择了 3&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;)  &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;你选择了 4&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    *)  &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;你没有输入 1 到 4 之间的数字&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;esac&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;关系运算符&lt;br&gt;  |运算 | 说明 | 举例 |&lt;br&gt;  |:—-|:—-|:—-|&lt;br&gt;  |-eq    |检测两个数是否相等，相等返回 true。                          |[ $a -eq $b ] |&lt;br&gt;  |-ne    |检测两个数是否相等，不相等返回 true。                          |[ $a -ne $b ] |&lt;br&gt;  |-gt    |检测左边的数是否大于右边的，如果是，则返回 true。              |[ $a -gt $b ] |&lt;br&gt;  |-lt    |检测左边的数是否小于右边的，如果是，则返回 true。              |[ $a -lt $b ] |&lt;br&gt;  |-ge    |检测左边的数是否大于等于右边的，如果是，则返回 true。          |[ $a -ge $b ] |&lt;br&gt;  |-le    |检测左边的数是否小于等于右边的，如果是，则返回 true。          |[ $a -le $b ] |&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;文件测试运算符&lt;br&gt;  |运算 | 说明 | 举例 |&lt;br&gt;  |:—-|:—-|:—-|&lt;br&gt;  |-b file    |检测文件是否是块设备文件，如果是，则返回 true。                            |[ -b $file ]&lt;br&gt;  |-c file    |检测文件是否是字符设备文件，如果是，则返回 true。                            |[ -c $file ]&lt;br&gt;  |-d file    |检测文件是否是目录，如果是，则返回 true。                                    |[ -d $file ]&lt;br&gt;  |-f file    |检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。|[ -f $file ]&lt;br&gt;  |-g file    |检测文件是否设置了 SGID 位，如果是，则返回 true。                            |[ -g $file ]&lt;br&gt;  |-k file    |检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。                |[ -k $file ]&lt;br&gt;  |-p file    |检测文件是否是有名管道，如果是，则返回 true。                                |[ -p $file ]&lt;br&gt;  |-u file    |检测文件是否设置了 SUID 位，如果是，则返回 true。                            |[ -u $file ]&lt;br&gt;  |-r file    |检测文件是否可读，如果是，则返回 true。                                    |[ -r $file ]&lt;br&gt;  |-w file    |检测文件是否可写，如果是，则返回 true。                                    |[ -w $file ]&lt;br&gt;  |-x file    |检测文件是否可执行，如果是，则返回 true。                                    |[ -x $file ]&lt;br&gt;  |-s file    |检测文件是否为空（文件大小是否大于0），不为空返回 true。                    |[ -s $file ]&lt;br&gt;  |-e file    |检测文件（包括目录）是否存在，如果是，则返回 true。                        |[ -e $file ] &lt;/li&gt;
+&lt;li&gt;执行命令传递参数&lt;ul&gt;
+&lt;li&gt;echo “执行的文件名：$0”;&lt;/li&gt;
+&lt;li&gt;echo “第一个参数为：$1”;&lt;/li&gt;
+&lt;li&gt;echo “第二个参数为：$2”;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;函数&lt;br&gt;  定义函数、及调用  &lt;/p&gt;
+  &lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;demoFun()&amp;#123;                                   &lt;span class=&quot;comment&quot;&gt;//函数定义类似C语言&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;这是我的第一个 shell 函数!&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;-----函数开始执行-----&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;demoFun                                      &lt;span class=&quot;comment&quot;&gt;//调用是不要写（）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;-----函数执行完毕-----&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  函数传递参数的方式&lt;br&gt;  执行test.sh脚本&lt;/p&gt;
+  &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; 脚本参数\&lt;span class=&quot;variable&quot;&gt;$0&lt;/span&gt;=&lt;span class=&quot;variable&quot;&gt;$0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; 脚本参数\&lt;span class=&quot;variable&quot;&gt;$1&lt;/span&gt;=&lt;span class=&quot;variable&quot;&gt;$1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; 脚本参数个数\$\&lt;span class=&quot;comment&quot;&gt;#=$#&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;myfun&lt;/span&gt;&lt;/span&gt;()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; 函数myfun中参数\&lt;span class=&quot;variable&quot;&gt;$0&lt;/span&gt;=&lt;span class=&quot;variable&quot;&gt;$0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; 函数myfun中参数\&lt;span class=&quot;variable&quot;&gt;$1&lt;/span&gt;=&lt;span class=&quot;variable&quot;&gt;$1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; 函数myfun中参数个数\$\&lt;span class=&quot;comment&quot;&gt;#=$#&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;myfun &lt;span class=&quot;number&quot;&gt;999&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  执行脚本&lt;code&gt;./test.sh 111 222 333&lt;/code&gt;&lt;br&gt;  运行结果为&lt;/p&gt;
+  &lt;figure class=&quot;highlight elixir&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;脚本参数\&lt;span class=&quot;variable&quot;&gt;$0&lt;/span&gt;=./test.sh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;脚本参数\&lt;span class=&quot;variable&quot;&gt;$1&lt;/span&gt;=&lt;span class=&quot;number&quot;&gt;111&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;脚本参数个数\&lt;span class=&quot;variable&quot;&gt;$\&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;#=3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;函数myfun中参数\&lt;span class=&quot;variable&quot;&gt;$0&lt;/span&gt;=./test.sh&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;函数myfun中参数\&lt;span class=&quot;variable&quot;&gt;$1&lt;/span&gt;=&lt;span class=&quot;number&quot;&gt;999&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;函数myfun中参数个数\&lt;span class=&quot;variable&quot;&gt;$\&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;#=1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;  $10 不能获取第十个参数，获取第十个参数需要${10}。当n&amp;gt;=10时，需要使用${n}来获取参数。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.runoob.com/linux/linux-shell-variable.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Shell 教程 | 菜鸟教程&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      在linux环境下工作一定会用到shell脚本，来帮助我们执行一些操作来提高我们的工作效率，进行一些简单的机械化的操作，解放自己。
+    
+    </summary>
+    
+      <category term="linux" scheme="http://www.chenguangsong.online/categories/linux/"/>
+    
+    
+      <category term="shell,linux" scheme="http://www.chenguangsong.online/tags/shell-linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阿里云服务器配置java web项目环境</title>
+    <link href="http://www.chenguangsong.online/2017/05/25/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AEjava%20web%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83/"/>
+    <id>http://www.chenguangsong.online/2017/05/25/阿里云服务器配置java web项目环境/</id>
+    <published>2017-05-25T05:33:21.949Z</published>
+    <updated>2017-05-25T05:33:21.949Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;阿里云服务器配置java_web项目环境&quot;&gt;阿里云服务器配置java web项目环境&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;申请阿里云服务器&quot;&gt;申请阿里云服务器&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.aliyun.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;阿里云&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;安装jdk、tomcat&quot;&gt;安装jdk、tomcat&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/evankaka/article/details/50718895&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;阿里云部署Java web项目初体验 - 林炳文Evankaka的专栏 - 博客频道 - CSDN.NET&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;配置域名&quot;&gt;配置域名&lt;/h2&gt;&lt;p&gt;申请域名&lt;br&gt;配置域名dns解析地址&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/19c5d023d0ea3e8f.png&quot; alt=&quot;配置url解析地址&quot;&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/sinat_25926481/article/details/51460160&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Tomcat配置域名 - 强强强子的博客 - 博客频道 - CSDN.NET&lt;/a&gt;  &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      最近申请了个阿里云的服务器学习一下如何使用阿里云
+    
+    </summary>
+    
+      <category term="阿里云" scheme="http://www.chenguangsong.online/categories/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+    
+      <category term="阿里云" scheme="http://www.chenguangsong.online/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用超级终端向手机发送at指令</title>
+    <link href="http://www.chenguangsong.online/2017/05/25/%E4%BD%BF%E7%94%A8%E8%B6%85%E7%BA%A7%E7%BB%88%E7%AB%AF%E5%90%91%E6%89%8B%E6%9C%BA%E5%8F%91%E9%80%81at%E6%8C%87%E4%BB%A4/"/>
+    <id>http://www.chenguangsong.online/2017/05/25/使用超级终端向手机发送at指令/</id>
+    <published>2017-05-25T04:46:35.139Z</published>
+    <updated>2017-05-25T04:46:35.139Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;使用超级终端向手机发送at指令&quot;&gt;使用超级终端向手机发送at指令&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;问题来源&quot;&gt;问题来源&lt;/h2&gt;&lt;p&gt;在手机modem处理的工作中测试手机，需要向手机发送at指令  &lt;/p&gt;
+&lt;h2 id=&quot;准备工作&quot;&gt;准备工作&lt;/h2&gt;&lt;p&gt;下载并安装超级终端,这里给个链接—&amp;gt;&lt;a href=&quot;http://www.cr173.com/soft/44407.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;超级终端&lt;/a&gt;&lt;br&gt;将手机连接到电脑，进入工模选项，打开ATCI选项&lt;br&gt;mtk手机操作步骤如下&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;进入拨号盘，输入”*#*#3646633#*#*“&lt;/li&gt;
+&lt;li&gt;选择”Log and Debugging”,进入”ATCI”&lt;/li&gt;
+&lt;li&gt;设置”Always enable ATCI”&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/f84ce1dabcdcdb89.png&quot; alt=&quot;打开拨号盘&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i1.piimg.com/588926/8e48b8f18c973b6f.png&quot; alt=&quot;设置ATCI&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/31a497305ceabfdf.png&quot; alt=&quot;选择Always enable ATCI&quot;&gt;&lt;/li&gt;
+&lt;li&gt;打开超级终端，新建连接   &lt;/li&gt;
+&lt;li&gt;连接名称任意，按默认操作即可  &lt;/li&gt;
+&lt;li&gt;连接完成后输入at指令进行测试&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/ad83b4b38f33e43c.png&quot; alt=&quot;打开超级终端新建链接&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/c91c8a55f149b112.png&quot; alt=&quot;选择端口&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/e3fa8c45db63595c.png&quot; alt=&quot;选择默认属性&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/ab59867823a10114.png&quot; alt=&quot;输入at指令&quot;&gt;&lt;h2 id=&quot;常用at指令&quot;&gt;常用at指令&lt;/h2&gt;&lt;a href=&quot;https://wenku.baidu.com/view/7561b26ea98271fe910ef974.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;常用AT指令(中文)_百度文库&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      在手机modem问题分析的时候需要通过usb向手机发送at指令查看手机的运行情况，这时就需要超级终端来操作手机
+    
+    </summary>
+    
+      <category term="modem" scheme="http://www.chenguangsong.online/categories/modem/"/>
+    
+    
+      <category term="超级终端,at指令" scheme="http://www.chenguangsong.online/tags/%E8%B6%85%E7%BA%A7%E7%BB%88%E7%AB%AF-at%E6%8C%87%E4%BB%A4/"/>
+    
+  </entry>
   
   <entry>
     <title>linux学习——命令行颜色配置及环境变量配置</title>
@@ -1617,187 +1951,6 @@ public &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt
   </entry>
   
   <entry>
-    <title>android学习笔记（5） ——文件操作</title>
-    <link href="http://www.chenguangsong.online/2016/04/29/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89%E2%80%94%E2%80%94%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"/>
-    <id>http://www.chenguangsong.online/2016/04/29/Android学习笔记（5）——文件操作/</id>
-    <published>2016-04-29T03:36:00.000Z</published>
-    <updated>2016-09-04T14:46:12.579Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;读写文件&quot;&gt;读写文件&lt;/h1&gt;&lt;p&gt;在Android中文件的读写用的是java中的file类，所以读写操作和java中是一样的。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;写入操作&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;String data = editText.&lt;span class=&quot;keyword&quot;&gt;getText&lt;/span&gt;().toString();
-FileOutputStream fileOutputStream = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
-BufferedWriter bufferedWriter = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
-&lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
-    fileOutputStream = openFileOutput(&lt;span class=&quot;string&quot;&gt;&quot;date&quot;&lt;/span&gt;, Context.MODE_PRIVATE);
-    bufferedWriter = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; BufferedWriter(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; OutputStreamWriter(fileOutputStream));
-    bufferedWriter.&lt;span class=&quot;keyword&quot;&gt;write&lt;/span&gt;(data);
-    &lt;span class=&quot;comment&quot;&gt;//Toast.makeText(this, &quot;shuru &quot;+data, Toast.LENGTH_SHORT).show();&lt;/span&gt;
-} &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (IOException e) {
-    e.printStackTrace();
-} &lt;span class=&quot;keyword&quot;&gt;finally&lt;/span&gt; {
-    &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
-        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (bufferedWriter != &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) {
-            bufferedWriter.close();
-        }
-    } &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (IOException e) {
-        e.printStackTrace();
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;读出操作&lt;pre&gt;&lt;code&gt;FileInputStream fileInputStream = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
-    &lt;span class=&quot;keyword&quot;&gt;BufferedReader&lt;/span&gt; bufferedReader = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
-    StringBuilder content = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; StringBuilder();
-    &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
-        fileInputStream = openFileInput(&lt;span class=&quot;string&quot;&gt;&quot;date&quot;&lt;/span&gt;);
-        bufferedReader = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;BufferedReader&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; InputStreamReader(fileInputStream));
-        &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;line&lt;/span&gt; = &lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;;
-        &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; ((&lt;span class=&quot;built_in&quot;&gt;line&lt;/span&gt; = bufferedReader.readLine()) != &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) {
-            content.&lt;span class=&quot;built_in&quot;&gt;append&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;line&lt;/span&gt;);
-        }
-        textView.setText(content.toString());
-        &lt;span class=&quot;comment&quot;&gt;//Toast.makeText(this, &quot;输出 &quot;+content.toString(), Toast.LENGTH_SHORT).show();&lt;/span&gt;
-    } &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (IOException e) {
-        e.printStackTrace();
-    } &lt;span class=&quot;keyword&quot;&gt;finally&lt;/span&gt; {
-        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (bufferedReader != &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) {
-            &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
-                bufferedReader.close();
-            } &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;SharedPreference&quot;&gt;SharedPreference&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;private SharedPreferences preferences;&lt;span class=&quot;comment&quot;&gt;//声明preferences变量&lt;/span&gt;
-private SharedPreferences.Editor &lt;span class=&quot;keyword&quot;&gt;editor&lt;/span&gt;;&lt;span class=&quot;comment&quot;&gt;//声明editor变量&lt;/span&gt;
-preferences=getSharedPreferences(&lt;span class=&quot;string&quot;&gt;&quot;username&quot;&lt;/span&gt;, Activity.MODE_PRIVATE);&lt;span class=&quot;comment&quot;&gt;//初始化&lt;/span&gt;
-preferences.getString(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;)&lt;span class=&quot;comment&quot;&gt;//获取preferences中的name值&lt;/span&gt;
-&lt;span class=&quot;keyword&quot;&gt;editor&lt;/span&gt;=preferences.edit();&lt;span class=&quot;comment&quot;&gt;//初始化编辑器&lt;/span&gt;
-&lt;span class=&quot;keyword&quot;&gt;editor&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;clear&lt;/span&gt;();&lt;span class=&quot;comment&quot;&gt;//清空编辑器内容&lt;/span&gt;
-&lt;span class=&quot;keyword&quot;&gt;editor&lt;/span&gt;.putString(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;, name);&lt;span class=&quot;comment&quot;&gt;//设置编辑器的值&lt;/span&gt;
-&lt;span class=&quot;keyword&quot;&gt;editor&lt;/span&gt;.commit();&lt;span class=&quot;comment&quot;&gt;//应用编辑器的更改&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;ps：跨程序操作sharedPreference&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Context &lt;span class=&quot;variable&quot;&gt;context =&lt;/span&gt; &lt;span class=&quot;constant&quot;&gt;null&lt;/span&gt;;
-    try {
-        &lt;span class=&quot;variable&quot;&gt;context =&lt;/span&gt; createPackageContext(&lt;span class=&quot;string&quot;&gt;&quot;com.android.deskclock&quot;&lt;/span&gt;,Context.CONTEXT_IGNORE_SECURITY);
-    } catch (NameNotFoundException e) {
-        e.printStackTrace();
-    }
-    SharedPreferences &lt;span class=&quot;variable&quot;&gt;preferences2=&lt;/span&gt;context.getSharedPreferences(&lt;span class=&quot;string&quot;&gt;&quot;alarm_mute_flag&quot;&lt;/span&gt;, Activity.MODE_WORLD_READABLE);
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;SQLite&quot;&gt;SQLite&lt;/h1&gt;&lt;p&gt;在Android中使用数据库通过继承SQLiteOpenHelper类进行数据库的操作&lt;br&gt;    public class SQLiteHelper extends SQLiteOpenHelper{&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; String CREATE_ADDRESS_BOOK=&lt;span class=&quot;string&quot;&gt;&quot;create table address_book (&quot;&lt;/span&gt;
-            + &lt;span class=&quot;string&quot;&gt;&quot;id integer primary key autoincrement,&quot;&lt;/span&gt;
-            + &lt;span class=&quot;string&quot;&gt;&quot;name text not null,&quot;&lt;/span&gt;
-            + &lt;span class=&quot;string&quot;&gt;&quot;phone_number text not null)&quot;&lt;/span&gt;;
-
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Context context;
-
-    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SQLiteHelper&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Context context, String name, CursorFactory factory, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; version)&lt;/span&gt; &lt;/span&gt;{
-        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;(context, name, factory, version);
-        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.context=context;
-    }
-
-    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(SQLiteDatabase db)&lt;/span&gt; &lt;/span&gt;{&lt;span class=&quot;comment&quot;&gt;//数据库创建，只会在软件安装第一次启动时执行，之后更新软件不执行&lt;/span&gt;
-        db.execSQL(CREATE_ADDRESS_BOOK);
-        Toast.makeText(context, &lt;span class=&quot;string&quot;&gt;&quot;创建数据库文件完成！&quot;&lt;/span&gt;, Toast.LENGTH_SHORT).show();
-    }
-
-    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onUpgrade&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(SQLiteDatabase db, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; oldVersion, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; newVersion)&lt;/span&gt; &lt;/span&gt;{&lt;span class=&quot;comment&quot;&gt;//更新软件后第一次启动执行&lt;/span&gt;
-        db.execSQL(&lt;span class=&quot;string&quot;&gt;&quot;dorp table if exists address_book&quot;&lt;/span&gt;);
-        onCreate(db);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;具体操作数据库可以单独写一个dao类（我开发j2ee的习惯）不知道在安卓中这样规范不？  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;  &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; class AddressBookDao {
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; SQLiteHelper helper;
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; SQLiteDatabase db;
-
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; AddressBookDao(Context context) {
-        helper = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SQLiteHelper(context, &lt;span class=&quot;string&quot;&gt;&quot;AddressBook&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//实例化helper&lt;/span&gt;
-        db = helper.getWritableDatabase();&lt;span class=&quot;comment&quot;&gt;//获得db&lt;/span&gt;
-    }
-
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; List&amp;lt;AddressBook&amp;gt; getAll() {
-        List&amp;lt;AddressBook&amp;gt; addressBooks = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;AddressBook&amp;gt;();
-        AddressBook addressBook = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
-        Cursor &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt; = db.query(&lt;span class=&quot;string&quot;&gt;&quot;address_book&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);
-        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.moveToFirst()) {
-            do {
-                &lt;span class=&quot;comment&quot;&gt;// 遍历Cursor对象，取出数据并打印&lt;/span&gt;
-                addressBook=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AddressBook();
-                &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; id = &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getInt(&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getColumnIndex(&lt;span class=&quot;string&quot;&gt;&quot;id&quot;&lt;/span&gt;));
-                addressBook.setId(Integer.valueOf(id));
-                &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; name = &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getString(&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getColumnIndex(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;));
-                addressBook.setName(name);
-                &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; phone_number = &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getString(&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getColumnIndex(&lt;span class=&quot;string&quot;&gt;&quot;phone_number&quot;&lt;/span&gt;));
-                addressBook.setPhone_number(phone_number);
-                addressBooks.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(addressBook);
-            } &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.moveToNext());
-        }
-        &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.close();
-        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; addressBooks;
-    }
-
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; List&amp;lt;AddressBook&amp;gt; findByName(&lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; filter_name) {
-        Log.d(&lt;span class=&quot;string&quot;&gt;&quot;search&quot;&lt;/span&gt;, filter_name);
-        List&amp;lt;AddressBook&amp;gt; addressBooks = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;AddressBook&amp;gt;();
-        AddressBook addressBook = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
-        Cursor &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt; = db.query(&lt;span class=&quot;string&quot;&gt;&quot;address_book&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;name like ? or phone_number like ?&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt;[]{&lt;span class=&quot;string&quot;&gt;&quot;%&quot;&lt;/span&gt;+filter_name+&lt;span class=&quot;string&quot;&gt;&quot;%&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;%&quot;&lt;/span&gt;+filter_name+&lt;span class=&quot;string&quot;&gt;&quot;%&quot;&lt;/span&gt;}, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);
-        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.moveToFirst()) {
-            do {
-                &lt;span class=&quot;comment&quot;&gt;// 遍历Cursor对象，取出数据并打印&lt;/span&gt;
-                addressBook=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AddressBook();
-                &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; id = &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getInt(&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getColumnIndex(&lt;span class=&quot;string&quot;&gt;&quot;id&quot;&lt;/span&gt;));
-                addressBook.setId(Integer.valueOf(id));
-                &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; name = &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getString(&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getColumnIndex(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;));
-                addressBook.setName(name);
-                &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; phone_number = &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getString(&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getColumnIndex(&lt;span class=&quot;string&quot;&gt;&quot;phone_number&quot;&lt;/span&gt;));
-                addressBook.setPhone_number(phone_number);
-                addressBooks.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(addressBook);
-            } &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.moveToNext());
-        }
-        &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.close();
-        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; addressBooks;
-    }
-
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; addOrUpdate(Integer id,&lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; name, &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; phone_number) {
-        ContentValues values = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ContentValues();
-        values.put(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;, name);
-        values.put(&lt;span class=&quot;string&quot;&gt;&quot;phone_number&quot;&lt;/span&gt;,phone_number);
-        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;==id){
-            db.insert(&lt;span class=&quot;string&quot;&gt;&quot;address_book&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, values);
-        }&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;{
-            values.put(&lt;span class=&quot;string&quot;&gt;&quot;id&quot;&lt;/span&gt;, id.toString());
-            db.update(&lt;span class=&quot;string&quot;&gt;&quot;address_book&quot;&lt;/span&gt;, values, &lt;span class=&quot;string&quot;&gt;&quot;id=?&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt;[]{id.toString()});
-        }
-    }
-
-
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; deleteById(&lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; id) {
-        db.execSQL(&lt;span class=&quot;string&quot;&gt;&quot;delete from address_book where id=?&quot;&lt;/span&gt;,&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt;[]{id});
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      记录Android应用中文件的存储：读写文件、sharedpreference、Sqlite
-    
-    </summary>
-    
-      <category term="android" scheme="http://www.chenguangsong.online/categories/android/"/>
-    
-    
-      <category term="android" scheme="http://www.chenguangsong.online/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
     <title>android源码修改（1） ——日历中显示农历、日历图标随时间改变</title>
     <link href="http://www.chenguangsong.online/2016/04/29/%E4%BF%AE%E6%94%B9%E6%97%A5%E5%8E%86%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/"/>
     <id>http://www.chenguangsong.online/2016/04/29/修改日历操作记录/</id>
@@ -2765,439 +2918,176 @@ nemuItem.setTitle((Utils.getSharedPrefersence(&lt;span class=&quot;keyword&quot;
   </entry>
   
   <entry>
-    <title>正则表达式</title>
-    <link href="http://www.chenguangsong.online/2016/04/10/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    <id>http://www.chenguangsong.online/2016/04/10/正则表达式/</id>
-    <published>2016-04-10T03:45:54.000Z</published>
-    <updated>2016-09-04T15:08:55.544Z</updated>
+    <title>android学习笔记（5） ——文件操作</title>
+    <link href="http://www.chenguangsong.online/2016/04/29/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89%E2%80%94%E2%80%94%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"/>
+    <id>http://www.chenguangsong.online/2016/04/29/Android学习笔记（5）——文件操作/</id>
+    <published>2016-04-29T03:36:00.000Z</published>
+    <updated>2016-09-04T14:46:12.579Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;写在前面（参考网站）&quot;&gt;写在前面（参考网站）&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;(正则表达式语法)[&lt;a href=&quot;https://msdn.microsoft.com/zh-cn/library/ae5bf541(VS.80).aspx&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://msdn.microsoft.com/zh-cn/library/ae5bf541(VS.80).aspx&lt;/a&gt;]&lt;/li&gt;
-&lt;li&gt;(正则表达式 – 语法 | 菜鸟教程)[&lt;a href=&quot;http://www.runoob.com/regexp/regexp-syntax.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.runoob.com/regexp/regexp-syntax.html&lt;/a&gt;]&lt;/li&gt;
-&lt;li&gt;(Java正则表达式入门)[&lt;a href=&quot;http://blog.csdn.net/kdnuggets/article/details/2526588&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/kdnuggets/article/details/2526588&lt;/a&gt;]  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;什么是正则表达式&quot;&gt;什么是正则表达式&lt;/h1&gt;&lt;p&gt;正则表达式(regular expression)描述了一种字符串匹配的模式，可以用来检查一个串是否含有某种子串、将匹配的子串做替换或者从某个串中取出符合某个条件的子串等。&lt;br&gt;众所周知，在程序开发中，难免会遇到需要&lt;strong&gt;匹配、查找、替换、判断字符串&lt;/strong&gt;的情况发生，而这些情况有时又比较复杂，如果用纯编码方式解决，往往会浪费程序员的时间及精力。因此，学习及使用正则表达式，便成了解决这一矛盾的主要手段。&lt;br&gt;Java正则的功用还有很多，事实上只要是字符处理，就没有正则做不到的事情存在。（当然，正则解释时较耗时间就是了|||……）    &lt;/p&gt;
-&lt;h1 id=&quot;正则表达式的语法&quot;&gt;正则表达式的语法&lt;/h1&gt;&lt;h4 id=&quot;具体语法请查看前面参考链接，此处只列出常见的例子&quot;&gt;具体语法请查看前面参考链接，此处只列出常见的例子&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;匹配手机号码：^1[3|4|5|7|8][0-9]{9}$&lt;br&gt;“\^1”表示开始手机号以“1”开头，[3|4|5|7|8]表示第二位只可能是“3、4、5、7、8”，[0-9]{9}表示之后会跟9位数字。&lt;/li&gt;
-&lt;li&gt;匹配网址：[a-zA-Z]+://[^\s]&lt;em&gt;&lt;br&gt;“[a-zA-Z]+”表示多个字母，紧接着是“://”接着是[^\s]&lt;/em&gt;表示包含零或多个不为空格的字母或数字或其他符号&lt;/li&gt;
-&lt;li&gt;匹配邮箱：^\w+([-+.]\w+)&lt;em&gt;@\w+([-.]\w+)&lt;/em&gt;.\w+([-.]\w+)&lt;em&gt;$&lt;br&gt;“^\w+”表示以一或多个字符开始，“（）&lt;/em&gt;”接着零或多个子表达式，“[-.]\w+”表示“-”或“.”接一或多个字符，“@\w+”表示@后接一或多个字符，“（）*”接着零或多个子表达式，“[-.]\w+”表示“-”或“.”接一或多个字符，“$”表示结束  &lt;/li&gt;
-&lt;li&gt;匹配qq号：[1-9][0-9]{4,10}&lt;br&gt;以不为0的数字开头，接着是4到10位数字  &lt;/li&gt;
-&lt;li&gt;匹配中文（包括了繁体的）：\^[\u4E00-\u9FFF]+$&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/yitian/archive/2008/11/14/1333569.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;正则表达式匹配非英语字符&lt;/a&gt;  &lt;/li&gt;
-&lt;li&gt;匹配用户名（字母加数字）：\^[a-zA-Z][a-zA-Z0-9_]{4,15}$&lt;br&gt;以字母开头，后接4到15位字符包含下划线  &lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      在日常的开发和学习中经常遇到正则表达式的相关知识，所以抽个时间学习学习，写下来方便以后自己再需要时可以快速记起来。正则表达式就是用于对一些数据进行匹配和检测，最常用的就是表单验证。
-    
-    </summary>
-    
-      <category term="正则表达式" scheme="http://www.chenguangsong.online/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    
-    
-      <category term="正则表达式" scheme="http://www.chenguangsong.online/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android学习笔记（4） ——多线程</title>
-    <link href="http://www.chenguangsong.online/2016/04/08/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89%20%E2%80%94%E2%80%94%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    <id>http://www.chenguangsong.online/2016/04/08/android学习笔记（4） ——多线程/</id>
-    <published>2016-04-08T03:45:54.000Z</published>
-    <updated>2016-09-04T15:09:23.331Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;为什么要使用多线程&quot;&gt;为什么要使用多线程&lt;/h1&gt;&lt;p&gt;Android中的Main线程的事件处理不能太耗时，否则后续的事件无法在5秒内得到响应，就会弹出ANR对话框。  &lt;/p&gt;
+    <content type="html">&lt;h1 id=&quot;读写文件&quot;&gt;读写文件&lt;/h1&gt;&lt;p&gt;在Android中文件的读写用的是java中的file类，所以读写操作和java中是一样的。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;常见的耗时的操作有：获取网络数据、批量操作数据库、绘图等。&lt;/li&gt;
-&lt;li&gt;需要刷新UI。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;java中线程的实现方法&quot;&gt;java中线程的实现方法&lt;/h1&gt;&lt;p&gt;在java中可有两种方式实现多线程，一种是继承Thread类，一种是实现Runnable接口；Thread类是在java.lang包中定义的。一个类只要继承了Thread类同时覆写了本类中的run()方法就可以实现多线程操作了，但是一个类只能继承一个父类，这是此方法的局限。&lt;br&gt;&lt;a href=&quot;http://developer.51cto.com/art/201203/321042.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Java中Runnable和Thread的区别&lt;/a&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;android中线程的实现方法&quot;&gt;android中线程的实现方法&lt;/h1&gt;&lt;p&gt;在android中多线程的实现方法有：  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Activity.runOnUiThread(Runnable)  &lt;/li&gt;
-&lt;li&gt;View.post(Runnable) ;View.postDelay(Runnable , long)  &lt;/li&gt;
-&lt;li&gt;Handler  &lt;/li&gt;
-&lt;li&gt;AsyncTask  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/johnny901114/article/details/7536951&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android中轻松使用线程&lt;/a&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;同步与异步&quot;&gt;同步与异步&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;同步，需要等待返回结果。例如用户点击了注册按钮，需要等待服务端返回结果，那么需要有一个进度条来提示用户你的程序正在运行没有死掉。一般与服务端交互的都要有进度条，例如系统自带的浏览器，URL跳转时会有进度条。&lt;/li&gt;
-&lt;li&gt;异步，不需要等待返回结果。例如微博中的收藏功能，点击完收藏按钮后是否成功执行完成后告诉我就行了，我不想等它，这里最好实现为异步的。    &lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&quot;线程之间的通讯&quot;&gt;线程之间的通讯&lt;/h1&gt;&lt;h3 id=&quot;asyncTask：&quot;&gt;asyncTask：&lt;/h3&gt;&lt;p&gt;简单的异步耗时操作&lt;/p&gt;
-&lt;h3 id=&quot;Handler：&quot;&gt;Handler：&lt;/h3&gt;&lt;p&gt;刷新ui之算下progressbar&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      在安卓中多线程运用的特别多，因为为了让安卓跑的更加流畅所以对于一些比较耗时的操作我们都会开辟新的线程去执行以避免对UI线程的阻塞。是不是很重要，这里认真的学习下^_^
-    
-    </summary>
-    
-      <category term="android" scheme="http://www.chenguangsong.online/categories/android/"/>
-    
-    
-      <category term="android" scheme="http://www.chenguangsong.online/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android学习笔记（3） ——ListView</title>
-    <link href="http://www.chenguangsong.online/2016/04/01/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89%20%E2%80%94%E2%80%94ListView/"/>
-    <id>http://www.chenguangsong.online/2016/04/01/android学习笔记（3） ——ListView/</id>
-    <published>2016-04-01T03:45:54.000Z</published>
-    <updated>2016-09-04T14:50:12.713Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;ListView&quot;&gt;ListView&lt;/h1&gt;&lt;h5 id=&quot;想要在应用中添加ListView控件需要怎样做？&quot;&gt;想要在应用中添加ListView控件需要怎样做？&lt;/h5&gt;&lt;ol&gt;
-&lt;li&gt;在activity的xml布局文件中添加listView控件  &lt;/li&gt;
-&lt;li&gt;新建item.xml文件为listView的子项进行布局（系统提供了一些也可直接使用）  &lt;/li&gt;
-&lt;li&gt;在activity中使用adapter将数据填充到item.xml中并组合到ListView中   &lt;/li&gt;
-&lt;/ol&gt;
-&lt;h5 id=&quot;什么是Adapter呢？&quot;&gt;什么是Adapter呢？&lt;/h5&gt;&lt;p&gt;Adapter，适配器，是连接后端数据和前端显示的适配器接口，是数据和UI（View）之间一个重要的纽带。在常见的View(ListView,GridView)等地方都需要用到Adapter。如下图直观的表达了Data、Adapter、View三者的关系：  &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://pic002.cnblogs.com/images/2012/267603/2012012021592978.jpg&quot; alt=&quot;adapter&quot;&gt;  &lt;/p&gt;
-&lt;p&gt;Adatper中有哪些实现类呢？    &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://dl2.iteye.com/upload/attachment/0040/8195/3d321acd-aec8-3f99-bde7-c7634d8f4ac3.png&quot; alt=&quot;adapter&quot;&gt;   &lt;/p&gt;
-&lt;p&gt;其实我用过的也就只有ArrayAdapter和SimpleAdapter&lt;br&gt;我们需要定义自己的实现类MyAdapter重新实现下面的方法：  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;abstract Object getItem(int position)  &lt;/li&gt;
-&lt;li&gt;abstract int getCount()  &lt;/li&gt;
-&lt;li&gt;abstract long getItemId(int position)  &lt;/li&gt;
-&lt;li&gt;abstract int getItemViewType(int position)  &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;abstract View getView(int position,View convertVeiw,ViewGroup parent)    &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;lv&lt;/span&gt; = (ListView) findViewById(R.id.&lt;span class=&quot;keyword&quot;&gt;lv&lt;/span&gt;);
-&lt;span class=&quot;comment&quot;&gt;//得到ListView对象的引用  &lt;/span&gt;
-&lt;span class=&quot;keyword&quot;&gt;lv&lt;/span&gt;.setAdapter(new ArrayAdapter&amp;lt;Items&amp;gt;(this,android.R.layout.item, Item[]));
-&lt;span class=&quot;comment&quot;&gt;//为ListView设置Adapter来绑定数据   &lt;/span&gt;
+&lt;li&gt;&lt;p&gt;写入操作&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;String data = editText.&lt;span class=&quot;keyword&quot;&gt;getText&lt;/span&gt;().toString();
+FileOutputStream fileOutputStream = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
+BufferedWriter bufferedWriter = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
+&lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
+    fileOutputStream = openFileOutput(&lt;span class=&quot;string&quot;&gt;&quot;date&quot;&lt;/span&gt;, Context.MODE_PRIVATE);
+    bufferedWriter = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; BufferedWriter(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; OutputStreamWriter(fileOutputStream));
+    bufferedWriter.&lt;span class=&quot;keyword&quot;&gt;write&lt;/span&gt;(data);
+    &lt;span class=&quot;comment&quot;&gt;//Toast.makeText(this, &quot;shuru &quot;+data, Toast.LENGTH_SHORT).show();&lt;/span&gt;
+} &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (IOException e) {
+    e.printStackTrace();
+} &lt;span class=&quot;keyword&quot;&gt;finally&lt;/span&gt; {
+    &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
+        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (bufferedWriter != &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) {
+            bufferedWriter.close();
+        }
+    } &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (IOException e) {
+        e.printStackTrace();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;读出操作&lt;pre&gt;&lt;code&gt;FileInputStream fileInputStream = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
+    &lt;span class=&quot;keyword&quot;&gt;BufferedReader&lt;/span&gt; bufferedReader = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
+    StringBuilder content = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; StringBuilder();
+    &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
+        fileInputStream = openFileInput(&lt;span class=&quot;string&quot;&gt;&quot;date&quot;&lt;/span&gt;);
+        bufferedReader = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;BufferedReader&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; InputStreamReader(fileInputStream));
+        &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;line&lt;/span&gt; = &lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;;
+        &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; ((&lt;span class=&quot;built_in&quot;&gt;line&lt;/span&gt; = bufferedReader.readLine()) != &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) {
+            content.&lt;span class=&quot;built_in&quot;&gt;append&lt;/span&gt;(&lt;span class=&quot;built_in&quot;&gt;line&lt;/span&gt;);
+        }
+        textView.setText(content.toString());
+        &lt;span class=&quot;comment&quot;&gt;//Toast.makeText(this, &quot;输出 &quot;+content.toString(), Toast.LENGTH_SHORT).show();&lt;/span&gt;
+    } &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (IOException e) {
+        e.printStackTrace();
+    } &lt;span class=&quot;keyword&quot;&gt;finally&lt;/span&gt; {
+        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (bufferedReader != &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) {
+            &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
+                bufferedReader.close();
+            } &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/purediy/p/3267913.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android开发优化-Adapter优化&lt;/a&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;最后附上自己实现的一个Demo&quot;&gt;最后附上自己实现的一个Demo&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://jxust-cgs.github.io/photos/ListView.png&quot; alt=&quot;ListView&quot;&gt;   &lt;/p&gt;
-&lt;p&gt;Person.java&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; Person {
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt; name;
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; int photo_id;
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;number&lt;/span&gt;;
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Person(){
+&lt;h1 id=&quot;SharedPreference&quot;&gt;SharedPreference&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;private SharedPreferences preferences;&lt;span class=&quot;comment&quot;&gt;//声明preferences变量&lt;/span&gt;
+private SharedPreferences.Editor &lt;span class=&quot;keyword&quot;&gt;editor&lt;/span&gt;;&lt;span class=&quot;comment&quot;&gt;//声明editor变量&lt;/span&gt;
+preferences=getSharedPreferences(&lt;span class=&quot;string&quot;&gt;&quot;username&quot;&lt;/span&gt;, Activity.MODE_PRIVATE);&lt;span class=&quot;comment&quot;&gt;//初始化&lt;/span&gt;
+preferences.getString(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;)&lt;span class=&quot;comment&quot;&gt;//获取preferences中的name值&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;editor&lt;/span&gt;=preferences.edit();&lt;span class=&quot;comment&quot;&gt;//初始化编辑器&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;editor&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;clear&lt;/span&gt;();&lt;span class=&quot;comment&quot;&gt;//清空编辑器内容&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;editor&lt;/span&gt;.putString(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;, name);&lt;span class=&quot;comment&quot;&gt;//设置编辑器的值&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;editor&lt;/span&gt;.commit();&lt;span class=&quot;comment&quot;&gt;//应用编辑器的更改&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;ps：跨程序操作sharedPreference&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Context &lt;span class=&quot;variable&quot;&gt;context =&lt;/span&gt; &lt;span class=&quot;constant&quot;&gt;null&lt;/span&gt;;
+    try {
+        &lt;span class=&quot;variable&quot;&gt;context =&lt;/span&gt; createPackageContext(&lt;span class=&quot;string&quot;&gt;&quot;com.android.deskclock&quot;&lt;/span&gt;,Context.CONTEXT_IGNORE_SECURITY);
+    } catch (NameNotFoundException e) {
+        e.printStackTrace();
     }
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Person(&lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt; name,int photo_id,&lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;number&lt;/span&gt;){
-        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name=name;
-        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.photo_id=photo_id;
-        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.number=&lt;span class=&quot;built_in&quot;&gt;number&lt;/span&gt;;
-    }
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt; getName() {
-        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; name;
-    }
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;void&lt;/span&gt; setName(&lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt; name) {
-        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name;
-    }
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; int getPhoto_id() {
-        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; photo_id;
-    }
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;void&lt;/span&gt; setPhoto_id(int photo_id) {
-        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.photo_id = photo_id;
-    }
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt; getNumber() {
-        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;number&lt;/span&gt;;
-    }
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;void&lt;/span&gt; setNumber(&lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;number&lt;/span&gt;) {
-        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.number = &lt;span class=&quot;built_in&quot;&gt;number&lt;/span&gt;;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;MyAdapter.java&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MyAdapter&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BaseAdapter&lt;/span&gt;&lt;/span&gt;{
+    SharedPreferences &lt;span class=&quot;variable&quot;&gt;preferences2=&lt;/span&gt;context.getSharedPreferences(&lt;span class=&quot;string&quot;&gt;&quot;alarm_mute_flag&quot;&lt;/span&gt;, Activity.MODE_WORLD_READABLE);
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;SQLite&quot;&gt;SQLite&lt;/h1&gt;&lt;p&gt;在Android中使用数据库通过继承SQLiteOpenHelper类进行数据库的操作&lt;br&gt;    public class SQLiteHelper extends SQLiteOpenHelper{&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; String CREATE_ADDRESS_BOOK=&lt;span class=&quot;string&quot;&gt;&quot;create table address_book (&quot;&lt;/span&gt;
+            + &lt;span class=&quot;string&quot;&gt;&quot;id integer primary key autoincrement,&quot;&lt;/span&gt;
+            + &lt;span class=&quot;string&quot;&gt;&quot;name text not null,&quot;&lt;/span&gt;
+            + &lt;span class=&quot;string&quot;&gt;&quot;phone_number text not null)&quot;&lt;/span&gt;;
 
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; ArrayList&amp;lt;Person&amp;gt; persons;
-    Context context;
+    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Context context;
 
-    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MyAdapter&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Context context,ArrayList&amp;lt;Person&amp;gt; persons)&lt;/span&gt; &lt;/span&gt;{
+    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SQLiteHelper&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Context context, String name, CursorFactory factory, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; version)&lt;/span&gt; &lt;/span&gt;{
+        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;(context, name, factory, version);
         &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.context=context;
-        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.persons=persons;
     }
 
     &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;getCount&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
-        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; persons==&lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;?&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;:persons.size();
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(SQLiteDatabase db)&lt;/span&gt; &lt;/span&gt;{&lt;span class=&quot;comment&quot;&gt;//数据库创建，只会在软件安装第一次启动时执行，之后更新软件不执行&lt;/span&gt;
+        db.execSQL(CREATE_ADDRESS_BOOK);
+        Toast.makeText(context, &lt;span class=&quot;string&quot;&gt;&quot;创建数据库文件完成！&quot;&lt;/span&gt;, Toast.LENGTH_SHORT).show();
     }
 
     &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;Object &lt;span class=&quot;title&quot;&gt;getItem&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; position)&lt;/span&gt; &lt;/span&gt;{
-        &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; persons.&lt;span class=&quot;title&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(position)&lt;/span&gt;&lt;/span&gt;;
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onUpgrade&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(SQLiteDatabase db, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; oldVersion, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; newVersion)&lt;/span&gt; &lt;/span&gt;{&lt;span class=&quot;comment&quot;&gt;//更新软件后第一次启动执行&lt;/span&gt;
+        db.execSQL(&lt;span class=&quot;string&quot;&gt;&quot;dorp table if exists address_book&quot;&lt;/span&gt;);
+        onCreate(db);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;具体操作数据库可以单独写一个dao类（我开发j2ee的习惯）不知道在安卓中这样规范不？  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; class AddressBookDao {
+    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; SQLiteHelper helper;
+    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; SQLiteDatabase db;
+
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; AddressBookDao(Context context) {
+        helper = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SQLiteHelper(context, &lt;span class=&quot;string&quot;&gt;&quot;AddressBook&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//实例化helper&lt;/span&gt;
+        db = helper.getWritableDatabase();&lt;span class=&quot;comment&quot;&gt;//获得db&lt;/span&gt;
     }
 
-    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;getItemId&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; position)&lt;/span&gt; &lt;/span&gt;{
-        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; position;
-    }
-
-    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;View &lt;span class=&quot;title&quot;&gt;getView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; position, View convertView, ViewGroup parent)&lt;/span&gt; &lt;/span&gt;{
-        &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; Person person=(Person) getItem(position);
-        ViewHolder viewHolder=&lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
-        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(viewHolder==&lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;){
-            convertView=LayoutInflater.from(context).inflate(R.layout.person_item, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);
-            viewHolder=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ViewHolder();
-            viewHolder.imageView_photo=(ImageView) convertView.findViewById(R.id.photo);
-            viewHolder.textView_name=(TextView) convertView.findViewById(R.id.name);
-            viewHolder.textView_number=(TextView) convertView.findViewById(R.id.number);
-            convertView.setTag(viewHolder);
-        }&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;{
-            viewHolder=(ViewHolder) convertView.getTag();
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; List&amp;lt;AddressBook&amp;gt; getAll() {
+        List&amp;lt;AddressBook&amp;gt; addressBooks = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;AddressBook&amp;gt;();
+        AddressBook addressBook = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
+        Cursor &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt; = db.query(&lt;span class=&quot;string&quot;&gt;&quot;address_book&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);
+        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.moveToFirst()) {
+            do {
+                &lt;span class=&quot;comment&quot;&gt;// 遍历Cursor对象，取出数据并打印&lt;/span&gt;
+                addressBook=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AddressBook();
+                &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; id = &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getInt(&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getColumnIndex(&lt;span class=&quot;string&quot;&gt;&quot;id&quot;&lt;/span&gt;));
+                addressBook.setId(Integer.valueOf(id));
+                &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; name = &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getString(&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getColumnIndex(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;));
+                addressBook.setName(name);
+                &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; phone_number = &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getString(&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getColumnIndex(&lt;span class=&quot;string&quot;&gt;&quot;phone_number&quot;&lt;/span&gt;));
+                addressBook.setPhone_number(phone_number);
+                addressBooks.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(addressBook);
+            } &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.moveToNext());
         }
-        viewHolder.textView_name.setText(person.getName());
-        viewHolder.textView_number.setText(person.getNumber());
-        viewHolder.imageView_photo.setImageResource(person.getPhoto_id());
-
-        convertView.setOnClickListener(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; OnClickListener() {
-
-            &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-            &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View v)&lt;/span&gt; &lt;/span&gt;{
-                Toast.makeText(context, person.getName()+&lt;span class=&quot;string&quot;&gt;&quot;的号码是&quot;&lt;/span&gt;+person.getNumber(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;  convertView;
+        &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.close();
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; addressBooks;
     }
 
-    &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ViewHolder&lt;/span&gt; &lt;/span&gt;{
-        TextView textView_name;
-        TextView textView_number;
-        ImageView imageView_photo;
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; List&amp;lt;AddressBook&amp;gt; findByName(&lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; filter_name) {
+        Log.d(&lt;span class=&quot;string&quot;&gt;&quot;search&quot;&lt;/span&gt;, filter_name);
+        List&amp;lt;AddressBook&amp;gt; addressBooks = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;AddressBook&amp;gt;();
+        AddressBook addressBook = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;
+        Cursor &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt; = db.query(&lt;span class=&quot;string&quot;&gt;&quot;address_book&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;name like ? or phone_number like ?&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt;[]{&lt;span class=&quot;string&quot;&gt;&quot;%&quot;&lt;/span&gt;+filter_name+&lt;span class=&quot;string&quot;&gt;&quot;%&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;%&quot;&lt;/span&gt;+filter_name+&lt;span class=&quot;string&quot;&gt;&quot;%&quot;&lt;/span&gt;}, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);
+        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.moveToFirst()) {
+            do {
+                &lt;span class=&quot;comment&quot;&gt;// 遍历Cursor对象，取出数据并打印&lt;/span&gt;
+                addressBook=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AddressBook();
+                &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; id = &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getInt(&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getColumnIndex(&lt;span class=&quot;string&quot;&gt;&quot;id&quot;&lt;/span&gt;));
+                addressBook.setId(Integer.valueOf(id));
+                &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; name = &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getString(&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getColumnIndex(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;));
+                addressBook.setName(name);
+                &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; phone_number = &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getString(&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.getColumnIndex(&lt;span class=&quot;string&quot;&gt;&quot;phone_number&quot;&lt;/span&gt;));
+                addressBook.setPhone_number(phone_number);
+                addressBooks.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(addressBook);
+            } &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.moveToNext());
+        }
+        &lt;span class=&quot;built_in&quot;&gt;cursor&lt;/span&gt;.close();
+        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; addressBooks;
     }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;MainActivity.java&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; class MainActivity extends Activity {
 
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; ArrayList&amp;lt;Person&amp;gt; persons =&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayList&amp;lt;Person&amp;gt;();
-
-    @Override
-    &lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; onCreate(Bundle savedInstanceState) {
-        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initPerson();
-        ListView listView=(ListView) findViewById(R.id.listView1);
-        MyAdapter myAdapter=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; MyAdapter(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;,persons);
-        listView.setAdapter(myAdapter);
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; addOrUpdate(Integer id,&lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; name, &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; phone_number) {
+        ContentValues values = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ContentValues();
+        values.put(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;, name);
+        values.put(&lt;span class=&quot;string&quot;&gt;&quot;phone_number&quot;&lt;/span&gt;,phone_number);
+        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;==id){
+            db.insert(&lt;span class=&quot;string&quot;&gt;&quot;address_book&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;, values);
+        }&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;{
+            values.put(&lt;span class=&quot;string&quot;&gt;&quot;id&quot;&lt;/span&gt;, id.toString());
+            db.update(&lt;span class=&quot;string&quot;&gt;&quot;address_book&quot;&lt;/span&gt;, values, &lt;span class=&quot;string&quot;&gt;&quot;id=?&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt;[]{id.toString()});
+        }
     }
 
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; initPerson() {
-        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;李华&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
-        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;丽华&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
-        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;利华&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
-        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;立华&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
-        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;小明&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
-        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;小红&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
-        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;天明&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
-        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;少羽&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
-        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;小莉&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
-        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;joke&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
-        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;Tom&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
-        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;Boby&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
-        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;Bob&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
-        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;小胡&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
-        persons.&lt;span class=&quot;built_in&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Person(&lt;span class=&quot;string&quot;&gt;&quot;小菜鸟&quot;&lt;/span&gt;,R.drawable.photo,&lt;span class=&quot;string&quot;&gt;&quot;18179092797&quot;&lt;/span&gt;));
+
+    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; deleteById(&lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; id) {
+        db.execSQL(&lt;span class=&quot;string&quot;&gt;&quot;delete from address_book where id=?&quot;&lt;/span&gt;,&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt;[]{id});
     }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;person_item.xml&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    &amp;lt;ImageView
-        android:&lt;span class=&quot;variable&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;@+id/photo&quot;&lt;/span&gt;
-        android:&lt;span class=&quot;variable&quot;&gt;layout_width=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;50dp&quot;&lt;/span&gt;
-        android:&lt;span class=&quot;variable&quot;&gt;layout_height=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;50dp&quot;&lt;/span&gt;
-        android:&lt;span class=&quot;variable&quot;&gt;contentDescription=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;@string/image&quot;&lt;/span&gt;/&amp;gt;
-
-    &amp;lt;LinearLayout
-        android:&lt;span class=&quot;variable&quot;&gt;layout_width=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
-        android:&lt;span class=&quot;variable&quot;&gt;layout_height=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
-        android:&lt;span class=&quot;variable&quot;&gt;orientation=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;vertical&quot;&lt;/span&gt;
-        android:&lt;span class=&quot;variable&quot;&gt;layout_gravity=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;center_vertical&quot;&lt;/span&gt;&amp;gt;
-
-        &amp;lt;TextView
-            android:&lt;span class=&quot;variable&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;@+id/name&quot;&lt;/span&gt;
-            android:&lt;span class=&quot;variable&quot;&gt;layout_width=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
-            android:&lt;span class=&quot;variable&quot;&gt;layout_height=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
-            android:&lt;span class=&quot;variable&quot;&gt;textSize=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;20sp&quot;&lt;/span&gt;
-            android:&lt;span class=&quot;variable&quot;&gt;textColor=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;#48c0f0&quot;&lt;/span&gt; /&amp;gt;
-
-        &amp;lt;TextView
-            android:&lt;span class=&quot;variable&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;@+id/number&quot;&lt;/span&gt;
-            android:&lt;span class=&quot;variable&quot;&gt;layout_width=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
-            android:&lt;span class=&quot;variable&quot;&gt;layout_height=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
-            android:&lt;span class=&quot;variable&quot;&gt;textSize=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;10sp&quot;&lt;/span&gt;
-            android:&lt;span class=&quot;variable&quot;&gt;textColor=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;#48c0f0&quot;&lt;/span&gt; /&amp;gt;
-    &amp;lt;/LinearLayout&amp;gt;
-
-&amp;lt;/LinearLayout&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;</content>
     
     <summary type="html">
     
-      总结下自己学习ListView控件的一些知识，互相分享学习。
-    
-    </summary>
-    
-      <category term="android" scheme="http://www.chenguangsong.online/categories/android/"/>
-    
-    
-      <category term="android" scheme="http://www.chenguangsong.online/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android学习笔记（2） ——UI</title>
-    <link href="http://www.chenguangsong.online/2016/04/01/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89%20%E2%80%94%E2%80%94UI/"/>
-    <id>http://www.chenguangsong.online/2016/04/01/android学习笔记（2） ——UI/</id>
-    <published>2016-04-01T03:40:54.000Z</published>
-    <updated>2016-09-04T15:09:48.498Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;UI布局&quot;&gt;UI布局&lt;/h1&gt;&lt;p&gt;第一次开发安卓感觉和j2ee中的web编程有点像，mvc模式，layout布局就是view，activity就是controller，实体类就是model。&lt;br&gt;在android中布局文件是用xml文件编写通过ViewGroup和VIew组成。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://hi.csdn.net/attachment/201108/21/0_1313928575W9Q0.gif&quot; alt=&quot;photo&quot;&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;ViewGroup&quot;&gt;ViewGroup&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;GridLayout网格布局 ,必须声明几行几列，可以实现跨行显示（相对于表格的不同）  &lt;pre&gt;&lt;code&gt;&lt;span class=&quot;label&quot;&gt;android:&lt;/span&gt;layout_row=&lt;span class=&quot;string&quot;&gt;&quot;0&quot;&lt;/span&gt;  
-&lt;span class=&quot;label&quot;&gt;android:&lt;/span&gt;layout_column=&lt;span class=&quot;string&quot;&gt;&quot;1&quot;&lt;/span&gt;  
-&lt;span class=&quot;label&quot;&gt;android:&lt;/span&gt;layout_columnSpan=&lt;span class=&quot;string&quot;&gt;&quot;2&quot;&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;LinnearLayout线形布局，通过orientation设置反向水平或竖直。&lt;br&gt;android:weightSum=”5”，android：layout_weight=”1”，android：layout_weith=”0dp”实现指定反向上按比例摆放。    &lt;/li&gt;
-&lt;li&gt;RelativeLayout相对布局，对布局中的组件摆放比较复杂时使用，方便布局中组件位置的配置  &lt;/li&gt;
-&lt;li&gt;FrameLayout帧布局，用于叠加的摆放&lt;/li&gt;
-&lt;li&gt;TableLayout表格布局，每次都有加&lt;tablerow&gt;不加的话组件会独占一行&lt;/tablerow&gt;&lt;/li&gt;
-&lt;li&gt;AbsoluteLayout绝对布局（官方不提倡使用）&lt;/li&gt;
-&lt;li&gt;Include引用其他布局文件  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;View&quot;&gt;View&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;TextView，文本控件，用于显示文本，额好吧不说了&lt;/li&gt;
-&lt;li&gt;Button，按钮&lt;/li&gt;
-&lt;li&gt;EditView，输入框，通过hint属性配置提示，通过background=“@null”去除横线&lt;/li&gt;
-&lt;li&gt;CheckBox、RedioBox，多选和单选框&lt;/li&gt;
-&lt;li&gt;ListView，列表显示，这就有的说了：&lt;br&gt;  1．ListVeiw 用来展示列表的View。&lt;br&gt;  2．适配器 用来把数据映射到ListView上的中介。&lt;br&gt;  3．数据具体的将被映射的字符串，图片，或者基本组件。&lt;br&gt;&lt;a href=&quot;http://jxust-cgs.github.io/2016/04/01/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89%20%E2%80%94%E2%80%94ListView/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;学习ListView的使用&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;WebView,网络视图   &lt;/li&gt;
-&lt;li&gt;progressBar，进度条&lt;br&gt;&lt;a href=&quot;http://jxust-cgs.github.io/2016/04/08/android学习笔记（4）%20——多线程/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;由webView,progressBar了解多线程&lt;/a&gt;  &lt;/li&gt;
-&lt;li&gt;ImageView,图片视图，通过src属性配置资源或者在程序中配置&lt;pre&gt;&lt;code&gt;Bitmap bm = BitmapFactory.decodeStream(  
-        MainActivity.&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.getAssets().&lt;span class=&quot;built_in&quot;&gt;open&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;weather/100.png&quot;&lt;/span&gt;));  
-iv_logo.setImageBitmap(bm);  &lt;span class=&quot;comment&quot;&gt;// 通过获得assets目录下文件路径的方式设置图片资源  &lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;Fragment碎片，通过fragment能够很好的适应平板和手机，不过很少这么用，一般用于经常变动的页面替换&lt;/li&gt;
-&lt;li&gt;scrollView滚动条，在显示很长的数据的时候可以轻松搞定&lt;/li&gt;
-&lt;li&gt;…&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      介绍安卓中界面的构成，总体就是树状的结构，在Viewgroup中嵌套Viewgroup或View，是不是感觉和html的div一样一层层的叠在一起。其实差不多，不过Android中对每个不同的View进行了封装提供了很多常用的View和ViewGroup，不过当然我们还是可以自定义View的，这个暂且不说，之后看到了在写。
-    
-    </summary>
-    
-      <category term="android" scheme="http://www.chenguangsong.online/categories/android/"/>
-    
-    
-      <category term="android" scheme="http://www.chenguangsong.online/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android学习笔记（1）——activity与intent</title>
-    <link href="http://www.chenguangsong.online/2016/03/31/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89%20%E2%80%94%E2%80%94activity%E4%B8%8Eintent/"/>
-    <id>http://www.chenguangsong.online/2016/03/31/android学习笔记（1） ——activity与intent/</id>
-    <published>2016-03-31T05:32:54.000Z</published>
-    <updated>2016-09-04T15:05:54.278Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;activity&quot;&gt;activity&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;对于安卓的学习一开始无非就是安装软件配置开发环境，adt和android stdio我感觉都差不多。在eclipse中开发一次加载多个项目，而在android stdio中只对一个项目进行开发。 我比较喜欢查看以前项目中的代码或是写个小例子还是eclipse比较适合我^_^  &lt;/li&gt;
-&lt;li&gt;说到activity就是要说activity的生命周期。&lt;br&gt;&lt;img src=&quot;http://hukai.me/android-training-course-in-chinese/basics/activity-lifecycle/basic-lifecycle-paused.png&quot; alt=&quot;photo&quot;&gt;  &lt;/li&gt;
-&lt;li&gt;finish()结束activity，默认会返回到上一个activity。&lt;br&gt;（ps：acitvity是通过返回栈来管理的，不要用intent跳回去哟这样你按返回键又会返回回来的）  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;intent&quot;&gt;intent&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;显式intent：显式就是意图非常明确，&lt;br&gt;指定跳转的activity，startActivity（&lt;br&gt;New Intent(MainActivity.this,OtherActivity.class)）。&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;隐式intent：隐式就是意图不明确，&lt;br&gt;需要根据action和category匹配对应的activity   &lt;/p&gt;
-&lt;p&gt;  &lt;intent-filter&gt;&lt;/intent-filter&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;action android:&lt;span class=&quot;property&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;android.intent.action.MAIN&quot;&lt;/span&gt; /&amp;gt;
-&amp;lt;category android:&lt;span class=&quot;property&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;android.intent.category.LAUNCHER&quot;&lt;/span&gt; /&amp;gt;
-保证此activity入口出现在luncher中，一般出现在Mainactivity
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;    &lt;/p&gt;
-&lt;p&gt;  对于隐式的Intent的使用比较常见的就是调用系统的应用如：打电话   &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Intent intent = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Intent(Intent.ACTION_DIAL);
-intent.setData(&lt;span class=&quot;built_in&quot;&gt;Uri&lt;/span&gt;.parse(&lt;span class=&quot;string&quot;&gt;&quot;tel:10086&quot;&lt;/span&gt;));
-startActivity(intent);
-还有很多实践可以尝试：发短信，打开网页等
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;intent可以用于发送和回传数据&quot;&gt;intent可以用于发送和回传数据&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;发送：  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;button1.setOnClickListener(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;OnClickListener&lt;/span&gt;() {
-  &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-  public void onClick(&lt;span class=&quot;type&quot;&gt;View&lt;/span&gt; v) {
-      &lt;span class=&quot;type&quot;&gt;String&lt;/span&gt; data = &lt;span class=&quot;string&quot;&gt;&quot;Hello SecondActivity&quot;&lt;/span&gt;;
-      &lt;span class=&quot;type&quot;&gt;Intent&lt;/span&gt; intent = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;Intent&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;FirstActivity&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;, &lt;span class=&quot;type&quot;&gt;SecondActivity&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;);
-      intent.putExtra(&lt;span class=&quot;string&quot;&gt;&quot;extra_data&quot;&lt;/span&gt;, data);
-      &lt;span class=&quot;comment&quot;&gt;//发送需要的数据，发送对象是需要对对象进行序列化通过实现Serializable接口传递对象,一种是通过实现Parcelable接口传递对象&lt;/span&gt;
-      startActivity(intent);
-    }
-});
-
-public &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SecondActivity&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Activity&lt;/span&gt; {&lt;/span&gt;
-  &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-  &lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; void onCreate(&lt;span class=&quot;type&quot;&gt;Bundle&lt;/span&gt; savedInstanceState) {
-      &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);
-      requestWindowFeature(&lt;span class=&quot;type&quot;&gt;Window&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;FEATURE_NO_TITLE&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//去掉标题栏，一定要放在setContentView（）之前哟&lt;/span&gt;
-      setContentView(&lt;span class=&quot;type&quot;&gt;R&lt;/span&gt;.layout.second_layout);
-      &lt;span class=&quot;type&quot;&gt;Intent&lt;/span&gt; intent = getIntent();
-      &lt;span class=&quot;type&quot;&gt;String&lt;/span&gt; data = intent.getStringExtra(&lt;span class=&quot;string&quot;&gt;&quot;extra_data&quot;&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//获取从firstactivity中传递来的数据&lt;/span&gt;
-      &lt;span class=&quot;type&quot;&gt;Log&lt;/span&gt;.d(&lt;span class=&quot;string&quot;&gt;&quot;SecondActivity&quot;&lt;/span&gt;, data);
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;返回数据：  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;button1.setOnClickListener(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; OnClickListener() {
-    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View v)&lt;/span&gt; &lt;/span&gt;{
-        Intent intent = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Intent(FirstActivity.&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;, SecondActivity.class);
-        startActivityForResult(intent, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);
-    }
-});
-&lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onActivityResult&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; requestCode, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; resultCode, Intent data)&lt;/span&gt; &lt;/span&gt;{
-    &lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt; (requestCode) {
-        &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;:
-            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (resultCode == RESULT_OK) {
-                String returnedData = data.getStringExtra(&lt;span class=&quot;string&quot;&gt;&quot;data_return&quot;&lt;/span&gt;);
-                Log.d(&lt;span class=&quot;string&quot;&gt;&quot;FirstActivity&quot;&lt;/span&gt;, returnedData);
-            }
-            &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;
-        &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt;:
-    }
-}
-&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SecondActivity&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Activity&lt;/span&gt; &lt;/span&gt;{
-    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Bundle savedInstanceState)&lt;/span&gt; &lt;/span&gt;{
-        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.second_layout);
-        Button button2 = (Button) findViewById(R.id.button_2);
-        button2.setOnClickListener(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; OnClickListener() {
-            &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-            &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View v)&lt;/span&gt; &lt;/span&gt;{
-                Intent intent = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Intent();
-                intent.putExtra(&lt;span class=&quot;string&quot;&gt;&quot;data_return&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Hello FirstActivity&quot;&lt;/span&gt;);
-                setResult(RESULT_OK, intent);
-                finish();
-            }
-        });
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;activity的启动模式&quot;&gt;activity的启动模式&lt;/h1&gt;&lt;p&gt;启动模式一共有四种，分别是standard、singleTop、singleTask 和singleInstance ， 可以在AndroidManifest.xml 中通过给&lt;activity&gt; 标签指定android:launchMode 属性来选择启动模式。&lt;/activity&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;standard 标准启动模式，使用返回栈管理activity，需要一层一层的返回，而且可能会创建多个相同activity的实例。  &lt;/li&gt;
-&lt;li&gt;singleTop 在启动活动时如果发现返回栈的栈顶已经是该活动，则认为可以直接使用它，不会再创建新的活动实例。   &lt;/li&gt;
-&lt;li&gt;singleTask 每次启动该活动时系统首先会在返回栈中检查是否存在该活动的实例，如果发现已经存在则直接使用该实例，并把在这个活动之上的所有活动统统出栈，如果没有发现就会创建一个新的活动实例。  &lt;/li&gt;
-&lt;li&gt;singleInstance 在这种模式下会有一个单独的返回栈来管理这个活动，不管是哪个应用程序来访问这个活动，都共用的同一个返回栈，也就解决了共享活动实例的问题。  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;快速结束activity&quot;&gt;快速结束activity&lt;/h1&gt;&lt;p&gt;我们知道activity的返回是一个退栈的过程，但是如果当前是第N个activity中如何做到结束所有的activity呢？&lt;br&gt;你肯能会想用home键返回或调用系统的结束进程。但是我们程序自己是完全可以做得到的。&lt;br&gt;首先建立一个工具类ActivityCollector，在这个类中创建一个List&lt;activity&gt;的实例，提供静态方法addActivity（）和removeActivity（）方法来并在BaseActivity中onCreate（）和onDestory（）维护List&lt;activity&gt;。然后就是在ActivityCollector中提供一个finishAll的方法就OK了。  &lt;/activity&gt;&lt;/activity&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      在安卓中activity是最主要的类是每个界面的控制器，而intent这是意图，应用发出intent通过系统将intent通过intent进行匹配以启动对应的activity这样就可以实现跨应用的调用是不是很酷。
+      记录Android应用中文件的存储：读写文件、sharedpreference、Sqlite
     
     </summary>
     
