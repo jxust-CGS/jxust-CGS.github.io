@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenguangsong.online/"/>
-  <updated>2017-05-25T05:56:20.440Z</updated>
+  <updated>2017-05-25T06:38:52.201Z</updated>
   <id>http://www.chenguangsong.online/</id>
   
   <author>
@@ -14,6 +14,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用超级终端向手机发送at指令</title>
+    <link href="http://www.chenguangsong.online/2017/05/25/%E4%BD%BF%E7%94%A8%E8%B6%85%E7%BA%A7%E7%BB%88%E7%AB%AF%E5%90%91%E6%89%8B%E6%9C%BA%E5%8F%91%E9%80%81at%E6%8C%87%E4%BB%A4/"/>
+    <id>http://www.chenguangsong.online/2017/05/25/使用超级终端向手机发送at指令/</id>
+    <published>2017-05-25T06:38:52.201Z</published>
+    <updated>2017-05-25T06:38:52.201Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;问题来源&quot;&gt;问题来源&lt;/h2&gt;&lt;p&gt;在手机modem处理的工作中测试手机，需要向手机发送at指令  &lt;/p&gt;
+&lt;h2 id=&quot;准备工作&quot;&gt;准备工作&lt;/h2&gt;&lt;p&gt;下载并安装超级终端,这里给个链接—&amp;gt;&lt;a href=&quot;http://www.cr173.com/soft/44407.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;超级终端&lt;/a&gt;&lt;br&gt;将手机连接到电脑，进入工模选项，打开ATCI选项&lt;br&gt;mtk手机操作步骤如下&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;进入拨号盘，输入”*#*#3646633#*#*“&lt;/li&gt;
+&lt;li&gt;选择”Log and Debugging”,进入”ATCI”&lt;/li&gt;
+&lt;li&gt;设置”Always enable ATCI”&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/f84ce1dabcdcdb89.png&quot; alt=&quot;打开拨号盘&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i1.piimg.com/588926/8e48b8f18c973b6f.png&quot; alt=&quot;设置ATCI&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/31a497305ceabfdf.png&quot; alt=&quot;选择Always enable ATCI&quot;&gt;&lt;/li&gt;
+&lt;li&gt;打开超级终端，新建连接   &lt;/li&gt;
+&lt;li&gt;连接名称任意，按默认操作即可  &lt;/li&gt;
+&lt;li&gt;连接完成后输入at指令进行测试&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/ad83b4b38f33e43c.png&quot; alt=&quot;打开超级终端新建链接&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/c91c8a55f149b112.png&quot; alt=&quot;选择端口&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/e3fa8c45db63595c.png&quot; alt=&quot;选择默认属性&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/ab59867823a10114.png&quot; alt=&quot;输入at指令&quot;&gt;&lt;h2 id=&quot;常用at指令&quot;&gt;常用at指令&lt;/h2&gt;&lt;a href=&quot;https://wenku.baidu.com/view/7561b26ea98271fe910ef974.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;常用AT指令(中文)_百度文库&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      在手机modem问题分析的时候需要通过usb向手机发送at指令查看手机的运行情况，这时就需要超级终端来操作手机
+    
+    </summary>
+    
+      <category term="modem" scheme="http://www.chenguangsong.online/categories/modem/"/>
+    
+    
+      <category term="超级终端,at指令" scheme="http://www.chenguangsong.online/tags/%E8%B6%85%E7%BA%A7%E7%BB%88%E7%AB%AF-at%E6%8C%87%E4%BB%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阿里云服务器配置java web项目环境</title>
+    <link href="http://www.chenguangsong.online/2017/05/25/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AEjava%20web%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83/"/>
+    <id>http://www.chenguangsong.online/2017/05/25/阿里云服务器配置java web项目环境/</id>
+    <published>2017-05-25T06:25:35.102Z</published>
+    <updated>2017-05-25T06:25:35.102Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;申请阿里云服务器&quot;&gt;申请阿里云服务器&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.aliyun.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;阿里云&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;安装jdk、tomcat&quot;&gt;安装jdk、tomcat&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/evankaka/article/details/50718895&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;阿里云部署Java web项目初体验 - 林炳文Evankaka的专栏 - 博客频道 - CSDN.NET&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;配置域名&quot;&gt;配置域名&lt;/h2&gt;&lt;p&gt;申请域名&lt;br&gt;配置域名dns解析地址&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/19c5d023d0ea3e8f.png&quot; alt=&quot;配置url解析地址&quot;&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/sinat_25926481/article/details/51460160&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Tomcat配置域名 - 强强强子的博客 - 博客频道 - CSDN.NET&lt;/a&gt;  &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      最近申请了个阿里云的服务器学习一下如何使用阿里云
+    
+    </summary>
+    
+      <category term="阿里云" scheme="http://www.chenguangsong.online/categories/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+    
+      <category term="阿里云" scheme="http://www.chenguangsong.online/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+  </entry>
   
   <entry>
     <title>学习别人代码之多彩资讯</title>
@@ -287,65 +344,6 @@
     
     
       <category term="shell,linux" scheme="http://www.chenguangsong.online/tags/shell-linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>阿里云服务器配置java web项目环境</title>
-    <link href="http://www.chenguangsong.online/2017/05/25/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AEjava%20web%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83/"/>
-    <id>http://www.chenguangsong.online/2017/05/25/阿里云服务器配置java web项目环境/</id>
-    <published>2017-05-25T05:33:21.949Z</published>
-    <updated>2017-05-25T05:33:21.949Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;阿里云服务器配置java_web项目环境&quot;&gt;阿里云服务器配置java web项目环境&lt;/h1&gt;&lt;hr&gt;
-&lt;h2 id=&quot;申请阿里云服务器&quot;&gt;申请阿里云服务器&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.aliyun.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;阿里云&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;安装jdk、tomcat&quot;&gt;安装jdk、tomcat&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/evankaka/article/details/50718895&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;阿里云部署Java web项目初体验 - 林炳文Evankaka的专栏 - 博客频道 - CSDN.NET&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;配置域名&quot;&gt;配置域名&lt;/h2&gt;&lt;p&gt;申请域名&lt;br&gt;配置域名dns解析地址&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/19c5d023d0ea3e8f.png&quot; alt=&quot;配置url解析地址&quot;&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/sinat_25926481/article/details/51460160&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Tomcat配置域名 - 强强强子的博客 - 博客频道 - CSDN.NET&lt;/a&gt;  &lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      最近申请了个阿里云的服务器学习一下如何使用阿里云
-    
-    </summary>
-    
-      <category term="阿里云" scheme="http://www.chenguangsong.online/categories/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
-    
-    
-      <category term="阿里云" scheme="http://www.chenguangsong.online/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用超级终端向手机发送at指令</title>
-    <link href="http://www.chenguangsong.online/2017/05/25/%E4%BD%BF%E7%94%A8%E8%B6%85%E7%BA%A7%E7%BB%88%E7%AB%AF%E5%90%91%E6%89%8B%E6%9C%BA%E5%8F%91%E9%80%81at%E6%8C%87%E4%BB%A4/"/>
-    <id>http://www.chenguangsong.online/2017/05/25/使用超级终端向手机发送at指令/</id>
-    <published>2017-05-25T04:46:35.139Z</published>
-    <updated>2017-05-25T04:46:35.139Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;使用超级终端向手机发送at指令&quot;&gt;使用超级终端向手机发送at指令&lt;/h1&gt;&lt;hr&gt;
-&lt;h2 id=&quot;问题来源&quot;&gt;问题来源&lt;/h2&gt;&lt;p&gt;在手机modem处理的工作中测试手机，需要向手机发送at指令  &lt;/p&gt;
-&lt;h2 id=&quot;准备工作&quot;&gt;准备工作&lt;/h2&gt;&lt;p&gt;下载并安装超级终端,这里给个链接—&amp;gt;&lt;a href=&quot;http://www.cr173.com/soft/44407.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;超级终端&lt;/a&gt;&lt;br&gt;将手机连接到电脑，进入工模选项，打开ATCI选项&lt;br&gt;mtk手机操作步骤如下&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;进入拨号盘，输入”*#*#3646633#*#*“&lt;/li&gt;
-&lt;li&gt;选择”Log and Debugging”,进入”ATCI”&lt;/li&gt;
-&lt;li&gt;设置”Always enable ATCI”&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/f84ce1dabcdcdb89.png&quot; alt=&quot;打开拨号盘&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i1.piimg.com/588926/8e48b8f18c973b6f.png&quot; alt=&quot;设置ATCI&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/31a497305ceabfdf.png&quot; alt=&quot;选择Always enable ATCI&quot;&gt;&lt;/li&gt;
-&lt;li&gt;打开超级终端，新建连接   &lt;/li&gt;
-&lt;li&gt;连接名称任意，按默认操作即可  &lt;/li&gt;
-&lt;li&gt;连接完成后输入at指令进行测试&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/ad83b4b38f33e43c.png&quot; alt=&quot;打开超级终端新建链接&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/c91c8a55f149b112.png&quot; alt=&quot;选择端口&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/e3fa8c45db63595c.png&quot; alt=&quot;选择默认属性&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i4.buimg.com/588926/ab59867823a10114.png&quot; alt=&quot;输入at指令&quot;&gt;&lt;h2 id=&quot;常用at指令&quot;&gt;常用at指令&lt;/h2&gt;&lt;a href=&quot;https://wenku.baidu.com/view/7561b26ea98271fe910ef974.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;常用AT指令(中文)_百度文库&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      在手机modem问题分析的时候需要通过usb向手机发送at指令查看手机的运行情况，这时就需要超级终端来操作手机
-    
-    </summary>
-    
-      <category term="modem" scheme="http://www.chenguangsong.online/categories/modem/"/>
-    
-    
-      <category term="超级终端,at指令" scheme="http://www.chenguangsong.online/tags/%E8%B6%85%E7%BA%A7%E7%BB%88%E7%AB%AF-at%E6%8C%87%E4%BB%A4/"/>
     
   </entry>
   
