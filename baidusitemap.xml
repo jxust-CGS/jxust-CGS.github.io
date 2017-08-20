@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>http://www.chenguangsong.online/2017/07/30/Maven%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2017-07-30T02:18:55.659Z</lastmod>
+    <loc>http://www.chenguangsong.online/2017/08/20/Maven%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2017-08-20T13:03:58.412Z</lastmod>
     <data>
         <display>
         <title>Maven教程</title>
-        <pubTime>2017-07-30T02:18:56.011Z</pubTime>
+        <pubTime>2017-08-20T13:03:58.417Z</pubTime>
         
         <tag>Maven</tag>
          
@@ -17,6 +17,26 @@
            
              
               <breadCrumb title="java" url="http://www.chenguangsong.online/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.chenguangsong.online/2017/08/20/%E5%B8%B8%E8%A7%81%E6%9C%AF%E8%AF%AD/</loc>
+    <lastmod>2017-08-20T12:43:20.112Z</lastmod>
+    <data>
+        <display>
+        <title>常见术语</title>
+        <pubTime>2017-08-20T12:43:20.358Z</pubTime>
+        
+        <tag>术语</tag>
+         
+         
+           
+             
+              <breadCrumb title="杂谈" url="http://www.chenguangsong.online/categories/%E6%9D%82%E8%B0%88/"/>
           
         </display>
     </data>
