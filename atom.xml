@@ -64,6 +64,253 @@
   </entry>
   
   <entry>
+    <title>常见术语</title>
+    <link href="http://www.chenguangsong.online/2017/08/20/%E5%B8%B8%E8%A7%81%E6%9C%AF%E8%AF%AD/"/>
+    <id>http://www.chenguangsong.online/2017/08/20/常见术语/</id>
+    <published>2017-08-20T12:43:20.358Z</published>
+    <updated>2017-08-20T12:43:20.112Z</updated>
+    
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;项目相关术语  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;术语&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;中文释义&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;英文全称&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;ERP&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;企业资源计划&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Enterprise resource planning&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;CRM&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;客户关系管理&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Customer Relational management&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;WMS&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;仓库管理系统&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Warehouse Management System&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;OMS&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;订单管理系统&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Order Management System&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;FMS&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;财务系统&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Financial Management System&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;B2B&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;业务对业务&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Business to Business&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;C2B&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;客户对业务&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Consumer to Business&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;CAD&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;计算机辅助设计&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Computer Aided Design&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;CAM&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;计算机辅助建模&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Computer Aided Modeling&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;java语言相关术语&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;术语&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;中文释义&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;英文全称&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;OOP&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;面向对象编程&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Object Oriented Programming&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;AOP&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;面向切面编程&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Aspect Oriented Programming&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;EJB&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;企业JavaBean&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Enterprise JavaBean&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;DAO&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;数据访问对象&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Data Access Object&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;POJO&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;简单无规则 java 对象&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;plain ordinary java object&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;DTO&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;数据传输对象&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Data Transfer Object&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;JPA&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Java持久层API&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Java Persistence API&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;IoC&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;控制反转&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Inversion of Control&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;JTA&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;java事务API&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Java Transcation API&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;JVM&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;java虚拟机&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Java Virtual Machine&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;ORM&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;对象关系映射&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Object Relational Mapping  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;其他术语  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;术语&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;中文释义&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;英文全称&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;DBMS&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;数据库管理系统&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Database Management System&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;DNS&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;因特网域名系统&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Internet Domain Name System&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;FAQ&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;经常问到的问题&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Frequently Asked Questions&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;SCM&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;软件配置管理&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Software configuration management &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;FIFO&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;先进先出&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;First in First Out&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;GUI&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;图形用户界面&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Graphic User Interface  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;常见英语翻译  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;单词&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;中文释义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;case-insensitive&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;大小写不敏感&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;case-sensitive&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;大小写敏感&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Declarative Programming&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;声明式编程  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Dependency Injection&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;依赖注入&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Dialect&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;术语&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Directive&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;指令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Deserialize&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;反序列化&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Delegate&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;委托&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Domain&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;域&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Use Case&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;用例&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+    
+    <summary type="html">
+    
+      在日常的交流中难免会遇到一些专业术语，总结下java中常见的术语，有额外补充的欢迎评论留言。
+    
+    </summary>
+    
+      <category term="杂谈" scheme="http://www.chenguangsong.online/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+      <category term="术语" scheme="http://www.chenguangsong.online/tags/%E6%9C%AF%E8%AF%AD/"/>
+    
+  </entry>
+  
+  <entry>
     <title>velocity模板引擎</title>
     <link href="http://www.chenguangsong.online/2017/07/30/velocity%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/"/>
     <id>http://www.chenguangsong.online/2017/07/30/velocity模板引擎/</id>
@@ -1913,174 +2160,6 @@ public &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt
     <summary type="html">
     
       在android开发中需要对图片进行简单的操作如缩放、旋转、合成水印等，通过bitmap可以很方便的实现。
-    
-    </summary>
-    
-      <category term="android" scheme="http://www.chenguangsong.online/categories/android/"/>
-    
-    
-      <category term="android" scheme="http://www.chenguangsong.online/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android学习笔记（6） ——Animation动画</title>
-    <link href="http://www.chenguangsong.online/2016/05/05/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%886%EF%BC%89%E2%80%94%E2%80%94Animation%E5%8A%A8%E7%94%BB/"/>
-    <id>http://www.chenguangsong.online/2016/05/05/Android学习笔记（6）——Animation动画/</id>
-    <published>2016-05-05T03:36:00.000Z</published>
-    <updated>2016-09-04T14:47:35.432Z</updated>
-    
-    <content type="html">&lt;p&gt;参考文章：&lt;a href=&quot;http://www.cnblogs.com/qiengo/archive/2012/05/03/2480386.html#Animations&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android Animation - Qiengo - 博客园&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;这一部分也没多少东西就直接上代码了&quot;&gt;这一部分也没多少东西就直接上代码了&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;package&lt;/span&gt; com.example.animationsdemo;
-
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; android.app.Activity;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; android.os.Bundle;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; android.view.View;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; android.view.View.OnClickListener;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; android.view.animation.AlphaAnimation;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; android.view.animation.Animation;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; android.view.animation.AnimationSet;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; android.view.animation.RotateAnimation;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; android.view.animation.ScaleAnimation;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; android.view.animation.TranslateAnimation;
-&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; android.widget.ImageView;
-
-&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MainActivity&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Activity&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;OnClickListener&lt;/span&gt;&lt;/span&gt;{
-
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; ImageView first;
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; ImageView second;
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; ImageView third;
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; ImageView fourth;
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; ImageView fifth;
-
-    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Bundle savedInstanceState)&lt;/span&gt; &lt;/span&gt;{
-        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        first=(ImageView) findViewById(R.id.first);
-        second=(ImageView) findViewById(R.id.second);
-        third=(ImageView) findViewById(R.id.third);
-        fourth=(ImageView) findViewById(R.id.fourth);
-        fifth=(ImageView) findViewById(R.id.fifth);
-        first.setOnClickListener(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;);
-        second.setOnClickListener(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;);
-        third.setOnClickListener(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;);
-        fourth.setOnClickListener(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;);
-        fifth.setOnClickListener(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;);
-    }
-
-    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View v)&lt;/span&gt; &lt;/span&gt;{
-        &lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt; (v.getId()) {
-        &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; R.id.first:
-            alpha_animation(first);
-            &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;
-        &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; R.id.second:
-            rotate_animation(second);
-            &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;
-        &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; R.id.third:
-            scale_animation(third);
-            &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;
-        &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; R.id.fourth:
-            translate_animation(fourth);
-            &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;
-        &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; R.id.fifth:
-            double_animation(fifth);
-            &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;
-        &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt;:
-            &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;
-        }
-    }
-
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;alpha_animation&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View view)&lt;/span&gt; &lt;/span&gt;{
-        &lt;span class=&quot;comment&quot;&gt;//创建一个AnimationSet对象，参数为Boolean型，&lt;/span&gt;
-        &lt;span class=&quot;comment&quot;&gt;//true表示使用Animation的interpolator，false则是使用自己的&lt;/span&gt;
-        AnimationSet animationSet = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AnimationSet(&lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;);
-        &lt;span class=&quot;comment&quot;&gt;//创建一个AlphaAnimation对象，参数从完全的透明度，到完全的不透明&lt;/span&gt;
-        AlphaAnimation alphaAnimation = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AlphaAnimation(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);
-        &lt;span class=&quot;comment&quot;&gt;//设置动画执行的时间&lt;/span&gt;
-        alphaAnimation.setDuration(&lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;);
-        &lt;span class=&quot;comment&quot;&gt;//将alphaAnimation对象添加到AnimationSet当中&lt;/span&gt;
-        animationSet.addAnimation(alphaAnimation);
-        &lt;span class=&quot;comment&quot;&gt;//使用ImageView的startAnimation方法执行动画&lt;/span&gt;
-        view.startAnimation(animationSet);
-    }
-
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;rotate_animation&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View view)&lt;/span&gt; &lt;/span&gt;{
-         AnimationSet animationSet = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AnimationSet(&lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;);
-         &lt;span class=&quot;comment&quot;&gt;//参数1：从哪个旋转角度开始&lt;/span&gt;
-         &lt;span class=&quot;comment&quot;&gt;//参数2：转到什么角度&lt;/span&gt;
-         &lt;span class=&quot;comment&quot;&gt;//后4个参数用于设置围绕着旋转的圆的圆心在哪里&lt;/span&gt;
-         &lt;span class=&quot;comment&quot;&gt;//参数3：确定x轴坐标的类型，有ABSOLUT绝对坐标、RELATIVE_TO_SELF相对于自身坐标、RELATIVE_TO_PARENT相对于父控件的坐标&lt;/span&gt;
-         &lt;span class=&quot;comment&quot;&gt;//参数4：x轴的值，0.5f表明是以自身这个控件的一半长度为x轴&lt;/span&gt;
-         &lt;span class=&quot;comment&quot;&gt;//参数5：确定y轴坐标的类型&lt;/span&gt;
-         &lt;span class=&quot;comment&quot;&gt;//参数6：y轴的值，0.5f表明是以自身这个控件的一半长度为x轴&lt;/span&gt;
-         RotateAnimation rotateAnimation = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; RotateAnimation(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;360&lt;/span&gt;,
-                Animation.RELATIVE_TO_SELF,&lt;span class=&quot;number&quot;&gt;0.5&lt;/span&gt;f,
-                Animation.RELATIVE_TO_SELF,&lt;span class=&quot;number&quot;&gt;0.5&lt;/span&gt;f);
-         rotateAnimation.setDuration(&lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;);
-         animationSet.addAnimation(rotateAnimation);
-         view.startAnimation(animationSet);
-    }
-
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;scale_animation&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View view)&lt;/span&gt; &lt;/span&gt;{
-         AnimationSet animationSet = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AnimationSet(&lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;);
-         &lt;span class=&quot;comment&quot;&gt;//参数1：x轴缩放前值&lt;/span&gt;
-         &lt;span class=&quot;comment&quot;&gt;//参数2：x轴缩放后值&lt;/span&gt;
-         &lt;span class=&quot;comment&quot;&gt;//参数3：y轴缩放前值&lt;/span&gt;
-         &lt;span class=&quot;comment&quot;&gt;//参数4：y轴缩放后值&lt;/span&gt;
-         &lt;span class=&quot;comment&quot;&gt;//参数5：确定x轴坐标的类型&lt;/span&gt;
-         &lt;span class=&quot;comment&quot;&gt;//参数6：x轴的值，0.5f表明是以自身这个控件的一半长度为x轴，缩放的中心位置&lt;/span&gt;
-         &lt;span class=&quot;comment&quot;&gt;//参数7：确定y轴坐标的类型&lt;/span&gt;
-         &lt;span class=&quot;comment&quot;&gt;//参数8：y轴的值，0.5f表明是以自身这个控件的一半长度为x轴，缩放的中心位置&lt;/span&gt;
-         ScaleAnimation scaleAnimation = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ScaleAnimation(
-                &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;f, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;f,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;f,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;f,
-                Animation.RELATIVE_TO_SELF,&lt;span class=&quot;number&quot;&gt;0.5&lt;/span&gt;f,
-                Animation.RELATIVE_TO_SELF,&lt;span class=&quot;number&quot;&gt;0.5&lt;/span&gt;f);
-         scaleAnimation.setDuration(&lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;);
-         animationSet.addAnimation(scaleAnimation);
-         view.startAnimation(animationSet);
-    }
-
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;translate_animation&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View view)&lt;/span&gt; &lt;/span&gt;{
-        AnimationSet animationSet = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AnimationSet(&lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;);
-        &lt;span class=&quot;comment&quot;&gt;//参数1～2：x轴的开始位置&lt;/span&gt;
-        &lt;span class=&quot;comment&quot;&gt;//参数3～4：y轴的开始位置&lt;/span&gt;
-        &lt;span class=&quot;comment&quot;&gt;//参数5～6：x轴的结束位置&lt;/span&gt;
-        &lt;span class=&quot;comment&quot;&gt;//参数7～8：x轴的结束位置&lt;/span&gt;
-        TranslateAnimation translateAnimation =
-           &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; TranslateAnimation(
-               Animation.RELATIVE_TO_SELF,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;f,
-               Animation.RELATIVE_TO_SELF,&lt;span class=&quot;number&quot;&gt;0.5&lt;/span&gt;f,
-               Animation.RELATIVE_TO_SELF,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;f,
-               Animation.RELATIVE_TO_SELF,&lt;span class=&quot;number&quot;&gt;0.5&lt;/span&gt;f);
-        translateAnimation.setDuration(&lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;);
-        animationSet.addAnimation(translateAnimation);
-        view.startAnimation(animationSet);
-    }
-
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;double_animation&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View view)&lt;/span&gt;&lt;/span&gt;{&lt;span class=&quot;comment&quot;&gt;//用AnimationSet叠加两种动画效果&lt;/span&gt;
-         AnimationSet animationSet = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AnimationSet(&lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;);
-         RotateAnimation rotateAnimation = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; RotateAnimation(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;360&lt;/span&gt;,
-                Animation.RELATIVE_TO_SELF,&lt;span class=&quot;number&quot;&gt;0.5&lt;/span&gt;f,
-                Animation.RELATIVE_TO_SELF,&lt;span class=&quot;number&quot;&gt;0.5&lt;/span&gt;f);
-         rotateAnimation.setDuration(&lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;);
-         animationSet.addAnimation(rotateAnimation);
-         ScaleAnimation scaleAnimation = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ScaleAnimation(
-                 &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;f, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;f,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;f,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;f,
-                 Animation.RELATIVE_TO_SELF,&lt;span class=&quot;number&quot;&gt;0.5&lt;/span&gt;f,
-                 Animation.RELATIVE_TO_SELF,&lt;span class=&quot;number&quot;&gt;0.5&lt;/span&gt;f);
-         scaleAnimation.setDuration(&lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;);
-         animationSet.addAnimation(rotateAnimation);
-         animationSet.addAnimation(scaleAnimation);
-         view.startAnimation(animationSet);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      由于之前尝试写下拉刷新时用到了animation动画，今天就在网上找了下资料好好学习学习
     
     </summary>
     
