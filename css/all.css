@@ -957,7 +957,7 @@ span.sb-caret { /* Caret Down */
 * Full-height hero section, (homepage, above the fold,)
 ******************************************************* */
 #hero {
-	height: 70%;
+	height: 100%;
 	position: fixed;
 	width: 100%;
 	padding-top: 0;

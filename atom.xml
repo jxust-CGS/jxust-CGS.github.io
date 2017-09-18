@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenguangsong.online/"/>
-  <updated>2017-08-20T13:03:58.412Z</updated>
+  <updated>2017-09-18T13:12:12.938Z</updated>
   <id>http://www.chenguangsong.online/</id>
   
   <author>
@@ -14,6 +14,102 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java学习笔记（2）——freemarker</title>
+    <link href="http://www.chenguangsong.online/2017/09/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94freemarker/"/>
+    <id>http://www.chenguangsong.online/2017/09/18/Java学习笔记（2）——freemarker/</id>
+    <published>2017-09-18T13:12:13.095Z</published>
+    <updated>2017-09-18T13:12:12.938Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;准备工作&quot;&gt;准备工作&lt;/h1&gt;&lt;p&gt;要使用freemarker作为项目的表现层模板引擎，需要导入jar包 &lt;a href=&quot;https://mvnrepository.com/search?q=freemarker&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;freemarker.x.x.x.jar&lt;/a&gt;  &lt;/p&gt;
+&lt;h1 id=&quot;FreeMarker模板文件&quot;&gt;FreeMarker模板文件&lt;/h1&gt;&lt;p&gt;FreeMarker模板文件主要由如下4个部分组成:   &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;文本:直接输出的部分  &lt;/li&gt;
+&lt;li&gt;注释:&amp;lt;#— … —&amp;gt;格式部分,不会输出  &lt;/li&gt;
+&lt;li&gt;插值:即${…}或#{…}格式的部分,将使用数据模型中的部分替代输出  &lt;/li&gt;
+&lt;li&gt;FTL指令:FreeMarker指定,和HTML标记类似,名字前加#予以区分,不会输出  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;构建模板&quot;&gt;构建模板&lt;/h1&gt;&lt;p&gt;在一个项目中你需要为你使用到的页面构建一个通用的模板，这样其他页面可以通过模板构建避免很多重复的代码，提高程序可复用性。需求更改时只需要在一处修改，程序整体更加统一。  &lt;/p&gt;
+&lt;h1 id=&quot;FTL标签&quot;&gt;FTL标签&lt;/h1&gt;&lt;p&gt;插值规则&lt;br&gt;FreeMarker的插值有如下两种类型&lt;br&gt;1、通用插值：${expr}&lt;br&gt;2、数字格式化插值：#{expr}或者#{expr;format}  &lt;/p&gt;
+&lt;p&gt;通用插值，有可以分为四种情况&lt;br&gt;a、插值结果为字符串值：直接输出表达式结果&lt;br&gt;b、插值结果为数字值：根据默认格式(#setting 指令设置)将表达式结果转换成文本输出。可以使用内建的字符串函数格式单个插值，例如&lt;br&gt;&lt;figure class=&quot;highlight tcl&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;#setting number_format = &lt;span class=&quot;string&quot;&gt;&quot;currency&quot;&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;#assign price = &lt;span class=&quot;number&quot;&gt;42&lt;/span&gt; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$&amp;#123;price&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$&amp;#123;price&lt;/span&gt;?&lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$&amp;#123;price&lt;/span&gt;?&lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;.number&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$&amp;#123;price&lt;/span&gt;?&lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;.currency&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$&amp;#123;price&lt;/span&gt;?&lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;.percent&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;c、输出值为日期值：根据默认格式(由 #setting 指令设置)将表达式结果转换成文本输出，可以使用内建的字符串函数格式化单个插值，例如&lt;br&gt;&lt;figure class=&quot;highlight tcl&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;#assign lastUpdated = &lt;span class=&quot;string&quot;&gt;&quot;2009-01-07 15:05&quot;&lt;/span&gt;?datetime(&lt;span class=&quot;string&quot;&gt;&quot;yyyy-MM-dd HH:mm&quot;&lt;/span&gt;) /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$&amp;#123;lastUpdated&lt;/span&gt;?&lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;yyyy-MM-dd HH:mm:ss zzzz&quot;&lt;/span&gt;)&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$&amp;#123;lastUpdated&lt;/span&gt;?&lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;EEE,MMM d,yy&quot;&lt;/span&gt;)&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$&amp;#123;lastUpdated&lt;/span&gt;?&lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;EEEE,MMMM dd,yyyy,hh:mm:ss a &#39;(&#39;zzz&#39;)&#39;&quot;&lt;/span&gt;)&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$&amp;#123;lastUpdated&lt;/span&gt;?&lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;.short&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$&amp;#123;lastUpdated&lt;/span&gt;?&lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;.long&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$&amp;#123;lastUpdated&lt;/span&gt;?String.full&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;d、插值结果为布尔值&lt;br&gt;&lt;figure class=&quot;highlight lasso&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;subst&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;variable&quot;&gt;#assign&lt;/span&gt; foo&lt;span class=&quot;subst&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;subst&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;subst&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$&amp;#123;foo&lt;span class=&quot;subst&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;built_in&quot;&gt;string&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;是foo&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;非foo&quot;&lt;/span&gt;)&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;数字格式化插值&lt;br&gt; 数字格式化插值可采用#{expr;format}的形式来格式化数字，其中format可以是：&lt;br&gt; mX:小数部分最小X位&lt;br&gt; MX:小数部分最大X位&lt;br&gt; 例如：&lt;br&gt; &lt;figure class=&quot;highlight haml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;#assign x = 2.582 /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;#assign y =4 /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#&amp;#123;&lt;span class=&quot;ruby&quot;&gt;x;&lt;span class=&quot;constant&quot;&gt;M2&lt;/span&gt;&amp;#125;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#&amp;#123;&lt;span class=&quot;ruby&quot;&gt;y;&lt;span class=&quot;constant&quot;&gt;M2&lt;/span&gt;&amp;#125;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#&amp;#123;&lt;span class=&quot;ruby&quot;&gt;x;m1&amp;#125;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#&amp;#123;&lt;span class=&quot;ruby&quot;&gt;y;m1&amp;#125;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#&amp;#123;&lt;span class=&quot;ruby&quot;&gt;x;m1M2&amp;#125;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#&amp;#123;&lt;span class=&quot;ruby&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;y:&lt;/span&gt;m1M2&amp;#125;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h1 id=&quot;指令&quot;&gt;指令&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;部分指令示例&lt;/p&gt;
+&lt;figure class=&quot;highlight ocaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;#&lt;span class=&quot;built_in&quot;&gt;list&lt;/span&gt; [&lt;span class=&quot;string&quot;&gt;&quot;星期一&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;星期二&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;星期三&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;星期四&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;星期五&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;星期六&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;星期天&quot;&lt;/span&gt;] &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; x&amp;gt;    &amp;lt;#-- 遍历列表 --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    $&amp;#123;x_index + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&amp;#125;.$&amp;#123;x&amp;#125;                                                            &amp;lt;#-- $&amp;#123;x_index + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&amp;#125;代表序号 --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;#&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; x_has_next&amp;gt;                                                               &amp;lt;#-- $&amp;#123;x_has_next&amp;#125;判断是否遍历结束 --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;#&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; x=&lt;span class=&quot;string&quot;&gt;&quot;星期四&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;#break&amp;gt;                                                                   &amp;lt;#-- 跳出循环 --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/#&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/#&lt;span class=&quot;built_in&quot;&gt;list&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&amp;lt;#noparse&amp;gt; 此标签包含的内容不进行freemarker语法解析  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&amp;lt;#escape identifier as expression&amp;gt;…&lt;/li&gt;
+&lt;li&gt;&amp;lt;#assign x&amp;gt;申明一个/多个变量,并为变量赋值&lt;/li&gt;
+&lt;li&gt;&amp;lt;#import “/lib/common.ftl” as com&amp;gt; 导入ftl文件中的变量及方法&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&amp;lt;#macro name param1 param2 … paramN&amp;gt;宏定义&lt;/p&gt;
+  &lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;在macro中定义参数要放在macro变量后面，如：  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;#macro&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;greet&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;person&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;font&lt;/span&gt;  &lt;span class=&quot;attribute&quot;&gt;size&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;’+2’&lt;/span&gt;&amp;gt;&lt;/span&gt;Hello $&amp;#123;person&amp;#125;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;font&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;#macro&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;在使用的时候：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;@greet&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;person&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;’Fred’&lt;/span&gt;/&amp;gt;&lt;/span&gt; and &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;@greet&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;person&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;’Batman’&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&amp;lt;#nested loopvar1, loopvar2, …, loopvarN&amp;gt;宏嵌套&lt;br&gt;  &lt;a href=&quot;http://www.cnblogs.com/xx0405/p/6646213.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;freemarker 宏嵌套nested 的使用 - 小小小飞鱼 - 博客园&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&amp;lt;#return&amp;gt;return指令:该指令可用于随时结束该自定义宏指令.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;判断条件”&amp;gt;”和”&amp;lt;”与标签括号冲突解决方案&quot;&gt;判断条件”&amp;gt;”和”&amp;lt;”与标签括号冲突解决方案&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;用符号代替，&amp;gt; gt, &amp;gt;=  gte ,&amp;lt; lt , &amp;lt;= lte&lt;/li&gt;
+&lt;li&gt;加括号 &amp;lt;#if(x&amp;gt;y)&amp;gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;判空&quot;&gt;判空&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;!:指定缺失变量的默认值,variable!或variable!defaultValue,第一种用法不给缺失的变量指定默认值,表明默认值是空字符串    &lt;/li&gt;
+&lt;li&gt;??:判断某个变量是否存在，&lt;code&gt;variable??&lt;/code&gt;,如果该变量存在,返回true,否则返回false&lt;h2 id=&quot;格式化输出数据&quot;&gt;格式化输出数据&lt;/h2&gt;1,通用插值${expr};&lt;br&gt;2,数字格式化插值:#{expr}或#{expr;format}&lt;h2 id=&quot;转义字符&quot;&gt;转义字符&lt;/h2&gt;在&lt;code&gt;${}&lt;/code&gt;中输出文本时遇到特殊字符要进行转义如：双引号&lt;code&gt;\&amp;quot;&lt;/code&gt;,但是如果在一个插值语句中有很多字符需要转义可以&lt;code&gt;${r其他内容}&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;相关链接&quot;&gt;相关链接&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;hhttp://blog.csdn.net/chenghui0317/article/details/7832474&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Freemarker实例教程 - 永恒の_☆ - CSDN博客&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://demojava.iteye.com/blog/800204&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Freemarker 使用 - 只有准备爆发，才会甘于沉默 - ITeye博客&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.bubuko.com/infodetail-2041788.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;简介JSP与FreeMarker及Volicity区别&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.runoob.com/jsp/jsp-jstl.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JSP 标准标签库（JSTL） | 菜鸟教程&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.blogjava.net/kxbin/articles/366505.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;FreeMarker标签介绍 - kxbin - BlogJava&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      FreeMarker是一款模板引擎： 即一种基于模板和要改变的数据，	并用来生成输出文本（HTML网页、电子邮件、配置文件、源代码等）的通用工具。
+    
+    </summary>
+    
+      <category term="java" scheme="http://www.chenguangsong.online/categories/java/"/>
+    
+    
+      <category term="freemarker" scheme="http://www.chenguangsong.online/tags/freemarker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>（转载）form表单回车提交问题,JS监听回车事件</title>
+    <link href="http://www.chenguangsong.online/2017/09/18/%E8%A1%A8%E5%8D%95%E9%85%8D%E7%BD%AE%E5%9B%9E%E8%BD%A6%E8%87%AA%E5%8A%A8%E6%8F%90%E4%BA%A4/"/>
+    <id>http://www.chenguangsong.online/2017/09/18/表单配置回车自动提交/</id>
+    <published>2017-09-18T13:12:12.940Z</published>
+    <updated>2017-09-18T13:12:12.736Z</updated>
+    
+    <content type="html">&lt;p&gt;转载自：&lt;a href=&quot;http://www.cnblogs.com/suizhikuo/p/4925086.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;form表单回车提交问题,JS监听回车事件 - 故宫博物院 - 博客园&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;form表单回车提交问题,JS监听回车事件&quot;&gt;form表单回车提交问题,JS监听回车事件&lt;/h2&gt;&lt;p&gt;我们有时候希望回车键敲在文本框（input element）里来提交表单（form），但有时候又不希望如此。比如搜索行为，希望输入完关键词之后直接按回车键立即提交表单，而有些复杂表单，可能要避免回车键误操作在未完成表单填写的时候就触发了表单提交。&lt;br&gt;要控制这些行为，不需要借助JS，浏览器已经帮我们做了这些处理，这里总结几条规则： &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果表单里有一个type=”submit”的按钮，回车键生效。 &lt;/li&gt;
+&lt;li&gt;如果表单里只有一个type=”text”的input，不管按钮是什么type，回车键生效。 &lt;/li&gt;
+&lt;li&gt;如果按钮不是用input，而是用button，并且没有加type，IE下默认为type=button，FX默认为type=submit。 &lt;/li&gt;
+&lt;li&gt;其他表单元素如textarea、select不影响，radio checkbox不影响触发规则，但本身在FX下会响应回车键，在IE下不响应。 &lt;/li&gt;
+&lt;li&gt;type=”image”的input，效果等同于type=”submit”，不知道为什么会设计这样一种type，不推荐使用，应该用CSS添加背景图合适些。   &lt;/li&gt;
+&lt;li&gt;我们在处理表单的页面可以检验他是否点击了按钮来控制下面的程序。if($_POST[‘submit’]){ 如果点击了按钮 程序继续} &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;实际应用的时候，要让表单响应回车键很容易，保证表单里有个type=”submit”的按钮就行。而当只有一个文本框又不希望响应回车键怎么办呢？&lt;br&gt;我的方法有点别扭，就是再写一个无意义的文本框，隐藏起来。&lt;br&gt;根据第3条规则，我们在用button的时候，尽量显式声明type以使浏览器表现一致。&lt;br&gt;通过以上可知只要把type=”submit”改成type=”button”然后js提交， 在不要有一个type=”text”的input就行了。就不会发生回车跳转。&lt;br&gt;但实验发现，ie和火狐不一样，火狐的submit按钮有掩藏的（display：block）和显现的都不行，必须全改，但ie只要显现的没有submit就行了。&lt;br&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.onkeydown=keyDownSearch; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;keyDownSearch&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(e)&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 兼容FF和IE和Opera  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; theEvent = e || &lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.event;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; code = theEvent.keyCode || theEvent.which || theEvent.charCode;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (code == &lt;span class=&quot;number&quot;&gt;13&lt;/span&gt;) &amp;#123;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            DoSomeThing();&lt;span class=&quot;comment&quot;&gt;//具体处理函数  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;如果只是针对某个DIV层应用回车查询的话，可以将：&lt;code&gt;document.onkeydown=keyDownSearch;&lt;/code&gt;改成：&lt;code&gt;document.getElementById(&amp;#39;层ID&amp;#39;).onkeydown=keyDownSearch;&lt;/code&gt;  &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      在form表单中经常会遇到需要添加回车提交表单的需求场景，不过浏览器替我们做了部分内容，当只有一个input的情况下默认就可以回车提交，但是如果我们不希望提交应该怎么处理呢？
+    
+    </summary>
+    
+      <category term="html" scheme="http://www.chenguangsong.online/categories/html/"/>
+    
+    
+      <category term="html" scheme="http://www.chenguangsong.online/tags/html/"/>
+    
+  </entry>
   
   <entry>
     <title>Maven教程</title>
@@ -1815,351 +1911,6 @@ public &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt
     <summary type="html">
     
       本来早该写的，拖到现在。本文介绍Android中的广播机制。
-    
-    </summary>
-    
-      <category term="android" scheme="http://www.chenguangsong.online/categories/android/"/>
-    
-    
-      <category term="android" scheme="http://www.chenguangsong.online/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android学习笔记(8)——自定义控件</title>
-    <link href="http://www.chenguangsong.online/2016/06/28/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%888%EF%BC%89%E2%80%94%E2%80%94%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/"/>
-    <id>http://www.chenguangsong.online/2016/06/28/Android学习笔记（8）——自定义控件/</id>
-    <published>2016-06-28T08:18:39.000Z</published>
-    <updated>2016-09-04T14:42:23.608Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;如何实现一个自定义控件&quot;&gt;如何实现一个自定义控件&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;定义自定义属性&lt;/li&gt;
-&lt;li&gt;在layout文件中放置自定义控件&lt;/li&gt;
-&lt;li&gt;新建一个类CustomView继承view&lt;/li&gt;
-&lt;li&gt;实现其中的方法&lt;ul&gt;
-&lt;li&gt;构造方法&lt;ul&gt;
-&lt;li&gt;CustomView（Context context）{}//在java代码中实例化这个对象是调用&lt;/li&gt;
-&lt;li&gt;CustomView（Context context,AttributeSet attrs）{}//通过xml中实例化对象时调用&lt;/li&gt;
-&lt;li&gt;CustomView（Context context,AttributeSet attrs,int defStyle）{}//通过xml实例化对象并应用默认熟悉（如：在theme中定义的属性）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;onMeasure（int widthMeasureSpec,int heightMeasureSpec）{}//此方法非必须，通过重写此方法来定义控件的大小&lt;/li&gt;
-&lt;li&gt;onDraw（Canvas canvas）{}//通过实现此方法来绘制自定义组件&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;定义自定义控件属性&quot;&gt;定义自定义控件属性&lt;/h1&gt;&lt;h2 id=&quot;定义属性的作用&quot;&gt;定义属性的作用&lt;/h2&gt;&lt;p&gt;定义自定义控件属性的作用是在layout文件中放置自定义组件时为自定义控件初始化参数（如同默认控件中有android：layout_width=“warp_context”）。  &lt;/p&gt;
-&lt;h2 id=&quot;如何定义属性？&quot;&gt;如何定义属性？&lt;/h2&gt;&lt;p&gt;在项目中的values文件夹下新建attr.xml并进行编辑。  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;resources&lt;/span&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- 定义自定义组件中的参数 --&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;attr&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;titleText&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;format&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;string&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;
-
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;declare-styleable&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;CustomTitleView&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;//定义组件&quot;CustomTitleView&quot;的属性
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;attr&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;titleText&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;attr&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;attr&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;titleTextColor&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;format&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;color&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;attr&lt;/span&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;title&quot;&gt;attr&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;titleTextSize&quot;&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;format&lt;/span&gt;=&lt;span class=&quot;value&quot;&gt;&quot;dimension&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;attr&lt;/span&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;declare-styleable&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;title&quot;&gt;resources&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;常见属性&quot;&gt;常见属性&lt;/h2&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;属性类型&lt;/th&gt;
-&lt;th&gt;format&lt;/th&gt;
-&lt;th&gt;获取方式&lt;/th&gt;
-&lt;th&gt;应用场景&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;int&lt;/td&gt;
-&lt;td&gt;integer&lt;/td&gt;
-&lt;td&gt;getInteger（attr，defultInt）&lt;/td&gt;
-&lt;td&gt;获取数字&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;string&lt;/td&gt;
-&lt;td&gt;string&lt;/td&gt;
-&lt;td&gt;getString（attr）&lt;/td&gt;
-&lt;td&gt;获取字符串&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;int&lt;/td&gt;
-&lt;td&gt;color&lt;/td&gt;
-&lt;td&gt;getColor（attr，defultCol）&lt;/td&gt;
-&lt;td&gt;获取颜色&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;int&lt;/td&gt;
-&lt;td&gt;dimension&lt;/td&gt;
-&lt;td&gt;getDimensionPixelSize(attr,(int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 16, getResources().getDisplayMetrics()));&lt;/td&gt;
-&lt;td&gt;获取字体大小&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;bitmap&lt;/td&gt;
-&lt;td&gt;reference&lt;/td&gt;
-&lt;td&gt;BitmapFactory.decodeResource(getResources(), array.getResourceId(attr, 0));&lt;/td&gt;
-&lt;td&gt;获取图片资源&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;另附枚举类型  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;attr &lt;span class=&quot;variable&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;image_align&quot;&lt;/span&gt;&amp;gt;
-    &amp;lt;enum &lt;span class=&quot;variable&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;center&quot;&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;0&quot;&lt;/span&gt;/&amp;gt;
-    &amp;lt;enum &lt;span class=&quot;variable&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;left&quot;&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;1&quot;&lt;/span&gt;/&amp;gt;
-    &amp;lt;enum &lt;span class=&quot;variable&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;right&quot;&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;2&quot;&lt;/span&gt;/&amp;gt;
-&amp;lt;/attr&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;在layout文件中放置自定义控件&quot;&gt;在layout文件中放置自定义控件&lt;/h1&gt;&lt;p&gt;方法和默认控件一样有一点不同的是需要配置自定义属性就需要定义属性命名控件（即注册之前定义的属性）。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;RelativeLayout xmlns:&lt;span class=&quot;variable&quot;&gt;android=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
-    xmlns:&lt;span class=&quot;variable&quot;&gt;tools=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;http://schemas.android.com/tools&quot;&lt;/span&gt;
-    xmlns:&lt;span class=&quot;variable&quot;&gt;custom=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;http://schemas.android.com/apk/res/com.example.privateview（项目包名）&quot;&lt;/span&gt; //注册自定义属性命名空间
-    android:&lt;span class=&quot;variable&quot;&gt;layout_width=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
-    android:&lt;span class=&quot;variable&quot;&gt;layout_height=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
-    tools:&lt;span class=&quot;variable&quot;&gt;context=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;&lt;span class=&quot;subst&quot;&gt;${relativePackage}&lt;/span&gt;.&lt;span class=&quot;subst&quot;&gt;${activityClass}&lt;/span&gt;&quot;&lt;/span&gt; &amp;gt;
-    &amp;lt;com.example.privateview.CustomTitleView//自定义控件的类名
-        android:&lt;span class=&quot;variable&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;@+id/customTitleView1&quot;&lt;/span&gt;
-        android:&lt;span class=&quot;variable&quot;&gt;layout_width=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
-        android:&lt;span class=&quot;variable&quot;&gt;layout_height=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
-        android:&lt;span class=&quot;variable&quot;&gt;padding=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;10pt&quot;&lt;/span&gt;
-        custom:&lt;span class=&quot;variable&quot;&gt;titleText=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;2345&quot;&lt;/span&gt;//配置自定义属性
-        custom:&lt;span class=&quot;variable&quot;&gt;titleTextColor=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;#ffffff&quot;&lt;/span&gt;
-        custom:&lt;span class=&quot;variable&quot;&gt;titleTextSize=&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;90sp&quot;&lt;/span&gt; /&amp;gt;
-&amp;lt;/RelativeLayout&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;构造方法&quot;&gt;构造方法&lt;/h1&gt;&lt;p&gt;构造方法的作用就是实例化此对象，也就是要对此对象进行初始化，所以此方法中需要完成的工作就是对此自定义的控件中定义的各个属性进行赋值。&lt;br&gt;赋值需要的参数需要读取到在layout文件中配置的属性，我们通过TypedArray获取  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;CustomTitleView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Context context)&lt;/span&gt; &lt;/span&gt;{
-    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;(context,&lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);
-}
-&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;CustomTitleView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Context context,AttributeSet attrs)&lt;/span&gt; &lt;/span&gt;{
-    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;(context,attrs,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);
-}
-&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;CustomTitleView&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Context context,AttributeSet attrs,&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; defStyle)&lt;/span&gt; &lt;/span&gt;{
-        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;(context, attrs, defStyle);
-        TypedArray array=context.getTheme().obtainStyledAttributes(attrs,R.styleable.CustomTitleView,defStyle,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//获取配置的参数&lt;/span&gt;
-        &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; n=array.getIndexCount();
-        &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;i&amp;lt;n;i++){
-            &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; attr=array.getIndex(i);
-            &lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt; (attr) {
-            &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; R.styleable.CustomTitleView_titleText:
-                mTitleText=array.getString(attr);
-                &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;
-            &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; R.styleable.CustomTitleView_titleTextColor:
-                mTitleTextColor=array.getColor(attr, Color.BLACK);
-                &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;
-            &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; R.styleable.CustomTitleView_titleTextSize:
-                mTitleTextSize=array.getDimensionPixelSize(attr, (&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt;) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 16, getResources().getDisplayMetrics()));
-                &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;
-            }
-        }
-        array.recycle();&lt;span class=&quot;comment&quot;&gt;//读取完毕后一定要记得回收&lt;/span&gt;
-        mPaint_background=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Paint();&lt;span class=&quot;comment&quot;&gt;//画笔&lt;/span&gt;
-        mPaint_background.setColor(Color.GRAY);
-        mPaint_word=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Paint();
-        mPaint_word.setTextSize(mTitleTextSize);
-        mPaint_word.setColor(mTitleTextColor);
-        mBound=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Rect();&lt;span class=&quot;comment&quot;&gt;//矩形（文本框）&lt;/span&gt;
-        mPaint_word.getTextBounds(mTitleText, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, mTitleText.length(), mBound);
-        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.setOnClickListener(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; OnClickListener() {
-            &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-            &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View v)&lt;/span&gt; &lt;/span&gt;{
-                mTitleText=randomText();
-                postInvalidate();&lt;span class=&quot;comment&quot;&gt;//刷新控件，重新绘制控件&lt;/span&gt;
-            }
-        });
-    }
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;onMeasure&quot;&gt;onMeasure&lt;/h1&gt;&lt;p&gt;用于向ViewGroup反馈组件的大小所占空间，如果不写此方法控件会占据界面所有剩余空间，无论是match_parent还是warp_content.  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;comment&quot;&gt;/**
- * MeasureSpec的specMode,一共三种类型：
- * EXACTLY：一般是设置了明确的值或者是MATCH_PARENT
- * AT_MOST：表示子布局限制在一个最大值内，一般为WARP_CONTENT
- * UNSPECIFIED：表示子布局想要多大就多大，很少使用
- */&lt;/span&gt;
-@Override
-&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; onMeasure(&lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; widthMeasureSpec,&lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; heightMeasureSpec){
-    &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onMeasure(widthMeasureSpec, heightMeasureSpec);
-    &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; widthMode=MeasureSpec.getMode(widthMeasureSpec);
-    &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; heightMode=MeasureSpec.getMode(heightMeasureSpec);
-    &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; widthSize=MeasureSpec.getSize(widthMeasureSpec);
-    &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; heightSize=MeasureSpec.getSize(heightMeasureSpec);
-    &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;width&lt;/span&gt;;
-    &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;height&lt;/span&gt;;
-    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(widthMode==MeasureSpec.EXACTLY){
-        &lt;span class=&quot;variable&quot;&gt;width&lt;/span&gt;=widthSize;
-    }&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;{
-        &lt;span class=&quot;variable&quot;&gt;width&lt;/span&gt;=getPaddingLeft()+mBound.&lt;span class=&quot;variable&quot;&gt;width&lt;/span&gt;()+getPaddingRight();
-    }
-    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(heightMode==MeasureSpec.EXACTLY){
-        &lt;span class=&quot;variable&quot;&gt;height&lt;/span&gt;=heightSize;
-    }&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;{
-        &lt;span class=&quot;variable&quot;&gt;height&lt;/span&gt;=getPaddingTop()+mBound.&lt;span class=&quot;variable&quot;&gt;height&lt;/span&gt;()+getPaddingBottom();
-    }
-    setMeasuredDimension(&lt;span class=&quot;variable&quot;&gt;width&lt;/span&gt;, &lt;span class=&quot;variable&quot;&gt;height&lt;/span&gt;);
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;onDraw&quot;&gt;onDraw&lt;/h1&gt;&lt;p&gt;在界面中绘制出控件&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;typename&quot;&gt;void&lt;/span&gt; onDraw(Canvas canvas){
-    &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onDraw(canvas);
-    canvas.drawRect(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,getMeasuredWidth(),getMeasuredHeight(),mPaint_background);&lt;span class=&quot;comment&quot;&gt;//在画布上画下背景矩形&lt;/span&gt;
-    canvas.drawText(mTitleText, getWidth()&lt;span class=&quot;regexp&quot;&gt;/2-mBound.width()/&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, getHeight()&lt;span class=&quot;regexp&quot;&gt;/2+mBound.height()/&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,mPaint_word);&lt;span class=&quot;comment&quot;&gt;//在画布上画下文本框&lt;/span&gt;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;具体绘制相关的另开一篇文章吧&lt;br&gt;Canvas画板&lt;br&gt;Paint画笔&lt;br&gt;Rect操作框  &lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      在Android中默认控件不足以满足需求时就需要自定义控件，可以在view类的基础上扩展也可以在其他扩展的view上继承后自定义，本文主要是在view的基础上自定义。
-    
-    </summary>
-    
-      <category term="android" scheme="http://www.chenguangsong.online/categories/android/"/>
-    
-    
-      <category term="android" scheme="http://www.chenguangsong.online/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android学习笔记（7） ——Bitmap</title>
-    <link href="http://www.chenguangsong.online/2016/05/05/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%887%EF%BC%89%E2%80%94%E2%80%94Bitmap/"/>
-    <id>http://www.chenguangsong.online/2016/05/05/Android学习笔记（7）——Bitmap/</id>
-    <published>2016-05-05T09:36:00.000Z</published>
-    <updated>2016-09-04T14:45:01.774Z</updated>
-    
-    <content type="html">&lt;p&gt;参考文章：&lt;a href=&quot;http://www.jb51.net/article/32366.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android Bitmap详细介绍&lt;/a&gt;  &lt;/p&gt;
-&lt;h1 id=&quot;首先我们需要获得Bitmap对象&quot;&gt;首先我们需要获得Bitmap对象&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Bitmap getBitmapByDrawable(Context context,&lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; drawableId){
-     &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; ((BitmapDrawable)context.getResources().getDrawable(drawableId)).getBitmap();
-  }
-&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Bitmap getBitmapFromSDCard(Activity context,&lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; fileName) &lt;span class=&quot;keyword&quot;&gt;throws&lt;/span&gt; FileNotFoundException{
-      &lt;span class=&quot;comment&quot;&gt;//第一种方式:从SD卡中得到图片&lt;/span&gt;
-      &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; SDCarePath=Environment.getExternalStorageDirectory().toString();
-      &lt;span class=&quot;keyword&quot;&gt;String&lt;/span&gt; filePath=SDCarePath+File.separator+fileName;
-      Bitmap rawBitmap = BitmapFactory.decodeFile(filePath, &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;);
-      &lt;span class=&quot;comment&quot;&gt;//第二种方式:从SD卡中得到图片&lt;/span&gt;
-      &lt;span class=&quot;comment&quot;&gt;//InputStream inputStream=new FileInputStream(new File(filePath));&lt;/span&gt;
-      &lt;span class=&quot;comment&quot;&gt;//Bitmap rawBitmap = BitmapFactory.decodeStream(inputStream);&lt;/span&gt;
-      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; rawBitmap;
-  }
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;操作Bitmap&quot;&gt;操作Bitmap&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;javadoc&quot;&gt;/**  
- * 缩放图片
- *&lt;span class=&quot;javadoctag&quot;&gt; @param&lt;/span&gt; bitmap
- *&lt;span class=&quot;javadoctag&quot;&gt; @param&lt;/span&gt; width
- *&lt;span class=&quot;javadoctag&quot;&gt; @param&lt;/span&gt; height
- *&lt;span class=&quot;javadoctag&quot;&gt; @return&lt;/span&gt;
- */&lt;/span&gt;
-  &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;Bitmap &lt;span class=&quot;title&quot;&gt;compression&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Bitmap bitmap ,&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; width,&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; height)&lt;/span&gt;&lt;/span&gt;{
-      &lt;span class=&quot;comment&quot;&gt;// 得到图片原始的高宽&lt;/span&gt;
-      &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; rawHeight = bitmap.getHeight();
-      &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; rawWidth = bitmap.getWidth();
-      &lt;span class=&quot;comment&quot;&gt;// 设定图片新的高宽&lt;/span&gt;
-      &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; newWidth = width;
-      &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; newHeight = height;
-      &lt;span class=&quot;comment&quot;&gt;// 计算缩放因子&lt;/span&gt;
-      &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; heightScale = ((&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt;) newHeight) / rawHeight;
-      &lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt; widthScale = ((&lt;span class=&quot;keyword&quot;&gt;float&lt;/span&gt;) newWidth) / rawWidth;
-      &lt;span class=&quot;comment&quot;&gt;// 新建立矩阵&lt;/span&gt;
-      Matrix matrix = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Matrix();
-      matrix.postScale(heightScale, widthScale);
-      &lt;span class=&quot;comment&quot;&gt;// 设置图片的旋转角度&lt;/span&gt;
-      &lt;span class=&quot;comment&quot;&gt;//matrix.postRotate(-30);&lt;/span&gt;
-      &lt;span class=&quot;comment&quot;&gt;// 设置图片的倾斜&lt;/span&gt;
-      &lt;span class=&quot;comment&quot;&gt;//matrix.postSkew(0.1f, 0.1f);&lt;/span&gt;
-      &lt;span class=&quot;comment&quot;&gt;//将图片大小压缩&lt;/span&gt;
-      &lt;span class=&quot;comment&quot;&gt;//压缩后图片的宽和高以及kB大小均会变化&lt;/span&gt;
-      Bitmap newBitmap = Bitmap.createBitmap(bitmap, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, rawWidth,rawWidth, matrix, &lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;);
-      &lt;span class=&quot;comment&quot;&gt;// 将Bitmap转换为Drawable&lt;/span&gt;
-      &lt;span class=&quot;comment&quot;&gt;//Drawable newBitmapDrawable = new BitmapDrawable(newBitmap);&lt;/span&gt;
-      &lt;span class=&quot;comment&quot;&gt;//imageView.setImageDrawable(newBitmapDrawable);&lt;/span&gt;
-      &lt;span class=&quot;comment&quot;&gt;//然后将Bitmap保存到SDCard中,方便于原图片的比较&lt;/span&gt;
-      &lt;span class=&quot;comment&quot;&gt;//this.compressAndSaveBitmapToSDCard(newBitmap, &quot;xx100.jpg&quot;, 80);&lt;/span&gt;
-      &lt;span class=&quot;comment&quot;&gt;//问题:&lt;/span&gt;
-      &lt;span class=&quot;comment&quot;&gt;//原图大小为625x690 90.2kB&lt;/span&gt;
-      &lt;span class=&quot;comment&quot;&gt;//如果设置图片500x500 压缩后大小为171kB.即压缩后kB反而变大了.&lt;/span&gt;
-      &lt;span class=&quot;comment&quot;&gt;//原因是将:compress(Bitmap.CompressFormat.JPEG, quality, fileOutputStream);&lt;/span&gt;
-      &lt;span class=&quot;comment&quot;&gt;//第二个参数quality设置得有些大了(比如100).&lt;/span&gt;
-      &lt;span class=&quot;comment&quot;&gt;//常用的是80,刚设100太大了造成的.&lt;/span&gt;
-      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; newBitmap;
-  }
-
-  &lt;span class=&quot;javadoc&quot;&gt;/**
-   * 变形
-   *&lt;span class=&quot;javadoctag&quot;&gt; @param&lt;/span&gt; bitmap
-   *&lt;span class=&quot;javadoctag&quot;&gt; @return&lt;/span&gt;
-   */&lt;/span&gt;
-  &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;Bitmap &lt;span class=&quot;title&quot;&gt;postSkewBitmap&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Bitmap bitmap)&lt;/span&gt;&lt;/span&gt;{
-      &lt;span class=&quot;comment&quot;&gt;// 得到图片原始的高宽&lt;/span&gt;
-      &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; rawHeight = bitmap.getHeight();
-      &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; rawWidth = bitmap.getWidth();
-      Matrix matrix = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Matrix();
-      &lt;span class=&quot;comment&quot;&gt;// 设置图片的倾斜&lt;/span&gt;
-      matrix.postSkew(&lt;span class=&quot;number&quot;&gt;0.1&lt;/span&gt;f, -&lt;span class=&quot;number&quot;&gt;0.1&lt;/span&gt;f);
-      Bitmap newBitmap = Bitmap.createBitmap(bitmap, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, rawWidth,rawWidth, matrix, &lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;);
-      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; newBitmap;
-  }
-
-  &lt;span class=&quot;javadoc&quot;&gt;/**
-   * 旋转
-   *&lt;span class=&quot;javadoctag&quot;&gt; @param&lt;/span&gt; bitmap
-   *&lt;span class=&quot;javadoctag&quot;&gt; @return&lt;/span&gt;
-   */&lt;/span&gt;
-  &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;Bitmap &lt;span class=&quot;title&quot;&gt;rotateBitmap&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Bitmap bitmap)&lt;/span&gt;&lt;/span&gt;{
-      &lt;span class=&quot;comment&quot;&gt;// 得到图片原始的高宽&lt;/span&gt;
-      &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; rawHeight = bitmap.getHeight();
-      &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; rawWidth = bitmap.getWidth();
-      Matrix matrix = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Matrix();
-      &lt;span class=&quot;comment&quot;&gt;// 设置图片的旋转角度&lt;/span&gt;
-      matrix.postRotate(-&lt;span class=&quot;number&quot;&gt;45&lt;/span&gt;);
-      Bitmap newBitmap = Bitmap.createBitmap(bitmap, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, rawWidth,rawWidth, matrix, &lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;);
-      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; newBitmap;
-  }
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;合成两张bitmap&quot;&gt;合成两张bitmap&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;为bitmap设置圆角&lt;/p&gt;
-&lt;p&gt;  public Bitmap toRoundCorner(Bitmap bitmap,int pixels){&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    Bitmap roundCornerBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Config.ARGB_8888);
-    Canvas canvas = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Canvas(roundCornerBitmap);
-    &lt;span class=&quot;built_in&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;color&lt;/span&gt; = &lt;span class=&quot;number&quot;&gt;0xff424242&lt;/span&gt;;&lt;span class=&quot;comment&quot;&gt;//int color = 0xff424242;&lt;/span&gt;
-    Paint paint = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Paint();
-    paint.setColor(&lt;span class=&quot;built_in&quot;&gt;color&lt;/span&gt;);
-    &lt;span class=&quot;comment&quot;&gt;//防止锯齿&lt;/span&gt;
-    paint.setAntiAlias(&lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;);
-    Rect &lt;span class=&quot;built_in&quot;&gt;rect&lt;/span&gt; = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Rect(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, bitmap.getWidth(), bitmap.getHeight());
-    RectF rectF = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; RectF(&lt;span class=&quot;built_in&quot;&gt;rect&lt;/span&gt;);
-    &lt;span class=&quot;built_in&quot;&gt;float&lt;/span&gt; roundPx = &lt;span class=&quot;variable&quot;&gt;pixels&lt;/span&gt;;
-    &lt;span class=&quot;comment&quot;&gt;//相当于清屏&lt;/span&gt;
-    canvas.drawARGB(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);
-    &lt;span class=&quot;comment&quot;&gt;//先画了一个带圆角的矩形&lt;/span&gt;
-    canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
-    paint.setXfermode(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; PorterDuffXfermode(Mode.SRC_IN)); ---------------------------此处注意Mode具体参考下方文章链接
-    &lt;span class=&quot;comment&quot;&gt;//再把原来的bitmap画到现在的bitmap！！！注意这个理解&lt;/span&gt;
-    canvas.drawBitmap(bitmap, &lt;span class=&quot;built_in&quot;&gt;rect&lt;/span&gt;, &lt;span class=&quot;built_in&quot;&gt;rect&lt;/span&gt;, paint);
-    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; roundCornerBitmap;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;参考文章：&lt;a href=&quot;http://blog.csdn.net/c8822882/article/details/6906768&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;android 画图之setXfermode&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;http://dl2.iteye.com/upload/attachment/0056/7804/f3756216-bc69-348f-9f4f-55428a78a287.png&quot; alt=&quot;PorterDuffXfermode&quot;&gt;  &lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;两张图叠加，可用于添加水印  &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Bitmap addbackgroundonlyicon(Bitmap bitmap_back, Bitmap bitmap_front) {
-     Bitmap b1 =  bitmap_back;
-     Bitmap b2 =  bitmap_front;
-     &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!b1.isMutable()) { &lt;span class=&quot;comment&quot;&gt;//设置图片为背景为透明&lt;/span&gt;
-         b1 = b1.&lt;span class=&quot;built_in&quot;&gt;copy&lt;/span&gt;(Bitmap.Config.ARGB_8888, &lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;);
-     }
-     Paint paint = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Paint();
-     Canvas canvas = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Canvas(b1);
-     canvas.drawBitmap(b2, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, paint);
-     canvas.&lt;span class=&quot;built_in&quot;&gt;save&lt;/span&gt;(Canvas.ALL_SAVE_FLAG);
-     canvas.restore();
-     &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; b1;
- }
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;保存bitmap到SD卡&quot;&gt;保存bitmap到SD卡&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;saveBitmapToSDCard&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Bitmap bitmap,String fileName)&lt;/span&gt; throws FileNotFoundException&lt;/span&gt;{
-      String SDCarePath=Environment.getExternalStorageDirectory().toString();
-      FileOutputStream &lt;span class=&quot;keyword&quot;&gt;out&lt;/span&gt; = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; FileOutputStream(SDCarePath+File.separator+fileName);
-      bitmap.compress(Bitmap.CompressFormat.PNG, &lt;span class=&quot;number&quot;&gt;90&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;out&lt;/span&gt;);
-  }
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      在android开发中需要对图片进行简单的操作如缩放、旋转、合成水印等，通过bitmap可以很方便的实现。
     
     </summary>
     
