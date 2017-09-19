@@ -252,9 +252,19 @@ a:active,
 a:focus,
 a:visited,
 a:link {
-	color: #007bff;
+	color: #151515;
 	text-decoration: none;
 }
+.tags {
+	color: #007bff;
+}
+.title {
+	color: #007bff;
+}
+.categories {
+	color: #007bff;
+}
+
 [class*="col-"] {
 	padding-top: 15px;
 	padding-bottom: 15px;

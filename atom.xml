@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenguangsong.online/"/>
-  <updated>2017-09-18T13:12:12.938Z</updated>
+  <updated>2017-09-19T15:37:11.102Z</updated>
   <id>http://www.chenguangsong.online/</id>
   
   <author>
@@ -14,6 +14,47 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>URL中的特殊用途</title>
+    <link href="http://www.chenguangsong.online/2017/09/19/URL%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E7%94%A8%E9%80%94/"/>
+    <id>http://www.chenguangsong.online/2017/09/19/URL中的特殊用途/</id>
+    <published>2017-09-19T15:37:11.290Z</published>
+    <updated>2017-09-19T15:37:11.102Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;URL的用途&quot;&gt;URL的用途&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;导航  &lt;/li&gt;
+&lt;li&gt;传递参数&lt;/li&gt;
+&lt;li&gt;定位锚点&lt;/li&gt;
+&lt;li&gt;共享session&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;URL组成&quot;&gt;URL组成&lt;/h1&gt;&lt;p&gt;以下面这个URL为例，介绍下普通URL的各部分组成&lt;br&gt;&lt;a href=&quot;http://www.chenguangsong.online:80/news/index.asp?boardID=5&amp;amp;ID=24618&amp;amp;page=1#name&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.chenguangsong.online:80/news/index.asp?boardID=5&amp;amp;ID=24618&amp;amp;page=1#name&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;协议部分：该URL的协议部分为“http：”，这代表网页使用的是HTTP协议。在Internet中可以使用多种协议，如HTTP，FTP等等本例中使用的是HTTP协议。在”HTTP”后面的“//”为分隔符  &lt;/li&gt;
+&lt;li&gt;域名部分：该URL的域名部分为“www.aspxfans.com”。一个URL中，也可以使用IP地址作为域名使用  &lt;/li&gt;
+&lt;li&gt;端口部分：跟在域名后面的是端口，域名和端口之间使用“:”作为分隔符。端口不是一个URL必须的部分，如果省略端口部分，将采用默认端口“80”  &lt;/li&gt;
+&lt;li&gt;虚拟目录部分：从域名后的第一个“/”开始到最后一个“/”为止，是虚拟目录部分。虚拟目录也不是一个URL必须的部分。本例中的虚拟目录是“/news/”  &lt;/li&gt;
+&lt;li&gt;文件名部分：从域名后的最后一个“/”开始到“？”为止，是文件名部分，如果没有“?”,则是从域名后的最后一个“/”开始到“#”为止，是文件部分，如果没有“？”和“#”，那么从域名后的最后一个“/”开始到结束，都是文件名部分。本例中的文件名是“index.asp”。文件名部分也不是一个URL必须的部分，如果省略该部分，则使用默认的文件名  &lt;/li&gt;
+&lt;li&gt;锚部分：从“#”开始到最后，都是锚部分。本例中的锚部分是“name”。锚部分也不是一个URL必须的部分&lt;br&gt;7.参数部分：从“？”开始到“#”为止之间的部分为参数部分，又称搜索部分、查询部分。本例中的参数部分为“boardID=5&amp;amp;ID=24618&amp;amp;page=1”。参数可以允许有多个参数，参数与参数之间用“&amp;amp;”作为分隔符。&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/ergouge/article/details/8185219&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;详解URL的组成 - CSDN博客&lt;/a&gt;  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;导航&quot;&gt;导航&lt;/h1&gt;&lt;p&gt;所谓导航就是指虚拟目录部分，用于在项目中去响应对应的方法，并返回页面，如果是普通的网页则直接访问对应目录下的网页&lt;/p&gt;
+&lt;h1 id=&quot;传递参数&quot;&gt;传递参数&lt;/h1&gt;&lt;p&gt;在web系统中通过get方式传递参数,具体栗子 &lt;code&gt;?boardID=5&amp;amp;ID=2461&amp;amp;page=1&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&quot;定位锚点&quot;&gt;定位锚点&lt;/h1&gt;&lt;p&gt;锚点以&lt;code&gt;#&lt;/code&gt;+DomID 接在url最后，打开后会浏览器会打开对应页面，并显示到id=DOMid的div或其他标签的位置，可以做到单页里面的导航也就是锚点，最常见的场景单页文档的目录响应场景&lt;br&gt;&lt;a href=&quot;http://www.cnblogs.com/tommy-huang/p/4468574.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;html锚点(mao dian)—特殊的超链接 - 一菲聪天 - 博客园&lt;/a&gt;    &lt;/p&gt;
+&lt;h1 id=&quot;共享session&quot;&gt;共享session&lt;/h1&gt;&lt;p&gt;用户登录系统会向服务器发送校验数据，服务器验证通过后会生成session，同时向客户端回传一个sessionid保存在用户的cookie中。&lt;br&gt;因为用户通过url访问服务器时并没有在url中传递用户信息，服务器就是通过sessionid来判断用户是否已经登录过，一般情况下浏览器会自动向服务器发送sessionid，但是cookie关闭，或跨窗口打开页面就会出现sessionid没有发送到服务器导致操作失败，这时我们就需要在url中拼接jsessionid&lt;br&gt;&lt;code&gt;wapbrowse.jsp;jsessionid=5AC6268DD8D4D5D1FDF5D41E9F2FD960?curAlbumID=9&lt;/code&gt;&lt;br&gt;注意拼接jsessionid使用的是&lt;code&gt;;&lt;/code&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/chunqiuwei/article/details/23461995&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;jsessionid的简单说明 - CSDN博客&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://sizhefang.iteye.com/blog/25294&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;url中的jsessionid解释 - sizhefang - ITeye博客&lt;/a&gt;  &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      在开发B/S系统的时候肯定会用的url去调用对应的方法去获取页面及数据，那么url除了能导航，还能做什么呢？
+    
+    </summary>
+    
+      <category term="html" scheme="http://www.chenguangsong.online/categories/html/"/>
+    
+    
+      <category term="html" scheme="http://www.chenguangsong.online/tags/html/"/>
+    
+  </entry>
   
   <entry>
     <title>Java学习笔记（2）——freemarker</title>
@@ -1798,126 +1839,6 @@ $ git config --global alias.lg &lt;span class=&quot;string&quot;&gt;&quot;log --
     
     
       <category term="git" scheme="http://www.chenguangsong.online/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android学习笔记(9)——广播</title>
-    <link href="http://www.chenguangsong.online/2016/06/29/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%889%EF%BC%89%E2%80%94%E2%80%94%E5%B9%BF%E6%92%AD/"/>
-    <id>http://www.chenguangsong.online/2016/06/29/Android学习笔记（9）——广播/</id>
-    <published>2016-06-29T08:18:39.000Z</published>
-    <updated>2016-09-04T14:43:18.496Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;广播的分类&quot;&gt;广播的分类&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;有序&lt;ul&gt;
-&lt;li&gt;有序广播：广播发送后按照优先等级依次接收广播信息，优先级更高的广播接收者可以拦截广播阻止广播继续发送。&lt;/li&gt;
-&lt;li&gt;无序广播：广播的发送没有顺序，全都可以接收。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;本地&lt;ul&gt;
-&lt;li&gt;本地广播：只在本应用中发送的广播。&lt;/li&gt;
-&lt;li&gt;非本地广播：普通广播都是非本地的广播所有应用都能收到。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;注册接收器&lt;ul&gt;
-&lt;li&gt;静态注册的广播接收器：广播接收器在manifest中注册。&lt;/li&gt;
-&lt;li&gt;动态注册的广播接收器：在代码中实例化的时候注册，在结束时要记得注销广播接收器。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;自定义广播&lt;ul&gt;
-&lt;li&gt;系统广播：系统定义好的广播，我们只需要接收它们就好了（如：网络变化广播、壁纸更换等）&lt;/li&gt;
-&lt;li&gt;自定义广播：用户自己定义的广播。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;广播的作用&quot;&gt;广播的作用&lt;/h1&gt;&lt;p&gt;广播机制是安卓中用于组件之间的通信，在多线程中如果handler不好用的时候也可以考虑使用。&lt;/p&gt;
-&lt;h1 id=&quot;动态广播接收器&quot;&gt;动态广播接收器&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;public &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MainActivity&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Activity&lt;/span&gt; {&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;IntentFilter&lt;/span&gt; intentFilter;
-    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;NetworkChangeReceiver&lt;/span&gt; networkChangeReceiver;
-    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; void onCreate(&lt;span class=&quot;type&quot;&gt;Bundle&lt;/span&gt; savedInstanceState) {
-        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onCreate(savedInstanceState);
-        setContentView(&lt;span class=&quot;type&quot;&gt;R&lt;/span&gt;.layout.activity_main);
-        intentFilter=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;IntentFilter&lt;/span&gt;();&lt;span class=&quot;comment&quot;&gt;//创建筛选器&lt;/span&gt;
-        intentFilter.addAction(&lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;CONNECTIVITY_ACTION&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//监听系统网络变化&lt;/span&gt;
-        intentFilter.setPriority(&lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//优先等级&lt;/span&gt;
-        networkChangeReceiver=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;NetworkChangeReceiver&lt;/span&gt;();
-        registerReceiver(networkChangeReceiver, intentFilter);&lt;span class=&quot;comment&quot;&gt;//动态注册接收器&lt;/span&gt;
-    }
-
-    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; void onDestroy(){
-        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.onDestroy();
-        unregisterReceiver(networkChangeReceiver);
-    }
-
-    &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;NetworkChangeReceiver&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BroadcastReceiver&lt;/span&gt;{&lt;/span&gt;
-        &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-        public void onReceive(&lt;span class=&quot;type&quot;&gt;Context&lt;/span&gt; context, &lt;span class=&quot;type&quot;&gt;Intent&lt;/span&gt; intent) {
-            &lt;span class=&quot;type&quot;&gt;Toast&lt;/span&gt;.makeText(context, &lt;span class=&quot;string&quot;&gt;&quot;network changes&quot;&lt;/span&gt;, &lt;span class=&quot;type&quot;&gt;Toast&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;LENGTH_SHORT&lt;/span&gt;).show();
-            &lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt; connectionManager = (&lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;) getSystemService(
-                    &lt;span class=&quot;type&quot;&gt;Context&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;CONNECTIVITY_SERVICE&lt;/span&gt;);
-            &lt;span class=&quot;type&quot;&gt;NetworkInfo&lt;/span&gt; networkInfo = connectionManager.getActiveNetworkInfo();
-            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (networkInfo != &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt; &amp;amp;&amp;amp; networkInfo.isAvailable()) {
-                &lt;span class=&quot;type&quot;&gt;Toast&lt;/span&gt;.makeText(context, &lt;span class=&quot;string&quot;&gt;&quot;network is available&quot;&lt;/span&gt;, &lt;span class=&quot;type&quot;&gt;Toast&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;LENGTH_SHORT&lt;/span&gt;).show();
-                 &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(networkInfo.getType()==&lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_WIFI&lt;/span&gt;){
-            &lt;span class=&quot;comment&quot;&gt;//WiFi网络&lt;/span&gt;
-            &lt;span class=&quot;type&quot;&gt;Toast&lt;/span&gt;.makeText(context, &lt;span class=&quot;string&quot;&gt;&quot;network is wifi&quot;&lt;/span&gt;, &lt;span class=&quot;type&quot;&gt;Toast&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;LENGTH_SHORT&lt;/span&gt;).show();
-          }&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(networkInfo.getType()==&lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_ETHERNET&lt;/span&gt;){
-            &lt;span class=&quot;comment&quot;&gt;//有线网络  以太网&lt;/span&gt;
-              &lt;span class=&quot;type&quot;&gt;Toast&lt;/span&gt;.makeText(context, &lt;span class=&quot;string&quot;&gt;&quot;network is youxian&quot;&lt;/span&gt;, &lt;span class=&quot;type&quot;&gt;Toast&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;LENGTH_SHORT&lt;/span&gt;).show();
-          }&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(networkInfo.getType()==&lt;span class=&quot;type&quot;&gt;ConnectivityManager&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;TYPE_MOBILE&lt;/span&gt;){
-            &lt;span class=&quot;comment&quot;&gt;//3g网络&lt;/span&gt;
-              &lt;span class=&quot;type&quot;&gt;Toast&lt;/span&gt;.makeText(context, &lt;span class=&quot;string&quot;&gt;&quot;network is 2G/3G/4G&quot;&lt;/span&gt;, &lt;span class=&quot;type&quot;&gt;Toast&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;LENGTH_SHORT&lt;/span&gt;).show();
-          }
-            } &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; {
-                &lt;span class=&quot;type&quot;&gt;Toast&lt;/span&gt;.makeText(context, &lt;span class=&quot;string&quot;&gt;&quot;network is unavailable&quot;&lt;/span&gt;, &lt;span class=&quot;type&quot;&gt;Toast&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;LENGTH_SHORT&lt;/span&gt;).show();
-            }
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;以上代码是一个监听系统（网络状态变化）广播的代码，通过代码动态注册接收器，在onDestroy方法中注销。  &lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;ps：监听网络别忘了注册权限 uses-permission android:name=”android.permission.ACCESS_NETWORK_STATE”&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;静态注册广播接收器&quot;&gt;静态注册广播接收器&lt;/h1&gt;&lt;p&gt;在manifasrt中注册接收器，放在&lt;application&gt;标签中，这种接收器只要系统安装了应用就能接收广播不需要启动应用。  &lt;/application&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;receiver android:name=&lt;span class=&quot;string&quot;&gt;&quot;com.wind.briadcasttest.Receiver&quot;&lt;/span&gt;&amp;gt;
-      &amp;lt;intent-filter android:priority=&lt;span class=&quot;string&quot;&gt;&quot;1000&quot;&lt;/span&gt;&amp;gt;
-           &amp;lt;action android:name=&lt;span class=&quot;string&quot;&gt;&quot;com.wind.cgs&quot;&lt;/span&gt;/&amp;gt;
-      &amp;lt;/intent-filter&amp;gt;
-&amp;lt;/receiver&amp;gt;
-
-public &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Receiver&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BroadcastReceiver&lt;/span&gt;{&lt;/span&gt;
-    &lt;span class=&quot;annotation&quot;&gt;@Override&lt;/span&gt;
-    public void onReceive(&lt;span class=&quot;type&quot;&gt;Context&lt;/span&gt; context, &lt;span class=&quot;type&quot;&gt;Intent&lt;/span&gt; intent) {
-        &lt;span class=&quot;type&quot;&gt;String&lt;/span&gt; name=intent.getExtras().getString(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;);
-        &lt;span class=&quot;type&quot;&gt;Log&lt;/span&gt;.d(&lt;span class=&quot;string&quot;&gt;&quot;Recevier1&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;接收到了&quot;&lt;/span&gt;+name+&lt;span class=&quot;string&quot;&gt;&quot;广播&quot;&lt;/span&gt;);  
-        extras.putString(&lt;span class=&quot;string&quot;&gt;&quot;body&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;没错我就是在receive中添加进来的&quot;&lt;/span&gt;);
-        setResultExtras(extras);&lt;span class=&quot;comment&quot;&gt;//向广播中添加内容&lt;/span&gt;
-        &lt;span class=&quot;comment&quot;&gt;//abortBroadcast();阻断广播继续传递&lt;/span&gt;
-        &lt;span class=&quot;comment&quot;&gt;//有序广播中的权限权值-1000~1000&lt;/span&gt;
-    }&lt;span class=&quot;comment&quot;&gt;//在优先级较低的接收器中可以通过Bundle bundle=getResultExtras(true);bundle.getString(body);来获取receiver中添加的信息&lt;/span&gt;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;发送本地广播&quot;&gt;发送本地广播&lt;/h1&gt;&lt;p&gt;本地广播的发送和普通广播的实现基本相似，在普通广播发送是直接通过activity对象调用sendbroadcast(intent);&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;XXActivity.this.sendbroadcast(intent);&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;而在发送本地广播时需要通过LocalBroadcastManager来调用sendbroadcast(intent);&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;private LocalBroadcastManager localBroadcastManager;&lt;br&gt;localBroadcastManager = LocalBroadcastManager.getInstance(this);&lt;br&gt;localBroadcastManager.sendBroadcast(intent);// 发送本地广播&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      本来早该写的，拖到现在。本文介绍Android中的广播机制。
-    
-    </summary>
-    
-      <category term="android" scheme="http://www.chenguangsong.online/categories/android/"/>
-    
-    
-      <category term="android" scheme="http://www.chenguangsong.online/tags/android/"/>
     
   </entry>
   
