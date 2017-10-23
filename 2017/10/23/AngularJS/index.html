@@ -96,8 +96,6 @@
         		<a class="sb-toggle-submenu">分类<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
-				    <li><a href="/categories/Angular/" class="animsition-link">Angular<small>(0)</small></a></li>
-				    
 				    <li><a href="/categories/Angular-js/" class="animsition-link">Angular.js<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/Hibernate/" class="animsition-link">Hibernate<small>(6)</small></a></li>
@@ -142,8 +140,6 @@
         		<a class="sb-toggle-submenu">标签<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
-				    <li><a href="/tags/Angular/" class="animsition-link">Angular<small>(0)</small></a></li>
-				    
 				    <li><a href="/tags/Angular-js/" class="animsition-link">Angular.js<small>(1)</small></a></li>
 				    
 				    <li><a href="/tags/Hibernate/" class="animsition-link">Hibernate<small>(6)</small></a></li>
@@ -281,7 +277,7 @@
             <div class="col-md-8">
                 <h1>AngularJS学习笔记</h1>
 		<span class="post-meta">
-      <time datetime="2017-10-23T15:12:11.828Z" itemprop="datePublished">
+      <time datetime="2017-10-23T15:20:20.693Z" itemprop="datePublished">
           2017-10-23
       </time>
 	
@@ -329,8 +325,7 @@
 <li>ng-repeat 指令对于集合中（数组中）的每个项会克隆一次HTML元素。</li>
 <li>ng-model 获取当前dom的value赋值到对象,实现双向数据绑定<br>css类ng-valid, ng-invalid, ng-dirty, ng-pristine, ng-touched, ng-untouched</li>
 <li>ng-include=”‘runoob.htm’”包含文件  </li>
-<li><select ng-init="selectedName = names[0]" ng-model="selectedName" ng-options="x for x in names"><br></select>
-
+<li><figure class="highlight"><figcaption><span>ng-init="selectedName = names[0]" ng-model="selectedName" ng-options="x for x in names"></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;/select&#62;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line"><span class="tag">input</span><span class="class">.ng-invalid</span> <span class="rules">&#123;<span class="rule">//根据绑定数据的合法性判断，为<span class="attribute">dom设置css样式</span><br><span class="line">    background-color</span>:<span class="value"> lightblue</span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">ng-app</span>=<span class="value">""</span> <span class="attribute">name</span>=<span class="value">"myForm"</span>&gt;</span></span><br><span class="line">    输入你的名字:</span><br><span class="line">    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">name</span>=<span class="value">"myAddress"</span> <span class="attribute">ng-model</span>=<span class="value">"text"</span> <span class="attribute">required</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">h1</span>&gt;</span>状态<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">    </span><span class="expression">&#123;&#123;<span class="variable">myForm.myAddress.</span>$<span class="variable">valid</span>&#125;&#125;</span><span class="xml">//运用表达式对绑定数据进行合法性运算</span><br><span class="line">    </span><span class="expression">&#123;&#123;<span class="variable">myForm.myAddress.</span>$<span class="variable">dirty</span>&#125;&#125;</span><span class="xml"></span><br><span class="line">    </span><span class="expression">&#123;&#123;<span class="variable">myForm.myAddress.</span>$<span class="variable">touched</span>&#125;&#125;</span><span class="xml"></span><br><span class="line"><span class="tag">&lt;/<span class="title">form</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
