@@ -252,17 +252,17 @@ a:active,
 a:focus,
 a:visited,
 a:link {
-	color: #151515;
+	color: #007bff;
 	text-decoration: none;
 }
-.tags {
-	color: #007bff;
+a.tags:link {
+	color: #000;
 }
-.title {
-	color: #007bff;
+a.title:link {
+	color: #000;
 }
-.categories {
-	color: #007bff;
+a.categories:link {
+	color: #000;
 }
 
 [class*="col-"] {
