@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.chenguangsong.online/2017/10/28/Redis/</loc>
+    <lastmod>2017-10-28T15:20:01.528Z</lastmod>
+    <data>
+        <display>
+        <title>Redis学习笔记</title>
+        <pubTime>2017-10-28T15:20:01.528Z</pubTime>
+        
+        <tag>Radis</tag>
+         
+         
+           
+             
+              <breadCrumb title="Radis" url="http://www.chenguangsong.online/categories/Radis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.chenguangsong.online/2017/10/28/AngularJS/</loc>
     <lastmod>2017-10-28T14:51:56.827Z</lastmod>
     <data>
@@ -17,26 +37,6 @@
            
              
               <breadCrumb title="Angular" url="http://www.chenguangsong.online/categories/Angular/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.chenguangsong.online/2017/10/23/Redis/</loc>
-    <lastmod>2017-10-23T14:05:20.707Z</lastmod>
-    <data>
-        <display>
-        <title>Redis学习笔记</title>
-        <pubTime>2017-10-23T14:05:20.847Z</pubTime>
-        
-        <tag>Radis</tag>
-         
-         
-           
-             
-              <breadCrumb title="Radis" url="http://www.chenguangsong.online/categories/Radis/"/>
           
         </display>
     </data>

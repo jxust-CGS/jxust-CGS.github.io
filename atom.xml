@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.chenguangsong.online/"/>
-  <updated>2017-10-28T14:51:56.827Z</updated>
+  <updated>2017-10-28T15:20:01.528Z</updated>
   <id>http://www.chenguangsong.online/</id>
   
   <author>
@@ -14,6 +14,82 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis学习笔记</title>
+    <link href="http://www.chenguangsong.online/2017/10/28/Redis/"/>
+    <id>http://www.chenguangsong.online/2017/10/28/Redis/</id>
+    <published>2017-10-28T15:20:01.528Z</published>
+    <updated>2017-10-28T15:20:01.528Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Radis简介&quot;&gt;Radis简介&lt;/h1&gt;&lt;p&gt;Radis支持存储的value类型很多，包括string(字符串)、list(链表)、set(集合)、zset(sorted set —有序集合)和hash （哈希类型）。&lt;br&gt;这些数据类型都支持push/pop、add/remove及取交集并集和差集及更丰富的操作，而且这些操作都是原子性的。&lt;br&gt;在此基础上，redis支持各种不同方式的排序。为了保证效率，数据都是缓存在内存中。同时redis会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件，并且在此基础上实现了master-slave(主从)同步。  &lt;/p&gt;
+&lt;h1 id=&quot;Radis安装&quot;&gt;Radis安装&lt;/h1&gt;&lt;p&gt;另外，radis官方不支持windows，但是只是 Microsoft Open Tech group 在 GitHub上开发了一个Win64的版本,项目地址是：&lt;a href=&quot;https://github.com/MSOpenTech/redis&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/MSOpenTech/redis&lt;/a&gt;  （不是下载项目代码，而是下载release包）&lt;br&gt;具体参考：&lt;a href=&quot;http://blog.csdn.net/renfufei/article/details/38474435&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Windows下安装并设置Redis &lt;/a&gt;&lt;br&gt;service-install.bat服务安装脚本&lt;br&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;redis-server&lt;span class=&quot;class&quot;&gt;.exe&lt;/span&gt; --service-install redis&lt;span class=&quot;class&quot;&gt;.windows&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.conf&lt;/span&gt; --loglevel verbose&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;uninstall-service.bat服务卸载脚本&lt;br&gt;&lt;figure class=&quot;highlight applescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;redis-server &lt;span class=&quot;comment&quot;&gt;--service-uninstall&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;startup.bat启动radis服务端脚本&lt;br&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;redis-server&lt;span class=&quot;class&quot;&gt;.exe&lt;/span&gt; redis&lt;span class=&quot;class&quot;&gt;.windows&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.conf&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;启动后直接双击打开redis-cli.exe客户端，输入命令&lt;code&gt;ping&lt;/code&gt;&lt;br&gt;返回&lt;code&gt;PONG&lt;/code&gt;则表面radis已经安装并启动完毕&lt;/p&gt;
+&lt;h1 id=&quot;Radis常用命令&quot;&gt;Radis常用命令&lt;/h1&gt;&lt;p&gt;1、键值相关命令&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;keys * 取出当前所有的key&lt;/li&gt;
+&lt;li&gt;exists name 查看n是否有name这个key&lt;/li&gt;
+&lt;li&gt;del name 删除key name&lt;/li&gt;
+&lt;li&gt;expire confirm 100 设置confirm这个key100秒过期&lt;/li&gt;
+&lt;li&gt;ttl confirm 获取confirm 这个key的有效时长&lt;/li&gt;
+&lt;li&gt;select 0 选择到0数据库 redis默认的数据库是0~15一共16个数据库&lt;/li&gt;
+&lt;li&gt;move confirm 1 将当前数据库中的key移动到其他的数据库中，这里就是把confire这个key从当前数据库中移动到1中&lt;/li&gt;
+&lt;li&gt;persist confirm 移除confirm这个key的过期时间&lt;/li&gt;
+&lt;li&gt;randomkey 随机返回数据库里面的一个key&lt;/li&gt;
+&lt;li&gt;rename key2 key3 重命名key2 为key3&lt;/li&gt;
+&lt;li&gt;type key2 返回key的数据类型&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2、服务器相关命令&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ping PONG返回响应是否连接成功&lt;/li&gt;
+&lt;li&gt;echo 在命令行打印一些内容&lt;/li&gt;
+&lt;li&gt;select 0~15 编号的数据库&lt;/li&gt;
+&lt;li&gt;quit  /exit 退出客户端&lt;/li&gt;
+&lt;li&gt;dbsize 返回当前数据库中所有key的数量&lt;/li&gt;
+&lt;li&gt;info 返回redis的相关信息&lt;/li&gt;
+&lt;li&gt;config get dir/* 实时传储收到的请求&lt;/li&gt;
+&lt;li&gt;flushdb 删除当前选择数据库中的所有key&lt;/li&gt;
+&lt;li&gt;flushall 删除所有数据库中的数据库&lt;/li&gt;
+&lt;li&gt;CONFIG SET requirepass secret_password设置密码，服务重启后失效&lt;/li&gt;
+&lt;li&gt;在配置文件中解开注释# requirepass foobared 并将foobared改为需要设置的密码  &lt;/li&gt;
+&lt;li&gt;auth password 认证登录&lt;/li&gt;
+&lt;li&gt;redis-cli -h host -p port -a password连接远程radis&lt;/li&gt;
+&lt;li&gt;save：将数据同步保存到磁盘&lt;/li&gt;
+&lt;li&gt;bgsave：将数据异步保存到磁盘&lt;/li&gt;
+&lt;li&gt;lastsave：返回上次成功将数据保存到磁盘的Unix时戳&lt;/li&gt;
+&lt;li&gt;shundown：将数据同步保存到磁盘，然后关闭服务&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;3、对value操作的命令&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;exists(key)：确认一个key是否存在&lt;/li&gt;
+&lt;li&gt;del(key)：删除一个key&lt;/li&gt;
+&lt;li&gt;type(key)：返回值的类型&lt;/li&gt;
+&lt;li&gt;keys(pattern)：返回满足给定pattern的所有key&lt;/li&gt;
+&lt;li&gt;randomkey：随机返回key空间的一个&lt;/li&gt;
+&lt;li&gt;keyrename(oldname, newname)：重命名key&lt;/li&gt;
+&lt;li&gt;dbsize：返回当前数据库中key的数目&lt;/li&gt;
+&lt;li&gt;expire：设定一个key的活动时间（s）&lt;/li&gt;
+&lt;li&gt;ttl：获得一个key的活动时间&lt;/li&gt;
+&lt;li&gt;move(key, dbindex)：移动当前数据库中的key到dbindex数据库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;全部命令请参考：&lt;a href=&quot;http://doc.redisfans.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Redis 命令参考&lt;/a&gt;、&lt;a href=&quot;http://www.runoob.com/redis/redis-tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Redis 教程 | 菜鸟教程&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;在java中使用radis&quot;&gt;在java中使用radis&lt;/h1&gt;&lt;figure class=&quot;highlight cs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;import redis.clients.jedis.Jedis;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;RedisStringJava&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String[] args)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//连接本地的 Redis 服务&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Jedis jedis = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Jedis(&lt;span class=&quot;string&quot;&gt;&quot;localhost&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.&lt;span class=&quot;keyword&quot;&gt;out&lt;/span&gt;.println(&lt;span class=&quot;string&quot;&gt;&quot;连接成功&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//设置 redis 字符串数据&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        jedis.&lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;runoobkey&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;www.runoob.com&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 获取存储的数据并输出&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.&lt;span class=&quot;keyword&quot;&gt;out&lt;/span&gt;.println(&lt;span class=&quot;string&quot;&gt;&quot;redis 存储的字符串为: &quot;&lt;/span&gt;+ jedis.&lt;span class=&quot;keyword&quot;&gt;get&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;runoobkey&quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      Redis是一个key-value存储系统，在部 分场合可以对关系数据库起到很好的补充作用。
+    
+    </summary>
+    
+      <category term="Radis" scheme="http://www.chenguangsong.online/categories/Radis/"/>
+    
+    
+      <category term="Radis" scheme="http://www.chenguangsong.online/tags/Radis/"/>
+    
+  </entry>
   
   <entry>
     <title>AngularJS学习笔记</title>
@@ -86,34 +162,6 @@
     
     
       <category term="Angular" scheme="http://www.chenguangsong.online/tags/Angular/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis学习笔记</title>
-    <link href="http://www.chenguangsong.online/2017/10/23/Redis/"/>
-    <id>http://www.chenguangsong.online/2017/10/23/Redis/</id>
-    <published>2017-10-23T14:05:20.847Z</published>
-    <updated>2017-10-23T14:05:20.707Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;Radis简介&quot;&gt;Radis简介&lt;/h1&gt;&lt;p&gt;Radis支持存储的value类型很多，包括string(字符串)、list(链表)、set(集合)、zset(sorted set —有序集合)和hash （哈希类型）。&lt;br&gt;这些数据类型都支持push/pop、add/remove及取交集并集和差集及更丰富的操作，而且这些操作都是原子性的。&lt;br&gt;在此基础上，redis支持各种不同方式的排序。为了保证效率，数据都是缓存在内存中。同时redis会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件，并且在此基础上实现了master-slave(主从)同步。  &lt;/p&gt;
-&lt;h1 id=&quot;Radis安装&quot;&gt;Radis安装&lt;/h1&gt;&lt;p&gt;另外，radis官方不支持windows，但是只是 Microsoft Open Tech group 在 GitHub上开发了一个Win64的版本,项目地址是：&lt;a href=&quot;https://github.com/MSOpenTech/redis&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/MSOpenTech/redis&lt;/a&gt;  （不是下载项目代码，而是下载release包）&lt;br&gt;具体参考：&lt;a href=&quot;http://blog.csdn.net/renfufei/article/details/38474435&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Windows下安装并设置Redis &lt;/a&gt;&lt;br&gt;service-install.bat服务安装脚本&lt;br&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;redis-server&lt;span class=&quot;class&quot;&gt;.exe&lt;/span&gt; --service-install redis&lt;span class=&quot;class&quot;&gt;.windows&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.conf&lt;/span&gt; --loglevel verbose &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;uninstall-service.bat服务卸载脚本&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;redis-server —service-uninstall&lt;br&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;startup.bat启动radis服务端脚本&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;redis-server.exe redis.windows.conf&lt;br&gt;&lt;figure class=&quot;highlight markdown&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;启动后直接双击打开redis-cli.exe客户端，输入命令&lt;span class=&quot;code&quot;&gt;`ping`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;返回&lt;span class=&quot;code&quot;&gt;`PONG`&lt;/span&gt;则表面radis已经安装并启动完毕&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;header&quot;&gt;# Radis常用命令 #&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1、键值相关命令&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;keys * 取出当前所有的key&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;exists name 查看n是否有name这个key&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;del name 删除key name&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;expire confirm 100 设置confirm这个key100秒过期&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;ttl confirm 获取confirm 这个key的有效时长&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;select 0 选择到0数据库 redis默认的数据库是0~15一共16个数据库&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;move confirm 1 将当前数据库中的key移动到其他的数据库中，这里就是把confire这个key从当前数据库中移动到1中&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;persist confirm 移除confirm这个key的过期时间&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;randomkey 随机返回数据库里面的一个key&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;rename key2 key3 重命名key2 为key3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;type key2 返回key的数据类型&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2、服务器相关命令&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;ping PONG返回响应是否连接成功&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;echo 在命令行打印一些内容&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;select 0~15 编号的数据库&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;quit  /exit 退出客户端&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;dbsize 返回当前数据库中所有key的数量&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;info 返回redis的相关信息&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;config get dir/* 实时传储收到的请求 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;flushdb 删除当前选择数据库中的所有key&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;flushall 删除所有数据库中的数据库&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;CONFIG SET requirepass secret_password设置密码，服务重启后失效&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;在配置文件中解开注释# requirepass foobared 并将foobared改为需要设置的密码  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;auth password 认证登录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;redis-cli -h host -p port -a password连接远程radis&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;save：将数据同步保存到磁盘&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;bgsave：将数据异步保存到磁盘&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;lastsave：返回上次成功将数据保存到磁盘的Unix时戳&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;shundown：将数据同步保存到磁盘，然后关闭服务&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3、对value操作的命令&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;exists(key)：确认一个key是否存在&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;del(key)：删除一个key&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;type(key)：返回值的类型&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;keys(pattern)：返回满足给定pattern的所有key&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;randomkey：随机返回key空间的一个&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;keyrename(oldname, newname)：重命名key&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;dbsize：返回当前数据库中key的数目&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;expire：设定一个key的活动时间（s）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;ttl：获得一个key的活动时间&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;move(key, dbindex)：移动当前数据库中的key到dbindex数据库&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;全部命令请参考：[&lt;span class=&quot;link_label&quot;&gt;Redis 命令参考&lt;/span&gt;](&lt;span class=&quot;link_url&quot;&gt;http://doc.redisfans.com/&lt;/span&gt;)、[&lt;span class=&quot;link_label&quot;&gt;Redis 教程 | 菜鸟教程&lt;/span&gt;](&lt;span class=&quot;link_url&quot;&gt;http://www.runoob.com/redis/redis-tutorial.html&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;header&quot;&gt;# 在java中使用radis #&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;import redis.clients.jedis.Jedis;&lt;/p&gt;
-&lt;p&gt;public class RedisStringJava {&lt;br&gt;    public static void main(String[] args) {&lt;br&gt;        //连接本地的 Redis 服务&lt;br&gt;        Jedis jedis = new Jedis(“localhost”);&lt;br&gt;        System.out.println(“连接成功”);&lt;br&gt;        //设置 redis 字符串数据&lt;br&gt;        jedis.set(“runoobkey”, “www.runoob.com”);&lt;br&gt;        // 获取存储的数据并输出&lt;br&gt;        System.out.println(“redis 存储的字符串为: “+ jedis.get(“runoobkey”));&lt;br&gt;    }&lt;br&gt;}&lt;br&gt;```&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      Redis是一个key-value存储系统，在部 分场合可以对关系数据库起到很好的补充作用。
-    
-    </summary>
-    
-      <category term="Radis" scheme="http://www.chenguangsong.online/categories/Radis/"/>
-    
-    
-      <category term="Radis" scheme="http://www.chenguangsong.online/tags/Radis/"/>
     
   </entry>
   
