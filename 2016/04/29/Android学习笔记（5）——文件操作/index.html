@@ -19,9 +19,9 @@
 <head>
   <title>android学习笔记（5） ——文件操作 | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
@@ -84,7 +84,7 @@
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -208,7 +208,7 @@
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -236,7 +236,7 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -287,211 +287,201 @@
 	
     
     | 分类：
-    <a class="categories" href='/categories/android/'>android</a>
+    <a class="categories" href="/categories/android/">android</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/android/'>android</a>
+    <a class="tags" href="/tags/android/">android</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h1 id="读写文件">读写文件</h1><p>在Android中文件的读写用的是java中的file类，所以读写操作和java中是一样的。</p>
+      		<h1 id="读写文件"><a href="#读写文件" class="headerlink" title="读写文件"></a>读写文件</h1><p>在Android中文件的读写用的是java中的file类，所以读写操作和java中是一样的。</p>
 <ul>
 <li><p>写入操作</p>
-<pre><code>String data = editText.<span class="keyword">getText</span>().toString();
-FileOutputStream fileOutputStream = <span class="keyword">null</span>;
-BufferedWriter bufferedWriter = <span class="keyword">null</span>;
-<span class="keyword">try</span> {
-    fileOutputStream = openFileOutput(<span class="string">"date"</span>, Context.MODE_PRIVATE);
-    bufferedWriter = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(fileOutputStream));
-    bufferedWriter.<span class="keyword">write</span>(data);
-    <span class="comment">//Toast.makeText(this, "shuru "+data, Toast.LENGTH_SHORT).show();</span>
-} <span class="keyword">catch</span> (IOException e) {
+<pre><code>String data = editText.getText().toString();
+FileOutputStream fileOutputStream = null;
+BufferedWriter bufferedWriter = null;
+try &#123;
+    fileOutputStream = openFileOutput(&quot;date&quot;, Context.MODE_PRIVATE);
+    bufferedWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream));
+    bufferedWriter.write(data);
+    //Toast.makeText(this, &quot;shuru &quot;+data, Toast.LENGTH_SHORT).show();
+&#125; catch (IOException e) &#123;
     e.printStackTrace();
-} <span class="keyword">finally</span> {
-    <span class="keyword">try</span> {
-        <span class="keyword">if</span> (bufferedWriter != <span class="keyword">null</span>) {
+&#125; finally &#123;
+    try &#123;
+        if (bufferedWriter != null) &#123;
             bufferedWriter.close();
-        }
-    } <span class="keyword">catch</span> (IOException e) {
+        &#125;
+    &#125; catch (IOException e) &#123;
         e.printStackTrace();
-    }
-}
+    &#125;
+&#125;
 </code></pre></li>
-<li>读出操作<pre><code>FileInputStream fileInputStream = <span class="keyword">null</span>;
-    <span class="keyword">BufferedReader</span> bufferedReader = <span class="keyword">null</span>;
-    StringBuilder content = <span class="keyword">new</span> StringBuilder();
-    <span class="keyword">try</span> {
-        fileInputStream = openFileInput(<span class="string">"date"</span>);
-        bufferedReader = <span class="keyword">new</span> <span class="keyword">BufferedReader</span>(<span class="keyword">new</span> InputStreamReader(fileInputStream));
-        <span class="keyword">String</span> <span class="built_in">line</span> = <span class="string">""</span>;
-        <span class="keyword">while</span> ((<span class="built_in">line</span> = bufferedReader.readLine()) != <span class="keyword">null</span>) {
-            content.<span class="built_in">append</span>(<span class="built_in">line</span>);
-        }
+<li>读出操作<pre><code>FileInputStream fileInputStream = null;
+    BufferedReader bufferedReader = null;
+    StringBuilder content = new StringBuilder();
+    try &#123;
+        fileInputStream = openFileInput(&quot;date&quot;);
+        bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
+        String line = &quot;&quot;;
+        while ((line = bufferedReader.readLine()) != null) &#123;
+            content.append(line);
+        &#125;
         textView.setText(content.toString());
-        <span class="comment">//Toast.makeText(this, "输出 "+content.toString(), Toast.LENGTH_SHORT).show();</span>
-    } <span class="keyword">catch</span> (IOException e) {
+        //Toast.makeText(this, &quot;输出 &quot;+content.toString(), Toast.LENGTH_SHORT).show();
+    &#125; catch (IOException e) &#123;
         e.printStackTrace();
-    } <span class="keyword">finally</span> {
-        <span class="keyword">if</span> (bufferedReader != <span class="keyword">null</span>) {
-            <span class="keyword">try</span> {
+    &#125; finally &#123;
+        if (bufferedReader != null) &#123;
+            try &#123;
                 bufferedReader.close();
-            } <span class="keyword">catch</span> (IOException e) {
+            &#125; catch (IOException e) &#123;
                 e.printStackTrace();
-            }
-        }
-    }
+            &#125;
+        &#125;
+    &#125;
 </code></pre></li>
 </ul>
-<h1 id="SharedPreference">SharedPreference</h1><pre><code>private SharedPreferences preferences;<span class="comment">//声明preferences变量</span>
-private SharedPreferences.Editor <span class="keyword">editor</span>;<span class="comment">//声明editor变量</span>
-preferences=getSharedPreferences(<span class="string">"username"</span>, Activity.MODE_PRIVATE);<span class="comment">//初始化</span>
-preferences.getString(<span class="string">"name"</span>, <span class="string">""</span>)<span class="comment">//获取preferences中的name值</span>
-<span class="keyword">editor</span>=preferences.edit();<span class="comment">//初始化编辑器</span>
-<span class="keyword">editor</span>.<span class="keyword">clear</span>();<span class="comment">//清空编辑器内容</span>
-<span class="keyword">editor</span>.putString(<span class="string">"name"</span>, name);<span class="comment">//设置编辑器的值</span>
-<span class="keyword">editor</span>.commit();<span class="comment">//应用编辑器的更改</span>
+<h1 id="SharedPreference"><a href="#SharedPreference" class="headerlink" title="SharedPreference"></a>SharedPreference</h1><pre><code>private SharedPreferences preferences;//声明preferences变量
+private SharedPreferences.Editor editor;//声明editor变量
+preferences=getSharedPreferences(&quot;username&quot;, Activity.MODE_PRIVATE);//初始化
+preferences.getString(&quot;name&quot;, &quot;&quot;)//获取preferences中的name值
+editor=preferences.edit();//初始化编辑器
+editor.clear();//清空编辑器内容
+editor.putString(&quot;name&quot;, name);//设置编辑器的值
+editor.commit();//应用编辑器的更改
 </code></pre><p>ps：跨程序操作sharedPreference</p>
-<pre><code>Context <span class="variable">context =</span> <span class="constant">null</span>;
-    try {
-        <span class="variable">context =</span> createPackageContext(<span class="string">"com.android.deskclock"</span>,Context.CONTEXT_IGNORE_SECURITY);
-    } catch (NameNotFoundException e) {
+<pre><code>Context context = null;
+    try &#123;
+        context = createPackageContext(&quot;com.android.deskclock&quot;,Context.CONTEXT_IGNORE_SECURITY);
+    &#125; catch (NameNotFoundException e) &#123;
         e.printStackTrace();
-    }
-    SharedPreferences <span class="variable">preferences2=</span>context.getSharedPreferences(<span class="string">"alarm_mute_flag"</span>, Activity.MODE_WORLD_READABLE);
-</code></pre><h1 id="SQLite">SQLite</h1><p>在Android中使用数据库通过继承SQLiteOpenHelper类进行数据库的操作<br>    public class SQLiteHelper extends SQLiteOpenHelper{</p>
-<pre><code>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String CREATE_ADDRESS_BOOK=<span class="string">"create table address_book ("</span>
-            + <span class="string">"id integer primary key autoincrement,"</span>
-            + <span class="string">"name text not null,"</span>
-            + <span class="string">"phone_number text not null)"</span>;
+    &#125;
+    SharedPreferences preferences2=context.getSharedPreferences(&quot;alarm_mute_flag&quot;, Activity.MODE_WORLD_READABLE);
+</code></pre><h1 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h1><p>在Android中使用数据库通过继承SQLiteOpenHelper类进行数据库的操作<br>    public class SQLiteHelper extends SQLiteOpenHelper{</p>
+<pre><code>    public static final String CREATE_ADDRESS_BOOK=&quot;create table address_book (&quot;
+            + &quot;id integer primary key autoincrement,&quot;
+            + &quot;name text not null,&quot;
+            + &quot;phone_number text not null)&quot;;
 
-    <span class="keyword">private</span> Context context;
+    private Context context;
 
-    <span class="function"><span class="keyword">public</span> <span class="title">SQLiteHelper</span><span class="params">(Context context, String name, CursorFactory factory, <span class="keyword">int</span> version)</span> </span>{
-        <span class="keyword">super</span>(context, name, factory, version);
-        <span class="keyword">this</span>.context=context;
-    }
+    public SQLiteHelper(Context context, String name, CursorFactory factory, int version) &#123;
+        super(context, name, factory, version);
+        this.context=context;
+    &#125;
 
-    <span class="annotation">@Override</span>
-    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(SQLiteDatabase db)</span> </span>{<span class="comment">//数据库创建，只会在软件安装第一次启动时执行，之后更新软件不执行</span>
+    @Override
+    public void onCreate(SQLiteDatabase db) &#123;//数据库创建，只会在软件安装第一次启动时执行，之后更新软件不执行
         db.execSQL(CREATE_ADDRESS_BOOK);
-        Toast.makeText(context, <span class="string">"创建数据库文件完成！"</span>, Toast.LENGTH_SHORT).show();
-    }
+        Toast.makeText(context, &quot;创建数据库文件完成！&quot;, Toast.LENGTH_SHORT).show();
+    &#125;
 
-    <span class="annotation">@Override</span>
-    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onUpgrade</span><span class="params">(SQLiteDatabase db, <span class="keyword">int</span> oldVersion, <span class="keyword">int</span> newVersion)</span> </span>{<span class="comment">//更新软件后第一次启动执行</span>
-        db.execSQL(<span class="string">"dorp table if exists address_book"</span>);
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) &#123;//更新软件后第一次启动执行
+        db.execSQL(&quot;dorp table if exists address_book&quot;);
         onCreate(db);
-    }
-}
+    &#125;
+&#125;
 </code></pre><p>具体操作数据库可以单独写一个dao类（我开发j2ee的习惯）不知道在安卓中这样规范不？  </p>
-<pre><code>  <span class="keyword">public</span> class AddressBookDao {
-    <span class="keyword">private</span> SQLiteHelper helper;
-    <span class="keyword">private</span> SQLiteDatabase db;
+<pre><code>  public class AddressBookDao &#123;
+    private SQLiteHelper helper;
+    private SQLiteDatabase db;
 
-    <span class="keyword">public</span> AddressBookDao(Context context) {
-        helper = <span class="keyword">new</span> SQLiteHelper(context, <span class="string">"AddressBook"</span>, <span class="keyword">null</span>, <span class="number">1</span>);<span class="comment">//实例化helper</span>
-        db = helper.getWritableDatabase();<span class="comment">//获得db</span>
-    }
+    public AddressBookDao(Context context) &#123;
+        helper = new SQLiteHelper(context, &quot;AddressBook&quot;, null, 1);//实例化helper
+        db = helper.getWritableDatabase();//获得db
+    &#125;
 
-    <span class="keyword">public</span> List&lt;AddressBook&gt; getAll() {
-        List&lt;AddressBook&gt; addressBooks = <span class="keyword">new</span> ArrayList&lt;AddressBook&gt;();
-        AddressBook addressBook = <span class="keyword">null</span>;
-        Cursor <span class="built_in">cursor</span> = db.query(<span class="string">"address_book"</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);
-        <span class="keyword">if</span> (<span class="built_in">cursor</span>.moveToFirst()) {
-            do {
-                <span class="comment">// 遍历Cursor对象，取出数据并打印</span>
-                addressBook=<span class="keyword">new</span> AddressBook();
-                <span class="built_in">int</span> id = <span class="built_in">cursor</span>.getInt(<span class="built_in">cursor</span>.getColumnIndex(<span class="string">"id"</span>));
+    public List&lt;AddressBook&gt; getAll() &#123;
+        List&lt;AddressBook&gt; addressBooks = new ArrayList&lt;AddressBook&gt;();
+        AddressBook addressBook = null;
+        Cursor cursor = db.query(&quot;address_book&quot;, null, null, null, null, null, null);
+        if (cursor.moveToFirst()) &#123;
+            do &#123;
+                // 遍历Cursor对象，取出数据并打印
+                addressBook=new AddressBook();
+                int id = cursor.getInt(cursor.getColumnIndex(&quot;id&quot;));
                 addressBook.setId(Integer.valueOf(id));
-                <span class="keyword">String</span> name = <span class="built_in">cursor</span>.getString(<span class="built_in">cursor</span>.getColumnIndex(<span class="string">"name"</span>));
+                String name = cursor.getString(cursor.getColumnIndex(&quot;name&quot;));
                 addressBook.setName(name);
-                <span class="keyword">String</span> phone_number = <span class="built_in">cursor</span>.getString(<span class="built_in">cursor</span>.getColumnIndex(<span class="string">"phone_number"</span>));
+                String phone_number = cursor.getString(cursor.getColumnIndex(&quot;phone_number&quot;));
                 addressBook.setPhone_number(phone_number);
-                addressBooks.<span class="built_in">add</span>(addressBook);
-            } <span class="keyword">while</span> (<span class="built_in">cursor</span>.moveToNext());
-        }
-        <span class="built_in">cursor</span>.close();
-        <span class="keyword">return</span> addressBooks;
-    }
+                addressBooks.add(addressBook);
+            &#125; while (cursor.moveToNext());
+        &#125;
+        cursor.close();
+        return addressBooks;
+    &#125;
 
-    <span class="keyword">public</span> List&lt;AddressBook&gt; findByName(<span class="keyword">String</span> filter_name) {
-        Log.d(<span class="string">"search"</span>, filter_name);
-        List&lt;AddressBook&gt; addressBooks = <span class="keyword">new</span> ArrayList&lt;AddressBook&gt;();
-        AddressBook addressBook = <span class="keyword">null</span>;
-        Cursor <span class="built_in">cursor</span> = db.query(<span class="string">"address_book"</span>, <span class="keyword">null</span>, <span class="string">"name like ? or phone_number like ?"</span>, <span class="keyword">new</span> <span class="keyword">String</span>[]{<span class="string">"%"</span>+filter_name+<span class="string">"%"</span>,<span class="string">"%"</span>+filter_name+<span class="string">"%"</span>}, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);
-        <span class="keyword">if</span> (<span class="built_in">cursor</span>.moveToFirst()) {
-            do {
-                <span class="comment">// 遍历Cursor对象，取出数据并打印</span>
-                addressBook=<span class="keyword">new</span> AddressBook();
-                <span class="built_in">int</span> id = <span class="built_in">cursor</span>.getInt(<span class="built_in">cursor</span>.getColumnIndex(<span class="string">"id"</span>));
+    public List&lt;AddressBook&gt; findByName(String filter_name) &#123;
+        Log.d(&quot;search&quot;, filter_name);
+        List&lt;AddressBook&gt; addressBooks = new ArrayList&lt;AddressBook&gt;();
+        AddressBook addressBook = null;
+        Cursor cursor = db.query(&quot;address_book&quot;, null, &quot;name like ? or phone_number like ?&quot;, new String[]&#123;&quot;%&quot;+filter_name+&quot;%&quot;,&quot;%&quot;+filter_name+&quot;%&quot;&#125;, null, null, null);
+        if (cursor.moveToFirst()) &#123;
+            do &#123;
+                // 遍历Cursor对象，取出数据并打印
+                addressBook=new AddressBook();
+                int id = cursor.getInt(cursor.getColumnIndex(&quot;id&quot;));
                 addressBook.setId(Integer.valueOf(id));
-                <span class="keyword">String</span> name = <span class="built_in">cursor</span>.getString(<span class="built_in">cursor</span>.getColumnIndex(<span class="string">"name"</span>));
+                String name = cursor.getString(cursor.getColumnIndex(&quot;name&quot;));
                 addressBook.setName(name);
-                <span class="keyword">String</span> phone_number = <span class="built_in">cursor</span>.getString(<span class="built_in">cursor</span>.getColumnIndex(<span class="string">"phone_number"</span>));
+                String phone_number = cursor.getString(cursor.getColumnIndex(&quot;phone_number&quot;));
                 addressBook.setPhone_number(phone_number);
-                addressBooks.<span class="built_in">add</span>(addressBook);
-            } <span class="keyword">while</span> (<span class="built_in">cursor</span>.moveToNext());
-        }
-        <span class="built_in">cursor</span>.close();
-        <span class="keyword">return</span> addressBooks;
-    }
+                addressBooks.add(addressBook);
+            &#125; while (cursor.moveToNext());
+        &#125;
+        cursor.close();
+        return addressBooks;
+    &#125;
 
-    <span class="keyword">public</span> <span class="keyword">void</span> addOrUpdate(Integer id,<span class="keyword">String</span> name, <span class="keyword">String</span> phone_number) {
-        ContentValues values = <span class="keyword">new</span> ContentValues();
-        values.put(<span class="string">"name"</span>, name);
-        values.put(<span class="string">"phone_number"</span>,phone_number);
-        <span class="keyword">if</span>(<span class="keyword">null</span>==id){
-            db.insert(<span class="string">"address_book"</span>, <span class="keyword">null</span>, values);
-        }<span class="keyword">else</span>{
-            values.put(<span class="string">"id"</span>, id.toString());
-            db.update(<span class="string">"address_book"</span>, values, <span class="string">"id=?"</span>, <span class="keyword">new</span> <span class="keyword">String</span>[]{id.toString()});
-        }
-    }
+    public void addOrUpdate(Integer id,String name, String phone_number) &#123;
+        ContentValues values = new ContentValues();
+        values.put(&quot;name&quot;, name);
+        values.put(&quot;phone_number&quot;,phone_number);
+        if(null==id)&#123;
+            db.insert(&quot;address_book&quot;, null, values);
+        &#125;else&#123;
+            values.put(&quot;id&quot;, id.toString());
+            db.update(&quot;address_book&quot;, values, &quot;id=?&quot;, new String[]&#123;id.toString()&#125;);
+        &#125;
+    &#125;
 
 
-    <span class="keyword">public</span> <span class="keyword">void</span> deleteById(<span class="keyword">String</span> id) {
-        db.execSQL(<span class="string">"delete from address_book where id=?"</span>,<span class="keyword">new</span> <span class="keyword">String</span>[]{id});
-    }
-}
+    public void deleteById(String id) &#123;
+        db.execSQL(&quot;delete from address_book where id=?&quot;,new String[]&#123;id&#125;);
+    &#125;
+&#125;
 </code></pre>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2016/04/29/修改日历操作记录/" style="float: left;">
-        ← android源码修改（1） ——日历中显示农历、日历图标随时间改变
+    <a class="pull-left" href="/2016/05/05/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%886%EF%BC%89%E2%80%94%E2%80%94Animation%E5%8A%A8%E7%94%BB/" style="float: left">
+        ← android学习笔记（6） ——Animation动画
     </a>
     
     
-    <a class="pull-right" href="/2016/04/10/正则表达式/">
-        正则表达式 →
+    <a class="pull-right" href="/2016/04/29/%E4%BF%AE%E6%94%B9%E6%97%A5%E5%8E%86%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/">
+        android源码修改（1） ——日历中显示农历、日历图标随时间改变 →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "android学习笔记（5） ——文件操作"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -508,9 +498,9 @@ preferences.getString(<span class="string">"name"</span>, <span class="string">"
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -606,5 +596,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

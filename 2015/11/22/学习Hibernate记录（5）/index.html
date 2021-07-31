@@ -19,18 +19,18 @@
 <head>
   <title>学习Hibernate记录(5)——数据查询 | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
     
-    <meta name="description" content="Hibernate的查询方式主要由4种
+    <meta name="description" content="##Hibernate的查询方式主要由4种      
+
 OID检索方式：利用Session的get()和load()方法加载指定OID对象    
 HQL检索方式：通过Query接口使用面向对象的HQL查询语言    
-QBC检索方式：使用QBC（Query by Criteria）API检索对象  
-本地SQL检">
+QBC检索方式：使用QBC（Query by Criteria）API检索对象">
 	
 	<meta name="Keywords" content="极光轨迹">
 	
@@ -87,7 +87,7 @@ QBC检索方式：使用QBC（Query by Criteria）API检索对象
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -211,7 +211,7 @@ QBC检索方式：使用QBC（Query by Criteria）API检索对象
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -239,7 +239,7 @@ QBC检索方式：使用QBC（Query by Criteria）API检索对象
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -290,27 +290,29 @@ QBC检索方式：使用QBC（Query by Criteria）API检索对象
 	
     
     | 分类：
-    <a class="categories" href='/categories/Hibernate/'>Hibernate</a>
+    <a class="categories" href="/categories/Hibernate/">Hibernate</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/Hibernate/'>Hibernate</a>
+    <a class="tags" href="/tags/Hibernate/">Hibernate</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="Hibernate的查询方式主要由4种">Hibernate的查询方式主要由4种</h2><ul>
+      		<p>##Hibernate的查询方式主要由4种      </p>
+<ul>
 <li>OID检索方式：利用Session的get()和load()方法加载指定OID对象    </li>
 <li>HQL检索方式：通过Query接口使用面向对象的HQL查询语言    </li>
 <li>QBC检索方式：使用QBC（Query by Criteria）API检索对象  </li>
 <li>本地SQL检索方式:使用SQLQuery接口使用SQL语言查询     </li>
 </ul>
-<h2 id="OID检索方式">OID检索方式</h2><ul>
+<p>##OID检索方式     </p>
+<ul>
 <li>User user=(User) session.get(“jxust.config.User”, 2);</li>
 <li>User user=(User) session.get(User.class, 2);</li>
 <li>User user=(User) session.load(“jxust.config.User”, 2);  </li>
@@ -318,86 +320,79 @@ QBC检索方式：使用QBC（Query by Criteria）API检索对象
 </ul>
 <p>对比Session.get()和Session.load()方法<br>get方法会在调用之后立即向数据库发出sql语句（不考虑缓存的情况下），返回持久化对象，不支持lazy延时加载；<br>load方法会在调用后返回一个代理对象，该代理对象只保存了实体对象的id，直到使用对象的非主键属性时才会发出sql语句。查询数据库中不存在的数据时，get方法返回null，load方法抛出异常：org.hibernate.ObjectNotFoundException,支持lazy延时加载;</p>
 <p><img src="/photos/Hibernate_5.1.jpg" alt="Hibernate">  </p>
-<h2 id="HQL检索方式">HQL检索方式</h2><pre><code>this.openSession();
-<span class="keyword">Query</span> <span class="keyword">query</span>=this.getSession().createQuery("from User <span class="keyword">u</span> where <span class="keyword">u</span>.name=:name);
-<span class="keyword">query</span>.<span class="keyword">set</span>(<span class="string">"name","cgs"</span>);
-<span class="keyword">List</span> <span class="keyword">list</span>=<span class="keyword">query</span>.<span class="keyword">list</span>();
-<span class="keyword">for</span>(int i=0;i&lt;<span class="keyword">list</span>.size();i++)
-{
-    User user=(User)<span class="keyword">list</span>.<span class="literal">get</span>(i);
-    System.<span class="keyword">out</span>.printf(<span class="string">"NAME="</span>+user.getName());
-}
+<p>##HQL检索方式  </p>
+<pre><code>this.openSession();
+Query query=this.getSession().createQuery(&quot;from User u where u.name=:name);
+query.set(&quot;name&quot;,&quot;cgs&quot;);
+List list=query.list();
+for(int i=0;i&lt;list.size();i++)
+&#123;
+    User user=(User)list.get(i);
+    System.out.printf(&quot;NAME=&quot;+user.getName());
+&#125;
 this.closeSession();
 </code></pre><p>只返回一个对象：</p>
-<pre><code><span class="type">Object</span> <span class="keyword">object</span>=this.getSession<span class="literal">()</span>.createQuery(<span class="string">"from User"</span>).setMaxResult(<span class="number">1</span>).uniqueResult<span class="literal">()</span>;
+<pre><code>Object object=this.getSession().createQuery(&quot;from User&quot;).setMaxResult(1).uniqueResult();
 </code></pre><p>批量检索对象（分页查询数据）：</p>
-<pre><code><span class="keyword">Query</span> <span class="keyword">query</span>=this.getSession().createQuery(<span class="string">"from User"</span>);
-<span class="keyword">query</span>.setFirstResult(0);<span class="comment">//第0条数据开始</span>
-<span class="keyword">query</span>.setMaxResult(6);<span class="comment">//结果最大包括6条数据</span>
-</code></pre><h2 id="QBC检索方式">QBC检索方式</h2><pre><code>this.openSession<span class="literal">()</span>;
-<span class="type">Criteria</span> criteria=this.getSession<span class="literal">()</span>.createCriteria(<span class="type">User</span>.<span class="keyword">class</span>);
-<span class="type">Criterion</span> c=<span class="type">Expression</span>.eq(<span class="string">"name"</span>,<span class="string">"cgs"</span>);
+<pre><code>Query query=this.getSession().createQuery(&quot;from User&quot;);
+query.setFirstResult(0);//第0条数据开始
+query.setMaxResult(6);//结果最大包括6条数据
+</code></pre><p>##QBC检索方式  </p>
+<pre><code>this.openSession();
+Criteria criteria=this.getSession().createCriteria(User.class);
+Criterion c=Expression.eq(&quot;name&quot;,&quot;cgs&quot;);
 criteria=criterion.add(c);
-<span class="type">List</span> <span class="built_in">list</span>=criteria.<span class="built_in">list</span><span class="literal">()</span>;
-<span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;<span class="built_in">list</span>.size<span class="literal">()</span>;i++)
-{
-    <span class="type">User</span> user=(<span class="type">User</span>)<span class="built_in">list</span>.get(i);
-    <span class="type">System</span>.out.printf(<span class="string">"NAME="</span>+user.getName<span class="literal">()</span>);
-}
-this.closeSession<span class="literal">()</span>;
+List list=criteria.list();
+for(int i=0;i&lt;list.size();i++)
+&#123;
+    User user=(User)list.get(i);
+    System.out.printf(&quot;NAME=&quot;+user.getName());
+&#125;
+this.closeSession();
 </code></pre><p><img src="/photos/Hibernate_5.2.jpg" alt="Hibernate"></p>
 <p>只返回一个对象：</p>
-<pre><code><span class="type">Object</span> <span class="keyword">object</span>=this.getSession<span class="literal">()</span>.createCriteria(<span class="string">"User.class"</span>).setMaxResult(<span class="number">1</span>).uniqueResult<span class="literal">()</span>;
+<pre><code>Object object=this.getSession().createCriteria(&quot;User.class&quot;).setMaxResult(1).uniqueResult();
 </code></pre><p>批量检索对象（分页查询数据）：</p>
-<pre><code><span class="keyword">Query</span> <span class="keyword">query</span>=this.getSession().createCriteria(<span class="string">"User.class"</span>);
-<span class="keyword">query</span>.setFirstResult(0);<span class="comment">//第0条数据开始</span>
-<span class="keyword">query</span>.setMaxResult(6);<span class="comment">//结果最大包括6条数据</span>
+<pre><code>Query query=this.getSession().createCriteria(&quot;User.class&quot;);
+query.setFirstResult(0);//第0条数据开始
+query.setMaxResult(6);//结果最大包括6条数据
 </code></pre><p>数据设置排序  </p>
-<pre><code>criteria.addOrder(<span class="keyword">Order</span>.asc(<span class="string">"id"</span>));
-criteria.addOrder(<span class="keyword">Order</span>.<span class="keyword">desc</span>(<span class="string">"name"</span>));
-</code></pre><h2 id="本地SQL检索方式">本地SQL检索方式</h2><pre><code>this.openSession();
-<span class="keyword">Query</span> <span class="keyword">query</span>=this.getSession().createSQLQuery(<span class="string">"select * from user"</span>).addEntity(User.<span class="keyword">class</span>);
-<span class="comment">//Query query=this.getSession().createSQLQuery("select u.* from user u").addEntity("u",User.class);</span>
-<span class="keyword">List</span> <span class="keyword">list</span>=<span class="keyword">query</span>.<span class="keyword">list</span>();
-<span class="keyword">for</span>(int i=0;i&lt;<span class="keyword">list</span>.size();i++)
-{
-    User user=(User)<span class="keyword">list</span>.<span class="literal">get</span>(i);
-    System.<span class="keyword">out</span>.printf(<span class="string">"NAME="</span>+user.getName());
-}
+<pre><code>criteria.addOrder(Order.asc(&quot;id&quot;));
+criteria.addOrder(Order.desc(&quot;name&quot;));
+</code></pre><p>##本地SQL检索方式  </p>
+<pre><code>this.openSession();
+Query query=this.getSession().createSQLQuery(&quot;select * from user&quot;).addEntity(User.class);
+//Query query=this.getSession().createSQLQuery(&quot;select u.* from user u&quot;).addEntity(&quot;u&quot;,User.class);
+List list=query.list();
+for(int i=0;i&lt;list.size();i++)
+&#123;
+    User user=(User)list.get(i);
+    System.out.printf(&quot;NAME=&quot;+user.getName());
+&#125;
 this.closeSession();
-</code></pre><h2 id="参考博客">参考博客</h2><p><a href="http://blog.csdn.net/chssheng2007/article/details/6701970" title="参考博客链接" target="_blank" rel="external">Hibernate数据查询</a><br><a href="http://www.cnblogs.com/luotaoyeah/p/3862974.html" title="参考博客链接" target="_blank" rel="external">Hibernate中Session的get和load</a></p>
+</code></pre><p>##参考博客<br><a target="_blank" rel="noopener" href="http://blog.csdn.net/chssheng2007/article/details/6701970" title="参考博客链接">Hibernate数据查询</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/luotaoyeah/p/3862974.html" title="参考博客链接">Hibernate中Session的get和load</a></p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2015/11/23/学习Hibernate记录（6）/" style="float: left;">
+    <a class="pull-left" href="/2015/11/23/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%886%EF%BC%89/" style="float: left">
         ← 学习Hibernate记录(6)——映射关联
     </a>
     
     
-    <a class="pull-right" href="/2015/11/16/学习Hibernate记录（4）/">
+    <a class="pull-right" href="/2015/11/16/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%884%EF%BC%89/">
         学习Hibernate记录(4)——事务管理 →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "学习Hibernate记录(5)——数据查询"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -414,9 +409,9 @@ this.closeSession();
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -512,5 +507,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

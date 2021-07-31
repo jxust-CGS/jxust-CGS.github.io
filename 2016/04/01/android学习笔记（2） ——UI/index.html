@@ -19,9 +19,9 @@
 <head>
   <title>android学习笔记（2） ——UI | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
@@ -84,7 +84,7 @@
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -208,7 +208,7 @@
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -236,7 +236,7 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -287,26 +287,26 @@
 	
     
     | 分类：
-    <a class="categories" href='/categories/android/'>android</a>
+    <a class="categories" href="/categories/android/">android</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/android/'>android</a>
+    <a class="tags" href="/tags/android/">android</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h1 id="UI布局">UI布局</h1><p>第一次开发安卓感觉和j2ee中的web编程有点像，mvc模式，layout布局就是view，activity就是controller，实体类就是model。<br>在android中布局文件是用xml文件编写通过ViewGroup和VIew组成。</p>
+      		<h1 id="UI布局"><a href="#UI布局" class="headerlink" title="UI布局"></a>UI布局</h1><p>第一次开发安卓感觉和j2ee中的web编程有点像，mvc模式，layout布局就是view，activity就是controller，实体类就是model。<br>在android中布局文件是用xml文件编写通过ViewGroup和VIew组成。</p>
 <p><img src="http://hi.csdn.net/attachment/201108/21/0_1313928575W9Q0.gif" alt="photo">  </p>
-<h1 id="ViewGroup">ViewGroup</h1><ul>
-<li>GridLayout网格布局 ,必须声明几行几列，可以实现跨行显示（相对于表格的不同）  <pre><code><span class="label">android:</span>layout_row=<span class="string">"0"</span>  
-<span class="label">android:</span>layout_column=<span class="string">"1"</span>  
-<span class="label">android:</span>layout_columnSpan=<span class="string">"2"</span>  
+<h1 id="ViewGroup"><a href="#ViewGroup" class="headerlink" title="ViewGroup"></a>ViewGroup</h1><ul>
+<li>GridLayout网格布局 ,必须声明几行几列，可以实现跨行显示（相对于表格的不同）  <pre><code>android:layout_row=&quot;0&quot;  
+android:layout_column=&quot;1&quot;  
+android:layout_columnSpan=&quot;2&quot;  
 </code></pre></li>
 <li>LinnearLayout线形布局，通过orientation设置反向水平或竖直。<br>android:weightSum=”5”，android：layout_weight=”1”，android：layout_weith=”0dp”实现指定反向上按比例摆放。    </li>
 <li>RelativeLayout相对布局，对布局中的组件摆放比较复杂时使用，方便布局中组件位置的配置  </li>
@@ -315,17 +315,17 @@
 <li>AbsoluteLayout绝对布局（官方不提倡使用）</li>
 <li>Include引用其他布局文件  </li>
 </ul>
-<h1 id="View">View</h1><ul>
+<h1 id="View"><a href="#View" class="headerlink" title="View"></a>View</h1><ul>
 <li>TextView，文本控件，用于显示文本，额好吧不说了</li>
 <li>Button，按钮</li>
 <li>EditView，输入框，通过hint属性配置提示，通过background=“@null”去除横线</li>
 <li>CheckBox、RedioBox，多选和单选框</li>
-<li>ListView，列表显示，这就有的说了：<br>  1．ListVeiw 用来展示列表的View。<br>  2．适配器 用来把数据映射到ListView上的中介。<br>  3．数据具体的将被映射的字符串，图片，或者基本组件。<br><a href="http://jxust-cgs.github.io/2016/04/01/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89%20%E2%80%94%E2%80%94ListView/" target="_blank" rel="external">学习ListView的使用</a></li>
+<li>ListView，列表显示，这就有的说了：<br>  1．ListVeiw 用来展示列表的View。<br>  2．适配器 用来把数据映射到ListView上的中介。<br>  3．数据具体的将被映射的字符串，图片，或者基本组件。<br><a target="_blank" rel="noopener" href="http://jxust-cgs.github.io/2016/04/01/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89%20%E2%80%94%E2%80%94ListView/">学习ListView的使用</a></li>
 <li>WebView,网络视图   </li>
-<li>progressBar，进度条<br><a href="http://jxust-cgs.github.io/2016/04/08/android学习笔记（4）%20——多线程/" target="_blank" rel="external">由webView,progressBar了解多线程</a>  </li>
+<li>progressBar，进度条<br><a target="_blank" rel="noopener" href="http://jxust-cgs.github.io/2016/04/08/android学习笔记（4）%20——多线程/">由webView,progressBar了解多线程</a>  </li>
 <li>ImageView,图片视图，通过src属性配置资源或者在程序中配置<pre><code>Bitmap bm = BitmapFactory.decodeStream(  
-        MainActivity.<span class="keyword">this</span>.getAssets().<span class="built_in">open</span>(<span class="string">"weather/100.png"</span>));  
-iv_logo.setImageBitmap(bm);  <span class="comment">// 通过获得assets目录下文件路径的方式设置图片资源  </span>
+        MainActivity.this.getAssets().open(&quot;weather/100.png&quot;));  
+iv_logo.setImageBitmap(bm);  // 通过获得assets目录下文件路径的方式设置图片资源  
 </code></pre></li>
 <li>Fragment碎片，通过fragment能够很好的适应平板和手机，不过很少这么用，一般用于经常变动的页面替换</li>
 <li>scrollView滚动条，在显示很长的数据的时候可以轻松搞定</li>
@@ -337,32 +337,22 @@ iv_logo.setImageBitmap(bm);  <span class="comment">// 通过获得assets目录�
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2016/04/01/android学习笔记（3） ——ListView/" style="float: left;">
+    <a class="pull-left" href="/2016/04/01/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89%20%E2%80%94%E2%80%94ListView/" style="float: left">
         ← android学习笔记（3） ——ListView
     </a>
     
     
-    <a class="pull-right" href="/2016/03/31/android学习笔记（1） ——activity与intent/">
+    <a class="pull-right" href="/2016/03/31/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89%20%E2%80%94%E2%80%94activity%E4%B8%8Eintent/">
         android学习笔记（1）——activity与intent →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "android学习笔记（2） ——UI"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -379,9 +369,9 @@ iv_logo.setImageBitmap(bm);  <span class="comment">// 通过获得assets目录�
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -477,5 +467,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

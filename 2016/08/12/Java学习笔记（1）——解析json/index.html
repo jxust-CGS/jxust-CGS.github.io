@@ -19,9 +19,9 @@
 <head>
   <title>Java学习笔记(1)——解析json | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
@@ -84,7 +84,7 @@
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -208,7 +208,7 @@
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -236,7 +236,7 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -287,115 +287,105 @@
 	
     
     | 分类：
-    <a class="categories" href='/categories/Java/'>Java</a>
+    <a class="categories" href="/categories/Java/">Java</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/Json/'>Json</a>
+    <a class="tags" href="/tags/Json/">Json</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p>参看文章:<a href="http://www.cnblogs.com/pen-ink/archive/2011/10/06/2199715.html" target="_blank" rel="external">解析json</a><br><a href="http://www.bejson.com/" target="_blank" rel="external">在线JSON校验格式化工具（Be JSON）</a><br>在android中默认自带了JSONObject和JSONArray解析json数据  </p>
-<pre><code>{
-    "<span class="attribute">students</span>": <span class="value">[
-        {
-            "<span class="attribute">name</span>": <span class="value"><span class="string">"Jack"</span></span>,
-            "<span class="attribute">age</span>": <span class="value"><span class="number">12</span>
-        </span>},
-        {
-            "<span class="attribute">name</span>": <span class="value"><span class="string">"Vista"</span></span>,
-            "<span class="attribute">age</span>": <span class="value"><span class="number">23</span>
-        </span>},
-        {
-            "<span class="attribute">name</span>": <span class="value"><span class="string">"Kaka"</span></span>,
-            "<span class="attribute">age</span>": <span class="value"><span class="number">22</span>
-        </span>},
-        {
-            "<span class="attribute">name</span>": <span class="value"><span class="string">"Hony"</span></span>,
-            "<span class="attribute">age</span>": <span class="value"><span class="number">31</span>
-        </span>}
+      		<p>参看文章:<a target="_blank" rel="noopener" href="http://www.cnblogs.com/pen-ink/archive/2011/10/06/2199715.html">解析json</a><br><a target="_blank" rel="noopener" href="http://www.bejson.com/">在线JSON校验格式化工具（Be JSON）</a><br>在android中默认自带了JSONObject和JSONArray解析json数据  </p>
+<pre><code>&#123;
+    &quot;students&quot;: [
+        &#123;
+            &quot;name&quot;: &quot;Jack&quot;,
+            &quot;age&quot;: 12
+        &#125;,
+        &#123;
+            &quot;name&quot;: &quot;Vista&quot;,
+            &quot;age&quot;: 23
+        &#125;,
+        &#123;
+            &quot;name&quot;: &quot;Kaka&quot;,
+            &quot;age&quot;: 22
+        &#125;,
+        &#123;
+            &quot;name&quot;: &quot;Hony&quot;,
+            &quot;age&quot;: 31
+        &#125;
     ]
-</span>}
+&#125;
 </code></pre><p>一个大括号包含的是一个JsonObject，一个中括号表示一个JsonArray，通过JsonObject.get(“students”);获得name为students的对象（此对象是一个JsonArray）。再遍历这个JsonArray获得其中的JsonObject（此Object有2个成员变量分别叫“name”和“age”）。</p>
-<pre><code><span class="type">String</span> strJson = <span class="string">"{\"students\":[{\"name\":\"Jack\",\"age\":12}, {\"name\":\"Vista\",\"age\":23}, {\"name\":\"Kaka\",\"age\":22}, {\"name\":\"Hony\",\"age\":31}]}"</span>;
-    <span class="keyword">try</span> {
-        <span class="type">JSONObject</span> jo = new <span class="type">JSONObject</span>(strJson);
-        <span class="type">JSONArray</span> jsonArray = (<span class="type">JSONArray</span>) jo.get(<span class="string">"students"</span>);
-        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; jsonArray.length(); ++i) {
-            <span class="type">JSONObject</span> o = (<span class="type">JSONObject</span>) jsonArray.get(i);
-            <span class="type">System</span>.<span class="keyword">out</span>.println(<span class="string">"name:"</span> + o.getString(<span class="string">"name"</span>) + <span class="string">","</span> + <span class="string">"age:"</span>
-                    + o.getInt(<span class="string">"age"</span>));
-        }
-    } catch (<span class="type">JSONException</span> e) {
+<pre><code>String strJson = &quot;&#123;\&quot;students\&quot;:[&#123;\&quot;name\&quot;:\&quot;Jack\&quot;,\&quot;age\&quot;:12&#125;, &#123;\&quot;name\&quot;:\&quot;Vista\&quot;,\&quot;age\&quot;:23&#125;, &#123;\&quot;name\&quot;:\&quot;Kaka\&quot;,\&quot;age\&quot;:22&#125;, &#123;\&quot;name\&quot;:\&quot;Hony\&quot;,\&quot;age\&quot;:31&#125;]&#125;&quot;;
+    try &#123;
+        JSONObject jo = new JSONObject(strJson);
+        JSONArray jsonArray = (JSONArray) jo.get(&quot;students&quot;);
+        for (int i = 0; i &lt; jsonArray.length(); ++i) &#123;
+            JSONObject o = (JSONObject) jsonArray.get(i);
+            System.out.println(&quot;name:&quot; + o.getString(&quot;name&quot;) + &quot;,&quot; + &quot;age:&quot;
+                    + o.getInt(&quot;age&quot;));
+        &#125;
+    &#125; catch (JSONException e) &#123;
         e.printStackTrace();
-    }
+    &#125;
 </code></pre><p>使用Gson解析json</p>
-<pre><code><span class="keyword">try</span> {
-        <span class="type">String</span> <span class="type">string</span> = <span class="string">"{\"class\":1, \"students\":[{\"name\":\"jack\", \"age\":21},{\"name\":\"kaka\", \"age\":21},{\"name\":\"lucy\", \"age\":21}]}"</span>;
-        <span class="type">StringReader</span> sr = new <span class="type">StringReader</span>(<span class="type">string</span>);
-        <span class="type">JsonReader</span> jr = new <span class="type">JsonReader</span>(sr);
+<pre><code>try &#123;
+        String string = &quot;&#123;\&quot;class\&quot;:1, \&quot;students\&quot;:[&#123;\&quot;name\&quot;:\&quot;jack\&quot;, \&quot;age\&quot;:21&#125;,&#123;\&quot;name\&quot;:\&quot;kaka\&quot;, \&quot;age\&quot;:21&#125;,&#123;\&quot;name\&quot;:\&quot;lucy\&quot;, \&quot;age\&quot;:21&#125;]&#125;&quot;;
+        StringReader sr = new StringReader(string);
+        JsonReader jr = new JsonReader(sr);
         jr.beginObject();
-        <span class="keyword">if</span> (jr.nextName().equals(<span class="string">"class"</span>)) {
-            <span class="type">System</span>.<span class="keyword">out</span>.println(<span class="string">"班级: "</span> + jr.nextString());
-            <span class="keyword">if</span> (jr.nextName().equals(<span class="string">"students"</span>)) {
+        if (jr.nextName().equals(&quot;class&quot;)) &#123;
+            System.out.println(&quot;班级: &quot; + jr.nextString());
+            if (jr.nextName().equals(&quot;students&quot;)) &#123;
                 jr.beginArray();
-                <span class="keyword">while</span> (jr.hasNext()) {
+                while (jr.hasNext()) &#123;
                     jr.beginObject();
-                    <span class="keyword">if</span> (jr.nextName().equals(<span class="string">"name"</span>))
-                        <span class="type">System</span>.<span class="keyword">out</span>.print(<span class="string">"姓名："</span> + jr.nextString());
-                    <span class="keyword">if</span> (jr.nextName().equals(<span class="string">"age"</span>)) {
-                        <span class="type">System</span>.<span class="keyword">out</span>.println(<span class="string">" , 年龄："</span> + jr.nextInt());
-                    }
+                    if (jr.nextName().equals(&quot;name&quot;))
+                        System.out.print(&quot;姓名：&quot; + jr.nextString());
+                    if (jr.nextName().equals(&quot;age&quot;)) &#123;
+                        System.out.println(&quot; , 年龄：&quot; + jr.nextInt());
+                    &#125;
                     jr.endObject();
-                }
+                &#125;
                 jr.endArray();
-            }
-        }
+            &#125;
+        &#125;
         jr.endObject();
-    } catch (<span class="type">FileNotFoundException</span> e) {
+    &#125; catch (FileNotFoundException e) &#123;
         e.printStackTrace();
-    } catch (<span class="type">IOException</span> e) {
+    &#125; catch (IOException e) &#123;
         e.printStackTrace();
-    }
-</code></pre><p><a href="http://www.jb51.net/article/77497.htm" target="_blank" rel="external">java解析XML几种方式小结</a>  </p>
+    &#125;
+</code></pre><p><a target="_blank" rel="noopener" href="http://www.jb51.net/article/77497.htm">java解析XML几种方式小结</a>  </p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2016/08/14/Android源码学习——Android L系统设置中的搜索功能/" style="float: left;">
+    <a class="pull-left" href="/2016/08/14/Android%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94Android%20L%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE%E4%B8%AD%E7%9A%84%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/" style="float: left">
         ← Android源码学习——Android L中系统设置的搜索功能
     </a>
     
     
-    <a class="pull-right" href="/2016/08/12/Android学习笔记（10）——Volley/">
+    <a class="pull-right" href="/2016/08/12/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%8810%EF%BC%89%E2%80%94%E2%80%94Volley/">
         Android学习笔记(10)——Volley →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "Java学习笔记(1)——解析json"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -412,9 +402,9 @@
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -510,5 +500,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

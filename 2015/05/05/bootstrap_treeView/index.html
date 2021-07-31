@@ -19,9 +19,9 @@
 <head>
   <title>给bootstrap的界面中添加同风格树状菜单 | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
@@ -84,7 +84,7 @@
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -208,7 +208,7 @@
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -236,7 +236,7 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -287,189 +287,190 @@
 	
     
     | 分类：
-    <a class="categories" href='/categories/web/'>web</a>
+    <a class="categories" href="/categories/web/">web</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/bootstrap/'>bootstrap</a>
+    <a class="tags" href="/tags/bootstrap/">bootstrap</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
       		<p><img src="/photos/default.PNG" alt="example" align="left" width="750"><br><br><br><br><br><br><br><br><br><br><br><br></p>
-<h2 id="使用的方式">使用的方式</h2><p>首先是需要下载到bootstrap-treeView的css和js文件（可以访问<a href="https://github.com/jonmiles/bootstrap-treeview" target="_blank" rel="external">官方github</a>）<br>不过不知道是我弄错了还是官方的演示例子有问题。<br>在下载的文件中对js和css的导入有问题所有打开后看不到例子<br>我自己修改后的<a href="http://pan.baidu.com/s/1i3CcK0t" target="_blank" rel="external">百度网盘链接</a>可以看看相对还是比较简单的<br>必要的文件有</p>
-<pre><code><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"css/bootstrap.css"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span>&gt;</span>
-<span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"css/bootstrap-treeview.css"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span>&gt;</span>
-<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://libs.baidu.com/jquery/2.0.0/jquery.min.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/bootstrap-treeview.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<p>##使用的方式<br>首先是需要下载到bootstrap-treeView的css和js文件（可以访问<a target="_blank" rel="noopener" href="https://github.com/jonmiles/bootstrap-treeview">官方github</a>）<br>不过不知道是我弄错了还是官方的演示例子有问题。<br>在下载的文件中对js和css的导入有问题所有打开后看不到例子<br>我自己修改后的<a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1i3CcK0t">百度网盘链接</a>可以看看相对还是比较简单的<br>必要的文件有</p>
+<pre><code>&lt;link href=&quot;css/bootstrap.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link href=&quot;css/bootstrap-treeview.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;script src=&quot;http://libs.baidu.com/jquery/2.0.0/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;js/bootstrap-treeview.js&quot;&gt;&lt;/script&gt;
 </code></pre><p>还有就是生成每个树状图数据</p>
-<pre><code>$(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
-    var defaultData = <span class="matrix">[
-      {
-        text: <span class="string">'Parent 1'</span>,
-        href: <span class="string">'#parent1'</span>,
-        tags: [<span class="string">'4'</span>]</span>,
-        nodes: <span class="matrix">[
-          {
-            text: <span class="string">'Child 1'</span>,
-            href: <span class="string">'#child1'</span>,
-            tags: [<span class="string">'2'</span>]</span>,
-            nodes: <span class="matrix">[
-              {
-                text: <span class="string">'Grandchild 1'</span>,
-                href: <span class="string">'#grandchild1'</span>,
-                tags: [<span class="string">'0'</span>]</span>
-              },
-              {
-                text: <span class="string">'Grandchild 2'</span>,
-                href: <span class="string">'#grandchild2'</span>,
-                tags: <span class="matrix">[<span class="string">'0'</span>]</span>
-              }
+<pre><code>$(function() &#123;
+    var defaultData = [
+      &#123;
+        text: &apos;Parent 1&apos;,
+        href: &apos;#parent1&apos;,
+        tags: [&apos;4&apos;],
+        nodes: [
+          &#123;
+            text: &apos;Child 1&apos;,
+            href: &apos;#child1&apos;,
+            tags: [&apos;2&apos;],
+            nodes: [
+              &#123;
+                text: &apos;Grandchild 1&apos;,
+                href: &apos;#grandchild1&apos;,
+                tags: [&apos;0&apos;]
+              &#125;,
+              &#123;
+                text: &apos;Grandchild 2&apos;,
+                href: &apos;#grandchild2&apos;,
+                tags: [&apos;0&apos;]
+              &#125;
             ]
-          },
-          {
-            text: <span class="string">'Child 2'</span>,
-            href: <span class="string">'#child2'</span>,
-            tags: <span class="matrix">[<span class="string">'0'</span>]</span>
-          }
+          &#125;,
+          &#123;
+            text: &apos;Child 2&apos;,
+            href: &apos;#child2&apos;,
+            tags: [&apos;0&apos;]
+          &#125;
         ]
-      },
-      {
-        text: <span class="string">'Parent 2'</span>,
-        href: <span class="string">'#parent2'</span>,
-        tags: <span class="matrix">[<span class="string">'0'</span>]</span>
-      },
-      {
-        text: <span class="string">'Parent 3'</span>,
-        href: <span class="string">'#parent3'</span>,
-         tags: <span class="matrix">[<span class="string">'0'</span>]</span>
-      },
-      {
-        text: <span class="string">'Parent 4'</span>,
-        href: <span class="string">'#parent4'</span>,
-        tags: <span class="matrix">[<span class="string">'0'</span>]</span>
-      },
-      {
-        text: <span class="string">'Parent 5'</span>,
-        href: <span class="string">'#parent5'</span>  ,
-        tags: <span class="matrix">[<span class="string">'0'</span>]</span>
-      }
+      &#125;,
+      &#123;
+        text: &apos;Parent 2&apos;,
+        href: &apos;#parent2&apos;,
+        tags: [&apos;0&apos;]
+      &#125;,
+      &#123;
+        text: &apos;Parent 3&apos;,
+        href: &apos;#parent3&apos;,
+         tags: [&apos;0&apos;]
+      &#125;,
+      &#123;
+        text: &apos;Parent 4&apos;,
+        href: &apos;#parent4&apos;,
+        tags: [&apos;0&apos;]
+      &#125;,
+      &#123;
+        text: &apos;Parent 5&apos;,
+        href: &apos;#parent5&apos;  ,
+        tags: [&apos;0&apos;]
+      &#125;
     ];
 
-    var alternateData = <span class="matrix">[
-      {
-        text: <span class="string">'Parent 1'</span>,
-        tags: [<span class="string">'2'</span>]</span>,
-        nodes: <span class="matrix">[
-          {
-            text: <span class="string">'Child 1'</span>,
-            tags: [<span class="string">'3'</span>]</span>,
-            nodes: <span class="matrix">[//节点拥有子节点
-              {
-                text: <span class="string">'Grandchild 1'</span>,
-                tags: [<span class="string">'6'</span>]</span>
-              },
-              {
-                text: <span class="string">'Grandchild 2'</span>,
-                tags: <span class="matrix">[<span class="string">'3'</span>]</span>
-              }
+    var alternateData = [
+      &#123;
+        text: &apos;Parent 1&apos;,
+        tags: [&apos;2&apos;],
+        nodes: [
+          &#123;
+            text: &apos;Child 1&apos;,
+            tags: [&apos;3&apos;],
+            nodes: [//节点拥有子节点
+              &#123;
+                text: &apos;Grandchild 1&apos;,
+                tags: [&apos;6&apos;]
+              &#125;,
+              &#123;
+                text: &apos;Grandchild 2&apos;,
+                tags: [&apos;3&apos;]
+              &#125;
             ]
-          },
-          {
-            text: <span class="string">'Child 2'</span>,
-            tags: <span class="matrix">[<span class="string">'3'</span>]</span>
-          }
+          &#125;,
+          &#123;
+            text: &apos;Child 2&apos;,
+            tags: [&apos;3&apos;]
+          &#125;
         ]
-      },
-      {
-        text: <span class="string">'Parent 2'</span>,
-        tags: <span class="matrix">[<span class="string">'7'</span>]</span>
-      },
-      {
-        text: <span class="string">'Parent 3'</span>,<span class="comment">//节点的名字</span>
-        icon: <span class="string">'glyphicon glyphicon-earphone'</span>,<span class="comment">//个性化节点图标</span>
-        href: <span class="string">'#demo'</span>,<span class="comment">//节点的超链接</span>
-        tags: <span class="matrix">[<span class="string">'11'</span>]</span><span class="comment">//节点的标签</span>
-      },
-      {
-        text: <span class="string">'Parent 4'</span>,
-        icon: <span class="string">'glyphicon glyphicon-cloud-download'</span>,
-        href: <span class="string">'/demo.html'</span>,
-        tags: <span class="matrix">[<span class="string">'19'</span>]</span>,
+      &#125;,
+      &#123;
+        text: &apos;Parent 2&apos;,
+        tags: [&apos;7&apos;]
+      &#125;,
+      &#123;
+        text: &apos;Parent 3&apos;,//节点的名字
+        icon: &apos;glyphicon glyphicon-earphone&apos;,//个性化节点图标
+        href: &apos;#demo&apos;,//节点的超链接
+        tags: [&apos;11&apos;]//节点的标签
+      &#125;,
+      &#123;
+        text: &apos;Parent 4&apos;,
+        icon: &apos;glyphicon glyphicon-cloud-download&apos;,
+        href: &apos;/demo.html&apos;,
+        tags: [&apos;19&apos;],
         selected: true
-      },
-      {
-        text: <span class="string">'Parent 5'</span>,
-        icon: <span class="string">'glyphicon glyphicon-certificate'</span>,
-        color: <span class="string">'pink'</span>,
-        backColor: <span class="string">'red'</span>,
-        href: <span class="string">'http://www.tesco.com'</span>,
-        tags: <span class="matrix">[<span class="string">'available'</span>,<span class="string">'0'</span>]</span>
-      }
+      &#125;,
+      &#123;
+        text: &apos;Parent 5&apos;,
+        icon: &apos;glyphicon glyphicon-certificate&apos;,
+        color: &apos;pink&apos;,
+        backColor: &apos;red&apos;,
+        href: &apos;http://www.tesco.com&apos;,
+        tags: [&apos;available&apos;,&apos;0&apos;]
+      &#125;
     ];
 
-    var json = <span class="string">'['</span> +
-      <span class="string">'{'</span> +
-        <span class="string">'"</span>text<span class="string">": "</span>Parent <span class="number">1</span><span class="string">",'</span> +
-        <span class="string">'"</span>nodes<span class="string">": ['</span> +
-          <span class="string">'{'</span> +
-            <span class="string">'"</span>text<span class="string">": "</span>Child <span class="number">1</span><span class="string">",'</span> +
-            <span class="string">'"</span>nodes<span class="string">": ['</span> +
-              <span class="string">'{'</span> +
-                <span class="string">'"</span>text<span class="string">": "</span>Grandchild <span class="number">1</span><span class="string">"'</span> +
-              <span class="string">'},'</span> +
-              <span class="string">'{'</span> +
-                <span class="string">'"</span>text<span class="string">": "</span>Grandchild <span class="number">2</span><span class="string">"'</span> +
-              <span class="string">'}'</span> +
-            <span class="string">']'</span> +
-          <span class="string">'},'</span> +
-          <span class="string">'{'</span> +
-            <span class="string">'"</span>text<span class="string">": "</span>Child <span class="number">2</span><span class="string">"'</span> +
-          <span class="string">'}'</span> +
-        <span class="string">']'</span> +
-      <span class="string">'},'</span> +
-      <span class="string">'{'</span> +
-        <span class="string">'"</span>text<span class="string">": "</span>Parent <span class="number">2</span><span class="string">"'</span> +
-      <span class="string">'},'</span> +
-      <span class="string">'{'</span> +
-        <span class="string">'"</span>text<span class="string">": "</span>Parent <span class="number">3</span><span class="string">"'</span> +
-      <span class="string">'},'</span> +
-      <span class="string">'{'</span> +
-        <span class="string">'"</span>text<span class="string">": "</span>Parent <span class="number">4</span><span class="string">"'</span> +
-      <span class="string">'},'</span> +
-      <span class="string">'{'</span> +
-        <span class="string">'"</span>text<span class="string">": "</span>Parent <span class="number">5</span><span class="string">"'</span> +
-      <span class="string">'}'</span> +
-    <span class="string">']'</span>;
+    var json = &apos;[&apos; +
+      &apos;&#123;&apos; +
+        &apos;&quot;text&quot;: &quot;Parent 1&quot;,&apos; +
+        &apos;&quot;nodes&quot;: [&apos; +
+          &apos;&#123;&apos; +
+            &apos;&quot;text&quot;: &quot;Child 1&quot;,&apos; +
+            &apos;&quot;nodes&quot;: [&apos; +
+              &apos;&#123;&apos; +
+                &apos;&quot;text&quot;: &quot;Grandchild 1&quot;&apos; +
+              &apos;&#125;,&apos; +
+              &apos;&#123;&apos; +
+                &apos;&quot;text&quot;: &quot;Grandchild 2&quot;&apos; +
+              &apos;&#125;&apos; +
+            &apos;]&apos; +
+          &apos;&#125;,&apos; +
+          &apos;&#123;&apos; +
+            &apos;&quot;text&quot;: &quot;Child 2&quot;&apos; +
+          &apos;&#125;&apos; +
+        &apos;]&apos; +
+      &apos;&#125;,&apos; +
+      &apos;&#123;&apos; +
+        &apos;&quot;text&quot;: &quot;Parent 2&quot;&apos; +
+      &apos;&#125;,&apos; +
+      &apos;&#123;&apos; +
+        &apos;&quot;text&quot;: &quot;Parent 3&quot;&apos; +
+      &apos;&#125;,&apos; +
+      &apos;&#123;&apos; +
+        &apos;&quot;text&quot;: &quot;Parent 4&quot;&apos; +
+      &apos;&#125;,&apos; +
+      &apos;&#123;&apos; +
+        &apos;&quot;text&quot;: &quot;Parent 5&quot;&apos; +
+      &apos;&#125;&apos; +
+    &apos;]&apos;;
 </code></pre><p>对树状图进行配置</p>
-<pre><code> $(<span class="string">'#treeview9'</span>).treeview({
-  expandIcon: <span class="string">"glyphicon glyphicon-stop"</span>,<span class="comment">//关闭图标</span>
-  collapseIcon: <span class="string">"glyphicon glyphicon-unchecked"</span>,<span class="comment">//打开图标</span>
-  nodeIcon: <span class="string">"glyphicon glyphicon-user"</span>,<span class="comment">//用户图标（个性化节点图标在节点data中配置）</span>
-  color: <span class="string">"yellow"</span>,<span class="comment">//文字颜色</span>
-  backColor: <span class="string">"purple"</span>,<span class="comment">//背景颜色</span>
-  onhoverColor: <span class="string">"orange"</span>,<span class="comment">//鼠标经过显示颜色</span>
-  borderColor: <span class="string">"red"</span>,<span class="comment">//边缘颜色</span>
-  showBorder: <span class="literal">false</span>,<span class="comment">//是否显示边缘</span>
-  showTags: <span class="literal">false</span>,<span class="comment">//是否显示结尾标签</span>
-  highlightSelected: <span class="literal">true</span>,<span class="comment">//选中高光</span>
-  selectedColor: <span class="string">"blue"</span>,<span class="comment">//选中文字颜色</span>
-  selectedBackColor: <span class="string">"darkorange"</span>,<span class="comment">//选中背景颜色</span>
-  data: alternateData<span class="comment">//数据</span>
-});
+<pre><code> $(&apos;#treeview9&apos;).treeview(&#123;
+  expandIcon: &quot;glyphicon glyphicon-stop&quot;,//关闭图标
+  collapseIcon: &quot;glyphicon glyphicon-unchecked&quot;,//打开图标
+  nodeIcon: &quot;glyphicon glyphicon-user&quot;,//用户图标（个性化节点图标在节点data中配置）
+  color: &quot;yellow&quot;,//文字颜色
+  backColor: &quot;purple&quot;,//背景颜色
+  onhoverColor: &quot;orange&quot;,//鼠标经过显示颜色
+  borderColor: &quot;red&quot;,//边缘颜色
+  showBorder: false,//是否显示边缘
+  showTags: false,//是否显示结尾标签
+  highlightSelected: true,//选中高光
+  selectedColor: &quot;blue&quot;,//选中文字颜色
+  selectedBackColor: &quot;darkorange&quot;,//选中背景颜色
+  data: alternateData//数据
+&#125;);
 
-$(<span class="string">'#treeview10'</span>).treeview({
-  color: <span class="string">"#428bca"</span>,
-  enableLinks: <span class="literal">true</span>,<span class="comment">//链接生效</span>
+$(&apos;#treeview10&apos;).treeview(&#123;
+  color: &quot;#428bca&quot;,
+  enableLinks: true,//链接生效
   data: defaultData
-});
-</code></pre><h2 id="获取更多">获取更多</h2><blockquote>
-<p><a href="https://github.com/jonmiles/bootstrap-treeview" target="_blank" rel="external">官方网站</a>  </p>
+&#125;);
+</code></pre><p>##获取更多</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/jonmiles/bootstrap-treeview">官方网站</a>  </p>
 </blockquote>
 
             <div class="clearfix"></div>
@@ -477,7 +478,7 @@ $(<span class="string">'#treeview10'</span>).treeview({
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2015/10/24/学习Spring记录（1）/" style="float: left;">
+    <a class="pull-left" href="/2015/10/24/%E5%AD%A6%E4%B9%A0Spring%E8%AE%B0%E5%BD%95%EF%BC%881%EF%BC%89/" style="float: left">
         ← 学习Spring记录(1)
     </a>
     
@@ -486,23 +487,13 @@ $(<span class="string">'#treeview10'</span>).treeview({
         使用groumble.js给页面添加泡泡提示框 →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "给bootstrap的界面中添加同风格树状菜单"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -519,9 +510,9 @@ $(<span class="string">'#treeview10'</span>).treeview({
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -617,5 +608,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

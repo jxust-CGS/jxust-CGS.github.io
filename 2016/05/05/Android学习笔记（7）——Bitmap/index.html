@@ -19,9 +19,9 @@
 <head>
   <title>android学习笔记（7） ——Bitmap | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
@@ -84,7 +84,7 @@
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -208,7 +208,7 @@
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -236,7 +236,7 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -287,183 +287,173 @@
 	
     
     | 分类：
-    <a class="categories" href='/categories/android/'>android</a>
+    <a class="categories" href="/categories/android/">android</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/android/'>android</a>
+    <a class="tags" href="/tags/android/">android</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p>参考文章：<a href="http://www.jb51.net/article/32366.htm" target="_blank" rel="external">Android Bitmap详细介绍</a>  </p>
-<h1 id="首先我们需要获得Bitmap对象">首先我们需要获得Bitmap对象</h1><pre><code><span class="keyword">public</span> Bitmap getBitmapByDrawable(Context context,<span class="built_in">int</span> drawableId){
-     <span class="keyword">return</span> ((BitmapDrawable)context.getResources().getDrawable(drawableId)).getBitmap();
-  }
-<span class="keyword">public</span> Bitmap getBitmapFromSDCard(Activity context,<span class="keyword">String</span> fileName) <span class="keyword">throws</span> FileNotFoundException{
-      <span class="comment">//第一种方式:从SD卡中得到图片</span>
-      <span class="keyword">String</span> SDCarePath=Environment.getExternalStorageDirectory().toString();
-      <span class="keyword">String</span> filePath=SDCarePath+File.separator+fileName;
-      Bitmap rawBitmap = BitmapFactory.decodeFile(filePath, <span class="keyword">null</span>);
-      <span class="comment">//第二种方式:从SD卡中得到图片</span>
-      <span class="comment">//InputStream inputStream=new FileInputStream(new File(filePath));</span>
-      <span class="comment">//Bitmap rawBitmap = BitmapFactory.decodeStream(inputStream);</span>
-      <span class="keyword">return</span> rawBitmap;
-  }
-</code></pre><h1 id="操作Bitmap">操作Bitmap</h1><pre><code><span class="javadoc">/**  
+      		<p>参考文章：<a target="_blank" rel="noopener" href="http://www.jb51.net/article/32366.htm">Android Bitmap详细介绍</a>  </p>
+<h1 id="首先我们需要获得Bitmap对象"><a href="#首先我们需要获得Bitmap对象" class="headerlink" title="首先我们需要获得Bitmap对象"></a>首先我们需要获得Bitmap对象</h1><pre><code>public Bitmap getBitmapByDrawable(Context context,int drawableId)&#123;
+     return ((BitmapDrawable)context.getResources().getDrawable(drawableId)).getBitmap();
+  &#125;
+public Bitmap getBitmapFromSDCard(Activity context,String fileName) throws FileNotFoundException&#123;
+      //第一种方式:从SD卡中得到图片
+      String SDCarePath=Environment.getExternalStorageDirectory().toString();
+      String filePath=SDCarePath+File.separator+fileName;
+      Bitmap rawBitmap = BitmapFactory.decodeFile(filePath, null);
+      //第二种方式:从SD卡中得到图片
+      //InputStream inputStream=new FileInputStream(new File(filePath));
+      //Bitmap rawBitmap = BitmapFactory.decodeStream(inputStream);
+      return rawBitmap;
+  &#125;
+</code></pre><h1 id="操作Bitmap"><a href="#操作Bitmap" class="headerlink" title="操作Bitmap"></a>操作Bitmap</h1><pre><code>/**  
  * 缩放图片
- *<span class="javadoctag"> @param</span> bitmap
- *<span class="javadoctag"> @param</span> width
- *<span class="javadoctag"> @param</span> height
- *<span class="javadoctag"> @return</span>
- */</span>
-  <span class="keyword">public</span> <span class="function">Bitmap <span class="title">compression</span><span class="params">(Bitmap bitmap ,<span class="keyword">int</span> width,<span class="keyword">int</span> height)</span></span>{
-      <span class="comment">// 得到图片原始的高宽</span>
-      <span class="keyword">int</span> rawHeight = bitmap.getHeight();
-      <span class="keyword">int</span> rawWidth = bitmap.getWidth();
-      <span class="comment">// 设定图片新的高宽</span>
-      <span class="keyword">int</span> newWidth = width;
-      <span class="keyword">int</span> newHeight = height;
-      <span class="comment">// 计算缩放因子</span>
-      <span class="keyword">float</span> heightScale = ((<span class="keyword">float</span>) newHeight) / rawHeight;
-      <span class="keyword">float</span> widthScale = ((<span class="keyword">float</span>) newWidth) / rawWidth;
-      <span class="comment">// 新建立矩阵</span>
-      Matrix matrix = <span class="keyword">new</span> Matrix();
+ * @param bitmap
+ * @param width
+ * @param height
+ * @return
+ */
+  public Bitmap compression(Bitmap bitmap ,int width,int height)&#123;
+      // 得到图片原始的高宽
+      int rawHeight = bitmap.getHeight();
+      int rawWidth = bitmap.getWidth();
+      // 设定图片新的高宽
+      int newWidth = width;
+      int newHeight = height;
+      // 计算缩放因子
+      float heightScale = ((float) newHeight) / rawHeight;
+      float widthScale = ((float) newWidth) / rawWidth;
+      // 新建立矩阵
+      Matrix matrix = new Matrix();
       matrix.postScale(heightScale, widthScale);
-      <span class="comment">// 设置图片的旋转角度</span>
-      <span class="comment">//matrix.postRotate(-30);</span>
-      <span class="comment">// 设置图片的倾斜</span>
-      <span class="comment">//matrix.postSkew(0.1f, 0.1f);</span>
-      <span class="comment">//将图片大小压缩</span>
-      <span class="comment">//压缩后图片的宽和高以及kB大小均会变化</span>
-      Bitmap newBitmap = Bitmap.createBitmap(bitmap, <span class="number">0</span>, <span class="number">0</span>, rawWidth,rawWidth, matrix, <span class="keyword">true</span>);
-      <span class="comment">// 将Bitmap转换为Drawable</span>
-      <span class="comment">//Drawable newBitmapDrawable = new BitmapDrawable(newBitmap);</span>
-      <span class="comment">//imageView.setImageDrawable(newBitmapDrawable);</span>
-      <span class="comment">//然后将Bitmap保存到SDCard中,方便于原图片的比较</span>
-      <span class="comment">//this.compressAndSaveBitmapToSDCard(newBitmap, "xx100.jpg", 80);</span>
-      <span class="comment">//问题:</span>
-      <span class="comment">//原图大小为625x690 90.2kB</span>
-      <span class="comment">//如果设置图片500x500 压缩后大小为171kB.即压缩后kB反而变大了.</span>
-      <span class="comment">//原因是将:compress(Bitmap.CompressFormat.JPEG, quality, fileOutputStream);</span>
-      <span class="comment">//第二个参数quality设置得有些大了(比如100).</span>
-      <span class="comment">//常用的是80,刚设100太大了造成的.</span>
-      <span class="keyword">return</span> newBitmap;
-  }
+      // 设置图片的旋转角度
+      //matrix.postRotate(-30);
+      // 设置图片的倾斜
+      //matrix.postSkew(0.1f, 0.1f);
+      //将图片大小压缩
+      //压缩后图片的宽和高以及kB大小均会变化
+      Bitmap newBitmap = Bitmap.createBitmap(bitmap, 0, 0, rawWidth,rawWidth, matrix, true);
+      // 将Bitmap转换为Drawable
+      //Drawable newBitmapDrawable = new BitmapDrawable(newBitmap);
+      //imageView.setImageDrawable(newBitmapDrawable);
+      //然后将Bitmap保存到SDCard中,方便于原图片的比较
+      //this.compressAndSaveBitmapToSDCard(newBitmap, &quot;xx100.jpg&quot;, 80);
+      //问题:
+      //原图大小为625x690 90.2kB
+      //如果设置图片500x500 压缩后大小为171kB.即压缩后kB反而变大了.
+      //原因是将:compress(Bitmap.CompressFormat.JPEG, quality, fileOutputStream);
+      //第二个参数quality设置得有些大了(比如100).
+      //常用的是80,刚设100太大了造成的.
+      return newBitmap;
+  &#125;
 
-  <span class="javadoc">/**
+  /**
    * 变形
-   *<span class="javadoctag"> @param</span> bitmap
-   *<span class="javadoctag"> @return</span>
-   */</span>
-  <span class="keyword">public</span> <span class="function">Bitmap <span class="title">postSkewBitmap</span><span class="params">(Bitmap bitmap)</span></span>{
-      <span class="comment">// 得到图片原始的高宽</span>
-      <span class="keyword">int</span> rawHeight = bitmap.getHeight();
-      <span class="keyword">int</span> rawWidth = bitmap.getWidth();
-      Matrix matrix = <span class="keyword">new</span> Matrix();
-      <span class="comment">// 设置图片的倾斜</span>
-      matrix.postSkew(<span class="number">0.1</span>f, -<span class="number">0.1</span>f);
-      Bitmap newBitmap = Bitmap.createBitmap(bitmap, <span class="number">0</span>, <span class="number">0</span>, rawWidth,rawWidth, matrix, <span class="keyword">true</span>);
-      <span class="keyword">return</span> newBitmap;
-  }
+   * @param bitmap
+   * @return
+   */
+  public Bitmap postSkewBitmap(Bitmap bitmap)&#123;
+      // 得到图片原始的高宽
+      int rawHeight = bitmap.getHeight();
+      int rawWidth = bitmap.getWidth();
+      Matrix matrix = new Matrix();
+      // 设置图片的倾斜
+      matrix.postSkew(0.1f, -0.1f);
+      Bitmap newBitmap = Bitmap.createBitmap(bitmap, 0, 0, rawWidth,rawWidth, matrix, true);
+      return newBitmap;
+  &#125;
 
-  <span class="javadoc">/**
+  /**
    * 旋转
-   *<span class="javadoctag"> @param</span> bitmap
-   *<span class="javadoctag"> @return</span>
-   */</span>
-  <span class="keyword">public</span> <span class="function">Bitmap <span class="title">rotateBitmap</span><span class="params">(Bitmap bitmap)</span></span>{
-      <span class="comment">// 得到图片原始的高宽</span>
-      <span class="keyword">int</span> rawHeight = bitmap.getHeight();
-      <span class="keyword">int</span> rawWidth = bitmap.getWidth();
-      Matrix matrix = <span class="keyword">new</span> Matrix();
-      <span class="comment">// 设置图片的旋转角度</span>
-      matrix.postRotate(-<span class="number">45</span>);
-      Bitmap newBitmap = Bitmap.createBitmap(bitmap, <span class="number">0</span>, <span class="number">0</span>, rawWidth,rawWidth, matrix, <span class="keyword">true</span>);
-      <span class="keyword">return</span> newBitmap;
-  }
-</code></pre><h1 id="合成两张bitmap">合成两张bitmap</h1><ul>
+   * @param bitmap
+   * @return
+   */
+  public Bitmap rotateBitmap(Bitmap bitmap)&#123;
+      // 得到图片原始的高宽
+      int rawHeight = bitmap.getHeight();
+      int rawWidth = bitmap.getWidth();
+      Matrix matrix = new Matrix();
+      // 设置图片的旋转角度
+      matrix.postRotate(-45);
+      Bitmap newBitmap = Bitmap.createBitmap(bitmap, 0, 0, rawWidth,rawWidth, matrix, true);
+      return newBitmap;
+  &#125;
+</code></pre><h1 id="合成两张bitmap"><a href="#合成两张bitmap" class="headerlink" title="合成两张bitmap"></a>合成两张bitmap</h1><ul>
 <li><p>为bitmap设置圆角</p>
 <p>  public Bitmap toRoundCorner(Bitmap bitmap,int pixels){</p>
 <pre><code>    Bitmap roundCornerBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Config.ARGB_8888);
-    Canvas canvas = <span class="keyword">new</span> Canvas(roundCornerBitmap);
-    <span class="built_in">int</span> <span class="built_in">color</span> = <span class="number">0xff424242</span>;<span class="comment">//int color = 0xff424242;</span>
-    Paint paint = <span class="keyword">new</span> Paint();
-    paint.setColor(<span class="built_in">color</span>);
-    <span class="comment">//防止锯齿</span>
-    paint.setAntiAlias(<span class="keyword">true</span>);
-    Rect <span class="built_in">rect</span> = <span class="keyword">new</span> Rect(<span class="number">0</span>, <span class="number">0</span>, bitmap.getWidth(), bitmap.getHeight());
-    RectF rectF = <span class="keyword">new</span> RectF(<span class="built_in">rect</span>);
-    <span class="built_in">float</span> roundPx = <span class="variable">pixels</span>;
-    <span class="comment">//相当于清屏</span>
-    canvas.drawARGB(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);
-    <span class="comment">//先画了一个带圆角的矩形</span>
+    Canvas canvas = new Canvas(roundCornerBitmap);
+    int color = 0xff424242;//int color = 0xff424242;
+    Paint paint = new Paint();
+    paint.setColor(color);
+    //防止锯齿
+    paint.setAntiAlias(true);
+    Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+    RectF rectF = new RectF(rect);
+    float roundPx = pixels;
+    //相当于清屏
+    canvas.drawARGB(0, 0, 0, 0);
+    //先画了一个带圆角的矩形
     canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
-    paint.setXfermode(<span class="keyword">new</span> PorterDuffXfermode(Mode.SRC_IN)); ---------------------------此处注意Mode具体参考下方文章链接
-    <span class="comment">//再把原来的bitmap画到现在的bitmap！！！注意这个理解</span>
-    canvas.drawBitmap(bitmap, <span class="built_in">rect</span>, <span class="built_in">rect</span>, paint);
-    <span class="keyword">return</span> roundCornerBitmap;
-}
-</code></pre><p>参考文章：<a href="http://blog.csdn.net/c8822882/article/details/6906768" target="_blank" rel="external">android 画图之setXfermode</a><br><img src="http://dl2.iteye.com/upload/attachment/0056/7804/f3756216-bc69-348f-9f4f-55428a78a287.png" alt="PorterDuffXfermode">  </p>
+    paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN)); ---------------------------此处注意Mode具体参考下方文章链接
+    //再把原来的bitmap画到现在的bitmap！！！注意这个理解
+    canvas.drawBitmap(bitmap, rect, rect, paint);
+    return roundCornerBitmap;
+&#125;
+</code></pre><p>参考文章：<a target="_blank" rel="noopener" href="http://blog.csdn.net/c8822882/article/details/6906768">android 画图之setXfermode</a><br><img src="http://dl2.iteye.com/upload/attachment/0056/7804/f3756216-bc69-348f-9f4f-55428a78a287.png" alt="PorterDuffXfermode">  </p>
 </li>
 <li><p>两张图叠加，可用于添加水印  </p>
-<pre><code><span class="keyword">public</span> Bitmap addbackgroundonlyicon(Bitmap bitmap_back, Bitmap bitmap_front) {
+<pre><code>public Bitmap addbackgroundonlyicon(Bitmap bitmap_back, Bitmap bitmap_front) &#123;
      Bitmap b1 =  bitmap_back;
      Bitmap b2 =  bitmap_front;
-     <span class="keyword">if</span> (!b1.isMutable()) { <span class="comment">//设置图片为背景为透明</span>
-         b1 = b1.<span class="built_in">copy</span>(Bitmap.Config.ARGB_8888, <span class="keyword">true</span>);
-     }
-     Paint paint = <span class="keyword">new</span> Paint();
-     Canvas canvas = <span class="keyword">new</span> Canvas(b1);
-     canvas.drawBitmap(b2, <span class="number">0</span>, <span class="number">0</span>, paint);
-     canvas.<span class="built_in">save</span>(Canvas.ALL_SAVE_FLAG);
+     if (!b1.isMutable()) &#123; //设置图片为背景为透明
+         b1 = b1.copy(Bitmap.Config.ARGB_8888, true);
+     &#125;
+     Paint paint = new Paint();
+     Canvas canvas = new Canvas(b1);
+     canvas.drawBitmap(b2, 0, 0, paint);
+     canvas.save(Canvas.ALL_SAVE_FLAG);
      canvas.restore();
-     <span class="keyword">return</span> b1;
- }
+     return b1;
+ &#125;
 </code></pre></li>
 </ul>
-<h1 id="保存bitmap到SD卡">保存bitmap到SD卡</h1><pre><code><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveBitmapToSDCard</span><span class="params">(Bitmap bitmap,String fileName)</span> throws FileNotFoundException</span>{
+<h1 id="保存bitmap到SD卡"><a href="#保存bitmap到SD卡" class="headerlink" title="保存bitmap到SD卡"></a>保存bitmap到SD卡</h1><pre><code>public void saveBitmapToSDCard(Bitmap bitmap,String fileName) throws FileNotFoundException&#123;
       String SDCarePath=Environment.getExternalStorageDirectory().toString();
-      FileOutputStream <span class="keyword">out</span> = <span class="keyword">new</span> FileOutputStream(SDCarePath+File.separator+fileName);
-      bitmap.compress(Bitmap.CompressFormat.PNG, <span class="number">90</span>, <span class="keyword">out</span>);
-  }
+      FileOutputStream out = new FileOutputStream(SDCarePath+File.separator+fileName);
+      bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+  &#125;
 </code></pre>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2016/06/28/Android学习笔记（8）——自定义控件/" style="float: left;">
+    <a class="pull-left" href="/2016/06/28/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%888%EF%BC%89%E2%80%94%E2%80%94%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/" style="float: left">
         ← Android学习笔记(8)——自定义控件
     </a>
     
     
-    <a class="pull-right" href="/2016/05/05/Android学习笔记（6）——Animation动画/">
+    <a class="pull-right" href="/2016/05/05/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%886%EF%BC%89%E2%80%94%E2%80%94Animation%E5%8A%A8%E7%94%BB/">
         android学习笔记（6） ——Animation动画 →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "android学习笔记（7） ——Bitmap"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -480,9 +470,9 @@
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -578,5 +568,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

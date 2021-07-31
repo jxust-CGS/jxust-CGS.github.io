@@ -19,9 +19,9 @@
 <head>
   <title>android学习笔记（6） ——Animation动画 | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
@@ -84,7 +84,7 @@
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -208,7 +208,7 @@
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -236,7 +236,7 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -287,198 +287,188 @@
 	
     
     | 分类：
-    <a class="categories" href='/categories/android/'>android</a>
+    <a class="categories" href="/categories/android/">android</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/android/'>android</a>
+    <a class="tags" href="/tags/android/">android</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p>参考文章：<a href="http://www.cnblogs.com/qiengo/archive/2012/05/03/2480386.html#Animations" target="_blank" rel="external">Android Animation - Qiengo - 博客园</a></p>
-<h1 id="这一部分也没多少东西就直接上代码了">这一部分也没多少东西就直接上代码了</h1><pre><code><span class="keyword">package</span> com.example.animationsdemo;
+      		<p>参考文章：<a target="_blank" rel="noopener" href="http://www.cnblogs.com/qiengo/archive/2012/05/03/2480386.html#Animations">Android Animation - Qiengo - 博客园</a></p>
+<h1 id="这一部分也没多少东西就直接上代码了"><a href="#这一部分也没多少东西就直接上代码了" class="headerlink" title="这一部分也没多少东西就直接上代码了"></a>这一部分也没多少东西就直接上代码了</h1><pre><code>package com.example.animationsdemo;
 
-<span class="keyword">import</span> android.app.Activity;
-<span class="keyword">import</span> android.os.Bundle;
-<span class="keyword">import</span> android.view.View;
-<span class="keyword">import</span> android.view.View.OnClickListener;
-<span class="keyword">import</span> android.view.animation.AlphaAnimation;
-<span class="keyword">import</span> android.view.animation.Animation;
-<span class="keyword">import</span> android.view.animation.AnimationSet;
-<span class="keyword">import</span> android.view.animation.RotateAnimation;
-<span class="keyword">import</span> android.view.animation.ScaleAnimation;
-<span class="keyword">import</span> android.view.animation.TranslateAnimation;
-<span class="keyword">import</span> android.widget.ImageView;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.RotateAnimation;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
 
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">OnClickListener</span></span>{
+public class MainActivity extends Activity implements OnClickListener&#123;
 
-    <span class="keyword">private</span> ImageView first;
-    <span class="keyword">private</span> ImageView second;
-    <span class="keyword">private</span> ImageView third;
-    <span class="keyword">private</span> ImageView fourth;
-    <span class="keyword">private</span> ImageView fifth;
+    private ImageView first;
+    private ImageView second;
+    private ImageView third;
+    private ImageView fourth;
+    private ImageView fifth;
 
-    <span class="annotation">@Override</span>
-    <span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>{
-        <span class="keyword">super</span>.onCreate(savedInstanceState);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) &#123;
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         first=(ImageView) findViewById(R.id.first);
         second=(ImageView) findViewById(R.id.second);
         third=(ImageView) findViewById(R.id.third);
         fourth=(ImageView) findViewById(R.id.fourth);
         fifth=(ImageView) findViewById(R.id.fifth);
-        first.setOnClickListener(<span class="keyword">this</span>);
-        second.setOnClickListener(<span class="keyword">this</span>);
-        third.setOnClickListener(<span class="keyword">this</span>);
-        fourth.setOnClickListener(<span class="keyword">this</span>);
-        fifth.setOnClickListener(<span class="keyword">this</span>);
-    }
+        first.setOnClickListener(this);
+        second.setOnClickListener(this);
+        third.setOnClickListener(this);
+        fourth.setOnClickListener(this);
+        fifth.setOnClickListener(this);
+    &#125;
 
-    <span class="annotation">@Override</span>
-    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
-        <span class="keyword">switch</span> (v.getId()) {
-        <span class="keyword">case</span> R.id.first:
+    @Override
+    public void onClick(View v) &#123;
+        switch (v.getId()) &#123;
+        case R.id.first:
             alpha_animation(first);
-            <span class="keyword">break</span>;
-        <span class="keyword">case</span> R.id.second:
+            break;
+        case R.id.second:
             rotate_animation(second);
-            <span class="keyword">break</span>;
-        <span class="keyword">case</span> R.id.third:
+            break;
+        case R.id.third:
             scale_animation(third);
-            <span class="keyword">break</span>;
-        <span class="keyword">case</span> R.id.fourth:
+            break;
+        case R.id.fourth:
             translate_animation(fourth);
-            <span class="keyword">break</span>;
-        <span class="keyword">case</span> R.id.fifth:
+            break;
+        case R.id.fifth:
             double_animation(fifth);
-            <span class="keyword">break</span>;
-        <span class="keyword">default</span>:
-            <span class="keyword">break</span>;
-        }
-    }
+            break;
+        default:
+            break;
+        &#125;
+    &#125;
 
-    <span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">alpha_animation</span><span class="params">(View view)</span> </span>{
-        <span class="comment">//创建一个AnimationSet对象，参数为Boolean型，</span>
-        <span class="comment">//true表示使用Animation的interpolator，false则是使用自己的</span>
-        AnimationSet animationSet = <span class="keyword">new</span> AnimationSet(<span class="keyword">true</span>);
-        <span class="comment">//创建一个AlphaAnimation对象，参数从完全的透明度，到完全的不透明</span>
-        AlphaAnimation alphaAnimation = <span class="keyword">new</span> AlphaAnimation(<span class="number">1</span>, <span class="number">0</span>);
-        <span class="comment">//设置动画执行的时间</span>
-        alphaAnimation.setDuration(<span class="number">1000</span>);
-        <span class="comment">//将alphaAnimation对象添加到AnimationSet当中</span>
+    private void alpha_animation(View view) &#123;
+        //创建一个AnimationSet对象，参数为Boolean型，
+        //true表示使用Animation的interpolator，false则是使用自己的
+        AnimationSet animationSet = new AnimationSet(true);
+        //创建一个AlphaAnimation对象，参数从完全的透明度，到完全的不透明
+        AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0);
+        //设置动画执行的时间
+        alphaAnimation.setDuration(1000);
+        //将alphaAnimation对象添加到AnimationSet当中
         animationSet.addAnimation(alphaAnimation);
-        <span class="comment">//使用ImageView的startAnimation方法执行动画</span>
+        //使用ImageView的startAnimation方法执行动画
         view.startAnimation(animationSet);
-    }
+    &#125;
 
-    <span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">rotate_animation</span><span class="params">(View view)</span> </span>{
-         AnimationSet animationSet = <span class="keyword">new</span> AnimationSet(<span class="keyword">true</span>);
-         <span class="comment">//参数1：从哪个旋转角度开始</span>
-         <span class="comment">//参数2：转到什么角度</span>
-         <span class="comment">//后4个参数用于设置围绕着旋转的圆的圆心在哪里</span>
-         <span class="comment">//参数3：确定x轴坐标的类型，有ABSOLUT绝对坐标、RELATIVE_TO_SELF相对于自身坐标、RELATIVE_TO_PARENT相对于父控件的坐标</span>
-         <span class="comment">//参数4：x轴的值，0.5f表明是以自身这个控件的一半长度为x轴</span>
-         <span class="comment">//参数5：确定y轴坐标的类型</span>
-         <span class="comment">//参数6：y轴的值，0.5f表明是以自身这个控件的一半长度为x轴</span>
-         RotateAnimation rotateAnimation = <span class="keyword">new</span> RotateAnimation(<span class="number">0</span>, <span class="number">360</span>,
-                Animation.RELATIVE_TO_SELF,<span class="number">0.5</span>f,
-                Animation.RELATIVE_TO_SELF,<span class="number">0.5</span>f);
-         rotateAnimation.setDuration(<span class="number">1000</span>);
+    private void rotate_animation(View view) &#123;
+         AnimationSet animationSet = new AnimationSet(true);
+         //参数1：从哪个旋转角度开始
+         //参数2：转到什么角度
+         //后4个参数用于设置围绕着旋转的圆的圆心在哪里
+         //参数3：确定x轴坐标的类型，有ABSOLUT绝对坐标、RELATIVE_TO_SELF相对于自身坐标、RELATIVE_TO_PARENT相对于父控件的坐标
+         //参数4：x轴的值，0.5f表明是以自身这个控件的一半长度为x轴
+         //参数5：确定y轴坐标的类型
+         //参数6：y轴的值，0.5f表明是以自身这个控件的一半长度为x轴
+         RotateAnimation rotateAnimation = new RotateAnimation(0, 360,
+                Animation.RELATIVE_TO_SELF,0.5f,
+                Animation.RELATIVE_TO_SELF,0.5f);
+         rotateAnimation.setDuration(1000);
          animationSet.addAnimation(rotateAnimation);
          view.startAnimation(animationSet);
-    }
+    &#125;
 
-    <span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">scale_animation</span><span class="params">(View view)</span> </span>{
-         AnimationSet animationSet = <span class="keyword">new</span> AnimationSet(<span class="keyword">true</span>);
-         <span class="comment">//参数1：x轴缩放前值</span>
-         <span class="comment">//参数2：x轴缩放后值</span>
-         <span class="comment">//参数3：y轴缩放前值</span>
-         <span class="comment">//参数4：y轴缩放后值</span>
-         <span class="comment">//参数5：确定x轴坐标的类型</span>
-         <span class="comment">//参数6：x轴的值，0.5f表明是以自身这个控件的一半长度为x轴，缩放的中心位置</span>
-         <span class="comment">//参数7：确定y轴坐标的类型</span>
-         <span class="comment">//参数8：y轴的值，0.5f表明是以自身这个控件的一半长度为x轴，缩放的中心位置</span>
-         ScaleAnimation scaleAnimation = <span class="keyword">new</span> ScaleAnimation(
-                <span class="number">0</span>f, <span class="number">1</span>f,<span class="number">0</span>f,<span class="number">1</span>f,
-                Animation.RELATIVE_TO_SELF,<span class="number">0.5</span>f,
-                Animation.RELATIVE_TO_SELF,<span class="number">0.5</span>f);
-         scaleAnimation.setDuration(<span class="number">1000</span>);
+    private void scale_animation(View view) &#123;
+         AnimationSet animationSet = new AnimationSet(true);
+         //参数1：x轴缩放前值
+         //参数2：x轴缩放后值
+         //参数3：y轴缩放前值
+         //参数4：y轴缩放后值
+         //参数5：确定x轴坐标的类型
+         //参数6：x轴的值，0.5f表明是以自身这个控件的一半长度为x轴，缩放的中心位置
+         //参数7：确定y轴坐标的类型
+         //参数8：y轴的值，0.5f表明是以自身这个控件的一半长度为x轴，缩放的中心位置
+         ScaleAnimation scaleAnimation = new ScaleAnimation(
+                0f, 1f,0f,1f,
+                Animation.RELATIVE_TO_SELF,0.5f,
+                Animation.RELATIVE_TO_SELF,0.5f);
+         scaleAnimation.setDuration(1000);
          animationSet.addAnimation(scaleAnimation);
          view.startAnimation(animationSet);
-    }
+    &#125;
 
-    <span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">translate_animation</span><span class="params">(View view)</span> </span>{
-        AnimationSet animationSet = <span class="keyword">new</span> AnimationSet(<span class="keyword">true</span>);
-        <span class="comment">//参数1～2：x轴的开始位置</span>
-        <span class="comment">//参数3～4：y轴的开始位置</span>
-        <span class="comment">//参数5～6：x轴的结束位置</span>
-        <span class="comment">//参数7～8：x轴的结束位置</span>
+    private void translate_animation(View view) &#123;
+        AnimationSet animationSet = new AnimationSet(true);
+        //参数1～2：x轴的开始位置
+        //参数3～4：y轴的开始位置
+        //参数5～6：x轴的结束位置
+        //参数7～8：x轴的结束位置
         TranslateAnimation translateAnimation =
-           <span class="keyword">new</span> TranslateAnimation(
-               Animation.RELATIVE_TO_SELF,<span class="number">0</span>f,
-               Animation.RELATIVE_TO_SELF,<span class="number">0.5</span>f,
-               Animation.RELATIVE_TO_SELF,<span class="number">0</span>f,
-               Animation.RELATIVE_TO_SELF,<span class="number">0.5</span>f);
-        translateAnimation.setDuration(<span class="number">1000</span>);
+           new TranslateAnimation(
+               Animation.RELATIVE_TO_SELF,0f,
+               Animation.RELATIVE_TO_SELF,0.5f,
+               Animation.RELATIVE_TO_SELF,0f,
+               Animation.RELATIVE_TO_SELF,0.5f);
+        translateAnimation.setDuration(1000);
         animationSet.addAnimation(translateAnimation);
         view.startAnimation(animationSet);
-    }
+    &#125;
 
-    <span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">double_animation</span><span class="params">(View view)</span></span>{<span class="comment">//用AnimationSet叠加两种动画效果</span>
-         AnimationSet animationSet = <span class="keyword">new</span> AnimationSet(<span class="keyword">true</span>);
-         RotateAnimation rotateAnimation = <span class="keyword">new</span> RotateAnimation(<span class="number">0</span>, <span class="number">360</span>,
-                Animation.RELATIVE_TO_SELF,<span class="number">0.5</span>f,
-                Animation.RELATIVE_TO_SELF,<span class="number">0.5</span>f);
-         rotateAnimation.setDuration(<span class="number">1000</span>);
+    private void double_animation(View view)&#123;//用AnimationSet叠加两种动画效果
+         AnimationSet animationSet = new AnimationSet(true);
+         RotateAnimation rotateAnimation = new RotateAnimation(0, 360,
+                Animation.RELATIVE_TO_SELF,0.5f,
+                Animation.RELATIVE_TO_SELF,0.5f);
+         rotateAnimation.setDuration(1000);
          animationSet.addAnimation(rotateAnimation);
-         ScaleAnimation scaleAnimation = <span class="keyword">new</span> ScaleAnimation(
-                 <span class="number">0</span>f, <span class="number">1</span>f,<span class="number">0</span>f,<span class="number">1</span>f,
-                 Animation.RELATIVE_TO_SELF,<span class="number">0.5</span>f,
-                 Animation.RELATIVE_TO_SELF,<span class="number">0.5</span>f);
-         scaleAnimation.setDuration(<span class="number">1000</span>);
+         ScaleAnimation scaleAnimation = new ScaleAnimation(
+                 0f, 1f,0f,1f,
+                 Animation.RELATIVE_TO_SELF,0.5f,
+                 Animation.RELATIVE_TO_SELF,0.5f);
+         scaleAnimation.setDuration(1000);
          animationSet.addAnimation(rotateAnimation);
          animationSet.addAnimation(scaleAnimation);
          view.startAnimation(animationSet);
-    }
-}
+    &#125;
+&#125;
 </code></pre>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2016/05/05/Android学习笔记（7）——Bitmap/" style="float: left;">
+    <a class="pull-left" href="/2016/05/05/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%887%EF%BC%89%E2%80%94%E2%80%94Bitmap/" style="float: left">
         ← android学习笔记（7） ——Bitmap
     </a>
     
     
-    <a class="pull-right" href="/2016/04/29/修改日历操作记录/">
-        android源码修改（1） ——日历中显示农历、日历图标随时间改变 →
+    <a class="pull-right" href="/2016/04/29/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89%E2%80%94%E2%80%94%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">
+        android学习笔记（5） ——文件操作 →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "android学习笔记（6） ——Animation动画"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -495,9 +485,9 @@
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -593,5 +583,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

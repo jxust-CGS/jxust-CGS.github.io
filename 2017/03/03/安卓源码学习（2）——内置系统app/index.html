@@ -19,9 +19,9 @@
 <head>
   <title>安卓源码学习（2）——内置系统app | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
@@ -84,7 +84,7 @@
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -208,7 +208,7 @@
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -236,7 +236,7 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -287,39 +287,37 @@
 	
     
     | 分类：
-    <a class="categories" href='/categories/android/'>android</a>
+    <a class="categories" href="/categories/android/">android</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/android源码/'>android源码</a>
+    <a class="tags" href="/tags/android源码/">android源码</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p><a href="http://blog.csdn.net/suofeng1234/article/details/51801008" target="_blank" rel="external">android预置apk，覆盖原生apk总结 - suofeng的专栏 - 博客频道 - CSDN.NET</a>  </p>
-<h1 id="如何将带源码的APK预置进系统？">如何将带源码的APK预置进系统？</h1><ul>
+      		<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/suofeng1234/article/details/51801008">android预置apk，覆盖原生apk总结 - suofeng的专栏 - 博客频道 - CSDN.NET</a>  </p>
+<h1 id="如何将带源码的APK预置进系统？"><a href="#如何将带源码的APK预置进系统？" class="headerlink" title="如何将带源码的APK预置进系统？"></a>如何将带源码的APK预置进系统？</h1><ul>
 <li>在 packages/apps 下面以需要预置的 APK的 名字创建一个新文件夹，以预制一个名为RecordingCar的APK 为例</li>
 <li>将 的Source code 拷贝到 RecordingCar文件夹下，删除 /bin 和 /gen 目录</li>
 <li><p>在 RecordingCar目录下创建一个名为 Android.mk的文件，内容如下：  </p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">OCAL_PATH</span>:= <span class="variable">$(call my-dir)</span>  </span><br><span class="line">include $(CLEAR_VARS)</span><br><span class="line"><span class="constant">LOCAL_MODULE_TAGS</span> := optional</span><br><span class="line"><span class="constant">LOCAL_SRC_FILES</span> := <span class="variable">$(call all-java-files-under, src)</span> \</span><br><span class="line"><span class="constant">LOCAL_PACKAGE_NAME</span> := Recorderingcar</span><br><span class="line"><span class="constant">LOCAL_JAVA_LIBRARIES</span> := telephony-common   //所需要的库文件，没有的话，可以不写</span><br><span class="line">include $(BUILD_PACKAGE)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">OCAL_PATH:= $(call my-dir)  </span><br><span class="line">include $(CLEAR_VARS)</span><br><span class="line">LOCAL_MODULE_TAGS := optional</span><br><span class="line">LOCAL_SRC_FILES := $(call all-java-files-under, src) \</span><br><span class="line">LOCAL_PACKAGE_NAME := Recorderingcar</span><br><span class="line">LOCAL_JAVA_LIBRARIES := telephony-common   //所需要的库文件，没有的话，可以不写</span><br><span class="line">include $(BUILD_PACKAGE)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>mtk打开文件 build/target/product/${Project}.mk （其中 ${Project} 表示工程名）<br>将 Recorderingcar添加到 PRODUCT_PACKAGES 里面。<br>如果是高通平台，可以在device，或者build的mkfile文件加入编译选项。<br>另外一种方法就是mk文件中将LOCAL_MODULE_TAGS 属性值设为:= eng user debug，这样不管编译什么版本，该apk都可以编译进去。</p>
 </li>
 <li>make　clean 然后重新编译整个工程。</li>
 </ul>
-<h1 id="如何将无源码的_APK_预置进系统？">如何将无源码的 APK 预置进系统？</h1><ul>
+<h1 id="如何将无源码的-APK-预置进系统？"><a href="#如何将无源码的-APK-预置进系统？" class="headerlink" title="如何将无源码的 APK 预置进系统？"></a>如何将无源码的 APK 预置进系统？</h1><ul>
 <li>在配置文件中，如device/qcom/project下加入3rdApp文件夹，在该文件夹下创建app,lib和Android.mk文件。</li>
 <li>将  Recorderingcar.apk 放到app目录 下面</li>
 <li>将库文件放到lib目录下</li>
-<li><p>在修改 Android.mk，文件内容如下：</p>
-  <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    <span class="constant">LOCAL_PATH </span><span class="symbol">:</span>= <span class="variable">$(</span>call my-dir)</span><br><span class="line">    <span class="keyword">include</span> <span class="variable">$(</span><span class="constant">CLEAR_VARS)</span></span><br><span class="line">    <span class="comment"># Module name should match apk name to be installed</span></span><br><span class="line">    <span class="constant">LOCAL_MODULE </span><span class="symbol">:</span>= <span class="constant">Test</span></span><br><span class="line">    <span class="constant">LOCAL_MODULE_TAGS </span><span class="symbol">:</span>= optional</span><br><span class="line">    <span class="constant">LOCAL_SRC_FILES </span><span class="symbol">:</span>= <span class="variable">$(</span><span class="constant">LOCAL_MODULE)</span>.apk</span><br><span class="line">    <span class="constant">LOCAL_MODULE_CLASS </span><span class="symbol">:</span>= <span class="constant">APPS</span></span><br><span class="line">    <span class="constant">LOCAL_MODULE_SUFFIX </span><span class="symbol">:</span>= <span class="variable">$(</span><span class="constant">COMMON_ANDROID_PACKAGE_SUFFIX)</span></span><br><span class="line">    <span class="constant">LOCAL_CERTIFICATE </span><span class="symbol">:</span>= <span class="constant">PRESIGNED</span></span><br><span class="line">    <span class="keyword">include</span> <span class="variable">$(</span><span class="constant">BUILD_PREBUILT)</span></span><br><span class="line">    ```  </span><br><span class="line">* 在mk文件中，将lib目录下的库文件copy到system/lib目录下  </span><br><span class="line">    其余的步骤和上面类似。  </span><br><span class="line">    如果预置的同时，要覆盖原生apk，则关于android.mk中的<span class="constant">LOCAL_OVERRIDES_PACKAGES需</span>要说明一下，此变量可以使其他的模块不加入编译，</span><br><span class="line">    如<span class="symbol">:</span> 需要预置第三方的<span class="constant">Launcher启</span>动器，则在预置apk的mk文件中加入：</span><br></pre></td></tr></table></figure>
-<p>  LOCAL_OVERRIDES_PACKAGES := Luancher2<br>  ```<br>  这样系统就不会将原生的Launcher编译进去，当然也可以在mk文件中编译开关中将相应Launcher注释掉。<br>  KK-android4.4版本上应用权限无法获取的问题是预置apk以后发现原因查了下,发现现在增加了一个priv-app的文件夹，对于android:protectionLevel=”signature|system”的权限，并且签名不一致的情况下，建议放在priv-app下面，否则PackageManager 会拒绝分配给你权限。（有兴趣的同学可以参见：PackageManagerService 的 grantSignaturePermission 方法）<br>  加入priv-app方法：在Android.mk中增加 LOCAL_PRIVILEGED_MODULE := true</p>
-</li>
+<li>在修改 Android.mk，文件内容如下：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    LOCAL_PATH := $(call my-dir)</span><br><span class="line">    include $(CLEAR_VARS)</span><br><span class="line">    # Module name should match apk name to be installed</span><br><span class="line">    LOCAL_MODULE := Test</span><br><span class="line">    LOCAL_MODULE_TAGS := optional</span><br><span class="line">    LOCAL_SRC_FILES := $(LOCAL_MODULE).apk</span><br><span class="line">    LOCAL_MODULE_CLASS := APPS</span><br><span class="line">    LOCAL_MODULE_SUFFIX := $(COMMON_ANDROID_PACKAGE_SUFFIX)</span><br><span class="line">    LOCAL_CERTIFICATE := PRESIGNED</span><br><span class="line">    include $(BUILD_PREBUILT)</span><br><span class="line">    ```  </span><br><span class="line">* 在mk文件中，将lib目录下的库文件copy到system/lib目录下  </span><br><span class="line">    其余的步骤和上面类似。  </span><br><span class="line">    如果预置的同时，要覆盖原生apk，则关于android.mk中的LOCAL_OVERRIDES_PACKAGES需要说明一下，此变量可以使其他的模块不加入编译，</span><br><span class="line">    如: 需要预置第三方的Launcher启动器，则在预置apk的mk文件中加入：  </span><br></pre></td></tr></table></figure>
+  LOCAL_OVERRIDES_PACKAGES := Luancher2<br>  <code>`</code><br>  这样系统就不会将原生的Launcher编译进去，当然也可以在mk文件中编译开关中将相应Launcher注释掉。<br>  KK-android4.4版本上应用权限无法获取的问题是预置apk以后发现原因查了下,发现现在增加了一个priv-app的文件夹，对于android:protectionLevel=”signature|system”的权限，并且签名不一致的情况下，建议放在priv-app下面，否则PackageManager 会拒绝分配给你权限。（有兴趣的同学可以参见：PackageManagerService 的 grantSignaturePermission 方法）<br>  加入priv-app方法：在Android.mk中增加 LOCAL_PRIVILEGED_MODULE := true</li>
 </ul>
 
             <div class="clearfix"></div>
@@ -327,32 +325,22 @@
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2017/03/16/linux学习——命令行颜色配置及环境变量配置/" style="float: left;">
-        ← linux学习——命令行颜色配置及环境变量配置
+    <a class="pull-left" href="/2017/12/19/Android%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%BC%80%E6%9C%BA%E8%BF%87%E7%A8%8B/" style="float: left">
+        ← Android源码学习——开机过程
     </a>
     
     
-    <a class="pull-right" href="/2017/02/19/学习设计模式/">
-        设计模式 →
+    <a class="pull-right" href="/2016/11/02/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%8811%EF%BC%89%E2%80%94%E2%80%94RecyclerView/">
+        Android学习笔记（11）——RecyclerView →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "安卓源码学习（2）——内置系统app"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -369,9 +357,9 @@
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -467,5 +455,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

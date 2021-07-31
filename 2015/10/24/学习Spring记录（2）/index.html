@@ -19,9 +19,9 @@
 <head>
   <title>学习Spring记录(2)——IoC | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
@@ -84,7 +84,7 @@ Resource resource=new ">
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -208,7 +208,7 @@ Resource resource=new ">
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -236,7 +236,7 @@ Resource resource=new ">
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -287,149 +287,139 @@ Resource resource=new ">
 	
     
     | 分类：
-    <a class="categories" href='/categories/Spring/'>Spring</a>
+    <a class="categories" href="/categories/Spring/">Spring</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/Spring/'>Spring</a>
+    <a class="tags" href="/tags/Spring/">Spring</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="Spring使用BeanFactory和ApplicationContext两个接口来定义IoC">Spring使用BeanFactory和ApplicationContext两个接口来定义IoC</h2><h3 id="BeanFactory">BeanFactory</h3><p>通过从xml配置文件或属性文件（.properties）中读取javaBean的定义，来实现JavaBean的创建、配置和管理。<br>例如  </p>
-<pre><code>Resource resource=<span class="keyword">new</span> ClassPathResource(<span class="string">"applicationContext.xml"</span>);  
-XmlBeanFactory <span class="literal">factory</span>=<span class="keyword">new</span> XmlBeanFactory(resource);  
-LogFile log= (LogFile) <span class="literal">factory</span>.getBean(<span class="string">"log"</span>); 
-</code></pre><h3 id="ApplicationContext">ApplicationContext</h3><pre><code><span class="constant">Application</span>Context <span class="literal">context</span>=new <span class="constant">File</span>SystemXmlApplicationContext(<span class="string">"src/applicationContext.xml"</span>);
-<span class="constant">Target</span> <span class="literal">target</span>=(<span class="constant">Target</span>) <span class="literal">context</span>.getBean(<span class="string">"proxyFactoryBean"</span>);
-</code></pre><h2 id="xml文件的创建">xml文件的创建</h2><p>本例中演示了xml中对JavaBean的初始化配置方法</p>
-<pre><code><span class="pi">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="tag">&lt;<span class="title">beans</span>
-<span class="attribute">xmlns</span>=<span class="value">"http://www.springframework.org/schema/beans"</span>
-<span class="attribute">xmlns:xsi</span>=<span class="value">"http://www.w3.org/2001/XMLSchema-instance"</span>
-<span class="attribute">xmlns:p</span>=<span class="value">"http://www.springframework.org/schema/p"</span>
-<span class="attribute">xsi:schemaLocation</span>=<span class="value">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd"</span>&gt;</span>
+      		<h2 id="Spring使用BeanFactory和ApplicationContext两个接口来定义IoC"><a href="#Spring使用BeanFactory和ApplicationContext两个接口来定义IoC" class="headerlink" title="Spring使用BeanFactory和ApplicationContext两个接口来定义IoC"></a>Spring使用BeanFactory和ApplicationContext两个接口来定义IoC</h2><h3 id="BeanFactory"><a href="#BeanFactory" class="headerlink" title="BeanFactory"></a>BeanFactory</h3><p>通过从xml配置文件或属性文件（.properties）中读取javaBean的定义，来实现JavaBean的创建、配置和管理。<br>例如  </p>
+<pre><code>Resource resource=new ClassPathResource(&quot;applicationContext.xml&quot;);  
+XmlBeanFactory factory=new XmlBeanFactory(resource);  
+LogFile log= (LogFile) factory.getBean(&quot;log&quot;); 
+</code></pre><h3 id="ApplicationContext"><a href="#ApplicationContext" class="headerlink" title="ApplicationContext"></a>ApplicationContext</h3><pre><code>ApplicationContext context=new FileSystemXmlApplicationContext(&quot;src/applicationContext.xml&quot;);
+Target target=(Target) context.getBean(&quot;proxyFactoryBean&quot;);
+</code></pre><h2 id="xml文件的创建"><a href="#xml文件的创建" class="headerlink" title="xml文件的创建"></a>xml文件的创建</h2><p>本例中演示了xml中对JavaBean的初始化配置方法</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans
+xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+xmlns:p=&quot;http://www.springframework.org/schema/p&quot;
+xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd&quot;&gt;
 
-    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"CapGun"</span> <span class="attribute">class</span>=<span class="value">"jxust.commen.entity.CapGun"</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">constructor-arg</span> <span class="attribute">index</span>=<span class="value">"0"</span> <span class="attribute">type</span>=<span class="value">"String"</span>&gt;</span><span class="comment">&lt;!-- 对构造方法赋值如有多个参数则写多个constructor-arg --&gt;</span>
-            <span class="tag">&lt;<span class="title">value</span>&gt;</span>等待出厂检验<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
-        <span class="tag">&lt;/<span class="title">constructor-arg</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"RayBaby"</span> <span class="attribute">class</span>=<span class="value">"jxust.commen.entity.RayBaby"</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"info"</span>&gt;</span><span class="comment">&lt;!-- 对参数复制getset --&gt;</span>
-            <span class="tag">&lt;<span class="title">value</span>&gt;</span>等待出厂检验<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
-        <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">autowire</span>=<span class="value">"byType"</span> <span class="attribute">id</span>=<span class="value">"Factory"</span> <span class="attribute">class</span>=<span class="value">"jxust.commen.entity.Factory"</span>&gt;</span><span class="comment">&lt;!-- autowire自动装配有5种类型（详情百度）使用自动装配factory类中的CapGun就不用设置了 --&gt;</span>
-        <span class="comment">&lt;!-- &lt;property name="capGun" ref="CapGun"&gt;
-            &lt;ref bean="capGun"/&gt;ref引用已定义的javaBean，有两种方式，一种直接写在property中，一种写在property标签里面 
-        &lt;/property&gt; --&gt;</span>
-        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>&gt;</span>
-            <span class="tag">&lt;<span class="title">value</span>&gt;</span>名字<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
-        <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
+    &lt;bean id=&quot;CapGun&quot; class=&quot;jxust.commen.entity.CapGun&quot;&gt;
+        &lt;constructor-arg index=&quot;0&quot; type=&quot;String&quot;&gt;&lt;!-- 对构造方法赋值如有多个参数则写多个constructor-arg --&gt;
+            &lt;value&gt;等待出厂检验&lt;/value&gt;
+        &lt;/constructor-arg&gt;
+    &lt;/bean&gt;
+    &lt;bean id=&quot;RayBaby&quot; class=&quot;jxust.commen.entity.RayBaby&quot;&gt;
+        &lt;property name=&quot;info&quot;&gt;&lt;!-- 对参数复制getset --&gt;
+            &lt;value&gt;等待出厂检验&lt;/value&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+    &lt;bean autowire=&quot;byType&quot; id=&quot;Factory&quot; class=&quot;jxust.commen.entity.Factory&quot;&gt;&lt;!-- autowire自动装配有5种类型（详情百度）使用自动装配factory类中的CapGun就不用设置了 --&gt;
+        &lt;!-- &lt;property name=&quot;capGun&quot; ref=&quot;CapGun&quot;&gt;
+            &lt;ref bean=&quot;capGun&quot;/&gt;ref引用已定义的javaBean，有两种方式，一种直接写在property中，一种写在property标签里面 
+        &lt;/property&gt; --&gt;
+        &lt;property name=&quot;name&quot;&gt;
+            &lt;value&gt;名字&lt;/value&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
 
-    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"log"</span> <span class="attribute">class</span>=<span class="value">"jxust.commen.entity.LogFile"</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"workList"</span>&gt;</span>
-            <span class="tag">&lt;<span class="title">list</span>&gt;</span>
-                <span class="tag">&lt;<span class="title">ref</span> <span class="attribute">bean</span>=<span class="value">"worker1"</span> /&gt;</span>
-                <span class="tag">&lt;<span class="title">ref</span> <span class="attribute">bean</span>=<span class="value">"worker2"</span> /&gt;</span>
-                <span class="tag">&lt;<span class="title">ref</span> <span class="attribute">bean</span>=<span class="value">"worker3"</span> /&gt;</span>
-            <span class="tag">&lt;/<span class="title">list</span>&gt;</span>
-        <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
+    &lt;bean id=&quot;log&quot; class=&quot;jxust.commen.entity.LogFile&quot;&gt;
+        &lt;property name=&quot;workList&quot;&gt;
+            &lt;list&gt;
+                &lt;ref bean=&quot;worker1&quot; /&gt;
+                &lt;ref bean=&quot;worker2&quot; /&gt;
+                &lt;ref bean=&quot;worker3&quot; /&gt;
+            &lt;/list&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
 
-    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"worker1"</span> <span class="attribute">class</span>=<span class="value">"jxust.commen.entity.TempWorker"</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>&gt;</span>
-            <span class="tag">&lt;<span class="title">value</span>&gt;</span>梅长苏<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
-        <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"workType"</span>&gt;</span>
-            <span class="tag">&lt;<span class="title">value</span>&gt;</span>正式员工<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"pay"</span>&gt;</span>
-            <span class="tag">&lt;<span class="title">value</span>&gt;</span>600<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
-        <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"worker2"</span> <span class="attribute">class</span>=<span class="value">"jxust.commen.entity.TempWorker"</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>&gt;</span>
-            <span class="tag">&lt;<span class="title">value</span>&gt;</span>飞流<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
-        <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"worker3"</span> <span class="attribute">class</span>=<span class="value">"jxust.commen.entity.TempWorker"</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>&gt;</span>
-            <span class="tag">&lt;<span class="title">value</span>&gt;</span>蔺少阁主<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
-        <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"pay"</span>&gt;</span>
-            <span class="tag">&lt;<span class="title">value</span>&gt;</span>2700<span class="tag">&lt;/<span class="title">value</span>&gt;</span>
-        <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">beans</span>&gt;</span>
-</code></pre><h2 id="定制属性编辑器">定制属性编辑器</h2><p>首先创建自己需要的编辑器，如对Date类型进行赋值  </p>
-<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">MyDateEditor</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">PropertyEditorSupport</span>{</span>
-    <span class="comment">/**
+    &lt;bean id=&quot;worker1&quot; class=&quot;jxust.commen.entity.TempWorker&quot;&gt;
+        &lt;property name=&quot;name&quot;&gt;
+            &lt;value&gt;梅长苏&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property name=&quot;workType&quot;&gt;
+            &lt;value&gt;正式员工&lt;/value&gt;
+    &lt;/property&gt;
+        &lt;property name=&quot;pay&quot;&gt;
+            &lt;value&gt;600&lt;/value&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+    &lt;bean id=&quot;worker2&quot; class=&quot;jxust.commen.entity.TempWorker&quot;&gt;
+        &lt;property name=&quot;name&quot;&gt;
+            &lt;value&gt;飞流&lt;/value&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+    &lt;bean id=&quot;worker3&quot; class=&quot;jxust.commen.entity.TempWorker&quot;&gt;
+        &lt;property name=&quot;name&quot;&gt;
+            &lt;value&gt;蔺少阁主&lt;/value&gt;
+        &lt;/property&gt;
+        &lt;property name=&quot;pay&quot;&gt;
+            &lt;value&gt;2700&lt;/value&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre><h2 id="定制属性编辑器"><a href="#定制属性编辑器" class="headerlink" title="定制属性编辑器"></a>定制属性编辑器</h2><p>首先创建自己需要的编辑器，如对Date类型进行赋值  </p>
+<pre><code>public class MyDateEditor extends PropertyEditorSupport&#123;
+    /**
      * 用于测试jxust.main.userinfo中的birthday的输入
      * 重写PropertyEditorSupport中的setAsText方法
-     */</span>
-    public void setAsText(<span class="type">String</span> text) <span class="keyword">throws</span> <span class="type">IllegalArgumentException</span><span class="comment">//参数不正确</span>
-    {
-        <span class="type">SimpleDateFormat</span> sdf = <span class="keyword">new</span> <span class="type">SimpleDateFormat</span>(<span class="string">"yyyy-MM-dd"</span>);
-        <span class="type">Date</span> date=<span class="literal">null</span>;
-        <span class="keyword">try</span> {
+     */
+    public void setAsText(String text) throws IllegalArgumentException//参数不正确
+    &#123;
+        SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
+        Date date=null;
+        try &#123;
             date = sdf.parse(text);
-        } <span class="keyword">catch</span> (<span class="type">ParseException</span> e) {
+        &#125; catch (ParseException e) &#123;
             e.printStackTrace();
-        }
+        &#125;
         setValue(date);
-    }
-}
+    &#125;
+&#125;
 </code></pre><p>在applicationContext.xml中注册编辑器  </p>
-<pre><code><span class="comment">&lt;!-- 配置属性编辑器 --&gt;</span>
-<span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"customEditorConfigurer"</span> <span class="attribute">class</span>=<span class="value">"org.springframework.beans.factory.config.CustomEditorConfigurer"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"customEditors"</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">map</span>&gt;</span>
-            <span class="tag">&lt;<span class="title">entry</span> <span class="attribute">key</span>=<span class="value">"java.util.Date"</span>&gt;</span>
-                <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"myDateEditor"</span> <span class="attribute">class</span>=<span class="value">"jxust.service.MyDateEditor"</span>&gt;</span><span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
-            <span class="tag">&lt;/<span class="title">entry</span>&gt;</span>
-        <span class="tag">&lt;/<span class="title">map</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
+<pre><code>&lt;!-- 配置属性编辑器 --&gt;
+&lt;bean id=&quot;customEditorConfigurer&quot; class=&quot;org.springframework.beans.factory.config.CustomEditorConfigurer&quot;&gt;
+    &lt;property name=&quot;customEditors&quot;&gt;
+        &lt;map&gt;
+            &lt;entry key=&quot;java.util.Date&quot;&gt;
+                &lt;bean id=&quot;myDateEditor&quot; class=&quot;jxust.service.MyDateEditor&quot;&gt;&lt;/bean&gt;
+            &lt;/entry&gt;
+        &lt;/map&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
 </code></pre>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2015/10/24/学习Spring记录（3）/" style="float: left;">
+    <a class="pull-left" href="/2015/10/24/%E5%AD%A6%E4%B9%A0Spring%E8%AE%B0%E5%BD%95%EF%BC%883%EF%BC%89/" style="float: left">
         ← 学习Spring记录(3)——国际化、日志
     </a>
     
     
-    <a class="pull-right" href="/2015/10/24/学习Spring记录（1）/">
+    <a class="pull-right" href="/2015/10/24/%E5%AD%A6%E4%B9%A0Spring%E8%AE%B0%E5%BD%95%EF%BC%881%EF%BC%89/">
         学习Spring记录(1) →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "学习Spring记录(2)——IoC"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -446,9 +436,9 @@ LogFile log= (LogFile) <span class="literal">factory</span>.getBean(<span class=
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -544,5 +534,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

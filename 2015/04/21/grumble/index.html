@@ -19,16 +19,16 @@
 <head>
   <title>使用groumble.js给页面添加泡泡提示框 | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
     
-    <meta name="description" content="使用的方式首先是需要下载到groumble的css和js文件（可以访问官方github）在页面中正确链接css和js文件绑定页面的DOM元素或事件调用js例如在密码是输入框选中是弹出提示框  
+    <meta name="description" content="##使用的方式首先是需要下载到groumble的css和js文件（可以访问官方github）在页面中正确链接css和js文件绑定页面的DOM元素或事件调用js例如在密码是输入框选中是弹出提示框  
 &amp;lt;script&amp;gt;  
-    $(&quot;#userPassword&quot;).focus(functio">
+    $(&amp;quot;#userPassword&amp;quot;).f">
 	
 	<meta name="Keywords" content="极光轨迹">
 	
@@ -85,7 +85,7 @@
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -209,7 +209,7 @@
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -237,7 +237,7 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -288,43 +288,45 @@
 	
     
     | 分类：
-    <a class="categories" href='/categories/web/'>web</a>
+    <a class="categories" href="/categories/web/">web</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/bootstrap/'>bootstrap</a>
+    <a class="tags" href="/tags/bootstrap/">bootstrap</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
       		<p><img src="/photos/grumble-js.png" alt="example">  </p>
-<h2 id="使用的方式">使用的方式</h2><p>首先是需要下载到groumble的css和js文件（可以访问<a href="https://github.com/jamescryer/grumble.js" target="_blank" rel="external">官方github</a>）<br>在页面中正确链接css和js文件<br>绑定页面的DOM元素或事件调用js<br>例如在密码是输入框选中是弹出提示框  </p>
-<pre><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">  
-    $(<span class="string">"#userPassword"</span>).focus(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{  
-        $(<span class="keyword">this</span>).grumble(  
-            {  
-                text: <span class="string">'复杂度高的密码更加安全哟！'</span>,<span class="comment">//泡泡中的文本</span>
-                angle: <span class="number">85</span>,<span class="comment">//上偏右角度值</span>
-                type: <span class="string">'alt-'</span>, <span class="comment">//泡泡的外形类型</span>
-                distance: <span class="number">50</span>,<span class="comment">//离dom中心的距离</span>
-                showAfter: <span class="number">0</span>,<span class="comment">//触发后-ms后出现</span>
-                hideAfter: <span class="number">2000</span>,<span class="comment">//出现后-ms后消失，不消失为false</span>
-                hasHideButton: <span class="literal">false</span>,<span class="comment">//有无消失按钮</span>
-                buttonHideText: <span class="string">'Pop!'</span><span class="comment">//点击后消失</span>
-            }
+<p>##使用的方式<br>首先是需要下载到groumble的css和js文件（可以访问<a target="_blank" rel="noopener" href="https://github.com/jamescryer/grumble.js">官方github</a>）<br>在页面中正确链接css和js文件<br>绑定页面的DOM元素或事件调用js<br>例如在密码是输入框选中是弹出提示框  </p>
+<pre><code>&lt;script&gt;  
+    $(&quot;#userPassword&quot;).focus(function()&#123;  
+        $(this).grumble(  
+            &#123;  
+                text: &apos;复杂度高的密码更加安全哟！&apos;,//泡泡中的文本
+                angle: 85,//上偏右角度值
+                type: &apos;alt-&apos;, //泡泡的外形类型
+                distance: 50,//离dom中心的距离
+                showAfter: 0,//触发后-ms后出现
+                hideAfter: 2000,//出现后-ms后消失，不消失为false
+                hasHideButton: false,//有无消失按钮
+                buttonHideText: &apos;Pop!&apos;//点击后消失
+            &#125;
         );
-    });
-</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-</code></pre><h2 id="配合jquery可以使web页面更加友好">配合jquery可以使web页面更加友好</h2><blockquote>
-<p><a href="http://www.w3cschool.cc/jquery/jquery-events.html" target="_blank" rel="external">jquery事件</a></p>
+    &#125;);
+&lt;/script&gt;
+</code></pre><p>##配合jquery可以使web页面更加友好  </p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://www.w3cschool.cc/jquery/jquery-events.html">jquery事件</a></p>
 </blockquote>
-<h2 id="获取更多">获取更多</h2><blockquote>
-<p><a href="http://www.bootcss.com/p/grumblejs/" target="_blank" rel="external">官方网站</a> </p>
+<p>##获取更多</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://www.bootcss.com/p/grumblejs/">官方网站</a> </p>
 </blockquote>
 
             <div class="clearfix"></div>
@@ -332,32 +334,22 @@
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2015/05/05/bootstrap_treeView/" style="float: left;">
+    <a class="pull-left" href="/2015/05/05/bootstrap_treeView/" style="float: left">
         ← 给bootstrap的界面中添加同风格树状菜单
     </a>
     
     
-    <a class="pull-right" href="/2015/03/23/第一个博客/">
+    <a class="pull-right" href="/2015/03/23/%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/">
         博客搭建完成 →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "使用groumble.js给页面添加泡泡提示框"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -374,9 +366,9 @@
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -472,5 +464,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

@@ -19,16 +19,16 @@
 <head>
   <title>学习Spring记录(3)——国际化、日志 | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
     
     <meta name="description" content="Spring国际化本例将输出messages.properties中的name属性  
 static Locale locale=Locale.getDefault();
-ApplicationContext context=new ClassPathXmlApplicationContext(&quot;a">
+ApplicationContext context=new ClassPathXmlApplicationContext(&amp;q">
 	
 	<meta name="Keywords" content="极光轨迹">
 	
@@ -85,7 +85,7 @@ ApplicationContext context=new ClassPathXmlApplicationContext(&quot;a">
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -209,7 +209,7 @@ ApplicationContext context=new ClassPathXmlApplicationContext(&quot;a">
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -237,7 +237,7 @@ ApplicationContext context=new ClassPathXmlApplicationContext(&quot;a">
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -288,62 +288,52 @@ ApplicationContext context=new ClassPathXmlApplicationContext(&quot;a">
 	
     
     | 分类：
-    <a class="categories" href='/categories/Spring/'>Spring</a>
+    <a class="categories" href="/categories/Spring/">Spring</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/Spring/'>Spring</a>
+    <a class="tags" href="/tags/Spring/">Spring</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="Spring国际化">Spring国际化</h2><p>本例将输出messages.properties中的name属性  </p>
-<pre><code>static <span class="built_in">Locale</span> <span class="built_in">locale</span><span class="subst">=</span><span class="built_in">Locale</span><span class="built_in">.</span>getDefault();
-ApplicationContext context<span class="subst">=</span><span class="literal">new</span> ClassPathXmlApplicationContext(<span class="string">"applicationContext.xml"</span>);
-System<span class="built_in">.</span>out<span class="built_in">.</span>println(context<span class="built_in">.</span>getMessage(<span class="string">"name"</span>, <span class="built_in">null</span>, <span class="built_in">locale</span>));
+      		<h2 id="Spring国际化"><a href="#Spring国际化" class="headerlink" title="Spring国际化"></a>Spring国际化</h2><p>本例将输出messages.properties中的name属性  </p>
+<pre><code>static Locale locale=Locale.getDefault();
+ApplicationContext context=new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
+System.out.println(context.getMessage(&quot;name&quot;, null, locale));
 </code></pre><p>如果locale=Locale.US;将会输出messages_en_US.properties中的name属性</p>
-<h2 id="Spring打印日志信息">Spring打印日志信息</h2><p>在applicationContext.xml中配置<br>如果全部JavaBean都是通过标签的方式注册则不会打印出来，但是如果有一个JavaBean在applicationContext.xml中注册则所有JavaBean的名字都会在创建时被打印到控制台   </p>
-<pre><code><span class="comment">&lt;!-- 打印日志，打印出所有spring创建的javabean --&gt;</span>
-<span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"messageSource"</span> <span class="attribute">class</span>=<span class="value">"org.springframework.context.support.ResourceBundleMessageSource"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"basename"</span> <span class="attribute">value</span>=<span class="value">"messages"</span>&gt;</span><span class="tag">&lt;/<span class="title">property</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
+<h2 id="Spring打印日志信息"><a href="#Spring打印日志信息" class="headerlink" title="Spring打印日志信息"></a>Spring打印日志信息</h2><p>在applicationContext.xml中配置<br>如果全部JavaBean都是通过标签的方式注册则不会打印出来，但是如果有一个JavaBean在applicationContext.xml中注册则所有JavaBean的名字都会在创建时被打印到控制台   </p>
+<pre><code>&lt;!-- 打印日志，打印出所有spring创建的javabean --&gt;
+&lt;bean id=&quot;messageSource&quot; class=&quot;org.springframework.context.support.ResourceBundleMessageSource&quot;&gt;
+    &lt;property name=&quot;basename&quot; value=&quot;messages&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
 </code></pre>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2015/10/24/学习Spring记录（4）/" style="float: left;">
+    <a class="pull-left" href="/2015/10/24/%E5%AD%A6%E4%B9%A0Spring%E8%AE%B0%E5%BD%95%EF%BC%884%EF%BC%89/" style="float: left">
         ← 学习Spring记录(4)——aop
     </a>
     
     
-    <a class="pull-right" href="/2015/10/24/学习Spring记录（2）/">
+    <a class="pull-right" href="/2015/10/24/%E5%AD%A6%E4%B9%A0Spring%E8%AE%B0%E5%BD%95%EF%BC%882%EF%BC%89/">
         学习Spring记录(2)——IoC →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "学习Spring记录(3)——国际化、日志"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -360,9 +350,9 @@ System<span class="built_in">.</span>out<span class="built_in">.</span>println(c
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -458,5 +448,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

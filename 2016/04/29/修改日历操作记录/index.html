@@ -19,9 +19,9 @@
 <head>
   <title>android源码修改（1） ——日历中显示农历、日历图标随时间改变 | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
@@ -84,7 +84,7 @@
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -208,7 +208,7 @@
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -236,7 +236,7 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -287,964 +287,964 @@
 	
     
     | 分类：
-    <a class="categories" href='/categories/android源码/'>android源码</a>
+    <a class="categories" href="/categories/android源码/">android源码</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/android源码/'>android源码</a>
+    <a class="tags" href="/tags/android源码/">android源码</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h1 id="显示农历">显示农历</h1><h2 id="写出公历与农历的转换函数">写出公历与农历的转换函数</h2><p>参考文章：<a href="http://blog.csdn.net/liangguo03/article/details/7097388" target="_blank" rel="external">日历农历算法</a><br>算法由参考文章中获得，不过我有点强迫症看着算法是对的,美中不足是输出格式不是很好，必须修改修改^_^  </p>
-<pre><code><span class="keyword">package</span> main;
-<span class="keyword">import</span> java.util.Calendar;
-<span class="comment">/**
+      		<h1 id="显示农历"><a href="#显示农历" class="headerlink" title="显示农历"></a>显示农历</h1><h2 id="写出公历与农历的转换函数"><a href="#写出公历与农历的转换函数" class="headerlink" title="写出公历与农历的转换函数"></a>写出公历与农历的转换函数</h2><p>参考文章：<a target="_blank" rel="noopener" href="http://blog.csdn.net/liangguo03/article/details/7097388">日历农历算法</a><br>算法由参考文章中获得，不过我有点强迫症看着算法是对的,美中不足是输出格式不是很好，必须修改修改^_^  </p>
+<pre><code>package main;
+import java.util.Calendar;
+/**
  * ChineseCalendarGB.java Copyright (c) 1997-2002 by Dr. Herong Yang 中国农历算法 -
  * 实用于公历 1901 年至 2100 年之间的 200 年
- */</span>
-<span class="keyword">public</span> class CalendarUtil {
-    <span class="keyword">private</span> <span class="built_in">int</span> gregorianYear;
-    <span class="keyword">private</span> <span class="built_in">int</span> gregorianMonth;
-    <span class="keyword">private</span> <span class="built_in">int</span> gregorianDate;
-    <span class="keyword">private</span> <span class="built_in">boolean</span> isGregorianLeap;
-    <span class="keyword">private</span> <span class="built_in">int</span> dayOfYear;
-    <span class="keyword">private</span> <span class="built_in">int</span> dayOfWeek; <span class="comment">// 周日一星期的第一天</span>
-    <span class="keyword">private</span> <span class="built_in">int</span> chineseYear;
-    <span class="keyword">private</span> <span class="built_in">int</span> chineseMonth; <span class="comment">// 负数表示闰月</span>
-    <span class="keyword">private</span> <span class="built_in">int</span> chineseDate;
-    <span class="keyword">private</span> <span class="built_in">int</span> sectionalTerm;<span class="comment">// 本月节气的日期</span>
-    <span class="keyword">private</span> <span class="built_in">int</span> principleTerm;<span class="comment">// 本月中气的日期</span>
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">char</span>[] daysInGregorianMonth = { <span class="number">31</span>, <span class="number">28</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span> };
-    <span class="comment">// 天干</span>
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">String</span>[] stemNames = { <span class="string">"甲"</span>, <span class="string">"乙"</span>, <span class="string">"丙"</span>, <span class="string">"丁"</span>, <span class="string">"戊"</span>, <span class="string">"己"</span>, <span class="string">"庚"</span>, <span class="string">"辛"</span>, <span class="string">"壬"</span>, <span class="string">"癸"</span> };
-    <span class="comment">// 地支</span>
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">String</span>[] branchNames = { <span class="string">"子"</span>, <span class="string">"丑"</span>, <span class="string">"寅"</span>, <span class="string">"卯"</span>, <span class="string">"辰"</span>, <span class="string">"巳"</span>, <span class="string">"午"</span>, <span class="string">"未"</span>, <span class="string">"申"</span>, <span class="string">"酉"</span>, <span class="string">"戌"</span>, <span class="string">"亥"</span> };
+ */
+public class CalendarUtil &#123;
+    private int gregorianYear;
+    private int gregorianMonth;
+    private int gregorianDate;
+    private boolean isGregorianLeap;
+    private int dayOfYear;
+    private int dayOfWeek; // 周日一星期的第一天
+    private int chineseYear;
+    private int chineseMonth; // 负数表示闰月
+    private int chineseDate;
+    private int sectionalTerm;// 本月节气的日期
+    private int principleTerm;// 本月中气的日期
+    private static char[] daysInGregorianMonth = &#123; 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 &#125;;
+    // 天干
+    private static String[] stemNames = &#123; &quot;甲&quot;, &quot;乙&quot;, &quot;丙&quot;, &quot;丁&quot;, &quot;戊&quot;, &quot;己&quot;, &quot;庚&quot;, &quot;辛&quot;, &quot;壬&quot;, &quot;癸&quot; &#125;;
+    // 地支
+    private static String[] branchNames = &#123; &quot;子&quot;, &quot;丑&quot;, &quot;寅&quot;, &quot;卯&quot;, &quot;辰&quot;, &quot;巳&quot;, &quot;午&quot;, &quot;未&quot;, &quot;申&quot;, &quot;酉&quot;, &quot;戌&quot;, &quot;亥&quot; &#125;;
 
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">String</span>[] animalNames = { <span class="string">"鼠"</span>, <span class="string">"牛"</span>, <span class="string">"虎"</span>, <span class="string">"兔"</span>, <span class="string">"龙"</span>, <span class="string">"蛇"</span>, <span class="string">"马"</span>, <span class="string">"羊"</span>, <span class="string">"猴"</span>, <span class="string">"鸡"</span>, <span class="string">"狗"</span>, <span class="string">"猪"</span> };
+    private static String[] animalNames = &#123; &quot;鼠&quot;, &quot;牛&quot;, &quot;虎&quot;, &quot;兔&quot;, &quot;龙&quot;, &quot;蛇&quot;, &quot;马&quot;, &quot;羊&quot;, &quot;猴&quot;, &quot;鸡&quot;, &quot;狗&quot;, &quot;猪&quot; &#125;;
 
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span>[] daysOfWeek = { <span class="string">"星期日"</span>, <span class="string">"星期一"</span>, <span class="string">"星期二"</span>, <span class="string">"星期三"</span>, <span class="string">"星期四"</span>, <span class="string">"星期五"</span>, <span class="string">"星期六"</span> };
+    public static String[] daysOfWeek = &#123; &quot;星期日&quot;, &quot;星期一&quot;, &quot;星期二&quot;, &quot;星期三&quot;, &quot;星期四&quot;, &quot;星期五&quot;, &quot;星期六&quot; &#125;;
 
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">String</span>[] monthOfAlmanac = { <span class="string">"正月"</span>, <span class="string">"二月"</span>, <span class="string">"三月"</span>, <span class="string">"四月"</span>, <span class="string">"五月"</span>, <span class="string">"六月"</span>, <span class="string">"七月"</span>, <span class="string">"八月"</span>, <span class="string">"九月"</span>, <span class="string">"十月"</span>, <span class="string">"冬月"</span>, <span class="string">"腊月"</span> };
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">String</span>[] monthNames = { <span class="string">"一"</span>, <span class="string">"二"</span>, <span class="string">"三"</span>, <span class="string">"四"</span>, <span class="string">"五"</span>, <span class="string">"六"</span>, <span class="string">"七"</span>, <span class="string">"八"</span>, <span class="string">"九"</span>, <span class="string">"十"</span>, <span class="string">"十一"</span>, <span class="string">"十二"</span> };
+    private static String[] monthOfAlmanac = &#123; &quot;正月&quot;, &quot;二月&quot;, &quot;三月&quot;, &quot;四月&quot;, &quot;五月&quot;, &quot;六月&quot;, &quot;七月&quot;, &quot;八月&quot;, &quot;九月&quot;, &quot;十月&quot;, &quot;冬月&quot;, &quot;腊月&quot; &#125;;
+    private static String[] monthNames = &#123; &quot;一&quot;, &quot;二&quot;, &quot;三&quot;, &quot;四&quot;, &quot;五&quot;, &quot;六&quot;, &quot;七&quot;, &quot;八&quot;, &quot;九&quot;, &quot;十&quot;, &quot;十一&quot;, &quot;十二&quot; &#125;;
 
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">String</span>[] daysOfAlmanac = { <span class="string">"初一"</span>, <span class="string">"初二"</span>, <span class="string">"初三"</span>, <span class="string">"初四"</span>, <span class="string">"初五"</span>, <span class="string">"初六"</span>, <span class="string">"初七"</span>, <span class="string">"初八"</span>, <span class="string">"初九"</span>, <span class="string">"初十"</span>, <span class="string">"十一"</span>, <span class="string">"十二"</span>,
-            <span class="string">"十三"</span>, <span class="string">"十四"</span>, <span class="string">"十五"</span>, <span class="string">"十六"</span>, <span class="string">"十七"</span>, <span class="string">"十八"</span>, <span class="string">"十九"</span>, <span class="string">"二十"</span>, <span class="string">"廿一"</span>, <span class="string">"廿二"</span>, <span class="string">"廿三"</span>, <span class="string">"廿四"</span>, <span class="string">"廿五"</span>, <span class="string">"廿六"</span>, <span class="string">"廿七"</span>, <span class="string">"廿八"</span>, <span class="string">"廿九"</span>,
-            <span class="string">"三十"</span> }; <span class="comment">// 农历的天数</span>
+    private static String[] daysOfAlmanac = &#123; &quot;初一&quot;, &quot;初二&quot;, &quot;初三&quot;, &quot;初四&quot;, &quot;初五&quot;, &quot;初六&quot;, &quot;初七&quot;, &quot;初八&quot;, &quot;初九&quot;, &quot;初十&quot;, &quot;十一&quot;, &quot;十二&quot;,
+            &quot;十三&quot;, &quot;十四&quot;, &quot;十五&quot;, &quot;十六&quot;, &quot;十七&quot;, &quot;十八&quot;, &quot;十九&quot;, &quot;二十&quot;, &quot;廿一&quot;, &quot;廿二&quot;, &quot;廿三&quot;, &quot;廿四&quot;, &quot;廿五&quot;, &quot;廿六&quot;, &quot;廿七&quot;, &quot;廿八&quot;, &quot;廿九&quot;,
+            &quot;三十&quot; &#125;; // 农历的天数
 
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">String</span>[] principleTermNames = { <span class="string">"雨水"</span>, <span class="string">"春分"</span>, <span class="string">"谷雨"</span>, <span class="string">"夏满"</span>, <span class="string">"夏至"</span>, <span class="string">"大暑"</span>, <span class="string">"处暑"</span>, <span class="string">"秋分"</span>, <span class="string">"霜降"</span>, <span class="string">"小雪"</span>, <span class="string">"冬至"</span>,
-            <span class="string">"大寒"</span> };
+    private static String[] principleTermNames = &#123; &quot;雨水&quot;, &quot;春分&quot;, &quot;谷雨&quot;, &quot;夏满&quot;, &quot;夏至&quot;, &quot;大暑&quot;, &quot;处暑&quot;, &quot;秋分&quot;, &quot;霜降&quot;, &quot;小雪&quot;, &quot;冬至&quot;,
+            &quot;大寒&quot; &#125;;
 
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">String</span>[] sectionalTermNames = { <span class="string">"立春"</span>, <span class="string">"惊蛰"</span>, <span class="string">"清明"</span>, <span class="string">"立夏"</span>, <span class="string">"芒种"</span>, <span class="string">"小暑"</span>, <span class="string">"立秋"</span>, <span class="string">"白露"</span>, <span class="string">"寒露"</span>, <span class="string">"立冬"</span>, <span class="string">"大雪"</span>,
-            <span class="string">"小寒"</span> };
+    private static String[] sectionalTermNames = &#123; &quot;立春&quot;, &quot;惊蛰&quot;, &quot;清明&quot;, &quot;立夏&quot;, &quot;芒种&quot;, &quot;小暑&quot;, &quot;立秋&quot;, &quot;白露&quot;, &quot;寒露&quot;, &quot;立冬&quot;, &quot;大雪&quot;,
+            &quot;小寒&quot; &#125;;
 
-    <span class="comment">// 农历月份大小压缩表，两个字节表示一年。两个字节共十六个二进制位数，</span>
-    <span class="comment">// 前四个位数表示闰月月份，后十二个位数表示十二个农历月份的大小。</span>
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">char</span>[] chineseMonths = { <span class="number">0x00</span>, <span class="number">0x04</span>, <span class="number">0xad</span>, <span class="number">0x08</span>, <span class="number">0x5a</span>, <span class="number">0x01</span>, <span class="number">0xd5</span>, <span class="number">0x54</span>, <span class="number">0xb4</span>, <span class="number">0x09</span>, <span class="number">0x64</span>, <span class="number">0x05</span>,
-            <span class="number">0x59</span>, <span class="number">0x45</span>, <span class="number">0x95</span>, <span class="number">0x0a</span>, <span class="number">0xa6</span>, <span class="number">0x04</span>, <span class="number">0x55</span>, <span class="number">0x24</span>, <span class="number">0xad</span>, <span class="number">0x08</span>, <span class="number">0x5a</span>, <span class="number">0x62</span>, <span class="number">0xda</span>, <span class="number">0x04</span>, <span class="number">0xb4</span>, <span class="number">0x05</span>, <span class="number">0xb4</span>, <span class="number">0x55</span>,
-            <span class="number">0x52</span>, <span class="number">0x0d</span>, <span class="number">0x94</span>, <span class="number">0x0a</span>, <span class="number">0x4a</span>, <span class="number">0x2a</span>, <span class="number">0x56</span>, <span class="number">0x02</span>, <span class="number">0x6d</span>, <span class="number">0x71</span>, <span class="number">0x6d</span>, <span class="number">0x01</span>, <span class="number">0xda</span>, <span class="number">0x02</span>, <span class="number">0xd2</span>, <span class="number">0x52</span>, <span class="number">0xa9</span>, <span class="number">0x05</span>,
-            <span class="number">0x49</span>, <span class="number">0x0d</span>, <span class="number">0x2a</span>, <span class="number">0x45</span>, <span class="number">0x2b</span>, <span class="number">0x09</span>, <span class="number">0x56</span>, <span class="number">0x01</span>, <span class="number">0xb5</span>, <span class="number">0x20</span>, <span class="number">0x6d</span>, <span class="number">0x01</span>, <span class="number">0x59</span>, <span class="number">0x69</span>, <span class="number">0xd4</span>, <span class="number">0x0a</span>, <span class="number">0xa8</span>, <span class="number">0x05</span>,
-            <span class="number">0xa9</span>, <span class="number">0x56</span>, <span class="number">0xa5</span>, <span class="number">0x04</span>, <span class="number">0x2b</span>, <span class="number">0x09</span>, <span class="number">0x9e</span>, <span class="number">0x38</span>, <span class="number">0xb6</span>, <span class="number">0x08</span>, <span class="number">0xec</span>, <span class="number">0x74</span>, <span class="number">0x6c</span>, <span class="number">0x05</span>, <span class="number">0xd4</span>, <span class="number">0x0a</span>, <span class="number">0xe4</span>, <span class="number">0x6a</span>,
-            <span class="number">0x52</span>, <span class="number">0x05</span>, <span class="number">0x95</span>, <span class="number">0x0a</span>, <span class="number">0x5a</span>, <span class="number">0x42</span>, <span class="number">0x5b</span>, <span class="number">0x04</span>, <span class="number">0xb6</span>, <span class="number">0x04</span>, <span class="number">0xb4</span>, <span class="number">0x22</span>, <span class="number">0x6a</span>, <span class="number">0x05</span>, <span class="number">0x52</span>, <span class="number">0x75</span>, <span class="number">0xc9</span>, <span class="number">0x0a</span>,
-            <span class="number">0x52</span>, <span class="number">0x05</span>, <span class="number">0x35</span>, <span class="number">0x55</span>, <span class="number">0x4d</span>, <span class="number">0x0a</span>, <span class="number">0x5a</span>, <span class="number">0x02</span>, <span class="number">0x5d</span>, <span class="number">0x31</span>, <span class="number">0xb5</span>, <span class="number">0x02</span>, <span class="number">0x6a</span>, <span class="number">0x8a</span>, <span class="number">0x68</span>, <span class="number">0x05</span>, <span class="number">0xa9</span>, <span class="number">0x0a</span>,
-            <span class="number">0x8a</span>, <span class="number">0x6a</span>, <span class="number">0x2a</span>, <span class="number">0x05</span>, <span class="number">0x2d</span>, <span class="number">0x09</span>, <span class="number">0xaa</span>, <span class="number">0x48</span>, <span class="number">0x5a</span>, <span class="number">0x01</span>, <span class="number">0xb5</span>, <span class="number">0x09</span>, <span class="number">0xb0</span>, <span class="number">0x39</span>, <span class="number">0x64</span>, <span class="number">0x05</span>, <span class="number">0x25</span>, <span class="number">0x75</span>,
-            <span class="number">0x95</span>, <span class="number">0x0a</span>, <span class="number">0x96</span>, <span class="number">0x04</span>, <span class="number">0x4d</span>, <span class="number">0x54</span>, <span class="number">0xad</span>, <span class="number">0x04</span>, <span class="number">0xda</span>, <span class="number">0x04</span>, <span class="number">0xd4</span>, <span class="number">0x44</span>, <span class="number">0xb4</span>, <span class="number">0x05</span>, <span class="number">0x54</span>, <span class="number">0x85</span>, <span class="number">0x52</span>, <span class="number">0x0d</span>,
-            <span class="number">0x92</span>, <span class="number">0x0a</span>, <span class="number">0x56</span>, <span class="number">0x6a</span>, <span class="number">0x56</span>, <span class="number">0x02</span>, <span class="number">0x6d</span>, <span class="number">0x02</span>, <span class="number">0x6a</span>, <span class="number">0x41</span>, <span class="number">0xda</span>, <span class="number">0x02</span>, <span class="number">0xb2</span>, <span class="number">0xa1</span>, <span class="number">0xa9</span>, <span class="number">0x05</span>, <span class="number">0x49</span>, <span class="number">0x0d</span>,
-            <span class="number">0x0a</span>, <span class="number">0x6d</span>, <span class="number">0x2a</span>, <span class="number">0x09</span>, <span class="number">0x56</span>, <span class="number">0x01</span>, <span class="number">0xad</span>, <span class="number">0x50</span>, <span class="number">0x6d</span>, <span class="number">0x01</span>, <span class="number">0xd9</span>, <span class="number">0x02</span>, <span class="number">0xd1</span>, <span class="number">0x3a</span>, <span class="number">0xa8</span>, <span class="number">0x05</span>, <span class="number">0x29</span>, <span class="number">0x85</span>,
-            <span class="number">0xa5</span>, <span class="number">0x0c</span>, <span class="number">0x2a</span>, <span class="number">0x09</span>, <span class="number">0x96</span>, <span class="number">0x54</span>, <span class="number">0xb6</span>, <span class="number">0x08</span>, <span class="number">0x6c</span>, <span class="number">0x09</span>, <span class="number">0x64</span>, <span class="number">0x45</span>, <span class="number">0xd4</span>, <span class="number">0x0a</span>, <span class="number">0xa4</span>, <span class="number">0x05</span>, <span class="number">0x51</span>, <span class="number">0x25</span>,
-            <span class="number">0x95</span>, <span class="number">0x0a</span>, <span class="number">0x2a</span>, <span class="number">0x72</span>, <span class="number">0x5b</span>, <span class="number">0x04</span>, <span class="number">0xb6</span>, <span class="number">0x04</span>, <span class="number">0xac</span>, <span class="number">0x52</span>, <span class="number">0x6a</span>, <span class="number">0x05</span>, <span class="number">0xd2</span>, <span class="number">0x0a</span>, <span class="number">0xa2</span>, <span class="number">0x4a</span>, <span class="number">0x4a</span>, <span class="number">0x05</span>,
-            <span class="number">0x55</span>, <span class="number">0x94</span>, <span class="number">0x2d</span>, <span class="number">0x0a</span>, <span class="number">0x5a</span>, <span class="number">0x02</span>, <span class="number">0x75</span>, <span class="number">0x61</span>, <span class="number">0xb5</span>, <span class="number">0x02</span>, <span class="number">0x6a</span>, <span class="number">0x03</span>, <span class="number">0x61</span>, <span class="number">0x45</span>, <span class="number">0xa9</span>, <span class="number">0x0a</span>, <span class="number">0x4a</span>, <span class="number">0x05</span>,
-            <span class="number">0x25</span>, <span class="number">0x25</span>, <span class="number">0x2d</span>, <span class="number">0x09</span>, <span class="number">0x9a</span>, <span class="number">0x68</span>, <span class="number">0xda</span>, <span class="number">0x08</span>, <span class="number">0xb4</span>, <span class="number">0x09</span>, <span class="number">0xa8</span>, <span class="number">0x59</span>, <span class="number">0x54</span>, <span class="number">0x03</span>, <span class="number">0xa5</span>, <span class="number">0x0a</span>, <span class="number">0x91</span>, <span class="number">0x3a</span>,
-            <span class="number">0x96</span>, <span class="number">0x04</span>, <span class="number">0xad</span>, <span class="number">0xb0</span>, <span class="number">0xad</span>, <span class="number">0x04</span>, <span class="number">0xda</span>, <span class="number">0x04</span>, <span class="number">0xf4</span>, <span class="number">0x62</span>, <span class="number">0xb4</span>, <span class="number">0x05</span>, <span class="number">0x54</span>, <span class="number">0x0b</span>, <span class="number">0x44</span>, <span class="number">0x5d</span>, <span class="number">0x52</span>, <span class="number">0x0a</span>,
-            <span class="number">0x95</span>, <span class="number">0x04</span>, <span class="number">0x55</span>, <span class="number">0x22</span>, <span class="number">0x6d</span>, <span class="number">0x02</span>, <span class="number">0x5a</span>, <span class="number">0x71</span>, <span class="number">0xda</span>, <span class="number">0x02</span>, <span class="number">0xaa</span>, <span class="number">0x05</span>, <span class="number">0xb2</span>, <span class="number">0x55</span>, <span class="number">0x49</span>, <span class="number">0x0b</span>, <span class="number">0x4a</span>, <span class="number">0x0a</span>,
-            <span class="number">0x2d</span>, <span class="number">0x39</span>, <span class="number">0x36</span>, <span class="number">0x01</span>, <span class="number">0x6d</span>, <span class="number">0x80</span>, <span class="number">0x6d</span>, <span class="number">0x01</span>, <span class="number">0xd9</span>, <span class="number">0x02</span>, <span class="number">0xe9</span>, <span class="number">0x6a</span>, <span class="number">0xa8</span>, <span class="number">0x05</span>, <span class="number">0x29</span>, <span class="number">0x0b</span>, <span class="number">0x9a</span>, <span class="number">0x4c</span>,
-            <span class="number">0xaa</span>, <span class="number">0x08</span>, <span class="number">0xb6</span>, <span class="number">0x08</span>, <span class="number">0xb4</span>, <span class="number">0x38</span>, <span class="number">0x6c</span>, <span class="number">0x09</span>, <span class="number">0x54</span>, <span class="number">0x75</span>, <span class="number">0xd4</span>, <span class="number">0x0a</span>, <span class="number">0xa4</span>, <span class="number">0x05</span>, <span class="number">0x45</span>, <span class="number">0x55</span>, <span class="number">0x95</span>, <span class="number">0x0a</span>,
-            <span class="number">0x9a</span>, <span class="number">0x04</span>, <span class="number">0x55</span>, <span class="number">0x44</span>, <span class="number">0xb5</span>, <span class="number">0x04</span>, <span class="number">0x6a</span>, <span class="number">0x82</span>, <span class="number">0x6a</span>, <span class="number">0x05</span>, <span class="number">0xd2</span>, <span class="number">0x0a</span>, <span class="number">0x92</span>, <span class="number">0x6a</span>, <span class="number">0x4a</span>, <span class="number">0x05</span>, <span class="number">0x55</span>, <span class="number">0x0a</span>,
-            <span class="number">0x2a</span>, <span class="number">0x4a</span>, <span class="number">0x5a</span>, <span class="number">0x02</span>, <span class="number">0xb5</span>, <span class="number">0x02</span>, <span class="number">0xb2</span>, <span class="number">0x31</span>, <span class="number">0x69</span>, <span class="number">0x03</span>, <span class="number">0x31</span>, <span class="number">0x73</span>, <span class="number">0xa9</span>, <span class="number">0x0a</span>, <span class="number">0x4a</span>, <span class="number">0x05</span>, <span class="number">0x2d</span>, <span class="number">0x55</span>,
-            <span class="number">0x2d</span>, <span class="number">0x09</span>, <span class="number">0x5a</span>, <span class="number">0x01</span>, <span class="number">0xd5</span>, <span class="number">0x48</span>, <span class="number">0xb4</span>, <span class="number">0x09</span>, <span class="number">0x68</span>, <span class="number">0x89</span>, <span class="number">0x54</span>, <span class="number">0x0b</span>, <span class="number">0xa4</span>, <span class="number">0x0a</span>, <span class="number">0xa5</span>, <span class="number">0x6a</span>, <span class="number">0x95</span>, <span class="number">0x04</span>,
-            <span class="number">0xad</span>, <span class="number">0x08</span>, <span class="number">0x6a</span>, <span class="number">0x44</span>, <span class="number">0xda</span>, <span class="number">0x04</span>, <span class="number">0x74</span>, <span class="number">0x05</span>, <span class="number">0xb0</span>, <span class="number">0x25</span>, <span class="number">0x54</span>, <span class="number">0x03</span> };
+    // 农历月份大小压缩表，两个字节表示一年。两个字节共十六个二进制位数，
+    // 前四个位数表示闰月月份，后十二个位数表示十二个农历月份的大小。
+    private static char[] chineseMonths = &#123; 0x00, 0x04, 0xad, 0x08, 0x5a, 0x01, 0xd5, 0x54, 0xb4, 0x09, 0x64, 0x05,
+            0x59, 0x45, 0x95, 0x0a, 0xa6, 0x04, 0x55, 0x24, 0xad, 0x08, 0x5a, 0x62, 0xda, 0x04, 0xb4, 0x05, 0xb4, 0x55,
+            0x52, 0x0d, 0x94, 0x0a, 0x4a, 0x2a, 0x56, 0x02, 0x6d, 0x71, 0x6d, 0x01, 0xda, 0x02, 0xd2, 0x52, 0xa9, 0x05,
+            0x49, 0x0d, 0x2a, 0x45, 0x2b, 0x09, 0x56, 0x01, 0xb5, 0x20, 0x6d, 0x01, 0x59, 0x69, 0xd4, 0x0a, 0xa8, 0x05,
+            0xa9, 0x56, 0xa5, 0x04, 0x2b, 0x09, 0x9e, 0x38, 0xb6, 0x08, 0xec, 0x74, 0x6c, 0x05, 0xd4, 0x0a, 0xe4, 0x6a,
+            0x52, 0x05, 0x95, 0x0a, 0x5a, 0x42, 0x5b, 0x04, 0xb6, 0x04, 0xb4, 0x22, 0x6a, 0x05, 0x52, 0x75, 0xc9, 0x0a,
+            0x52, 0x05, 0x35, 0x55, 0x4d, 0x0a, 0x5a, 0x02, 0x5d, 0x31, 0xb5, 0x02, 0x6a, 0x8a, 0x68, 0x05, 0xa9, 0x0a,
+            0x8a, 0x6a, 0x2a, 0x05, 0x2d, 0x09, 0xaa, 0x48, 0x5a, 0x01, 0xb5, 0x09, 0xb0, 0x39, 0x64, 0x05, 0x25, 0x75,
+            0x95, 0x0a, 0x96, 0x04, 0x4d, 0x54, 0xad, 0x04, 0xda, 0x04, 0xd4, 0x44, 0xb4, 0x05, 0x54, 0x85, 0x52, 0x0d,
+            0x92, 0x0a, 0x56, 0x6a, 0x56, 0x02, 0x6d, 0x02, 0x6a, 0x41, 0xda, 0x02, 0xb2, 0xa1, 0xa9, 0x05, 0x49, 0x0d,
+            0x0a, 0x6d, 0x2a, 0x09, 0x56, 0x01, 0xad, 0x50, 0x6d, 0x01, 0xd9, 0x02, 0xd1, 0x3a, 0xa8, 0x05, 0x29, 0x85,
+            0xa5, 0x0c, 0x2a, 0x09, 0x96, 0x54, 0xb6, 0x08, 0x6c, 0x09, 0x64, 0x45, 0xd4, 0x0a, 0xa4, 0x05, 0x51, 0x25,
+            0x95, 0x0a, 0x2a, 0x72, 0x5b, 0x04, 0xb6, 0x04, 0xac, 0x52, 0x6a, 0x05, 0xd2, 0x0a, 0xa2, 0x4a, 0x4a, 0x05,
+            0x55, 0x94, 0x2d, 0x0a, 0x5a, 0x02, 0x75, 0x61, 0xb5, 0x02, 0x6a, 0x03, 0x61, 0x45, 0xa9, 0x0a, 0x4a, 0x05,
+            0x25, 0x25, 0x2d, 0x09, 0x9a, 0x68, 0xda, 0x08, 0xb4, 0x09, 0xa8, 0x59, 0x54, 0x03, 0xa5, 0x0a, 0x91, 0x3a,
+            0x96, 0x04, 0xad, 0xb0, 0xad, 0x04, 0xda, 0x04, 0xf4, 0x62, 0xb4, 0x05, 0x54, 0x0b, 0x44, 0x5d, 0x52, 0x0a,
+            0x95, 0x04, 0x55, 0x22, 0x6d, 0x02, 0x5a, 0x71, 0xda, 0x02, 0xaa, 0x05, 0xb2, 0x55, 0x49, 0x0b, 0x4a, 0x0a,
+            0x2d, 0x39, 0x36, 0x01, 0x6d, 0x80, 0x6d, 0x01, 0xd9, 0x02, 0xe9, 0x6a, 0xa8, 0x05, 0x29, 0x0b, 0x9a, 0x4c,
+            0xaa, 0x08, 0xb6, 0x08, 0xb4, 0x38, 0x6c, 0x09, 0x54, 0x75, 0xd4, 0x0a, 0xa4, 0x05, 0x45, 0x55, 0x95, 0x0a,
+            0x9a, 0x04, 0x55, 0x44, 0xb5, 0x04, 0x6a, 0x82, 0x6a, 0x05, 0xd2, 0x0a, 0x92, 0x6a, 0x4a, 0x05, 0x55, 0x0a,
+            0x2a, 0x4a, 0x5a, 0x02, 0xb5, 0x02, 0xb2, 0x31, 0x69, 0x03, 0x31, 0x73, 0xa9, 0x0a, 0x4a, 0x05, 0x2d, 0x55,
+            0x2d, 0x09, 0x5a, 0x01, 0xd5, 0x48, 0xb4, 0x09, 0x68, 0x89, 0x54, 0x0b, 0xa4, 0x0a, 0xa5, 0x6a, 0x95, 0x04,
+            0xad, 0x08, 0x6a, 0x44, 0xda, 0x04, 0x74, 0x05, 0xb0, 0x25, 0x54, 0x03 &#125;;
 
-    <span class="comment">// 初始日，公历农历对应日期：</span>
-    <span class="comment">// 公历 1901 年 1 月 1 日，对应农历 4598 年 11 月 11 日</span>
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">int</span> baseYear = <span class="number">1901</span>;
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">int</span> baseMonth = <span class="number">1</span>;
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">int</span> baseDate = <span class="number">1</span>;
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">int</span> baseIndex = <span class="number">0</span>;
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">int</span> baseChineseYear = <span class="number">4598</span> - <span class="number">1</span>;
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">int</span> baseChineseMonth = <span class="number">11</span>;
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">int</span> baseChineseDate = <span class="number">11</span>;
+    // 初始日，公历农历对应日期：
+    // 公历 1901 年 1 月 1 日，对应农历 4598 年 11 月 11 日
+    private static int baseYear = 1901;
+    private static int baseMonth = 1;
+    private static int baseDate = 1;
+    private static int baseIndex = 0;
+    private static int baseChineseYear = 4598 - 1;
+    private static int baseChineseMonth = 11;
+    private static int baseChineseDate = 11;
 
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">char</span>[][] sectionalTermMap = {
-            { <span class="number">7</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span> },
-            { <span class="number">5</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span> },
-            { <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span> },
-            { <span class="number">5</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span> },
-            { <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span> },
-            { <span class="number">6</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span> },
-            { <span class="number">7</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">7</span> },
-            { <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span> },
-            { <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span> },
-            { <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span> },
-            { <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span> },
-            { <span class="number">7</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">7</span> } };
+    private static char[][] sectionalTermMap = &#123;
+            &#123; 7, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 5, 5, 6, 6, 5, 5, 5, 5, 5, 5, 5, 5, 4, 5, 5 &#125;,
+            &#123; 5, 4, 5, 5, 5, 4, 4, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 4, 4, 3, 3, 4, 4, 3, 3, 3 &#125;,
+            &#123; 6, 6, 6, 7, 6, 6, 6, 6, 5, 6, 6, 6, 5, 5, 6, 6, 5, 5, 5, 6, 5, 5, 5, 5, 4, 5, 5, 5, 5 &#125;,
+            &#123; 5, 5, 6, 6, 5, 5, 5, 6, 5, 5, 5, 5, 4, 5, 5, 5, 4, 4, 5, 5, 4, 4, 4, 5, 4, 4, 4, 4, 5 &#125;,
+            &#123; 6, 6, 6, 7, 6, 6, 6, 6, 5, 6, 6, 6, 5, 5, 6, 6, 5, 5, 5, 6, 5, 5, 5, 5, 4, 5, 5, 5, 5 &#125;,
+            &#123; 6, 6, 7, 7, 6, 6, 6, 7, 6, 6, 6, 6, 5, 6, 6, 6, 5, 5, 6, 6, 5, 5, 5, 6, 5, 5, 5, 5, 4, 5, 5, 5, 5 &#125;,
+            &#123; 7, 8, 8, 8, 7, 7, 8, 8, 7, 7, 7, 8, 7, 7, 7, 7, 6, 7, 7, 7, 6, 6, 7, 7, 6, 6, 6, 7, 7 &#125;,
+            &#123; 8, 8, 8, 9, 8, 8, 8, 8, 7, 8, 8, 8, 7, 7, 8, 8, 7, 7, 7, 8, 7, 7, 7, 7, 6, 7, 7, 7, 6, 6, 7, 7, 7 &#125;,
+            &#123; 8, 8, 8, 9, 8, 8, 8, 8, 7, 8, 8, 8, 7, 7, 8, 8, 7, 7, 7, 8, 7, 7, 7, 7, 6, 7, 7, 7, 7 &#125;,
+            &#123; 9, 9, 9, 9, 8, 9, 9, 9, 8, 8, 9, 9, 8, 8, 8, 9, 8, 8, 8, 8, 7, 8, 8, 8, 7, 7, 8, 8, 8 &#125;,
+            &#123; 8, 8, 8, 8, 7, 8, 8, 8, 7, 7, 8, 8, 7, 7, 7, 8, 7, 7, 7, 7, 6, 7, 7, 7, 6, 6, 7, 7, 7 &#125;,
+            &#123; 7, 8, 8, 8, 7, 7, 8, 8, 7, 7, 7, 8, 7, 7, 7, 7, 6, 7, 7, 7, 6, 6, 7, 7, 6, 6, 6, 7, 7 &#125; &#125;;
 
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">char</span>[][] sectionalTermYear = { { <span class="number">13</span>, <span class="number">49</span>, <span class="number">85</span>, <span class="number">117</span>, <span class="number">149</span>, <span class="number">185</span>, <span class="number">201</span>, <span class="number">250</span>, <span class="number">250</span> },
-            { <span class="number">13</span>, <span class="number">45</span>, <span class="number">81</span>, <span class="number">117</span>, <span class="number">149</span>, <span class="number">185</span>, <span class="number">201</span>, <span class="number">250</span>, <span class="number">250</span> }, { <span class="number">13</span>, <span class="number">48</span>, <span class="number">84</span>, <span class="number">112</span>, <span class="number">148</span>, <span class="number">184</span>, <span class="number">200</span>, <span class="number">201</span>, <span class="number">250</span> },
-            { <span class="number">13</span>, <span class="number">45</span>, <span class="number">76</span>, <span class="number">108</span>, <span class="number">140</span>, <span class="number">172</span>, <span class="number">200</span>, <span class="number">201</span>, <span class="number">250</span> }, { <span class="number">13</span>, <span class="number">44</span>, <span class="number">72</span>, <span class="number">104</span>, <span class="number">132</span>, <span class="number">168</span>, <span class="number">200</span>, <span class="number">201</span>, <span class="number">250</span> },
-            { <span class="number">5</span>, <span class="number">33</span>, <span class="number">68</span>, <span class="number">96</span>, <span class="number">124</span>, <span class="number">152</span>, <span class="number">188</span>, <span class="number">200</span>, <span class="number">201</span> }, { <span class="number">29</span>, <span class="number">57</span>, <span class="number">85</span>, <span class="number">120</span>, <span class="number">148</span>, <span class="number">176</span>, <span class="number">200</span>, <span class="number">201</span>, <span class="number">250</span> },
-            { <span class="number">13</span>, <span class="number">48</span>, <span class="number">76</span>, <span class="number">104</span>, <span class="number">132</span>, <span class="number">168</span>, <span class="number">196</span>, <span class="number">200</span>, <span class="number">201</span> }, { <span class="number">25</span>, <span class="number">60</span>, <span class="number">88</span>, <span class="number">120</span>, <span class="number">148</span>, <span class="number">184</span>, <span class="number">200</span>, <span class="number">201</span>, <span class="number">250</span> },
-            { <span class="number">16</span>, <span class="number">44</span>, <span class="number">76</span>, <span class="number">108</span>, <span class="number">144</span>, <span class="number">172</span>, <span class="number">200</span>, <span class="number">201</span>, <span class="number">250</span> }, { <span class="number">28</span>, <span class="number">60</span>, <span class="number">92</span>, <span class="number">124</span>, <span class="number">160</span>, <span class="number">192</span>, <span class="number">200</span>, <span class="number">201</span>, <span class="number">250</span> },
-            { <span class="number">17</span>, <span class="number">53</span>, <span class="number">85</span>, <span class="number">124</span>, <span class="number">156</span>, <span class="number">188</span>, <span class="number">200</span>, <span class="number">201</span>, <span class="number">250</span> } };
+    private static char[][] sectionalTermYear = &#123; &#123; 13, 49, 85, 117, 149, 185, 201, 250, 250 &#125;,
+            &#123; 13, 45, 81, 117, 149, 185, 201, 250, 250 &#125;, &#123; 13, 48, 84, 112, 148, 184, 200, 201, 250 &#125;,
+            &#123; 13, 45, 76, 108, 140, 172, 200, 201, 250 &#125;, &#123; 13, 44, 72, 104, 132, 168, 200, 201, 250 &#125;,
+            &#123; 5, 33, 68, 96, 124, 152, 188, 200, 201 &#125;, &#123; 29, 57, 85, 120, 148, 176, 200, 201, 250 &#125;,
+            &#123; 13, 48, 76, 104, 132, 168, 196, 200, 201 &#125;, &#123; 25, 60, 88, 120, 148, 184, 200, 201, 250 &#125;,
+            &#123; 16, 44, 76, 108, 144, 172, 200, 201, 250 &#125;, &#123; 28, 60, 92, 124, 160, 192, 200, 201, 250 &#125;,
+            &#123; 17, 53, 85, 124, 156, 188, 200, 201, 250 &#125; &#125;;
 
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">char</span>[][] principleTermMap = {
-            { <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">19</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">19</span>,
-                    <span class="number">19</span>, <span class="number">20</span> },
-            { <span class="number">20</span>, <span class="number">19</span>, <span class="number">19</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">19</span>, <span class="number">19</span>, <span class="number">19</span>, <span class="number">19</span>, <span class="number">19</span>, <span class="number">19</span>, <span class="number">19</span>, <span class="number">19</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">19</span>, <span class="number">19</span>, <span class="number">18</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">19</span>, <span class="number">18</span>, <span class="number">18</span>, <span class="number">18</span>, <span class="number">18</span>, <span class="number">18</span>,
-                    <span class="number">18</span>, <span class="number">18</span> },
-            { <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">19</span>, <span class="number">20</span>,
-                    <span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span> },
-            { <span class="number">20</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">19</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">19</span>, <span class="number">19</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">19</span>, <span class="number">19</span>,
-                    <span class="number">19</span>, <span class="number">20</span>, <span class="number">20</span> },
-            { <span class="number">21</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">20</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">20</span>, <span class="number">20</span>,
-                    <span class="number">20</span>, <span class="number">21</span>, <span class="number">21</span> },
-            { <span class="number">22</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">20</span>, <span class="number">20</span>,
-                    <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span> },
-            { <span class="number">23</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">24</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">22</span>,
-                    <span class="number">22</span>, <span class="number">22</span>, <span class="number">23</span> },
-            { <span class="number">23</span>, <span class="number">24</span>, <span class="number">24</span>, <span class="number">24</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">24</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">22</span>,
-                    <span class="number">22</span>, <span class="number">23</span>, <span class="number">23</span> },
-            { <span class="number">23</span>, <span class="number">24</span>, <span class="number">24</span>, <span class="number">24</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">24</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">22</span>,
-                    <span class="number">22</span>, <span class="number">23</span>, <span class="number">23</span> },
-            { <span class="number">24</span>, <span class="number">24</span>, <span class="number">24</span>, <span class="number">24</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">24</span>, <span class="number">24</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">24</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">22</span>,
-                    <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span> },
-            { <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">21</span>, <span class="number">21</span>,
-                    <span class="number">22</span>, <span class="number">22</span>, <span class="number">22</span> },
-            { <span class="number">22</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">22</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">21</span>, <span class="number">21</span>,
-                    <span class="number">21</span>, <span class="number">21</span>, <span class="number">22</span> } };
+    private static char[][] principleTermMap = &#123;
+            &#123; 21, 21, 21, 21, 21, 20, 21, 21, 21, 20, 20, 21, 21, 20, 20, 20, 20, 20, 20, 20, 20, 19, 20, 20, 20, 19,
+                    19, 20 &#125;,
+            &#123; 20, 19, 19, 20, 20, 19, 19, 19, 19, 19, 19, 19, 19, 18, 19, 19, 19, 18, 18, 19, 19, 18, 18, 18, 18, 18,
+                    18, 18 &#125;,
+            &#123; 21, 21, 21, 22, 21, 21, 21, 21, 20, 21, 21, 21, 20, 20, 21, 21, 20, 20, 20, 21, 20, 20, 20, 20, 19, 20,
+                    20, 20, 20 &#125;,
+            &#123; 20, 21, 21, 21, 20, 20, 21, 21, 20, 20, 20, 21, 20, 20, 20, 20, 19, 20, 20, 20, 19, 19, 20, 20, 19, 19,
+                    19, 20, 20 &#125;,
+            &#123; 21, 22, 22, 22, 21, 21, 22, 22, 21, 21, 21, 22, 21, 21, 21, 21, 20, 21, 21, 21, 20, 20, 21, 21, 20, 20,
+                    20, 21, 21 &#125;,
+            &#123; 22, 22, 22, 22, 21, 22, 22, 22, 21, 21, 22, 22, 21, 21, 21, 22, 21, 21, 21, 21, 20, 21, 21, 21, 20, 20,
+                    21, 21, 21 &#125;,
+            &#123; 23, 23, 24, 24, 23, 23, 23, 24, 23, 23, 23, 23, 22, 23, 23, 23, 22, 22, 23, 23, 22, 22, 22, 23, 22, 22,
+                    22, 22, 23 &#125;,
+            &#123; 23, 24, 24, 24, 23, 23, 24, 24, 23, 23, 23, 24, 23, 23, 23, 23, 22, 23, 23, 23, 22, 22, 23, 23, 22, 22,
+                    22, 23, 23 &#125;,
+            &#123; 23, 24, 24, 24, 23, 23, 24, 24, 23, 23, 23, 24, 23, 23, 23, 23, 22, 23, 23, 23, 22, 22, 23, 23, 22, 22,
+                    22, 23, 23 &#125;,
+            &#123; 24, 24, 24, 24, 23, 24, 24, 24, 23, 23, 24, 24, 23, 23, 23, 24, 23, 23, 23, 23, 22, 23, 23, 23, 22, 22,
+                    23, 23, 23 &#125;,
+            &#123; 23, 23, 23, 23, 22, 23, 23, 23, 22, 22, 23, 23, 22, 22, 22, 23, 22, 22, 22, 22, 21, 22, 22, 22, 21, 21,
+                    22, 22, 22 &#125;,
+            &#123; 22, 22, 23, 23, 22, 22, 22, 23, 22, 22, 22, 22, 21, 22, 22, 22, 21, 21, 22, 22, 21, 21, 21, 22, 21, 21,
+                    21, 21, 22 &#125; &#125;;
 
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">char</span>[][] principleTermYear = { { <span class="number">13</span>, <span class="number">45</span>, <span class="number">81</span>, <span class="number">113</span>, <span class="number">149</span>, <span class="number">185</span>, <span class="number">201</span> },
-            { <span class="number">21</span>, <span class="number">57</span>, <span class="number">93</span>, <span class="number">125</span>, <span class="number">161</span>, <span class="number">193</span>, <span class="number">201</span> }, { <span class="number">21</span>, <span class="number">56</span>, <span class="number">88</span>, <span class="number">120</span>, <span class="number">152</span>, <span class="number">188</span>, <span class="number">200</span>, <span class="number">201</span> },
-            { <span class="number">21</span>, <span class="number">49</span>, <span class="number">81</span>, <span class="number">116</span>, <span class="number">144</span>, <span class="number">176</span>, <span class="number">200</span>, <span class="number">201</span> }, { <span class="number">17</span>, <span class="number">49</span>, <span class="number">77</span>, <span class="number">112</span>, <span class="number">140</span>, <span class="number">168</span>, <span class="number">200</span>, <span class="number">201</span> },
-            { <span class="number">28</span>, <span class="number">60</span>, <span class="number">88</span>, <span class="number">116</span>, <span class="number">148</span>, <span class="number">180</span>, <span class="number">200</span>, <span class="number">201</span> }, { <span class="number">25</span>, <span class="number">53</span>, <span class="number">84</span>, <span class="number">112</span>, <span class="number">144</span>, <span class="number">172</span>, <span class="number">200</span>, <span class="number">201</span> },
-            { <span class="number">29</span>, <span class="number">57</span>, <span class="number">89</span>, <span class="number">120</span>, <span class="number">148</span>, <span class="number">180</span>, <span class="number">200</span>, <span class="number">201</span> }, { <span class="number">17</span>, <span class="number">45</span>, <span class="number">73</span>, <span class="number">108</span>, <span class="number">140</span>, <span class="number">168</span>, <span class="number">200</span>, <span class="number">201</span> },
-            { <span class="number">28</span>, <span class="number">60</span>, <span class="number">92</span>, <span class="number">124</span>, <span class="number">160</span>, <span class="number">192</span>, <span class="number">200</span>, <span class="number">201</span> }, { <span class="number">16</span>, <span class="number">44</span>, <span class="number">80</span>, <span class="number">112</span>, <span class="number">148</span>, <span class="number">180</span>, <span class="number">200</span>, <span class="number">201</span> },
-            { <span class="number">17</span>, <span class="number">53</span>, <span class="number">88</span>, <span class="number">120</span>, <span class="number">156</span>, <span class="number">188</span>, <span class="number">200</span>, <span class="number">201</span> } };
+    private static char[][] principleTermYear = &#123; &#123; 13, 45, 81, 113, 149, 185, 201 &#125;,
+            &#123; 21, 57, 93, 125, 161, 193, 201 &#125;, &#123; 21, 56, 88, 120, 152, 188, 200, 201 &#125;,
+            &#123; 21, 49, 81, 116, 144, 176, 200, 201 &#125;, &#123; 17, 49, 77, 112, 140, 168, 200, 201 &#125;,
+            &#123; 28, 60, 88, 116, 148, 180, 200, 201 &#125;, &#123; 25, 53, 84, 112, 144, 172, 200, 201 &#125;,
+            &#123; 29, 57, 89, 120, 148, 180, 200, 201 &#125;, &#123; 17, 45, 73, 108, 140, 168, 200, 201 &#125;,
+            &#123; 28, 60, 92, 124, 160, 192, 200, 201 &#125;, &#123; 16, 44, 80, 112, 148, 180, 200, 201 &#125;,
+            &#123; 17, 53, 88, 120, 156, 188, 200, 201 &#125; &#125;;
 
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">int</span>[] bigLeapMonthYears = {
-            <span class="comment">// 大闰月的闰年年份</span>
-            <span class="number">6</span>, <span class="number">14</span>, <span class="number">19</span>, <span class="number">25</span>, <span class="number">33</span>, <span class="number">36</span>, <span class="number">38</span>, <span class="number">41</span>, <span class="number">44</span>, <span class="number">52</span>, <span class="number">55</span>, <span class="number">79</span>, <span class="number">117</span>, <span class="number">136</span>, <span class="number">147</span>, <span class="number">150</span>, <span class="number">155</span>, <span class="number">158</span>, <span class="number">185</span>, <span class="number">193</span> };
+    private static int[] bigLeapMonthYears = &#123;
+            // 大闰月的闰年年份
+            6, 14, 19, 25, 33, 36, 38, 41, 44, 52, 55, 79, 117, 136, 147, 150, 155, 158, 185, 193 &#125;;
 
-    <span class="keyword">public</span> CalendarUtil() {
-        setGregorian(<span class="number">1901</span>, <span class="number">1</span>, <span class="number">1</span>);
+    public CalendarUtil() &#123;
+        setGregorian(1901, 1, 1);
         computeChineseFields();
         computeSolarTerms();
-    }
+    &#125;
 
-    <span class="keyword">public</span> CalendarUtil(<span class="built_in">int</span> y, <span class="built_in">int</span> m, <span class="built_in">int</span> d){
+    public CalendarUtil(int y, int m, int d)&#123;
         setGregorian(y, m, d);
         computeChineseFields();
         computeSolarTerms();
-    }
+    &#125;
 
-    <span class="comment">/**
+    /**
      * 得到对应天的农历 要判断闰月 月初 月末 *
      *
      * @param y
      * @param m
      * @param d
      * @return String
-     */</span>
-    <span class="keyword">public</span> <span class="keyword">String</span> getChineseDay(<span class="built_in">int</span> y, <span class="built_in">int</span> m, <span class="built_in">int</span> d) {
-        CalendarUtil c=<span class="keyword">new</span> CalendarUtil(y,m,d);
-        <span class="built_in">int</span> cd = c.getChineseDate();
-        <span class="keyword">return</span> daysOfAlmanac[cd - <span class="number">1</span>];
-    }
+     */
+    public String getChineseDay(int y, int m, int d) &#123;
+        CalendarUtil c=new CalendarUtil(y,m,d);
+        int cd = c.getChineseDate();
+        return daysOfAlmanac[cd - 1];
+    &#125;
 
-    <span class="comment">/**
+    /**
      * 得到对应天的农历 要判断闰月 月初 月末
      *
      * @param y
      * @param m
      * @param d
      * @return
-     */</span>
-    <span class="keyword">public</span> <span class="keyword">String</span> getChineseMonth(<span class="built_in">int</span> y, <span class="built_in">int</span> m, <span class="built_in">int</span> d) {
+     */
+    public String getChineseMonth(int y, int m, int d) &#123;
         setGregorian(y, m, d);
         computeChineseFields();
         computeSolarTerms();
-        <span class="built_in">int</span> cd = getChineseMonth();
-        <span class="keyword">if</span> (cd &lt; <span class="number">1</span> || cd &gt; <span class="number">29</span>)
-            cd = <span class="number">1</span>;
-        <span class="keyword">return</span> monthOfAlmanac[cd - <span class="number">1</span>];
-    }
+        int cd = getChineseMonth();
+        if (cd &lt; 1 || cd &gt; 29)
+            cd = 1;
+        return monthOfAlmanac[cd - 1];
+    &#125;
 
-    <span class="comment">/**
+    /**
      * 设置公历年月日
      * @param y
      * @param m
      * @param d
-     */</span>
-    <span class="keyword">public</span> <span class="keyword">void</span> setGregorian(<span class="built_in">int</span> y, <span class="built_in">int</span> m, <span class="built_in">int</span> d) {
+     */
+    public void setGregorian(int y, int m, int d) &#123;
         gregorianYear = y;
         gregorianMonth = m;
         gregorianDate = d;
         isGregorianLeap = isGregorianLeapYear(y);
         dayOfYear = dayOfYear(y, m, d);
         dayOfWeek = dayOfWeek(y, m, d);
-        chineseYear = <span class="number">0</span>;
-        chineseMonth = <span class="number">0</span>;
-        chineseDate = <span class="number">0</span>;
-        sectionalTerm = <span class="number">0</span>;
-        principleTerm = <span class="number">0</span>;
-    }
+        chineseYear = 0;
+        chineseMonth = 0;
+        chineseDate = 0;
+        sectionalTerm = 0;
+        principleTerm = 0;
+    &#125;
 
-    <span class="comment">/**
+    /**
      *  判断是否是公历闰年
      * @param year
      * @return
-     */</span>
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">boolean</span> isGregorianLeapYear(<span class="built_in">int</span> <span class="built_in">year</span>) {
-        <span class="built_in">boolean</span> isLeap = <span class="keyword">false</span>;
-        <span class="keyword">if</span> (<span class="built_in">year</span> % <span class="number">4</span> == <span class="number">0</span>)
-            isLeap = <span class="keyword">true</span>;
-        <span class="keyword">if</span> (<span class="built_in">year</span> % <span class="number">100</span> == <span class="number">0</span>)
-            isLeap = <span class="keyword">false</span>;
-        <span class="keyword">if</span> (<span class="built_in">year</span> % <span class="number">400</span> == <span class="number">0</span>)
-            isLeap = <span class="keyword">true</span>;
-        <span class="keyword">return</span> isLeap;
-    }
+     */
+    public static boolean isGregorianLeapYear(int year) &#123;
+        boolean isLeap = false;
+        if (year % 4 == 0)
+            isLeap = true;
+        if (year % 100 == 0)
+            isLeap = false;
+        if (year % 400 == 0)
+            isLeap = true;
+        return isLeap;
+    &#125;
 
-    <span class="comment">/**
+    /**
      * 返回一个月有几天
      * @param y
      * @param m
      * @return
-     */</span>
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> daysInGregorianMonth(<span class="built_in">int</span> y, <span class="built_in">int</span> m) {
-        <span class="built_in">int</span> d = daysInGregorianMonth[m - <span class="number">1</span>];
-        <span class="keyword">if</span> (m == <span class="number">2</span> &amp;&amp; isGregorianLeapYear(y))
-            d++; <span class="comment">// 公历闰年二月多一天</span>
-        <span class="keyword">return</span> d;
-    }
+     */
+    public static int daysInGregorianMonth(int y, int m) &#123;
+        int d = daysInGregorianMonth[m - 1];
+        if (m == 2 &amp;&amp; isGregorianLeapYear(y))
+            d++; // 公历闰年二月多一天
+        return d;
+    &#125;
 
-    <span class="comment">/**
+    /**
      * 计算当前天在本年中是第几天
      * @param y
      * @param m
      * @param d
      * @return
-     */</span>
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> dayOfYear(<span class="built_in">int</span> y, <span class="built_in">int</span> m, <span class="built_in">int</span> d) {
-        <span class="built_in">int</span> c = <span class="number">0</span>;
-        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>; i &lt; m; i++) {
+     */
+    public static int dayOfYear(int y, int m, int d) &#123;
+        int c = 0;
+        for (int i = 1; i &lt; m; i++) &#123;
             c = c + daysInGregorianMonth(y, i);
-        }
+        &#125;
         c = c + d;
-        <span class="keyword">return</span> c;
-    }
+        return c;
+    &#125;
 
-    <span class="comment">/**
+    /**
      * 当前天是本周的第几天 ， 从星期天开始算
      * @param y
      * @param m
      * @param d
      * @return
-     */</span>
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> dayOfWeek(<span class="built_in">int</span> y, <span class="built_in">int</span> m, <span class="built_in">int</span> d) {
-        <span class="built_in">int</span> w = <span class="number">1</span>; <span class="comment">// 公历一年一月一日是星期一，所以起始值为星期日</span>
-        y = (y - <span class="number">1</span>) % <span class="number">400</span> + <span class="number">1</span>; <span class="comment">// 公历星期值分部 400 年循环一次</span>
-        <span class="built_in">int</span> ly = (y - <span class="number">1</span>) / <span class="number">4</span>; <span class="comment">// 闰年次数</span>
-        ly = ly - (y - <span class="number">1</span>) / <span class="number">100</span>;
-        ly = ly + (y - <span class="number">1</span>) / <span class="number">400</span>;
-        <span class="built_in">int</span> ry = y - <span class="number">1</span> - ly; <span class="comment">// 常年次数</span>
-        w = w + ry; <span class="comment">// 常年星期值增一</span>
-        w = w + <span class="number">2</span> * ly; <span class="comment">// 闰年星期值增二</span>
+     */
+    public static int dayOfWeek(int y, int m, int d) &#123;
+        int w = 1; // 公历一年一月一日是星期一，所以起始值为星期日
+        y = (y - 1) % 400 + 1; // 公历星期值分部 400 年循环一次
+        int ly = (y - 1) / 4; // 闰年次数
+        ly = ly - (y - 1) / 100;
+        ly = ly + (y - 1) / 400;
+        int ry = y - 1 - ly; // 常年次数
+        w = w + ry; // 常年星期值增一
+        w = w + 2 * ly; // 闰年星期值增二
         w = w + dayOfYear(y, m, d);
-        w = (w - <span class="number">1</span>) % <span class="number">7</span> + <span class="number">1</span>;
-        <span class="keyword">return</span> w;
-    }
+        w = (w - 1) % 7 + 1;
+        return w;
+    &#125;
 
-    <span class="comment">/**
+    /**
      * 计算农历
      * @return
-     */</span>
-    <span class="keyword">public</span> <span class="built_in">int</span> computeChineseFields() {
-        <span class="keyword">if</span> (gregorianYear &lt; <span class="number">1901</span> || gregorianYear &gt; <span class="number">2100</span>)
-            <span class="keyword">return</span> <span class="number">1</span>;
-        <span class="built_in">int</span> startYear = baseYear;
-        <span class="built_in">int</span> startMonth = baseMonth;
-        <span class="built_in">int</span> startDate = baseDate;
+     */
+    public int computeChineseFields() &#123;
+        if (gregorianYear &lt; 1901 || gregorianYear &gt; 2100)
+            return 1;
+        int startYear = baseYear;
+        int startMonth = baseMonth;
+        int startDate = baseDate;
         chineseYear = baseChineseYear;
         chineseMonth = baseChineseMonth;
         chineseDate = baseChineseDate;
-        <span class="comment">// 第二个对应日，用以提高计算效率</span>
-        <span class="comment">// 公历 2000 年 1 月 1 日，对应农历 4697 年 11 月 25 日</span>
-        <span class="keyword">if</span> (gregorianYear &gt;= <span class="number">2000</span>) {
-            startYear = baseYear + <span class="number">99</span>;
-            startMonth = <span class="number">1</span>;
-            startDate = <span class="number">1</span>;
-            chineseYear = baseChineseYear + <span class="number">99</span>;
-            chineseMonth = <span class="number">11</span>;
-            chineseDate = <span class="number">25</span>;
-        }
-        <span class="built_in">int</span> daysDiff = <span class="number">0</span>;
-        <span class="keyword">for</span> (<span class="built_in">int</span> i = startYear; i &lt; gregorianYear; i++) {
-            daysDiff += <span class="number">365</span>;
-            <span class="keyword">if</span> (isGregorianLeapYear(i))
-                daysDiff += <span class="number">1</span>; <span class="comment">// leap year</span>
-        }
-        <span class="keyword">for</span> (<span class="built_in">int</span> i = startMonth; i &lt; gregorianMonth; i++) {
+        // 第二个对应日，用以提高计算效率
+        // 公历 2000 年 1 月 1 日，对应农历 4697 年 11 月 25 日
+        if (gregorianYear &gt;= 2000) &#123;
+            startYear = baseYear + 99;
+            startMonth = 1;
+            startDate = 1;
+            chineseYear = baseChineseYear + 99;
+            chineseMonth = 11;
+            chineseDate = 25;
+        &#125;
+        int daysDiff = 0;
+        for (int i = startYear; i &lt; gregorianYear; i++) &#123;
+            daysDiff += 365;
+            if (isGregorianLeapYear(i))
+                daysDiff += 1; // leap year
+        &#125;
+        for (int i = startMonth; i &lt; gregorianMonth; i++) &#123;
             daysDiff += daysInGregorianMonth(gregorianYear, i);
-        }
+        &#125;
         daysDiff += gregorianDate - startDate;
 
         chineseDate += daysDiff;
-        <span class="built_in">int</span> lastDate = daysInChineseMonth(chineseYear, chineseMonth);
-        <span class="built_in">int</span> nextMonth = nextChineseMonth(chineseYear, chineseMonth);
-        <span class="keyword">while</span> (chineseDate &gt; lastDate) {
-            <span class="keyword">if</span> (Math.<span class="built_in">abs</span>(nextMonth) &lt; Math.<span class="built_in">abs</span>(chineseMonth))
+        int lastDate = daysInChineseMonth(chineseYear, chineseMonth);
+        int nextMonth = nextChineseMonth(chineseYear, chineseMonth);
+        while (chineseDate &gt; lastDate) &#123;
+            if (Math.abs(nextMonth) &lt; Math.abs(chineseMonth))
                 chineseYear++;
             chineseMonth = nextMonth;
             chineseDate -= lastDate;
             lastDate = daysInChineseMonth(chineseYear, chineseMonth);
             nextMonth = nextChineseMonth(chineseYear, chineseMonth);
-        }
-        <span class="keyword">return</span> <span class="number">0</span>;
-    }
+        &#125;
+        return 0;
+    &#125;
 
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> daysInChineseMonth(<span class="built_in">int</span> y, <span class="built_in">int</span> m) {
-        <span class="comment">// 注意：闰月 m &lt; 0</span>
-        <span class="built_in">int</span> index = y - baseChineseYear + baseIndex;
-        <span class="built_in">int</span> v = <span class="number">0</span>;
-        <span class="built_in">int</span> l = <span class="number">0</span>;
-        <span class="built_in">int</span> d = <span class="number">30</span>;
-        <span class="keyword">if</span> (<span class="number">1</span> &lt;= m &amp;&amp; m &lt;= <span class="number">8</span>) {
-            v = chineseMonths[<span class="number">2</span> * index];
-            l = m - <span class="number">1</span>;
-            <span class="keyword">if</span> (((v &gt;&gt; l) &amp; <span class="number">0x01</span>) == <span class="number">1</span>)
-                d = <span class="number">29</span>;
-        } <span class="keyword">else</span> <span class="keyword">if</span> (<span class="number">9</span> &lt;= m &amp;&amp; m &lt;= <span class="number">12</span>) {
-            v = chineseMonths[<span class="number">2</span> * index + <span class="number">1</span>];
-            l = m - <span class="number">9</span>;
-            <span class="keyword">if</span> (((v &gt;&gt; l) &amp; <span class="number">0x01</span>) == <span class="number">1</span>)
-                d = <span class="number">29</span>;
-        } <span class="keyword">else</span> {
-            v = chineseMonths[<span class="number">2</span> * index + <span class="number">1</span>];
-            v = (v &gt;&gt; <span class="number">4</span>) &amp; <span class="number">0x0F</span>;
-            <span class="keyword">if</span> (v != Math.<span class="built_in">abs</span>(m)) {
-                d = <span class="number">0</span>;
-            } <span class="keyword">else</span> {
-                d = <span class="number">29</span>;
-                <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; bigLeapMonthYears.length; i++) {
-                    <span class="keyword">if</span> (bigLeapMonthYears[i] == index) {
-                        d = <span class="number">30</span>;
-                        <span class="keyword">break</span>;
-                    }
-                }
-            }
-        }
-        <span class="keyword">return</span> d;
-    }
+    public static int daysInChineseMonth(int y, int m) &#123;
+        // 注意：闰月 m &lt; 0
+        int index = y - baseChineseYear + baseIndex;
+        int v = 0;
+        int l = 0;
+        int d = 30;
+        if (1 &lt;= m &amp;&amp; m &lt;= 8) &#123;
+            v = chineseMonths[2 * index];
+            l = m - 1;
+            if (((v &gt;&gt; l) &amp; 0x01) == 1)
+                d = 29;
+        &#125; else if (9 &lt;= m &amp;&amp; m &lt;= 12) &#123;
+            v = chineseMonths[2 * index + 1];
+            l = m - 9;
+            if (((v &gt;&gt; l) &amp; 0x01) == 1)
+                d = 29;
+        &#125; else &#123;
+            v = chineseMonths[2 * index + 1];
+            v = (v &gt;&gt; 4) &amp; 0x0F;
+            if (v != Math.abs(m)) &#123;
+                d = 0;
+            &#125; else &#123;
+                d = 29;
+                for (int i = 0; i &lt; bigLeapMonthYears.length; i++) &#123;
+                    if (bigLeapMonthYears[i] == index) &#123;
+                        d = 30;
+                        break;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+        return d;
+    &#125;
 
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> nextChineseMonth(<span class="built_in">int</span> y, <span class="built_in">int</span> m) {
-        <span class="built_in">int</span> n = Math.<span class="built_in">abs</span>(m) + <span class="number">1</span>;
-        <span class="keyword">if</span> (m &gt; <span class="number">0</span>) {
-            <span class="built_in">int</span> index = y - baseChineseYear + baseIndex;
-            <span class="built_in">int</span> v = chineseMonths[<span class="number">2</span> * index + <span class="number">1</span>];
-            v = (v &gt;&gt; <span class="number">4</span>) &amp; <span class="number">0x0F</span>;
-            <span class="keyword">if</span> (v == m)
+    public static int nextChineseMonth(int y, int m) &#123;
+        int n = Math.abs(m) + 1;
+        if (m &gt; 0) &#123;
+            int index = y - baseChineseYear + baseIndex;
+            int v = chineseMonths[2 * index + 1];
+            v = (v &gt;&gt; 4) &amp; 0x0F;
+            if (v == m)
                 n = -m;
-        }
-        <span class="keyword">if</span> (n == <span class="number">13</span>)
-            n = <span class="number">1</span>;
-        <span class="keyword">return</span> n;
-    }
+        &#125;
+        if (n == 13)
+            n = 1;
+        return n;
+    &#125;
 
-    <span class="comment">/**
+    /**
      * 获取节气时间
      * 节气在本月的sectionalTerm号
      * 中气在本月的principleTerm号
      * @return
-     */</span>
-    <span class="keyword">public</span> <span class="built_in">int</span> computeSolarTerms() {
-        <span class="keyword">if</span> (gregorianYear &lt; <span class="number">1901</span> || gregorianYear &gt; <span class="number">2100</span>)
-            <span class="keyword">return</span> <span class="number">1</span>;
+     */
+    public int computeSolarTerms() &#123;
+        if (gregorianYear &lt; 1901 || gregorianYear &gt; 2100)
+            return 1;
         sectionalTerm = sectionalTerm(gregorianYear, gregorianMonth);
         principleTerm = principleTerm(gregorianYear, gregorianMonth);
-        <span class="keyword">return</span> <span class="number">0</span>;
-    }
+        return 0;
+    &#125;
 
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> sectionalTerm(<span class="built_in">int</span> y, <span class="built_in">int</span> m) {
-        <span class="keyword">if</span> (y &lt; <span class="number">1901</span> || y &gt; <span class="number">2100</span>)
-            <span class="keyword">return</span> <span class="number">0</span>;
-        <span class="built_in">int</span> index = <span class="number">0</span>;
-        <span class="built_in">int</span> ry = y - baseYear + <span class="number">1</span>;
-        <span class="keyword">while</span> (ry &gt;= sectionalTermYear[m - <span class="number">1</span>][index])
+    public static int sectionalTerm(int y, int m) &#123;
+        if (y &lt; 1901 || y &gt; 2100)
+            return 0;
+        int index = 0;
+        int ry = y - baseYear + 1;
+        while (ry &gt;= sectionalTermYear[m - 1][index])
             index++;
-        <span class="built_in">int</span> term = sectionalTermMap[m - <span class="number">1</span>][<span class="number">4</span> * index + ry % <span class="number">4</span>];
-        <span class="keyword">if</span> ((ry == <span class="number">121</span>) &amp;&amp; (m == <span class="number">4</span>))
-            term = <span class="number">5</span>;
-        <span class="keyword">if</span> ((ry == <span class="number">132</span>) &amp;&amp; (m == <span class="number">4</span>))
-            term = <span class="number">5</span>;
-        <span class="keyword">if</span> ((ry == <span class="number">194</span>) &amp;&amp; (m == <span class="number">6</span>))
-            term = <span class="number">6</span>;
-        <span class="keyword">return</span> term;
-    }
+        int term = sectionalTermMap[m - 1][4 * index + ry % 4];
+        if ((ry == 121) &amp;&amp; (m == 4))
+            term = 5;
+        if ((ry == 132) &amp;&amp; (m == 4))
+            term = 5;
+        if ((ry == 194) &amp;&amp; (m == 6))
+            term = 6;
+        return term;
+    &#125;
 
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> principleTerm(<span class="built_in">int</span> y, <span class="built_in">int</span> m) {
-        <span class="keyword">if</span> (y &lt; <span class="number">1901</span> || y &gt; <span class="number">2100</span>)
-            <span class="keyword">return</span> <span class="number">0</span>;
-        <span class="built_in">int</span> index = <span class="number">0</span>;
-        <span class="built_in">int</span> ry = y - baseYear + <span class="number">1</span>;
-        <span class="keyword">while</span> (ry &gt;= principleTermYear[m - <span class="number">1</span>][index])
+    public static int principleTerm(int y, int m) &#123;
+        if (y &lt; 1901 || y &gt; 2100)
+            return 0;
+        int index = 0;
+        int ry = y - baseYear + 1;
+        while (ry &gt;= principleTermYear[m - 1][index])
             index++;
-        <span class="built_in">int</span> term = principleTermMap[m - <span class="number">1</span>][<span class="number">4</span> * index + ry % <span class="number">4</span>];
-        <span class="keyword">if</span> ((ry == <span class="number">171</span>) &amp;&amp; (m == <span class="number">3</span>))
-            term = <span class="number">21</span>;
-        <span class="keyword">if</span> ((ry == <span class="number">181</span>) &amp;&amp; (m == <span class="number">5</span>))
-            term = <span class="number">21</span>;
-        <span class="keyword">return</span> term;
-    }
+        int term = principleTermMap[m - 1][4 * index + ry % 4];
+        if ((ry == 171) &amp;&amp; (m == 3))
+            term = 21;
+        if ((ry == 181) &amp;&amp; (m == 5))
+            term = 21;
+        return term;
+    &#125;
 
-    <span class="comment">/**
+    /**
      * 打印年历
      * @return
-     */</span>
-    <span class="keyword">public</span> <span class="keyword">String</span>[] getYearTable() {
-        setGregorian(gregorianYear, <span class="number">1</span>, <span class="number">1</span>);
+     */
+    public String[] getYearTable() &#123;
+        setGregorian(gregorianYear, 1, 1);
         computeChineseFields();
         computeSolarTerms();
-        <span class="keyword">String</span>[] table = <span class="keyword">new</span> <span class="keyword">String</span>[<span class="number">58</span>]; <span class="comment">// 6*9 + 4</span>
-        table[<span class="number">0</span>] = <span class="string">"\t公历年历："</span> + gregorianYear;
-        table[<span class="number">1</span>] = <span class="string">"\t农历年历："</span> + (chineseYear + <span class="number">1</span>) + <span class="string">" ("</span> + stemNames[(chineseYear + <span class="number">1</span> - <span class="number">1</span>) % <span class="number">10</span>]
-                + branchNames[(chineseYear + <span class="number">1</span> - <span class="number">1</span>) % <span class="number">12</span>] + <span class="string">" - "</span> + animalNames[(chineseYear + <span class="number">1</span> - <span class="number">1</span>) % <span class="number">12</span>] + <span class="string">"年)"</span>;
-        <span class="built_in">int</span> ln = <span class="number">2</span>;
-        <span class="keyword">String</span> blank = <span class="string">"\t"</span>;
-        <span class="keyword">String</span>[] mLeft = <span class="keyword">null</span>;
-        <span class="keyword">String</span>[] mRight = <span class="keyword">null</span>;
-        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">6</span>; i++) {
+        String[] table = new String[58]; // 6*9 + 4
+        table[0] = &quot;\t公历年历：&quot; + gregorianYear;
+        table[1] = &quot;\t农历年历：&quot; + (chineseYear + 1) + &quot; (&quot; + stemNames[(chineseYear + 1 - 1) % 10]
+                + branchNames[(chineseYear + 1 - 1) % 12] + &quot; - &quot; + animalNames[(chineseYear + 1 - 1) % 12] + &quot;年)&quot;;
+        int ln = 2;
+        String blank = &quot;\t&quot;;
+        String[] mLeft = null;
+        String[] mRight = null;
+        for (int i = 1; i &lt;= 6; i++) &#123;
             table[ln] = blank;
             ln++;
             mLeft = getMonthTable();
             mRight = getMonthTable();
-            <span class="keyword">for</span> (<span class="built_in">int</span> j = <span class="number">0</span>; j &lt; mLeft.length; j++) {
-                <span class="keyword">String</span> <span class="built_in">line</span> = mLeft[j] + <span class="string">"\t\t"</span> + mRight[j];
-                table[ln] = <span class="built_in">line</span>;
+            for (int j = 0; j &lt; mLeft.length; j++) &#123;
+                String line = mLeft[j] + &quot;\t\t&quot; + mRight[j];
+                table[ln] = line;
                 ln++;
-            }
-        }
+            &#125;
+        &#125;
         table[ln] = blank;
         ln++;
-        table[ln] = <span class="string">"\t##/## - 公历日期/农历日期，(*)#月 - (闰)农历月第一天"</span>;
+        table[ln] = &quot;\t##/## - 公历日期/农历日期，(*)#月 - (闰)农历月第一天&quot;;
         ln++;
-        <span class="keyword">return</span> table;
-    }
+        return table;
+    &#125;
 
-    <span class="comment">/**
+    /**
      * 打印月历
      * @return
-     */</span>
-    <span class="keyword">public</span> <span class="keyword">String</span>[] getMonthTable() {
-        setGregorian(gregorianYear, gregorianMonth, <span class="number">1</span>);
+     */
+    public String[] getMonthTable() &#123;
+        setGregorian(gregorianYear, gregorianMonth, 1);
         computeChineseFields();
         computeSolarTerms();
-        <span class="keyword">String</span>[] table = <span class="keyword">new</span> <span class="keyword">String</span>[<span class="number">8</span>];
-        <span class="keyword">String</span> title = <span class="string">"\t\t\t\t"</span> + monthNames[gregorianMonth - <span class="number">1</span>] + <span class="string">"月"</span> + <span class="string">"\t\t\t\t"</span>;
-        <span class="keyword">String</span> header = <span class="string">"\t      日\t      一\t      二\t      三\t      四\t      五\t      六\t"</span>;
-        <span class="keyword">String</span> blank = <span class="string">"\t\t\t\t\t\t\t\t"</span>;
-        table[<span class="number">0</span>] = title;
-        table[<span class="number">1</span>] = header;
-        <span class="built_in">int</span> wk = <span class="number">2</span>;
-        <span class="keyword">String</span> <span class="built_in">line</span> = <span class="string">"\t"</span>;
-        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>; i &lt; dayOfWeek; i++) {
-            <span class="built_in">line</span> += <span class="string">"\t"</span>;
-        }
-        <span class="built_in">int</span> days = daysInGregorianMonth(gregorianYear, gregorianMonth);
-        <span class="keyword">for</span> (<span class="built_in">int</span> i = gregorianDate; i &lt;= days; i++) {
-            <span class="built_in">line</span> += getDateString() + <span class="string">"\t"</span>;
+        String[] table = new String[8];
+        String title = &quot;\t\t\t\t&quot; + monthNames[gregorianMonth - 1] + &quot;月&quot; + &quot;\t\t\t\t&quot;;
+        String header = &quot;\t      日\t      一\t      二\t      三\t      四\t      五\t      六\t&quot;;
+        String blank = &quot;\t\t\t\t\t\t\t\t&quot;;
+        table[0] = title;
+        table[1] = header;
+        int wk = 2;
+        String line = &quot;\t&quot;;
+        for (int i = 1; i &lt; dayOfWeek; i++) &#123;
+            line += &quot;\t&quot;;
+        &#125;
+        int days = daysInGregorianMonth(gregorianYear, gregorianMonth);
+        for (int i = gregorianDate; i &lt;= days; i++) &#123;
+            line += getDateString() + &quot;\t&quot;;
             rollUpOneDay();
-            <span class="keyword">if</span> (dayOfWeek == <span class="number">1</span>) {
-                table[wk] = <span class="built_in">line</span>;
-                <span class="built_in">line</span> = <span class="string">"\t"</span>;
+            if (dayOfWeek == 1) &#123;
+                table[wk] = line;
+                line = &quot;\t&quot;;
                 wk++;
-            }
-        }
-        <span class="keyword">for</span> (<span class="built_in">int</span> i = dayOfWeek; i &lt;= <span class="number">7</span>; i++) {
-            <span class="built_in">line</span> += <span class="string">"\t"</span>;
-        }
-        table[wk] = <span class="built_in">line</span>;
-        <span class="keyword">for</span> (<span class="built_in">int</span> i = wk + <span class="number">1</span>; i &lt; table.length; i++) {
+            &#125;
+        &#125;
+        for (int i = dayOfWeek; i &lt;= 7; i++) &#123;
+            line += &quot;\t&quot;;
+        &#125;
+        table[wk] = line;
+        for (int i = wk + 1; i &lt; table.length; i++) &#123;
             table[i] = blank;
-        }
-        <span class="keyword">return</span> table;
-    }
+        &#125;
+        return table;
+    &#125;
 
-    <span class="comment">/**
+    /**
      * 打印当天日期
      * @return
-     */</span>
-    <span class="keyword">public</span> <span class="keyword">String</span> getDateString() {
-        <span class="keyword">String</span> <span class="built_in">str</span> = <span class="string">"*  /  "</span>;
-        <span class="keyword">String</span> gm = <span class="keyword">String</span>.valueOf(gregorianMonth);
-        <span class="keyword">if</span> (gm.length() == <span class="number">1</span>)
-            gm = <span class="string">' '</span> + gm;
-        <span class="keyword">String</span> cm = <span class="keyword">String</span>.valueOf(Math.<span class="built_in">abs</span>(chineseMonth));
-        <span class="keyword">if</span> (cm.length() == <span class="number">1</span>)
-            cm = <span class="string">' '</span> + cm;
-        <span class="keyword">String</span> gd = <span class="keyword">String</span>.valueOf(gregorianDate);
-        <span class="keyword">if</span> (gd.length() == <span class="number">1</span>)
-            gd = <span class="string">' '</span> + gd;
-        <span class="keyword">if</span> (gregorianDate == sectionalTerm) {
-            <span class="built_in">str</span> = gd + <span class="string">'/'</span> + <span class="string">" "</span> + sectionalTermNames[(gregorianMonth+<span class="number">10</span>)%<span class="number">12</span>];
-        } <span class="keyword">else</span> <span class="keyword">if</span> (gregorianDate == principleTerm) {
-            <span class="built_in">str</span> = gd + <span class="string">'/'</span> + <span class="string">" "</span> + principleTermNames[(gregorianMonth+<span class="number">10</span>)%<span class="number">12</span>];<span class="comment">//节气是阳历月份分的每月2个，立春在2月份</span>
-        } <span class="keyword">else</span> <span class="keyword">if</span> (chineseDate == <span class="number">1</span> &amp;&amp; chineseMonth &gt; <span class="number">0</span>) {
-            <span class="built_in">str</span> = gd + <span class="string">'/'</span> + <span class="string">" "</span> + monthOfAlmanac[Math.<span class="built_in">abs</span>(chineseMonth) - <span class="number">1</span>];
-        } <span class="keyword">else</span> <span class="keyword">if</span> (chineseDate == <span class="number">1</span> &amp;&amp; chineseMonth &lt; <span class="number">0</span>) {<span class="comment">// 闰月</span>
-            <span class="built_in">str</span> = gd + <span class="string">'/'</span> + <span class="string">"*"</span> + monthOfAlmanac[Math.<span class="built_in">abs</span>(chineseMonth) - <span class="number">1</span>];
-        } <span class="keyword">else</span> {
-            <span class="built_in">str</span> = gd + <span class="string">"/ "</span> + daysOfAlmanac[chineseDate - <span class="number">1</span>];
-        }
-        <span class="keyword">return</span> <span class="built_in">str</span>;
-    }
+     */
+    public String getDateString() &#123;
+        String str = &quot;*  /  &quot;;
+        String gm = String.valueOf(gregorianMonth);
+        if (gm.length() == 1)
+            gm = &apos; &apos; + gm;
+        String cm = String.valueOf(Math.abs(chineseMonth));
+        if (cm.length() == 1)
+            cm = &apos; &apos; + cm;
+        String gd = String.valueOf(gregorianDate);
+        if (gd.length() == 1)
+            gd = &apos; &apos; + gd;
+        if (gregorianDate == sectionalTerm) &#123;
+            str = gd + &apos;/&apos; + &quot; &quot; + sectionalTermNames[(gregorianMonth+10)%12];
+        &#125; else if (gregorianDate == principleTerm) &#123;
+            str = gd + &apos;/&apos; + &quot; &quot; + principleTermNames[(gregorianMonth+10)%12];//节气是阳历月份分的每月2个，立春在2月份
+        &#125; else if (chineseDate == 1 &amp;&amp; chineseMonth &gt; 0) &#123;
+            str = gd + &apos;/&apos; + &quot; &quot; + monthOfAlmanac[Math.abs(chineseMonth) - 1];
+        &#125; else if (chineseDate == 1 &amp;&amp; chineseMonth &lt; 0) &#123;// 闰月
+            str = gd + &apos;/&apos; + &quot;*&quot; + monthOfAlmanac[Math.abs(chineseMonth) - 1];
+        &#125; else &#123;
+            str = gd + &quot;/ &quot; + daysOfAlmanac[chineseDate - 1];
+        &#125;
+        return str;
+    &#125;
 
-    <span class="keyword">public</span> <span class="keyword">String</span> getChinaDateString(){
-        <span class="keyword">String</span> <span class="built_in">str</span> = <span class="string">""</span>;
-        <span class="keyword">String</span> gm = <span class="keyword">String</span>.valueOf(gregorianMonth);
-        <span class="keyword">if</span> (gm.length() == <span class="number">1</span>)
-            gm = <span class="string">' '</span> + gm;
-        <span class="keyword">String</span> cm = <span class="keyword">String</span>.valueOf(Math.<span class="built_in">abs</span>(chineseMonth));
-        <span class="keyword">if</span> (cm.length() == <span class="number">1</span>)
-            cm = <span class="string">' '</span> + cm;
-        <span class="keyword">String</span> gd = <span class="keyword">String</span>.valueOf(gregorianDate);
-        <span class="keyword">if</span> (gd.length() == <span class="number">1</span>)
-            gd = <span class="string">' '</span> + gd;
-        <span class="keyword">if</span> (gregorianDate == sectionalTerm) {
-            <span class="built_in">str</span> = sectionalTermNames[Math.<span class="built_in">abs</span>(chineseMonth) - <span class="number">1</span>];
-        } <span class="keyword">else</span> <span class="keyword">if</span> (gregorianDate == principleTerm) {
-            <span class="built_in">str</span> = principleTermNames[Math.<span class="built_in">abs</span>(chineseMonth) - <span class="number">1</span>];
-        } <span class="keyword">else</span> <span class="keyword">if</span> (chineseDate == <span class="number">1</span> &amp;&amp; chineseMonth &gt; <span class="number">0</span>) {
-            <span class="built_in">str</span> = monthOfAlmanac[chineseMonth - <span class="number">1</span>];
-        } <span class="keyword">else</span> <span class="keyword">if</span> (chineseDate == <span class="number">1</span> &amp;&amp; chineseMonth &lt; <span class="number">0</span>) {<span class="comment">// 闰月</span>
-            <span class="built_in">str</span> = <span class="string">"闰"</span>+monthOfAlmanac[-chineseMonth - <span class="number">1</span>];
-        } <span class="keyword">else</span> {
-            <span class="built_in">str</span> = daysOfAlmanac[chineseDate - <span class="number">1</span>];
-        }
-        <span class="keyword">return</span> <span class="built_in">str</span>;
-    }
+    public String getChinaDateString()&#123;
+        String str = &quot;&quot;;
+        String gm = String.valueOf(gregorianMonth);
+        if (gm.length() == 1)
+            gm = &apos; &apos; + gm;
+        String cm = String.valueOf(Math.abs(chineseMonth));
+        if (cm.length() == 1)
+            cm = &apos; &apos; + cm;
+        String gd = String.valueOf(gregorianDate);
+        if (gd.length() == 1)
+            gd = &apos; &apos; + gd;
+        if (gregorianDate == sectionalTerm) &#123;
+            str = sectionalTermNames[Math.abs(chineseMonth) - 1];
+        &#125; else if (gregorianDate == principleTerm) &#123;
+            str = principleTermNames[Math.abs(chineseMonth) - 1];
+        &#125; else if (chineseDate == 1 &amp;&amp; chineseMonth &gt; 0) &#123;
+            str = monthOfAlmanac[chineseMonth - 1];
+        &#125; else if (chineseDate == 1 &amp;&amp; chineseMonth &lt; 0) &#123;// 闰月
+            str = &quot;闰&quot;+monthOfAlmanac[-chineseMonth - 1];
+        &#125; else &#123;
+            str = daysOfAlmanac[chineseDate - 1];
+        &#125;
+        return str;
+    &#125;
 
-    <span class="comment">/**
+    /**
      * 将日期向后推移一天
      * @return
-     */</span>
-    <span class="keyword">public</span> <span class="built_in">int</span> rollUpOneDay() {
-        dayOfWeek = dayOfWeek % <span class="number">7</span> + <span class="number">1</span>;
+     */
+    public int rollUpOneDay() &#123;
+        dayOfWeek = dayOfWeek % 7 + 1;
         dayOfYear++;
         gregorianDate++;
-        <span class="built_in">int</span> days = daysInGregorianMonth(gregorianYear, gregorianMonth);
-        <span class="keyword">if</span> (gregorianDate &gt; days) {
-            gregorianDate = <span class="number">1</span>;
+        int days = daysInGregorianMonth(gregorianYear, gregorianMonth);
+        if (gregorianDate &gt; days) &#123;
+            gregorianDate = 1;
             gregorianMonth++;
-            <span class="keyword">if</span> (gregorianMonth &gt; <span class="number">12</span>) {
-                gregorianMonth = <span class="number">1</span>;
+            if (gregorianMonth &gt; 12) &#123;
+                gregorianMonth = 1;
                 gregorianYear++;
-                dayOfYear = <span class="number">1</span>;
+                dayOfYear = 1;
                 isGregorianLeap = isGregorianLeapYear(gregorianYear);
-            }
+            &#125;
             sectionalTerm = sectionalTerm(gregorianYear, gregorianMonth);
             principleTerm = principleTerm(gregorianYear, gregorianMonth);
-        }
+        &#125;
         chineseDate++;
         days = daysInChineseMonth(chineseYear, chineseMonth);
-        <span class="keyword">if</span> (chineseDate &gt; days) {
-            chineseDate = <span class="number">1</span>;
+        if (chineseDate &gt; days) &#123;
+            chineseDate = 1;
             chineseMonth = nextChineseMonth(chineseYear, chineseMonth);
-            <span class="keyword">if</span> (chineseMonth == <span class="number">1</span>)
+            if (chineseMonth == 1)
                 chineseYear++;
-        }
-        <span class="keyword">return</span> <span class="number">0</span>;
-    }
+        &#125;
+        return 0;
+    &#125;
 
-    <span class="comment">/**
+    /**
      * 打印当前日期信息
-     */</span>
-    <span class="keyword">public</span> <span class="keyword">String</span> toString() {
-        StringBuffer buf = <span class="keyword">new</span> StringBuffer();
-        buf.<span class="built_in">append</span>(<span class="string">"公元年Gregorian Year: \t"</span> + gregorianYear + <span class="string">"年\n"</span>);
-        buf.<span class="built_in">append</span>(<span class="string">"月Gregorian Month:  \t"</span> + gregorianMonth + <span class="string">"月\n"</span>);
-        buf.<span class="built_in">append</span>(<span class="string">"日Gregorian Date:  \t"</span> + gregorianDate + <span class="string">"日\n"</span>);
-        buf.<span class="built_in">append</span>(<span class="string">"闰年Is Leap Year:  \t"</span> + isGregorianLeap + <span class="string">"\n"</span>);
-        buf.<span class="built_in">append</span>(<span class="string">"一年 的第几天Day of Year:  \t第"</span> + dayOfYear + <span class="string">"天\n"</span>);
-        buf.<span class="built_in">append</span>(<span class="string">"星期几Day of Week:  \t"</span> + daysOfWeek[dayOfWeek - <span class="number">1</span>] + <span class="string">"\n"</span>);
-        buf.<span class="built_in">append</span>(<span class="string">"中国年Chinese Year:  \t"</span> + chineseYear + <span class="string">"\n"</span>);
-        buf.<span class="built_in">append</span>(<span class="string">"天干Heavenly Stem:  \t"</span> + stemNames[((chineseYear - <span class="number">1</span>) % <span class="number">10</span>)] + <span class="string">"\n"</span>);
-        buf.<span class="built_in">append</span>(<span class="string">"地支Earthly Branch: \t"</span> + branchNames[((chineseYear - <span class="number">1</span>) % <span class="number">12</span>)] + <span class="string">"\n"</span>);
-        buf.<span class="built_in">append</span>(<span class="string">"农历月Chinese Month: \t"</span> + monthOfAlmanac[chineseMonth - <span class="number">1</span>] + <span class="string">"\n"</span>);
-        buf.<span class="built_in">append</span>(<span class="string">"农历日Chinese Date:  \t"</span> + daysOfAlmanac[chineseDate - <span class="number">1</span>] + <span class="string">"\n"</span>);
-        buf.<span class="built_in">append</span>(<span class="string">"Sectional Term:  \t"</span> + sectionalTerm + <span class="string">"日"</span> + sectionalTermNames[chineseMonth - <span class="number">1</span>] + <span class="string">"\n"</span>);
-        buf.<span class="built_in">append</span>(<span class="string">"Principle Term:  \t"</span> + principleTerm + <span class="string">"日"</span> + principleTermNames[chineseMonth - <span class="number">1</span>] + <span class="string">"\n"</span>);
-        <span class="keyword">return</span> buf.toString();
-    }
+     */
+    public String toString() &#123;
+        StringBuffer buf = new StringBuffer();
+        buf.append(&quot;公元年Gregorian Year: \t&quot; + gregorianYear + &quot;年\n&quot;);
+        buf.append(&quot;月Gregorian Month:  \t&quot; + gregorianMonth + &quot;月\n&quot;);
+        buf.append(&quot;日Gregorian Date:  \t&quot; + gregorianDate + &quot;日\n&quot;);
+        buf.append(&quot;闰年Is Leap Year:  \t&quot; + isGregorianLeap + &quot;\n&quot;);
+        buf.append(&quot;一年 的第几天Day of Year:  \t第&quot; + dayOfYear + &quot;天\n&quot;);
+        buf.append(&quot;星期几Day of Week:  \t&quot; + daysOfWeek[dayOfWeek - 1] + &quot;\n&quot;);
+        buf.append(&quot;中国年Chinese Year:  \t&quot; + chineseYear + &quot;\n&quot;);
+        buf.append(&quot;天干Heavenly Stem:  \t&quot; + stemNames[((chineseYear - 1) % 10)] + &quot;\n&quot;);
+        buf.append(&quot;地支Earthly Branch: \t&quot; + branchNames[((chineseYear - 1) % 12)] + &quot;\n&quot;);
+        buf.append(&quot;农历月Chinese Month: \t&quot; + monthOfAlmanac[chineseMonth - 1] + &quot;\n&quot;);
+        buf.append(&quot;农历日Chinese Date:  \t&quot; + daysOfAlmanac[chineseDate - 1] + &quot;\n&quot;);
+        buf.append(&quot;Sectional Term:  \t&quot; + sectionalTerm + &quot;日&quot; + sectionalTermNames[chineseMonth - 1] + &quot;\n&quot;);
+        buf.append(&quot;Principle Term:  \t&quot; + principleTerm + &quot;日&quot; + principleTermNames[chineseMonth - 1] + &quot;\n&quot;);
+        return buf.toString();
+    &#125;
 
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] arg) {
-        CalendarUtil c = <span class="keyword">new</span> CalendarUtil();
-        <span class="keyword">String</span> cmd = <span class="string">"year"</span>;
+    public static void main(String[] arg) &#123;
+        CalendarUtil c = new CalendarUtil();
+        String cmd = &quot;year&quot;;
         Calendar cal = Calendar.getInstance();
-        <span class="built_in">int</span> y = <span class="number">2048</span>;<span class="comment">//cal.get(Calendar.YEAR)-1;// 获取年份</span>
-        <span class="built_in">int</span> m = cal.<span class="built_in">get</span>(Calendar.MONTH) + <span class="number">1</span>;<span class="comment">// 获取月份</span>
-        <span class="built_in">int</span> d = cal.<span class="built_in">get</span>(Calendar.DATE);<span class="comment">// 获取日</span>
+        int y = 2048;//cal.get(Calendar.YEAR)-1;// 获取年份
+        int m = cal.get(Calendar.MONTH) + 1;// 获取月份
+        int d = cal.get(Calendar.DATE);// 获取日
 
         c.setGregorian(y, m, d);
         c.computeChineseFields();
         c.computeSolarTerms();
 
-        <span class="keyword">if</span> (cmd.equalsIgnoreCase(<span class="string">"year"</span>)) {
-            <span class="keyword">String</span>[] t = c.getYearTable();
-            <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; t.length; i++)
-                System.out.<span class="built_in">println</span>(t[i]);
-        } <span class="keyword">else</span> <span class="keyword">if</span> (cmd.equalsIgnoreCase(<span class="string">"month"</span>)) {
-            <span class="keyword">String</span>[] t = c.getMonthTable();
-            <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; t.length; i++)
-                System.out.<span class="built_in">println</span>(t[i]);
-        } <span class="keyword">else</span> {
-            System.out.<span class="built_in">println</span>(c.toString());
-        }
-    }
+        if (cmd.equalsIgnoreCase(&quot;year&quot;)) &#123;
+            String[] t = c.getYearTable();
+            for (int i = 0; i &lt; t.length; i++)
+                System.out.println(t[i]);
+        &#125; else if (cmd.equalsIgnoreCase(&quot;month&quot;)) &#123;
+            String[] t = c.getMonthTable();
+            for (int i = 0; i &lt; t.length; i++)
+                System.out.println(t[i]);
+        &#125; else &#123;
+            System.out.println(c.toString());
+        &#125;
+    &#125;
 
 
 
 
 
 
-<span class="comment">//    public int getGregorianYear() {</span>
-<span class="comment">//        return gregorianYear;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public void setGregorianYear(int gregorianYear) {</span>
-<span class="comment">//        this.gregorianYear = gregorianYear;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public int getGregorianMonth() {</span>
-<span class="comment">//        return gregorianMonth;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public void setGregorianMonth(int gregorianMonth) {</span>
-<span class="comment">//        this.gregorianMonth = gregorianMonth;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public int getGregorianDate() {</span>
-<span class="comment">//        return gregorianDate;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public void setGregorianDate(int gregorianDate) {</span>
-<span class="comment">//        this.gregorianDate = gregorianDate;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public boolean isGregorianLeap() {</span>
-<span class="comment">//        return isGregorianLeap;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public void setGregorianLeap(boolean isGregorianLeap) {</span>
-<span class="comment">//        this.isGregorianLeap = isGregorianLeap;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public int getDayOfYear() {</span>
-<span class="comment">//        return dayOfYear;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public void setDayOfYear(int dayOfYear) {</span>
-<span class="comment">//        this.dayOfYear = dayOfYear;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public int getDayOfWeek() {</span>
-<span class="comment">//        return dayOfWeek;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public void setDayOfWeek(int dayOfWeek) {</span>
-<span class="comment">//        this.dayOfWeek = dayOfWeek;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public int getChineseYear() {</span>
-<span class="comment">//        return chineseYear;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public void setChineseYear(int chineseYear) {</span>
-<span class="comment">//        this.chineseYear = chineseYear;</span>
-<span class="comment">//    }</span>
+//    public int getGregorianYear() &#123;
+//        return gregorianYear;
+//    &#125;
+//
+//    public void setGregorianYear(int gregorianYear) &#123;
+//        this.gregorianYear = gregorianYear;
+//    &#125;
+//
+//    public int getGregorianMonth() &#123;
+//        return gregorianMonth;
+//    &#125;
+//
+//    public void setGregorianMonth(int gregorianMonth) &#123;
+//        this.gregorianMonth = gregorianMonth;
+//    &#125;
+//
+//    public int getGregorianDate() &#123;
+//        return gregorianDate;
+//    &#125;
+//
+//    public void setGregorianDate(int gregorianDate) &#123;
+//        this.gregorianDate = gregorianDate;
+//    &#125;
+//
+//    public boolean isGregorianLeap() &#123;
+//        return isGregorianLeap;
+//    &#125;
+//
+//    public void setGregorianLeap(boolean isGregorianLeap) &#123;
+//        this.isGregorianLeap = isGregorianLeap;
+//    &#125;
+//
+//    public int getDayOfYear() &#123;
+//        return dayOfYear;
+//    &#125;
+//
+//    public void setDayOfYear(int dayOfYear) &#123;
+//        this.dayOfYear = dayOfYear;
+//    &#125;
+//
+//    public int getDayOfWeek() &#123;
+//        return dayOfWeek;
+//    &#125;
+//
+//    public void setDayOfWeek(int dayOfWeek) &#123;
+//        this.dayOfWeek = dayOfWeek;
+//    &#125;
+//
+//    public int getChineseYear() &#123;
+//        return chineseYear;
+//    &#125;
+//
+//    public void setChineseYear(int chineseYear) &#123;
+//        this.chineseYear = chineseYear;
+//    &#125;
 
-    <span class="keyword">public</span> <span class="built_in">int</span> getChineseMonth() {
-        <span class="keyword">return</span> chineseMonth;
-    }
+    public int getChineseMonth() &#123;
+        return chineseMonth;
+    &#125;
 
-    <span class="keyword">public</span> <span class="keyword">void</span> setChineseMonth(<span class="built_in">int</span> chineseMonth) {
-        <span class="keyword">this</span>.chineseMonth = chineseMonth;
-    }
+    public void setChineseMonth(int chineseMonth) &#123;
+        this.chineseMonth = chineseMonth;
+    &#125;
 
-    <span class="keyword">public</span> <span class="built_in">int</span> getChineseDate() {
-        <span class="keyword">return</span> chineseDate;
-    }
+    public int getChineseDate() &#123;
+        return chineseDate;
+    &#125;
 
-    <span class="keyword">public</span> <span class="keyword">void</span> setChineseDate(<span class="built_in">int</span> chineseDate) {
-        <span class="keyword">this</span>.chineseDate = chineseDate;
-    }
-<span class="comment">//</span>
-<span class="comment">//    public int getSectionalTerm() {</span>
-<span class="comment">//        return sectionalTerm;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public void setSectionalTerm(int sectionalTerm) {</span>
-<span class="comment">//        this.sectionalTerm = sectionalTerm;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public int getPrincipleTerm() {</span>
-<span class="comment">//        return principleTerm;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public void setPrincipleTerm(int principleTerm) {</span>
-<span class="comment">//        this.principleTerm = principleTerm;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static char[] getDaysInGregorianMonth() {</span>
-<span class="comment">//        return daysInGregorianMonth;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setDaysInGregorianMonth(char[] daysInGregorianMonth) {</span>
-<span class="comment">//        CalendarUtil.daysInGregorianMonth = daysInGregorianMonth;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static String[] getStemNames() {</span>
-<span class="comment">//        return stemNames;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setStemNames(String[] stemNames) {</span>
-<span class="comment">//        CalendarUtil.stemNames = stemNames;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static String[] getBranchNames() {</span>
-<span class="comment">//        return branchNames;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setBranchNames(String[] branchNames) {</span>
-<span class="comment">//        CalendarUtil.branchNames = branchNames;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static String[] getAnimalNames() {</span>
-<span class="comment">//        return animalNames;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setAnimalNames(String[] animalNames) {</span>
-<span class="comment">//        CalendarUtil.animalNames = animalNames;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static char[] getChineseMonths() {</span>
-<span class="comment">//        return chineseMonths;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setChineseMonths(char[] chineseMonths) {</span>
-<span class="comment">//        CalendarUtil.chineseMonths = chineseMonths;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static int getBaseYear() {</span>
-<span class="comment">//        return baseYear;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setBaseYear(int baseYear) {</span>
-<span class="comment">//        CalendarUtil.baseYear = baseYear;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static int getBaseMonth() {</span>
-<span class="comment">//        return baseMonth;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setBaseMonth(int baseMonth) {</span>
-<span class="comment">//        CalendarUtil.baseMonth = baseMonth;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static int getBaseDate() {</span>
-<span class="comment">//        return baseDate;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setBaseDate(int baseDate) {</span>
-<span class="comment">//        CalendarUtil.baseDate = baseDate;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static int getBaseIndex() {</span>
-<span class="comment">//        return baseIndex;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setBaseIndex(int baseIndex) {</span>
-<span class="comment">//        CalendarUtil.baseIndex = baseIndex;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static int getBaseChineseYear() {</span>
-<span class="comment">//        return baseChineseYear;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setBaseChineseYear(int baseChineseYear) {</span>
-<span class="comment">//        CalendarUtil.baseChineseYear = baseChineseYear;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static int getBaseChineseMonth() {</span>
-<span class="comment">//        return baseChineseMonth;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setBaseChineseMonth(int baseChineseMonth) {</span>
-<span class="comment">//        CalendarUtil.baseChineseMonth = baseChineseMonth;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static int getBaseChineseDate() {</span>
-<span class="comment">//        return baseChineseDate;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setBaseChineseDate(int baseChineseDate) {</span>
-<span class="comment">//        CalendarUtil.baseChineseDate = baseChineseDate;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static int[] getBigLeapMonthYears() {</span>
-<span class="comment">//        return bigLeapMonthYears;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setBigLeapMonthYears(int[] bigLeapMonthYears) {</span>
-<span class="comment">//        CalendarUtil.bigLeapMonthYears = bigLeapMonthYears;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static char[][] getSectionalTermMap() {</span>
-<span class="comment">//        return sectionalTermMap;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setSectionalTermMap(char[][] sectionalTermMap) {</span>
-<span class="comment">//        CalendarUtil.sectionalTermMap = sectionalTermMap;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static char[][] getSectionalTermYear() {</span>
-<span class="comment">//        return sectionalTermYear;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setSectionalTermYear(char[][] sectionalTermYear) {</span>
-<span class="comment">//        CalendarUtil.sectionalTermYear = sectionalTermYear;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static char[][] getPrincipleTermMap() {</span>
-<span class="comment">//        return principleTermMap;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setPrincipleTermMap(char[][] principleTermMap) {</span>
-<span class="comment">//        CalendarUtil.principleTermMap = principleTermMap;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static char[][] getPrincipleTermYear() {</span>
-<span class="comment">//        return principleTermYear;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setPrincipleTermYear(char[][] principleTermYear) {</span>
-<span class="comment">//        CalendarUtil.principleTermYear = principleTermYear;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static String[] getMonthNames() {</span>
-<span class="comment">//        return monthNames;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setMonthNames(String[] monthNames) {</span>
-<span class="comment">//        CalendarUtil.monthNames = monthNames;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static String[] getPrincipleTermNames() {</span>
-<span class="comment">//        return principleTermNames;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setPrincipleTermNames(String[] principleTermNames) {</span>
-<span class="comment">//        CalendarUtil.principleTermNames = principleTermNames;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static String[] getSectionalTermNames() {</span>
-<span class="comment">//        return sectionalTermNames;</span>
-<span class="comment">//    }</span>
-<span class="comment">//</span>
-<span class="comment">//    public static void setSectionalTermNames(String[] sectionalTermNames) {</span>
-<span class="comment">//        CalendarUtil.sectionalTermNames = sectionalTermNames;</span>
-<span class="comment">//    }</span>
-}
-</code></pre><h2 id="在日历的菜单中添加“显示农历”选项">在日历的菜单中添加“显示农历”选项</h2><p>在Calander源码中的AllInOneActivity.java中的OnCreateOption中添加   </p>
-<pre><code><span class="comment">//添加菜单选项</span>
+    public void setChineseDate(int chineseDate) &#123;
+        this.chineseDate = chineseDate;
+    &#125;
+//
+//    public int getSectionalTerm() &#123;
+//        return sectionalTerm;
+//    &#125;
+//
+//    public void setSectionalTerm(int sectionalTerm) &#123;
+//        this.sectionalTerm = sectionalTerm;
+//    &#125;
+//
+//    public int getPrincipleTerm() &#123;
+//        return principleTerm;
+//    &#125;
+//
+//    public void setPrincipleTerm(int principleTerm) &#123;
+//        this.principleTerm = principleTerm;
+//    &#125;
+//
+//    public static char[] getDaysInGregorianMonth() &#123;
+//        return daysInGregorianMonth;
+//    &#125;
+//
+//    public static void setDaysInGregorianMonth(char[] daysInGregorianMonth) &#123;
+//        CalendarUtil.daysInGregorianMonth = daysInGregorianMonth;
+//    &#125;
+//
+//    public static String[] getStemNames() &#123;
+//        return stemNames;
+//    &#125;
+//
+//    public static void setStemNames(String[] stemNames) &#123;
+//        CalendarUtil.stemNames = stemNames;
+//    &#125;
+//
+//    public static String[] getBranchNames() &#123;
+//        return branchNames;
+//    &#125;
+//
+//    public static void setBranchNames(String[] branchNames) &#123;
+//        CalendarUtil.branchNames = branchNames;
+//    &#125;
+//
+//    public static String[] getAnimalNames() &#123;
+//        return animalNames;
+//    &#125;
+//
+//    public static void setAnimalNames(String[] animalNames) &#123;
+//        CalendarUtil.animalNames = animalNames;
+//    &#125;
+//
+//    public static char[] getChineseMonths() &#123;
+//        return chineseMonths;
+//    &#125;
+//
+//    public static void setChineseMonths(char[] chineseMonths) &#123;
+//        CalendarUtil.chineseMonths = chineseMonths;
+//    &#125;
+//
+//    public static int getBaseYear() &#123;
+//        return baseYear;
+//    &#125;
+//
+//    public static void setBaseYear(int baseYear) &#123;
+//        CalendarUtil.baseYear = baseYear;
+//    &#125;
+//
+//    public static int getBaseMonth() &#123;
+//        return baseMonth;
+//    &#125;
+//
+//    public static void setBaseMonth(int baseMonth) &#123;
+//        CalendarUtil.baseMonth = baseMonth;
+//    &#125;
+//
+//    public static int getBaseDate() &#123;
+//        return baseDate;
+//    &#125;
+//
+//    public static void setBaseDate(int baseDate) &#123;
+//        CalendarUtil.baseDate = baseDate;
+//    &#125;
+//
+//    public static int getBaseIndex() &#123;
+//        return baseIndex;
+//    &#125;
+//
+//    public static void setBaseIndex(int baseIndex) &#123;
+//        CalendarUtil.baseIndex = baseIndex;
+//    &#125;
+//
+//    public static int getBaseChineseYear() &#123;
+//        return baseChineseYear;
+//    &#125;
+//
+//    public static void setBaseChineseYear(int baseChineseYear) &#123;
+//        CalendarUtil.baseChineseYear = baseChineseYear;
+//    &#125;
+//
+//    public static int getBaseChineseMonth() &#123;
+//        return baseChineseMonth;
+//    &#125;
+//
+//    public static void setBaseChineseMonth(int baseChineseMonth) &#123;
+//        CalendarUtil.baseChineseMonth = baseChineseMonth;
+//    &#125;
+//
+//    public static int getBaseChineseDate() &#123;
+//        return baseChineseDate;
+//    &#125;
+//
+//    public static void setBaseChineseDate(int baseChineseDate) &#123;
+//        CalendarUtil.baseChineseDate = baseChineseDate;
+//    &#125;
+//
+//    public static int[] getBigLeapMonthYears() &#123;
+//        return bigLeapMonthYears;
+//    &#125;
+//
+//    public static void setBigLeapMonthYears(int[] bigLeapMonthYears) &#123;
+//        CalendarUtil.bigLeapMonthYears = bigLeapMonthYears;
+//    &#125;
+//
+//    public static char[][] getSectionalTermMap() &#123;
+//        return sectionalTermMap;
+//    &#125;
+//
+//    public static void setSectionalTermMap(char[][] sectionalTermMap) &#123;
+//        CalendarUtil.sectionalTermMap = sectionalTermMap;
+//    &#125;
+//
+//    public static char[][] getSectionalTermYear() &#123;
+//        return sectionalTermYear;
+//    &#125;
+//
+//    public static void setSectionalTermYear(char[][] sectionalTermYear) &#123;
+//        CalendarUtil.sectionalTermYear = sectionalTermYear;
+//    &#125;
+//
+//    public static char[][] getPrincipleTermMap() &#123;
+//        return principleTermMap;
+//    &#125;
+//
+//    public static void setPrincipleTermMap(char[][] principleTermMap) &#123;
+//        CalendarUtil.principleTermMap = principleTermMap;
+//    &#125;
+//
+//    public static char[][] getPrincipleTermYear() &#123;
+//        return principleTermYear;
+//    &#125;
+//
+//    public static void setPrincipleTermYear(char[][] principleTermYear) &#123;
+//        CalendarUtil.principleTermYear = principleTermYear;
+//    &#125;
+//
+//    public static String[] getMonthNames() &#123;
+//        return monthNames;
+//    &#125;
+//
+//    public static void setMonthNames(String[] monthNames) &#123;
+//        CalendarUtil.monthNames = monthNames;
+//    &#125;
+//
+//    public static String[] getPrincipleTermNames() &#123;
+//        return principleTermNames;
+//    &#125;
+//
+//    public static void setPrincipleTermNames(String[] principleTermNames) &#123;
+//        CalendarUtil.principleTermNames = principleTermNames;
+//    &#125;
+//
+//    public static String[] getSectionalTermNames() &#123;
+//        return sectionalTermNames;
+//    &#125;
+//
+//    public static void setSectionalTermNames(String[] sectionalTermNames) &#123;
+//        CalendarUtil.sectionalTermNames = sectionalTermNames;
+//    &#125;
+&#125;
+</code></pre><h2 id="在日历的菜单中添加“显示农历”选项"><a href="#在日历的菜单中添加“显示农历”选项" class="headerlink" title="在日历的菜单中添加“显示农历”选项"></a>在日历的菜单中添加“显示农历”选项</h2><p>在Calander源码中的AllInOneActivity.java中的OnCreateOption中添加   </p>
+<pre><code>//添加菜单选项
 meunItem=menu.findItem(R.id.show_chineseDate);  
-nemuItem.setTitle((Utils.getSharedPrefersence(<span class="keyword">this</span>,<span class="string">"show_chineseDate"</span>,<span class="keyword">false</span>)?R.<span class="built_in">string</span>.show_chinesedate_true:R.String.show_chinesedate_false));    
+nemuItem.setTitle((Utils.getSharedPrefersence(this,&quot;show_chineseDate&quot;,false)?R.string.show_chinesedate_true:R.String.show_chinesedate_false));    
 </code></pre><p>在OnOptionsItemSetected(meunItem item)中添加  </p>
-<pre><code><span class="function"><span class="keyword">else</span> <span class="title">if</span><span class="params">(itemId == R.id.show_chinesedate)</span></span>{
-  Utils.setSharedPreference(<span class="keyword">this</span>,<span class="string">"show_chinesedate"</span>,(Utils.getSharedPreference(<span class="keyword">this</span>,<span class="string">"show_chinesedate"</span>,<span class="keyword">false</span>)?<span class="keyword">false</span>:<span class="keyword">true</span>));<span class="comment">//保存状态</span>
+<pre><code>else if(itemId == R.id.show_chinesedate)&#123;
+  Utils.setSharedPreference(this,&quot;show_chinesedate&quot;,(Utils.getSharedPreference(this,&quot;show_chinesedate&quot;,false)?false:true));//保存状态
   MenuItem menuItem = mOptionsMenu.findItem(R.id.show_chinesedate);
-  menuItem.setTitle(Utils.getSharedPreference(<span class="keyword">this</span>,<span class="string">"show_chinesedate"</span>,<span class="keyword">false</span>)?R.<span class="keyword">string</span>.show_chinesedate_true:R.<span class="keyword">string</span>.show_chinesedate_false);<span class="comment">//更新菜单显示</span>
-  initFragments(mController.getTime(), mController.getViewType(), <span class="keyword">null</span>);<span class="comment">//刷新页面显示</span>
-  <span class="keyword">return</span> <span class="keyword">true</span>;
-}
+  menuItem.setTitle(Utils.getSharedPreference(this,&quot;show_chinesedate&quot;,false)?R.string.show_chinesedate_true:R.string.show_chinesedate_false);//更新菜单显示
+  initFragments(mController.getTime(), mController.getViewType(), null);//刷新页面显示
+  return true;
+&#125;
 </code></pre><p>在这之前我们必须要添加必要的xml文件中添加资源比如：menu中All_in_one_bar.xml中添加   </p>
 <pre><code>&lt;item
-    android:<span class="variable">id=</span><span class="string">"@+id/show_chainesedate"</span>
-    android:<span class="variable">alphabeticShortcut=</span><span class="string">"s"</span>
-    android:<span class="variable">title=</span><span class="string">"@string/show_chinesedate_false"</span>
-    android:<span class="variable">icon=</span><span class="string">"@drawable/ic_menu_settings_holo_light"</span>
-    android:<span class="variable">showAsAction=</span><span class="string">"never"</span>------------------------------------这里是配置是否在标题栏中显示图标
-    android:<span class="variable">orderInCategory=</span><span class="string">"11"</span>/&gt;
+    android:id=&quot;@+id/show_chainesedate&quot;
+    android:alphabeticShortcut=&quot;s&quot;
+    android:title=&quot;@string/show_chinesedate_false&quot;
+    android:icon=&quot;@drawable/ic_menu_settings_holo_light&quot;
+    android:showAsAction=&quot;never&quot;------------------------------------这里是配置是否在标题栏中显示图标
+    android:orderInCategory=&quot;11&quot;/&gt;
 </code></pre><p>还有在values文件夹下的string中添加show_chinesedate_true、show_chinesedate_false</p>
 <blockquote>
 <p>1、这里必须注意：添加string时必须要在values中添加对应的值，不能只在values_zh中添加，不然当你切换语言时程序会找不到对应string报错<br>2、还有一点就是在menu中添加选项也必须在menu_land文件中添加对应的，不然当程序却换为横屏显示时会因为找不到选项而报错  </p>
 </blockquote>
-<h2 id="在日历的月份视图中添加农历显示">在日历的月份视图中添加农历显示</h2><p>在SimpleWeekView.java中的构造方法中读取SharedPreference  </p>
-<pre><code><span class="setting">show_chinesedate_flag=<span class="value">Utils.getSharedPreference(context,<span class="string">"show_chinesedate"</span>,<span class="keyword">true</span>);      </span></span>
+<h2 id="在日历的月份视图中添加农历显示"><a href="#在日历的月份视图中添加农历显示" class="headerlink" title="在日历的月份视图中添加农历显示"></a>在日历的月份视图中添加农历显示</h2><p>在SimpleWeekView.java中的构造方法中读取SharedPreference  </p>
+<pre><code>show_chinesedate_flag=Utils.getSharedPreference(context,&quot;show_chinesedate&quot;,true);      
 </code></pre><p>在setWeekParams方法中修改原有代码为  </p>
-<pre><code><span class="keyword">if</span>(show_chinesedate_flag){
-  mDayNumbers[i] = Integer.toString(<span class="built_in">time</span>.monthDay++)+
-    <span class="string">"\n"</span>+<span class="keyword">new</span> CalendarUtil(<span class="built_in">time</span>.<span class="built_in">year</span>,<span class="built_in">time</span>.<span class="built_in">month</span>+<span class="number">1</span>,<span class="built_in">time</span>.monthDay-<span class="number">1</span>).getChinaDateString();
-}<span class="keyword">else</span>{
-  mDayNumbers[i] = Integer.toString(<span class="built_in">time</span>.monthDay++);
-}
-</code></pre><h1 id="改变日历图标">改变日历图标</h1><h2 id="找寻icon素材">找寻icon素材</h2><p>在主题包中有大量的手机icon在网上搜索并下载后按教程解压即可<br>还有就是可以通过相关网站获取<a href="http://www.iconfont.cn/" target="_blank" rel="external">iconfont</a>、 <a href="http://www.easyicon.net/" target="_blank" rel="external">easyicon</a></p>
-<h2 id="修改Launcher3源码获取素材并显示">修改Launcher3源码获取素材并显示</h2><p>参考文章：<a href="http://www.tuicool.com/articles/JreiUn" target="_blank" rel="external">android launcher 日历图标显示日期</a><br>基本参考上文，createCalendarIconBitmap方法做了部分修改，实现跨应用读取图片并拼合图片</p>
-<pre><code><span class="keyword">static</span> Bitmap createCalendarIconBitmap(Drawable icon, Context context){
-  Context calendarContext=<span class="keyword">null</span>;
-  <span class="keyword">try</span>{
-    calendarContext=context.createPackageContext(<span class="string">"com.android.calendar"</span>,Context.CONTEXT_IGNORE_SECURITY);<span class="comment">//获得日历的Context</span>
-  }<span class="keyword">catch</span>(NameNotFoundException e){
-    System.out.<span class="built_in">println</span>(<span class="string">"not found package \"com.android.calendar\""</span>);
-  }
+<pre><code>if(show_chinesedate_flag)&#123;
+  mDayNumbers[i] = Integer.toString(time.monthDay++)+
+    &quot;\n&quot;+new CalendarUtil(time.year,time.month+1,time.monthDay-1).getChinaDateString();
+&#125;else&#123;
+  mDayNumbers[i] = Integer.toString(time.monthDay++);
+&#125;
+</code></pre><h1 id="改变日历图标"><a href="#改变日历图标" class="headerlink" title="改变日历图标"></a>改变日历图标</h1><h2 id="找寻icon素材"><a href="#找寻icon素材" class="headerlink" title="找寻icon素材"></a>找寻icon素材</h2><p>在主题包中有大量的手机icon在网上搜索并下载后按教程解压即可<br>还有就是可以通过相关网站获取<a target="_blank" rel="noopener" href="http://www.iconfont.cn/">iconfont</a>、 <a target="_blank" rel="noopener" href="http://www.easyicon.net/">easyicon</a></p>
+<h2 id="修改Launcher3源码获取素材并显示"><a href="#修改Launcher3源码获取素材并显示" class="headerlink" title="修改Launcher3源码获取素材并显示"></a>修改Launcher3源码获取素材并显示</h2><p>参考文章：<a target="_blank" rel="noopener" href="http://www.tuicool.com/articles/JreiUn">android launcher 日历图标显示日期</a><br>基本参考上文，createCalendarIconBitmap方法做了部分修改，实现跨应用读取图片并拼合图片</p>
+<pre><code>static Bitmap createCalendarIconBitmap(Drawable icon, Context context)&#123;
+  Context calendarContext=null;
+  try&#123;
+    calendarContext=context.createPackageContext(&quot;com.android.calendar&quot;,Context.CONTEXT_IGNORE_SECURITY);//获得日历的Context
+  &#125;catch(NameNotFoundException e)&#123;
+    System.out.println(&quot;not found package \&quot;com.android.calendar\&quot;&quot;);
+  &#125;
   Bitmap calendarIcon = createIconBitmap(icon,context);
   Drawable drawable_1 =getCalendarIcon_date(calendarContext);
   Drawable drawable_2 =getCalendarIcon_week(calendarContext);
   calendarIcon=((BitmapDrawable)drawable_1).getBitmap();
   Bitmap calendarIcon_week=((BitmapDrawable)drawable_2).getBitmap();
-  <span class="keyword">synchronized</span> (sCanvas) {
-    <span class="keyword">if</span> (!calendarIcon.isMutable()) {
-      calendarIcon = calendarIcon.<span class="built_in">copy</span>(Bitmap.Config.ARGB_8888, <span class="keyword">true</span>);
-    }
-    Paint paint = <span class="keyword">new</span> Paint();
-    Canvas canvas = <span class="keyword">new</span> Canvas(calendarIcon);
-    canvas.drawBitmap(calendarIcon_week, <span class="number">0</span>, <span class="number">0</span>, paint);
-    canvas.<span class="built_in">save</span>(Canvas.ALL_SAVE_FLAG);
+  synchronized (sCanvas) &#123;
+    if (!calendarIcon.isMutable()) &#123;
+      calendarIcon = calendarIcon.copy(Bitmap.Config.ARGB_8888, true);
+    &#125;
+    Paint paint = new Paint();
+    Canvas canvas = new Canvas(calendarIcon);
+    canvas.drawBitmap(calendarIcon_week, 0, 0, paint);
+    canvas.save(Canvas.ALL_SAVE_FLAG);
     canvas.restore();
-    <span class="keyword">return</span> calendarIcon;
-  }
-}
+    return calendarIcon;
+  &#125;
+&#125;
 
-<span class="keyword">static</span> Drawable getCalendarIcon_date(Context calendarContext){
+static Drawable getCalendarIcon_date(Context calendarContext)&#123;
   Resources resources=calendarContext.getResources();
-  <span class="built_in">int</span> identify = resources.getIdentifier( calendarContext.getPackageName()+<span class="string">":mipmap/"</span>+<span class="string">"calendar"</span>+<span class="keyword">String</span>.valueOf(Calendar.getInstance().<span class="built_in">get</span>(Calendar.DAY_OF_MONTH)) , <span class="keyword">null</span> , <span class="keyword">null</span> );<span class="comment">//获得图片的资源id，如果图片不存在会返回“0”</span>
-  <span class="keyword">return</span> resources.getDrawable(identify);
-}
+  int identify = resources.getIdentifier( calendarContext.getPackageName()+&quot;:mipmap/&quot;+&quot;calendar&quot;+String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH)) , null , null );//获得图片的资源id，如果图片不存在会返回“0”
+  return resources.getDrawable(identify);
+&#125;
 
-<span class="keyword">static</span> Drawable getCalendarIcon_week(Context calendarContext){
+static Drawable getCalendarIcon_week(Context calendarContext)&#123;
   Resources resources=calendarContext.getResources();
-  <span class="built_in">int</span> identify;
-  <span class="keyword">if</span>(calendarContext.getResources().getConfiguration().locale.getCountry().equals(<span class="string">"CN"</span>)){
-    identify=resources.getIdentifier(calendarContext.getPackageName()+<span class="string">":mipmap/"</span>+<span class="string">"day"</span>+<span class="keyword">String</span>.valueOf(Calendar.getInstance().<span class="built_in">get</span>(Calendar.DAY_OF_MONTH))+<span class="string">"_ch"</span>,<span class="keyword">null</span>,<span class="keyword">null</span>);
-  }<span class="keyword">else</span>{
-    identify=resources.getIdentifier(calendarContext.getPackageName()+<span class="string">":mipmap/"</span>+<span class="string">"day"</span>+<span class="keyword">String</span>.valueOf(Calendar.getInstance().<span class="built_in">get</span>(Calendar.DAY_OF_MONTH))+<span class="string">"_en"</span>,<span class="keyword">null</span>,<span class="keyword">null</span>);
-  }
-  <span class="keyword">return</span> resources.getDrawable(identify);
-}
+  int identify;
+  if(calendarContext.getResources().getConfiguration().locale.getCountry().equals(&quot;CN&quot;))&#123;
+    identify=resources.getIdentifier(calendarContext.getPackageName()+&quot;:mipmap/&quot;+&quot;day&quot;+String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH))+&quot;_ch&quot;,null,null);
+  &#125;else&#123;
+    identify=resources.getIdentifier(calendarContext.getPackageName()+&quot;:mipmap/&quot;+&quot;day&quot;+String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH))+&quot;_en&quot;,null,null);
+  &#125;
+  return resources.getDrawable(identify);
+&#125;
 </code></pre><p>实现的效果是<br>图片素材<br><img src="http://jxust-cgs.github.io/photos/calendar_sucai.png" alt="效果"><br>实现效果<br><img src="http://jxust-cgs.github.io/photos/calendar_logo.png" alt="素材">   </p>
 
             <div class="clearfix"></div>
@@ -1252,32 +1252,22 @@ nemuItem.setTitle((Utils.getSharedPrefersence(<span class="keyword">this</span>,
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2016/05/05/Android学习笔记（6）——Animation动画/" style="float: left;">
-        ← android学习笔记（6） ——Animation动画
+    <a class="pull-left" href="/2016/04/29/Android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%885%EF%BC%89%E2%80%94%E2%80%94%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" style="float: left">
+        ← android学习笔记（5） ——文件操作
     </a>
     
     
-    <a class="pull-right" href="/2016/04/29/Android学习笔记（5）——文件操作/">
-        android学习笔记（5） ——文件操作 →
+    <a class="pull-right" href="/2016/04/10/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+        正则表达式 →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "android源码修改（1） ——日历中显示农历、日历图标随时间改变"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -1294,9 +1284,9 @@ nemuItem.setTitle((Utils.getSharedPrefersence(<span class="keyword">this</span>,
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -1392,5 +1382,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

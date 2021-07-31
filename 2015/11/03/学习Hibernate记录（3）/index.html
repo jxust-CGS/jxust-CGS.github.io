@@ -19,16 +19,14 @@
 <head>
   <title>学习Hibernate记录(3)——操纵实体 | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
     
-    <meta name="description" content="创建工厂、获取Session、开启事务Configuration configuration=new Configuration().configure();
-sessionFactory=configuration.buildSessionFactory();
-session=sessionFac">
+    <meta name="description" content="##创建工厂、获取Session、开启事务    Configuration configuration=new Configuration().configure();    sessionFactory=configuration.buildSessionFactory();    sessio">
 	
 	<meta name="Keywords" content="极光轨迹">
 	
@@ -85,7 +83,7 @@ session=sessionFac">
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -209,7 +207,7 @@ session=sessionFac">
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -237,7 +235,7 @@ session=sessionFac">
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -288,26 +286,23 @@ session=sessionFac">
 	
     
     | 分类：
-    <a class="categories" href='/categories/Hibernate/'>Hibernate</a>
+    <a class="categories" href="/categories/Hibernate/">Hibernate</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/Hibernate/'>Hibernate</a>
+    <a class="tags" href="/tags/Hibernate/">Hibernate</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="创建工厂、获取Session、开启事务">创建工厂、获取Session、开启事务</h2><pre><code><span class="type">Configuration</span> configuration=<span class="keyword">new</span> <span class="type">Configuration</span><span class="literal">()</span>.configure<span class="literal">()</span>;
-sessionFactory=configuration.buildSessionFactory<span class="literal">()</span>;
-session=sessionFactory.openSession<span class="literal">()</span>;  
-<span class="type">Transaction</span> tx=session.beginTransaction<span class="literal">()</span>;
-tx.commit<span class="literal">()</span>;
-</code></pre><h2 id="Hibernate对象的三种状态">Hibernate对象的三种状态</h2><p><img src="/photos/Hibernate_3.1.jpg" alt="Hibernate">   </p>
+      		<p>##创建工厂、获取Session、开启事务<br>    Configuration configuration=new Configuration().configure();<br>    sessionFactory=configuration.buildSessionFactory();<br>    session=sessionFactory.openSession();<br>    Transaction tx=session.beginTransaction();<br>    tx.commit();</p>
+<p>##Hibernate对象的三种状态  </p>
+<p><img src="/photos/Hibernate_3.1.jpg" alt="Hibernate">   </p>
 <ul>
 <li><p>临时状态<br>不在Session的缓存中，不与Session对象实例相关联；<br>在数据库中没有与之对应的记录  </p>
 </li>
@@ -316,42 +311,32 @@ tx.commit<span class="literal">()</span>;
 <li><p>游离状态<br>不在Session的缓存中，不与任何Session实例相关联<br>数据库中存在与之相对应的记录  </p>
 </li>
 </ul>
-<h2 id="清除Session的缓存">清除Session的缓存</h2><p>Session.evict(ClassesName);从Session中清除指定持久化对象。<br>Session.clear();清除Session中所有持久化对象。</p>
-<h2 id="级联操作">级联操作</h2><p>Hibernate的一大优点是可以级联操作相关的持久化对象，可以非常方便的从当前的操作对象转而操作另一个与之相关的对象。</p>
+<p>##清除Session的缓存<br>Session.evict(ClassesName);从Session中清除指定持久化对象。<br>Session.clear();清除Session中所有持久化对象。</p>
+<p>##级联操作<br>Hibernate的一大优点是可以级联操作相关的持久化对象，可以非常方便的从当前的操作对象转而操作另一个与之相关的对象。</p>
 <p><many-to-one>都有casecde属性<br>none:默认值，所有情况下均不进行关联操作。（将子对象中的关联属性改为null）<br>all :所有情况下均进行关联操作。<br>save-update:在执行save/update/saveOrUpdate时进行关联操作。<br>delete:在执行delete时进行关联操作。（删除子对象）<br>delete-orphan: 当save/update/saveOrUpdate时，相当于save-update ;当删除操作时，相当于delete;  </many-to-one></p>
-<h2 id="抓取策略">抓取策略</h2><p>当fetch设置抓取策略的值为‘join’时，lazy=”true”不起作用了<br><a href="http://blog.sina.com.cn/s/blog_4586764e0100ri21.html" target="_blank" rel="external">Hibernate的fetch</a></p>
+<p>##抓取策略<br>当fetch设置抓取策略的值为‘join’时，lazy=”true”不起作用了<br><a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_4586764e0100ri21.html">Hibernate的fetch</a></p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2015/11/16/学习Hibernate记录（4）/" style="float: left;">
+    <a class="pull-left" href="/2015/11/16/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%884%EF%BC%89/" style="float: left">
         ← 学习Hibernate记录(4)——事务管理
     </a>
     
     
-    <a class="pull-right" href="/2015/11/01/学习Hibernate记录（2）/">
+    <a class="pull-right" href="/2015/11/01/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%882%EF%BC%89/">
         学习Hibernate记录(2)——配置文件 →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "学习Hibernate记录(3)——操纵实体"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -368,9 +353,9 @@ tx.commit<span class="literal">()</span>;
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -466,5 +451,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

@@ -19,16 +19,16 @@
 <head>
   <title>学习Hibernate记录(6)——映射关联 | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
     
-    <meta name="description" content="映射关联配置总体来说在Hibernate中对象的关系主要有：  
+    <meta name="description" content="##映射关联配置##总体来说在Hibernate中对象的关系主要有：  
 
-一对一依照映射方法不同，可分为主键关联映射和唯一外键关联映射。主键关联是维护两张表的主键一致，如有必要还可以在主键上再加上外键约束；唯一外键关联则类似于多对一关联，为表加入一个外键列，不过一对一关联会同时将这个外键加上唯一约束。此处">
+一对一依照映射方法不同，可分为主键关联映射和唯一外键关联映射。主键关联是维护两张表的主键一致，如有必要还可以在主键上再加上外键约束；唯一外键关联则类似于多对一关联，为表加入一个外键列，不过一对一关联会同时将这个外键加上唯一约">
 	
 	<meta name="Keywords" content="极光轨迹">
 	
@@ -85,7 +85,7 @@
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -209,7 +209,7 @@
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -237,7 +237,7 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -288,139 +288,140 @@
 	
     
     | 分类：
-    <a class="categories" href='/categories/Hibernate/'>Hibernate</a>
+    <a class="categories" href="/categories/Hibernate/">Hibernate</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/Hibernate/'>Hibernate</a>
+    <a class="tags" href="/tags/Hibernate/">Hibernate</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="映射关联配置">映射关联配置</h2><p>总体来说在Hibernate中对象的关系主要有：  </p>
+      		<p>##映射关联配置##<br>总体来说在Hibernate中对象的关系主要有：  </p>
 <ul>
 <li><p>一对一<br>依照映射方法不同，可分为主键关联映射和唯一外键关联映射。主键关联是维护两张表的主键一致，如有必要还可以在主键上再加上外键约束；唯一外键关联则类似于多对一关联，为表加入一个外键列，不过一对一关联会同时将这个外键加上唯一约束。<br>此处给出双向关联的实例代码：根据具体可以只使用单向的关联  </p>
 <ul>
 <li><p>主键双向关联  </p>
-<pre><code><span class="comment">&lt;!-- bean/User.hbm.xml --&gt;</span>
-<span class="tag">&lt;<span class="title">hibernate-mapping</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">class</span> <span class="attribute">name</span>=<span class="value">"bean.User"</span> <span class="attribute">table</span>=<span class="value">"t_user"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">id</span> <span class="attribute">name</span>=<span class="value">"id"</span>&gt;</span>
-      <span class="comment">&lt;!-- 指定主键生成策略为外键 --&gt;</span>
-      <span class="tag">&lt;<span class="title">generator</span> <span class="attribute">class</span>=<span class="value">"foreign"</span>&gt;</span>
-        <span class="comment">&lt;!-- 指定要参照的属性 --&gt;</span>
-        <span class="tag">&lt;<span class="title">param</span> <span class="attribute">name</span>=<span class="value">"property"</span>&gt;</span>group<span class="tag">&lt;/<span class="title">param</span>&gt;</span>
-      <span class="tag">&lt;/<span class="title">generator</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">id</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>/&gt;</span>
-    <span class="comment">&lt;!-- 使用&lt;one-to-one&gt;映射一对一关系。 --&gt;</span>
-    <span class="tag">&lt;<span class="title">one-to-one</span> <span class="attribute">name</span>=<span class="value">"group"</span>&gt;</span>
-  <span class="tag">&lt;/<span class="title">class</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">hibernate-mapping</span>&gt;</span>  
-<span class="comment">&lt;!-- bean/Group.hbm.xml --&gt;</span>
-<span class="tag">&lt;<span class="title">hibernate-mapping</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">class</span> <span class="attribute">name</span>=<span class="value">"bean.Group"</span> <span class="attribute">table</span>=<span class="value">"t_group"</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">id</span> <span class="attribute">name</span>=<span class="value">"id"</span>&gt;</span><span class="tag">&lt;<span class="title">generator</span> <span class="attribute">class</span>=<span class="value">"native"</span>/&gt;</span><span class="tag">&lt;/<span class="title">id</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>/&gt;</span>
-        <span class="comment">&lt;!-- 使用&lt;one-to-one&gt;映射一对一关系 --&gt;</span>
-        <span class="tag">&lt;<span class="title">one-to-one</span> <span class="attribute">name</span>=<span class="value">"user"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="title">class</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">hibernate-mapping</span>&gt;</span>
+<pre><code>&lt;!-- bean/User.hbm.xml --&gt;
+&lt;hibernate-mapping&gt;
+  &lt;class name=&quot;bean.User&quot; table=&quot;t_user&quot;&gt;
+    &lt;id name=&quot;id&quot;&gt;
+      &lt;!-- 指定主键生成策略为外键 --&gt;
+      &lt;generator class=&quot;foreign&quot;&gt;
+        &lt;!-- 指定要参照的属性 --&gt;
+        &lt;param name=&quot;property&quot;&gt;group&lt;/param&gt;
+      &lt;/generator&gt;
+    &lt;/id&gt;
+    &lt;property name=&quot;name&quot;/&gt;
+    &lt;!-- 使用&lt;one-to-one&gt;映射一对一关系。 --&gt;
+    &lt;one-to-one name=&quot;group&quot;&gt;
+  &lt;/class&gt;
+&lt;/hibernate-mapping&gt;  
+&lt;!-- bean/Group.hbm.xml --&gt;
+&lt;hibernate-mapping&gt;
+    &lt;class name=&quot;bean.Group&quot; table=&quot;t_group&quot;&gt;
+        &lt;id name=&quot;id&quot;&gt;&lt;generator class=&quot;native&quot;/&gt;&lt;/id&gt;
+        &lt;property name=&quot;name&quot;/&gt;
+        &lt;!-- 使用&lt;one-to-one&gt;映射一对一关系 --&gt;
+        &lt;one-to-one name=&quot;user&quot;/&gt;
+    &lt;/class&gt;
+&lt;/hibernate-mapping&gt;
 </code></pre></li>
 <li><p>唯一外键双向关联  </p>
-<pre><code><span class="comment">&lt;!-- bean/User.hbm.xml --&gt;</span>
-<span class="tag">&lt;<span class="title">hibernate-mapping</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">class</span> <span class="attribute">name</span>=<span class="value">"bean.User"</span> <span class="attribute">table</span>=<span class="value">"t_user"</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">id</span> <span class="attribute">name</span>=<span class="value">"id"</span>&gt;</span>
-            <span class="tag">&lt;<span class="title">generator</span> <span class="attribute">class</span>=<span class="value">"native"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="title">id</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>/&gt;</span>
-        <span class="comment">&lt;!-- 为&lt;many-to-one&gt;加上unique就变成了一对一 --&gt;</span>
-        <span class="tag">&lt;<span class="title">many-to-one</span> <span class="attribute">name</span>=<span class="value">"group"</span> <span class="attribute">unique</span>=<span class="value">"true"</span> <span class="attribute">column</span>=<span class="value">"gid"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="title">class</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">hibernate-mapping</span>&gt;</span>
-<span class="comment">&lt;!-- bean/Group.hbm.xml --&gt;</span>
-<span class="tag">&lt;<span class="title">hibernate-mapping</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">class</span> <span class="attribute">name</span>=<span class="value">"bean.Group"</span> <span class="attribute">table</span>=<span class="value">"t_group"</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">id</span> <span class="attribute">name</span>=<span class="value">"id"</span>&gt;</span><span class="tag">&lt;<span class="title">generator</span> <span class="attribute">class</span>=<span class="value">"native"</span>/&gt;</span><span class="tag">&lt;/<span class="title">id</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>/&gt;</span>
-        <span class="comment">&lt;!-- 使用&lt;one-to-one&gt;映射一对一 --&gt;</span>
-        <span class="tag">&lt;<span class="title">one-to-one</span> <span class="attribute">name</span>=<span class="value">"user"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="title">class</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">hibernate-mapping</span>&gt;</span>
+<pre><code>&lt;!-- bean/User.hbm.xml --&gt;
+&lt;hibernate-mapping&gt;
+    &lt;class name=&quot;bean.User&quot; table=&quot;t_user&quot;&gt;
+        &lt;id name=&quot;id&quot;&gt;
+            &lt;generator class=&quot;native&quot;/&gt;
+        &lt;/id&gt;
+        &lt;property name=&quot;name&quot;/&gt;
+        &lt;!-- 为&lt;many-to-one&gt;加上unique就变成了一对一 --&gt;
+        &lt;many-to-one name=&quot;group&quot; unique=&quot;true&quot; column=&quot;gid&quot;/&gt;
+    &lt;/class&gt;
+&lt;/hibernate-mapping&gt;
+&lt;!-- bean/Group.hbm.xml --&gt;
+&lt;hibernate-mapping&gt;
+    &lt;class name=&quot;bean.Group&quot; table=&quot;t_group&quot;&gt;
+        &lt;id name=&quot;id&quot;&gt;&lt;generator class=&quot;native&quot;/&gt;&lt;/id&gt;
+        &lt;property name=&quot;name&quot;/&gt;
+        &lt;!-- 使用&lt;one-to-one&gt;映射一对一 --&gt;
+        &lt;one-to-one name=&quot;user&quot;/&gt;
+    &lt;/class&gt;
+&lt;/hibernate-mapping&gt;
 </code></pre></li>
 </ul>
 </li>
 <li><p>一对多<br>此处给出双向关联的实例代码：根据具体可以只使用单向的关联，特别强调的是要根据使用的场景不同注意级联关系的处理和抓取策略的选择。<br>一般一对多的使用用于集合包含的关系，亦可以自己对自己进行一对多的关联可以形成一个父子对象的关系  </p>
-<pre><code><span class="comment">&lt;!-- bean/User.hbm.xml --&gt;</span>
-<span class="tag">&lt;<span class="title">hibernate-mapping</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">class</span> <span class="attribute">name</span>=<span class="value">"bean.User"</span> <span class="attribute">table</span>=<span class="value">"t_user"</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">id</span> <span class="attribute">name</span>=<span class="value">"id"</span>&gt;</span><span class="tag">&lt;<span class="title">generator</span> <span class="attribute">class</span>=<span class="value">"native"</span>/&gt;</span><span class="tag">&lt;/<span class="title">id</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>/&gt;</span>
-        <span class="comment">&lt;!-- 使用&lt;many-to-one&gt;映射多对一关系。导出ddl时将自动生成一个外键 --&gt;</span>
-        <span class="tag">&lt;<span class="title">many-to-one</span> <span class="attribute">name</span>=<span class="value">"group"</span> <span class="attribute">column</span>=<span class="value">"gid"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="title">class</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">hibernate-mapping</span>&gt;</span>
+<pre><code>&lt;!-- bean/User.hbm.xml --&gt;
+&lt;hibernate-mapping&gt;
+    &lt;class name=&quot;bean.User&quot; table=&quot;t_user&quot;&gt;
+        &lt;id name=&quot;id&quot;&gt;&lt;generator class=&quot;native&quot;/&gt;&lt;/id&gt;
+        &lt;property name=&quot;name&quot;/&gt;
+        &lt;!-- 使用&lt;many-to-one&gt;映射多对一关系。导出ddl时将自动生成一个外键 --&gt;
+        &lt;many-to-one name=&quot;group&quot; column=&quot;gid&quot;/&gt;
+    &lt;/class&gt;
+&lt;/hibernate-mapping&gt;
 
-<span class="comment">&lt;!-- bean/Group.hbm.xml --&gt;</span>
-<span class="tag">&lt;<span class="title">hibernate-mapping</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">class</span> <span class="attribute">name</span>=<span class="value">"bean.Group"</span> <span class="attribute">table</span>=<span class="value">"t_group"</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">id</span> <span class="attribute">name</span>=<span class="value">"id"</span>&gt;</span><span class="tag">&lt;<span class="title">generator</span> <span class="attribute">class</span>=<span class="value">"native"</span>/&gt;</span><span class="tag">&lt;/<span class="title">id</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>/&gt;</span>
-        <span class="comment">&lt;!-- 使用&lt;set&gt;映射集合 --&gt;</span>
-        <span class="tag">&lt;<span class="title">set</span> <span class="attribute">name</span>=<span class="value">"users"</span>&gt;</span>
-            <span class="comment">&lt;!-- 使用&lt;key&gt;指定引用至自身的外键表（t_user）中的外键 --&gt;</span>
-            <span class="tag">&lt;<span class="title">key</span> <span class="attribute">column</span>=<span class="value">"gid"</span>/&gt;</span>
-            <span class="comment">&lt;!-- 使用&lt;one-to-many&gt;映射一对多关系 --&gt;</span>
-            <span class="tag">&lt;<span class="title">one-to-many</span> <span class="attribute">class</span>=<span class="value">"bean.User"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="title">set</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">class</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">hibernate-mapping</span>&gt;</span>
+&lt;!-- bean/Group.hbm.xml --&gt;
+&lt;hibernate-mapping&gt;
+    &lt;class name=&quot;bean.Group&quot; table=&quot;t_group&quot;&gt;
+        &lt;id name=&quot;id&quot;&gt;&lt;generator class=&quot;native&quot;/&gt;&lt;/id&gt;
+        &lt;property name=&quot;name&quot;/&gt;
+        &lt;!-- 使用&lt;set&gt;映射集合 --&gt;
+        &lt;set name=&quot;users&quot;&gt;
+            &lt;!-- 使用&lt;key&gt;指定引用至自身的外键表（t_user）中的外键 --&gt;
+            &lt;key column=&quot;gid&quot;/&gt;
+            &lt;!-- 使用&lt;one-to-many&gt;映射一对多关系 --&gt;
+            &lt;one-to-many class=&quot;bean.User&quot;/&gt;
+        &lt;/set&gt;
+    &lt;/class&gt;
+&lt;/hibernate-mapping&gt;
 </code></pre></li>
 <li><p>多对多<br>此处给出双向关联的实例代码：根据具体可以只使用单向的关联  </p>
-<pre><code><span class="comment">&lt;!-- bean/User.hbm.xml --&gt;</span>
-<span class="tag">&lt;<span class="title">hibernate-mapping</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">class</span> <span class="attribute">name</span>=<span class="value">"bean.User"</span> <span class="attribute">table</span>=<span class="value">"t_user"</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">id</span> <span class="attribute">name</span>=<span class="value">"id"</span>&gt;</span>
-            <span class="tag">&lt;<span class="title">generator</span> <span class="attribute">class</span>=<span class="value">"native"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="title">id</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>/&gt;</span>
-        <span class="comment">&lt;!-- 使用&lt;set&gt;映射集合，在多对多关系中，Hibernate将生成第三张表 --&gt;</span>
-        <span class="tag">&lt;<span class="title">set</span> <span class="attribute">name</span>=<span class="value">"groups"</span> <span class="attribute">table</span>=<span class="value">"t_user_group"</span>&gt;</span>
-            <span class="comment">&lt;!-- 使用&lt;key&gt;指定引用至自身的外键表（t_user_group）中的外键 --&gt;</span>
-            <span class="tag">&lt;<span class="title">key</span> <span class="attribute">column</span>=<span class="value">"userid"</span>/&gt;</span>
-            <span class="comment">&lt;!-- 使用&lt;many-to-many&gt;映射多对多关系，column指定另一端在表t_user_group中的列 --&gt;</span>
-            <span class="tag">&lt;<span class="title">many-to-many</span> <span class="attribute">class</span>=<span class="value">"bean.Group"</span> <span class="attribute">column</span>=<span class="value">"groupid"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="title">set</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">class</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">hibernate-mapping</span>&gt;</span>
+<pre><code>&lt;!-- bean/User.hbm.xml --&gt;
+&lt;hibernate-mapping&gt;
+    &lt;class name=&quot;bean.User&quot; table=&quot;t_user&quot;&gt;
+        &lt;id name=&quot;id&quot;&gt;
+            &lt;generator class=&quot;native&quot;/&gt;
+        &lt;/id&gt;
+        &lt;property name=&quot;name&quot;/&gt;
+        &lt;!-- 使用&lt;set&gt;映射集合，在多对多关系中，Hibernate将生成第三张表 --&gt;
+        &lt;set name=&quot;groups&quot; table=&quot;t_user_group&quot;&gt;
+            &lt;!-- 使用&lt;key&gt;指定引用至自身的外键表（t_user_group）中的外键 --&gt;
+            &lt;key column=&quot;userid&quot;/&gt;
+            &lt;!-- 使用&lt;many-to-many&gt;映射多对多关系，column指定另一端在表t_user_group中的列 --&gt;
+            &lt;many-to-many class=&quot;bean.Group&quot; column=&quot;groupid&quot;/&gt;
+        &lt;/set&gt;
+    &lt;/class&gt;
+&lt;/hibernate-mapping&gt;
 
-<span class="comment">&lt;!-- bean/Group.hbm.xml --&gt;</span>
-<span class="tag">&lt;<span class="title">hibernate-mapping</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">class</span> <span class="attribute">name</span>=<span class="value">"bean.Group"</span> <span class="attribute">table</span>=<span class="value">"t_group"</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">id</span> <span class="attribute">name</span>=<span class="value">"id"</span>&gt;</span>
-            <span class="tag">&lt;<span class="title">generator</span> <span class="attribute">class</span>=<span class="value">"native"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="title">id</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"name"</span>/&gt;</span>
-        <span class="comment">&lt;!-- 使用&lt;set&gt;映射集合，在多对多关系中，Hibernate将生成第三张表 --&gt;</span>
-        <span class="tag">&lt;<span class="title">set</span> <span class="attribute">name</span>=<span class="value">"users"</span> <span class="attribute">table</span>=<span class="value">"t_user_group"</span>&gt;</span>
-            <span class="comment">&lt;!-- 使用&lt;key&gt;指定引用至自身的外键表（t_user_group）中的外键 --&gt;</span>
-            <span class="tag">&lt;<span class="title">key</span> <span class="attribute">column</span>=<span class="value">"group"</span>/&gt;</span>
-            <span class="comment">&lt;!-- 使用&lt;many-to-many&gt;映射多对多关系，column指定另一端在表t_user_group中的列 --&gt;</span>
-            <span class="tag">&lt;<span class="title">many-to-many</span> <span class="attribute">class</span>=<span class="value">"bean.User"</span> <span class="attribute">column</span>=<span class="value">"userid"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="title">set</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">class</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">hibernate-mapping</span>&gt;</span>
+&lt;!-- bean/Group.hbm.xml --&gt;
+&lt;hibernate-mapping&gt;
+    &lt;class name=&quot;bean.Group&quot; table=&quot;t_group&quot;&gt;
+        &lt;id name=&quot;id&quot;&gt;
+            &lt;generator class=&quot;native&quot;/&gt;
+        &lt;/id&gt;
+        &lt;property name=&quot;name&quot;/&gt;
+        &lt;!-- 使用&lt;set&gt;映射集合，在多对多关系中，Hibernate将生成第三张表 --&gt;
+        &lt;set name=&quot;users&quot; table=&quot;t_user_group&quot;&gt;
+            &lt;!-- 使用&lt;key&gt;指定引用至自身的外键表（t_user_group）中的外键 --&gt;
+            &lt;key column=&quot;group&quot;/&gt;
+            &lt;!-- 使用&lt;many-to-many&gt;映射多对多关系，column指定另一端在表t_user_group中的列 --&gt;
+            &lt;many-to-many class=&quot;bean.User&quot; column=&quot;userid&quot;/&gt;
+        &lt;/set&gt;
+    &lt;/class&gt;
+&lt;/hibernate-mapping&gt;
 </code></pre></li>
 </ul>
-<p>级联关系：casecde属性的相关介绍在<a href="http://jxust-cgs.github.io/2015/11/03/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%883%EF%BC%89/" target="_blank" rel="external">学习Hibernate记录（3）</a>中有介绍此处省略<br>多对多的双向关联同样可以在不想要维护关系的一端的<set>里设置inverse=”true”；但是必须有一端可以维护，也就是说只可以设置一个。<br><a href="http://blog.sina.com.cn/s/blog_6e5195850100oats.html" target="_blank" rel="external">Hibernate中的集合类的配置</a></set></p>
-<h2 id="Hibernate乐观锁和悲观锁">Hibernate乐观锁和悲观锁</h2><p><a href="http://www.cnblogs.com/Fskjb/archive/2010/04/10/1709269.html" target="_blank" rel="external">Hibernate乐观锁和悲观锁(转)</a>  </p>
-<h2 id="sql常用聚合查询">sql常用聚合查询</h2><ul>
+<p>级联关系：casecde属性的相关介绍在<a target="_blank" rel="noopener" href="http://jxust-cgs.github.io/2015/11/03/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%883%EF%BC%89/">学习Hibernate记录（3）</a>中有介绍此处省略<br>多对多的双向关联同样可以在不想要维护关系的一端的<set>里设置inverse=”true”；但是必须有一端可以维护，也就是说只可以设置一个。<br><a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_6e5195850100oats.html">Hibernate中的集合类的配置</a></set></p>
+<p>##Hibernate乐观锁和悲观锁##<br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/Fskjb/archive/2010/04/10/1709269.html">Hibernate乐观锁和悲观锁(转)</a>  </p>
+<p>##sql常用聚合查询##</p>
+<ul>
 <li>count:SELECT COUNT(&lt;计数规范&gt;) FROM &lt;表名&gt;<br>其中，计数规范包括：<br>  ‘    * ’ 列名：计数所有选择的行，包括NULL值；<br>  ‘   ALL’ 列名：计数指定列的所有非空值行，如果不写，默认为ALL；<br>DISTINCT 列名：计数指定列的唯一非空值行。  </li>
 <li>sun:SELECT SUM(student_age) FROM t_student;   </li>
 <li>avg:SELECT AVG(student_age)FROM t_student;</li>
@@ -430,39 +431,29 @@
 <li>过滤查询: SELECT student_class,AVG(student_age) AS 平均年龄 FROM t_student GROUP BY (student_class) HAVING AVG(student_age)&gt;20;    </li>
 </ul>
 <p>SQL的执行顺序：<br>–第一步：执行FROM<br>–第二步：WHERE条件过滤<br>–第三步：GROUP BY分组<br>–第四步：执行SELECT投影列<br>–第五步：HAVING条件过滤<br>–第六步：执行ORDER BY 排序    </p>
-<h2 id="参考博客">参考博客</h2><p><a href="http://www.cnblogs.com/huxi/archive/2009/12/15/1624988.html" title="参考博客链接" target="_blank" rel="external">Hibernate关联映射</a><br><a href="http://www.cnblogs.com/ghost-xyx/p/3811036.html?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">SQL语句汇总（三）——聚合函数、分组、子查询及组合查询</a>  </p>
+<p>##参考博客##<br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/huxi/archive/2009/12/15/1624988.html" title="参考博客链接">Hibernate关联映射</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/ghost-xyx/p/3811036.html?utm_source=tuicool&amp;utm_medium=referral">SQL语句汇总（三）——聚合函数、分组、子查询及组合查询</a>  </p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2016/03/31/android学习笔记（1） ——activity与intent/" style="float: left;">
+    <a class="pull-left" href="/2016/03/31/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89%20%E2%80%94%E2%80%94activity%E4%B8%8Eintent/" style="float: left">
         ← android学习笔记（1）——activity与intent
     </a>
     
     
-    <a class="pull-right" href="/2015/11/22/学习Hibernate记录（5）/">
+    <a class="pull-right" href="/2015/11/22/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%885%EF%BC%89/">
         学习Hibernate记录(5)——数据查询 →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "学习Hibernate记录(6)——映射关联"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -479,9 +470,9 @@
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -577,5 +568,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

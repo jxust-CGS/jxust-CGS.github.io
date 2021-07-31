@@ -19,27 +19,30 @@
 <head>
   <title>学习Hibernate记录(4)——事务管理 | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
     
-    <meta name="description" content="事务的特性
+    <meta name="description" content="##事务的特性    
+
 原子性  
 一致性  
 隔离性  
 持久性   
 
-事务的缺陷
+##事务的缺陷   
+
 脏读取  
 不可重复读取  
 幻影行  
 
-事务的传播行为
+##事务的传播行为  
+
 PROPAGATION_REQUIRED: 如果存在一个事务，则支持当前事务。如果没有事务则开启；  
-PROPAGATION_SUPPORTS: 如果存在一个事务">
+PROPAGATION_">
 	
 	<meta name="Keywords" content="极光轨迹">
 	
@@ -96,7 +99,7 @@ PROPAGATION_SUPPORTS: 如果存在一个事务">
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -220,7 +223,7 @@ PROPAGATION_SUPPORTS: 如果存在一个事务">
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -248,7 +251,7 @@ PROPAGATION_SUPPORTS: 如果存在一个事务">
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -299,32 +302,35 @@ PROPAGATION_SUPPORTS: 如果存在一个事务">
 	
     
     | 分类：
-    <a class="categories" href='/categories/Hibernate/'>Hibernate</a>
+    <a class="categories" href="/categories/Hibernate/">Hibernate</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/Hibernate/'>Hibernate</a>
+    <a class="tags" href="/tags/Hibernate/">Hibernate</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="事务的特性">事务的特性</h2><ul>
+      		<p>##事务的特性    </p>
+<ul>
 <li>原子性  </li>
 <li>一致性  </li>
 <li>隔离性  </li>
 <li>持久性   </li>
 </ul>
-<h2 id="事务的缺陷">事务的缺陷</h2><ul>
+<p>##事务的缺陷   </p>
+<ul>
 <li>脏读取  </li>
 <li>不可重复读取  </li>
 <li>幻影行  </li>
 </ul>
-<h2 id="事务的传播行为">事务的传播行为</h2><ol>
+<p>##事务的传播行为  </p>
+<ol>
 <li>PROPAGATION_REQUIRED: 如果存在一个事务，则支持当前事务。如果没有事务则开启；  </li>
 <li>PROPAGATION_SUPPORTS: 如果存在一个事务，支持当前事务。如果没有事务，则非事务的执行；  </li>
 <li>PROPAGATION_MANDATORY: 如果已经存在一个事务，支持当前事务。如果没有一个活动的事务，则抛出异常；   </li>
@@ -333,57 +339,49 @@ PROPAGATION_SUPPORTS: 如果存在一个事务">
 <li>PROPAGATION_NEVER: 总是非事务地执行，如果存在一个活动事务，则抛出异常；  </li>
 <li>PROPAGATION_NESTED：如果一个活动的事务存在，则运行在一个嵌套的事务中. 如果没有活动事务, 则按TransactionDefinition.PROPAGATION_REQUIRED 属性执行。  </li>
 </ol>
-<h2 id="事务的隔离级别">事务的隔离级别</h2><p>使用Hibernate设置数据库隔离级别<br>在Hibernate的配置文件中可以显示的配置数据库事务隔离级别。每一个隔离级别用一个整数表示：<br>8 - Serializable 串行化<br>4 - Repeatable Read 可重复读<br>2 - Read Commited 可读已提交<br>1 - Read Uncommited 可读未提交<br>在hibernate.cfg.xml中使用hibernate.connection.isolation参数配置数据库事务隔离级别。</p>
+<p>##事务的隔离级别<br>使用Hibernate设置数据库隔离级别<br>在Hibernate的配置文件中可以显示的配置数据库事务隔离级别。每一个隔离级别用一个整数表示：<br>8 - Serializable 串行化<br>4 - Repeatable Read 可重复读<br>2 - Read Commited 可读已提交<br>1 - Read Uncommited 可读未提交<br>在hibernate.cfg.xml中使用hibernate.connection.isolation参数配置数据库事务隔离级别。</p>
 <p><img src="/photos/Hibernate_4.1.png" alt="Hibernate"></p>
 <p>事务的只读属性以及超时属性的配置</p>
-<pre><code>&lt;<span class="keyword">prop</span> key=<span class="string">"query*"</span>&gt;PROPAGATION_REQUIRED,timeout_5,readOnly&lt;<span class="keyword">prop</span>&gt;  
-</code></pre><h2 id="基本的事务">基本的事务</h2><pre><code><span class="keyword">try</span> {
+<pre><code>&lt;prop key=&quot;query*&quot;&gt;PROPAGATION_REQUIRED,timeout_5,readOnly&lt;prop&gt;  
+</code></pre><p>##基本的事务  </p>
+<pre><code>try &#123;
     Session session = HibernateUtil.currentSession();
-    Transaction tx = session.beginTransaction();  <span class="comment">//在默认情况下，开启一个JDBC事物</span>
-    <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++)  {
-        Student stu = <span class="keyword">new</span> Student();
-        stu.setName(<span class="string">"Student"</span> + i);
-        session.<span class="built_in">save</span>(stu);
-    }
-    tx.commit(); <span class="comment">//提交事务</span>
+    Transaction tx = session.beginTransaction();  //在默认情况下，开启一个JDBC事物
+    for(int i=0; i&lt;10; i++)  &#123;
+        Student stu = new Student();
+        stu.setName(&quot;Student&quot; + i);
+        session.save(stu);
+    &#125;
+    tx.commit(); //提交事务
     session.close();
-} <span class="keyword">catch</span>(Exception e) {…
-    tx.rollback();   <span class="comment">//事务回滚</span>
-}
-</code></pre><h2 id="Spring的事务管理器">Spring的事务管理器</h2><p>事务管理器的实例<br>Org.springframwork.jdbc.datasource.DataSourceTransactionManagert 用JDBC的 DataSource 去管理事务<br>Org.springframwork.orm.hibernate.HibernateTransactionManager 当持久机制是Hibernate时的事务管理器<br>Org.springframework.orm.jdoTransactionManager 当持久机制是JDO时的事务管理器<br>Org.springframework.transaction.jta.JtaTransactionManager 用JTA管理事务<br>Org.springframwork.orm.ojb.PersistenceBrokerTransactionManager 当持久机制是apache的OJB时的事务管理器  </p>
-<h2 id="参考博客">参考博客</h2><p><a href="http://www.blogjava.net/robbie/archive/2009/04/05/264003.html" title="参考博客链接" target="_blank" rel="external">Spring事务配置的五种方式</a><br><a href="http://www.cnblogs.com/otomedaybreak/archive/2012/01/27/2330008.html#C5" target="_blank" rel="external">Hibernate事务与并发问题处理（乐观锁与悲观锁）</a><br><a href="http://www.cnblogs.com/rushoooooo/archive/2011/08/28/2155960.html" target="_blank" rel="external">Spring声明式事务配置管理方法</a>  </p>
+&#125; catch(Exception e) &#123;…
+    tx.rollback();   //事务回滚
+&#125;
+</code></pre><p>##Spring的事务管理器  </p>
+<p>事务管理器的实例<br>Org.springframwork.jdbc.datasource.DataSourceTransactionManagert 用JDBC的 DataSource 去管理事务<br>Org.springframwork.orm.hibernate.HibernateTransactionManager 当持久机制是Hibernate时的事务管理器<br>Org.springframework.orm.jdoTransactionManager 当持久机制是JDO时的事务管理器<br>Org.springframework.transaction.jta.JtaTransactionManager 用JTA管理事务<br>Org.springframwork.orm.ojb.PersistenceBrokerTransactionManager 当持久机制是apache的OJB时的事务管理器  </p>
+<p>##参考博客<br><a target="_blank" rel="noopener" href="http://www.blogjava.net/robbie/archive/2009/04/05/264003.html" title="参考博客链接">Spring事务配置的五种方式</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/otomedaybreak/archive/2012/01/27/2330008.html#C5">Hibernate事务与并发问题处理（乐观锁与悲观锁）</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/rushoooooo/archive/2011/08/28/2155960.html">Spring声明式事务配置管理方法</a>  </p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2015/11/22/学习Hibernate记录（5）/" style="float: left;">
+    <a class="pull-left" href="/2015/11/22/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%885%EF%BC%89/" style="float: left">
         ← 学习Hibernate记录(5)——数据查询
     </a>
     
     
-    <a class="pull-right" href="/2015/11/03/学习Hibernate记录（3）/">
+    <a class="pull-right" href="/2015/11/03/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%883%EF%BC%89/">
         学习Hibernate记录(3)——操纵实体 →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "学习Hibernate记录(4)——事务管理"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -400,9 +398,9 @@ PROPAGATION_SUPPORTS: 如果存在一个事务">
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -498,5 +496,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

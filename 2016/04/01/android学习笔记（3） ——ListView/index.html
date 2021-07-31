@@ -19,9 +19,9 @@
 <head>
   <title>android学习笔记（3） ——ListView | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
@@ -84,7 +84,7 @@
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -208,7 +208,7 @@
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -236,7 +236,7 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -287,26 +287,26 @@
 	
     
     | 分类：
-    <a class="categories" href='/categories/android/'>android</a>
+    <a class="categories" href="/categories/android/">android</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/android/'>android</a>
+    <a class="tags" href="/tags/android/">android</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h1 id="ListView">ListView</h1><h5 id="想要在应用中添加ListView控件需要怎样做？">想要在应用中添加ListView控件需要怎样做？</h5><ol>
+      		<h1 id="ListView"><a href="#ListView" class="headerlink" title="ListView"></a>ListView</h1><h5 id="想要在应用中添加ListView控件需要怎样做？"><a href="#想要在应用中添加ListView控件需要怎样做？" class="headerlink" title="想要在应用中添加ListView控件需要怎样做？"></a>想要在应用中添加ListView控件需要怎样做？</h5><ol>
 <li>在activity的xml布局文件中添加listView控件  </li>
 <li>新建item.xml文件为listView的子项进行布局（系统提供了一些也可直接使用）  </li>
 <li>在activity中使用adapter将数据填充到item.xml中并组合到ListView中   </li>
 </ol>
-<h5 id="什么是Adapter呢？">什么是Adapter呢？</h5><p>Adapter，适配器，是连接后端数据和前端显示的适配器接口，是数据和UI（View）之间一个重要的纽带。在常见的View(ListView,GridView)等地方都需要用到Adapter。如下图直观的表达了Data、Adapter、View三者的关系：  </p>
+<h5 id="什么是Adapter呢？"><a href="#什么是Adapter呢？" class="headerlink" title="什么是Adapter呢？"></a>什么是Adapter呢？</h5><p>Adapter，适配器，是连接后端数据和前端显示的适配器接口，是数据和UI（View）之间一个重要的纽带。在常见的View(ListView,GridView)等地方都需要用到Adapter。如下图直观的表达了Data、Adapter、View三者的关系：  </p>
 <p><img src="http://pic002.cnblogs.com/images/2012/267603/2012012021592978.jpg" alt="adapter">  </p>
 <p>Adatper中有哪些实现类呢？    </p>
 <p><img src="http://dl2.iteye.com/upload/attachment/0040/8195/3d321acd-aec8-3f99-bde7-c7634d8f4ac3.png" alt="adapter">   </p>
@@ -317,164 +317,164 @@
 <li>abstract long getItemId(int position)  </li>
 <li>abstract int getItemViewType(int position)  </li>
 <li><p>abstract View getView(int position,View convertVeiw,ViewGroup parent)    </p>
-<pre><code><span class="keyword">lv</span> = (ListView) findViewById(R.id.<span class="keyword">lv</span>);
-<span class="comment">//得到ListView对象的引用  </span>
-<span class="keyword">lv</span>.setAdapter(new ArrayAdapter&lt;Items&gt;(this,android.R.layout.item, Item[]));
-<span class="comment">//为ListView设置Adapter来绑定数据   </span>
+<pre><code>lv = (ListView) findViewById(R.id.lv);
+//得到ListView对象的引用  
+lv.setAdapter(new ArrayAdapter&lt;Items&gt;(this,android.R.layout.item, Item[]));
+//为ListView设置Adapter来绑定数据   
 </code></pre></li>
 </ul>
-<p><a href="http://www.cnblogs.com/purediy/p/3267913.html" target="_blank" rel="external">Android开发优化-Adapter优化</a>  </p>
-<h1 id="最后附上自己实现的一个Demo">最后附上自己实现的一个Demo</h1><p><img src="http://jxust-cgs.github.io/photos/ListView.png" alt="ListView">   </p>
+<p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/purediy/p/3267913.html">Android开发优化-Adapter优化</a>  </p>
+<h1 id="最后附上自己实现的一个Demo"><a href="#最后附上自己实现的一个Demo" class="headerlink" title="最后附上自己实现的一个Demo"></a>最后附上自己实现的一个Demo</h1><p><img src="http://jxust-cgs.github.io/photos/ListView.png" alt="ListView">   </p>
 <p>Person.java</p>
-<pre><code><span class="keyword">public</span> <span class="keyword">class</span> Person {
-    <span class="keyword">private</span> <span class="built_in">String</span> name;
-    <span class="keyword">private</span> int photo_id;
-    <span class="keyword">private</span> <span class="built_in">String</span> <span class="built_in">number</span>;
-    <span class="keyword">public</span> Person(){
-    }
-    <span class="keyword">public</span> Person(<span class="built_in">String</span> name,int photo_id,<span class="built_in">String</span> <span class="built_in">number</span>){
-        <span class="keyword">this</span>.name=name;
-        <span class="keyword">this</span>.photo_id=photo_id;
-        <span class="keyword">this</span>.number=<span class="built_in">number</span>;
-    }
-    <span class="keyword">public</span> <span class="built_in">String</span> getName() {
-        <span class="keyword">return</span> name;
-    }
-    <span class="keyword">public</span> <span class="built_in">void</span> setName(<span class="built_in">String</span> name) {
-        <span class="keyword">this</span>.name = name;
-    }
-    <span class="keyword">public</span> int getPhoto_id() {
-        <span class="keyword">return</span> photo_id;
-    }
-    <span class="keyword">public</span> <span class="built_in">void</span> setPhoto_id(int photo_id) {
-        <span class="keyword">this</span>.photo_id = photo_id;
-    }
-    <span class="keyword">public</span> <span class="built_in">String</span> getNumber() {
-        <span class="keyword">return</span> <span class="built_in">number</span>;
-    }
-    <span class="keyword">public</span> <span class="built_in">void</span> setNumber(<span class="built_in">String</span> <span class="built_in">number</span>) {
-        <span class="keyword">this</span>.number = <span class="built_in">number</span>;
-    }
-}
+<pre><code>public class Person &#123;
+    private String name;
+    private int photo_id;
+    private String number;
+    public Person()&#123;
+    &#125;
+    public Person(String name,int photo_id,String number)&#123;
+        this.name=name;
+        this.photo_id=photo_id;
+        this.number=number;
+    &#125;
+    public String getName() &#123;
+        return name;
+    &#125;
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+    public int getPhoto_id() &#123;
+        return photo_id;
+    &#125;
+    public void setPhoto_id(int photo_id) &#123;
+        this.photo_id = photo_id;
+    &#125;
+    public String getNumber() &#123;
+        return number;
+    &#125;
+    public void setNumber(String number) &#123;
+        this.number = number;
+    &#125;
+&#125;
 </code></pre><p>MyAdapter.java</p>
-<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAdapter</span> <span class="keyword">extends</span> <span class="title">BaseAdapter</span></span>{
+<pre><code>public class MyAdapter extends BaseAdapter&#123;
 
-    <span class="keyword">private</span> ArrayList&lt;Person&gt; persons;
+    private ArrayList&lt;Person&gt; persons;
     Context context;
 
-    <span class="function"><span class="keyword">public</span> <span class="title">MyAdapter</span><span class="params">(Context context,ArrayList&lt;Person&gt; persons)</span> </span>{
-        <span class="keyword">this</span>.context=context;
-        <span class="keyword">this</span>.persons=persons;
-    }
+    public MyAdapter(Context context,ArrayList&lt;Person&gt; persons) &#123;
+        this.context=context;
+        this.persons=persons;
+    &#125;
 
-    <span class="annotation">@Override</span>
-    <span class="keyword">public</span> <span class="function"><span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>{
-        <span class="keyword">return</span> persons==<span class="keyword">null</span>?<span class="number">0</span>:persons.size();
-    }
+    @Override
+    public int getCount() &#123;
+        return persons==null?0:persons.size();
+    &#125;
 
-    <span class="annotation">@Override</span>
-    <span class="keyword">public</span> <span class="function">Object <span class="title">getItem</span><span class="params">(<span class="keyword">int</span> position)</span> </span>{
-        <span class="function"><span class="keyword">return</span> persons.<span class="title">get</span><span class="params">(position)</span></span>;
-    }
+    @Override
+    public Object getItem(int position) &#123;
+        return persons.get(position);
+    &#125;
 
-    <span class="annotation">@Override</span>
-    <span class="keyword">public</span> <span class="function"><span class="keyword">long</span> <span class="title">getItemId</span><span class="params">(<span class="keyword">int</span> position)</span> </span>{
-        <span class="keyword">return</span> position;
-    }
+    @Override
+    public long getItemId(int position) &#123;
+        return position;
+    &#125;
 
-    <span class="annotation">@Override</span>
-    <span class="keyword">public</span> <span class="function">View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>{
-        <span class="keyword">final</span> Person person=(Person) getItem(position);
-        ViewHolder viewHolder=<span class="keyword">null</span>;
-        <span class="keyword">if</span>(viewHolder==<span class="keyword">null</span>){
-            convertView=LayoutInflater.from(context).inflate(R.layout.person_item, <span class="keyword">null</span>);
-            viewHolder=<span class="keyword">new</span> ViewHolder();
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) &#123;
+        final Person person=(Person) getItem(position);
+        ViewHolder viewHolder=null;
+        if(viewHolder==null)&#123;
+            convertView=LayoutInflater.from(context).inflate(R.layout.person_item, null);
+            viewHolder=new ViewHolder();
             viewHolder.imageView_photo=(ImageView) convertView.findViewById(R.id.photo);
             viewHolder.textView_name=(TextView) convertView.findViewById(R.id.name);
             viewHolder.textView_number=(TextView) convertView.findViewById(R.id.number);
             convertView.setTag(viewHolder);
-        }<span class="keyword">else</span>{
+        &#125;else&#123;
             viewHolder=(ViewHolder) convertView.getTag();
-        }
+        &#125;
         viewHolder.textView_name.setText(person.getName());
         viewHolder.textView_number.setText(person.getNumber());
         viewHolder.imageView_photo.setImageResource(person.getPhoto_id());
 
-        convertView.setOnClickListener(<span class="keyword">new</span> OnClickListener() {
+        convertView.setOnClickListener(new OnClickListener() &#123;
 
-            <span class="annotation">@Override</span>
-            <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
-                Toast.makeText(context, person.getName()+<span class="string">"的号码是"</span>+person.getNumber(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        <span class="keyword">return</span>  convertView;
-    }
+            @Override
+            public void onClick(View v) &#123;
+                Toast.makeText(context, person.getName()+&quot;的号码是&quot;+person.getNumber(), Toast.LENGTH_SHORT).show();
+            &#125;
+        &#125;);
+        return  convertView;
+    &#125;
 
-    <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> </span>{
+    class ViewHolder &#123;
         TextView textView_name;
         TextView textView_number;
         ImageView imageView_photo;
-    }
-}
+    &#125;
+&#125;
 </code></pre><p>MainActivity.java</p>
-<pre><code><span class="keyword">public</span> class MainActivity extends Activity {
+<pre><code>public class MainActivity extends Activity &#123;
 
-    <span class="keyword">private</span> ArrayList&lt;Person&gt; persons =<span class="keyword">new</span> ArrayList&lt;Person&gt;();
+    private ArrayList&lt;Person&gt; persons =new ArrayList&lt;Person&gt;();
 
     @Override
-    <span class="keyword">protected</span> <span class="keyword">void</span> onCreate(Bundle savedInstanceState) {
-        <span class="keyword">super</span>.onCreate(savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState) &#123;
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initPerson();
         ListView listView=(ListView) findViewById(R.id.listView1);
-        MyAdapter myAdapter=<span class="keyword">new</span> MyAdapter(<span class="keyword">this</span>,persons);
+        MyAdapter myAdapter=new MyAdapter(this,persons);
         listView.setAdapter(myAdapter);
-    }
+    &#125;
 
-    <span class="keyword">private</span> <span class="keyword">void</span> initPerson() {
-        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"李华"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
-        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"丽华"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
-        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"利华"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
-        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"立华"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
-        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"小明"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
-        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"小红"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
-        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"天明"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
-        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"少羽"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
-        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"小莉"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
-        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"joke"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
-        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"Tom"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
-        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"Boby"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
-        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"Bob"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
-        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"小胡"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
-        persons.<span class="built_in">add</span>(<span class="keyword">new</span> Person(<span class="string">"小菜鸟"</span>,R.drawable.photo,<span class="string">"18179092797"</span>));
-    }
-}
+    private void initPerson() &#123;
+        persons.add(new Person(&quot;李华&quot;,R.drawable.photo,&quot;18179092797&quot;));
+        persons.add(new Person(&quot;丽华&quot;,R.drawable.photo,&quot;18179092797&quot;));
+        persons.add(new Person(&quot;利华&quot;,R.drawable.photo,&quot;18179092797&quot;));
+        persons.add(new Person(&quot;立华&quot;,R.drawable.photo,&quot;18179092797&quot;));
+        persons.add(new Person(&quot;小明&quot;,R.drawable.photo,&quot;18179092797&quot;));
+        persons.add(new Person(&quot;小红&quot;,R.drawable.photo,&quot;18179092797&quot;));
+        persons.add(new Person(&quot;天明&quot;,R.drawable.photo,&quot;18179092797&quot;));
+        persons.add(new Person(&quot;少羽&quot;,R.drawable.photo,&quot;18179092797&quot;));
+        persons.add(new Person(&quot;小莉&quot;,R.drawable.photo,&quot;18179092797&quot;));
+        persons.add(new Person(&quot;joke&quot;,R.drawable.photo,&quot;18179092797&quot;));
+        persons.add(new Person(&quot;Tom&quot;,R.drawable.photo,&quot;18179092797&quot;));
+        persons.add(new Person(&quot;Boby&quot;,R.drawable.photo,&quot;18179092797&quot;));
+        persons.add(new Person(&quot;Bob&quot;,R.drawable.photo,&quot;18179092797&quot;));
+        persons.add(new Person(&quot;小胡&quot;,R.drawable.photo,&quot;18179092797&quot;));
+        persons.add(new Person(&quot;小菜鸟&quot;,R.drawable.photo,&quot;18179092797&quot;));
+    &#125;
+&#125;
 </code></pre><p>person_item.xml</p>
 <pre><code>    &lt;ImageView
-        android:<span class="variable">id=</span><span class="string">"@+id/photo"</span>
-        android:<span class="variable">layout_width=</span><span class="string">"50dp"</span>
-        android:<span class="variable">layout_height=</span><span class="string">"50dp"</span>
-        android:<span class="variable">contentDescription=</span><span class="string">"@string/image"</span>/&gt;
+        android:id=&quot;@+id/photo&quot;
+        android:layout_width=&quot;50dp&quot;
+        android:layout_height=&quot;50dp&quot;
+        android:contentDescription=&quot;@string/image&quot;/&gt;
 
     &lt;LinearLayout
-        android:<span class="variable">layout_width=</span><span class="string">"match_parent"</span>
-        android:<span class="variable">layout_height=</span><span class="string">"match_parent"</span>
-        android:<span class="variable">orientation=</span><span class="string">"vertical"</span>
-        android:<span class="variable">layout_gravity=</span><span class="string">"center_vertical"</span>&gt;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:orientation=&quot;vertical&quot;
+        android:layout_gravity=&quot;center_vertical&quot;&gt;
 
         &lt;TextView
-            android:<span class="variable">id=</span><span class="string">"@+id/name"</span>
-            android:<span class="variable">layout_width=</span><span class="string">"wrap_content"</span>
-            android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
-            android:<span class="variable">textSize=</span><span class="string">"20sp"</span>
-            android:<span class="variable">textColor=</span><span class="string">"#48c0f0"</span> /&gt;
+            android:id=&quot;@+id/name&quot;
+            android:layout_width=&quot;wrap_content&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:textSize=&quot;20sp&quot;
+            android:textColor=&quot;#48c0f0&quot; /&gt;
 
         &lt;TextView
-            android:<span class="variable">id=</span><span class="string">"@+id/number"</span>
-            android:<span class="variable">layout_width=</span><span class="string">"wrap_content"</span>
-            android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>
-            android:<span class="variable">textSize=</span><span class="string">"10sp"</span>
-            android:<span class="variable">textColor=</span><span class="string">"#48c0f0"</span> /&gt;
+            android:id=&quot;@+id/number&quot;
+            android:layout_width=&quot;wrap_content&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:textSize=&quot;10sp&quot;
+            android:textColor=&quot;#48c0f0&quot; /&gt;
     &lt;/LinearLayout&gt;
 
 &lt;/LinearLayout&gt;
@@ -484,32 +484,22 @@
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2016/04/08/android学习笔记（4） ——多线程/" style="float: left;">
+    <a class="pull-left" href="/2016/04/08/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%884%EF%BC%89%20%E2%80%94%E2%80%94%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="float: left">
         ← android学习笔记（4） ——多线程
     </a>
     
     
-    <a class="pull-right" href="/2016/04/01/android学习笔记（2） ——UI/">
+    <a class="pull-right" href="/2016/04/01/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89%20%E2%80%94%E2%80%94UI/">
         android学习笔记（2） ——UI →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "android学习笔记（3） ——ListView"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -526,9 +516,9 @@
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -624,5 +614,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

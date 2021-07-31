@@ -19,9 +19,9 @@
 <head>
   <title>android学习笔记（1）——activity与intent | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
@@ -84,7 +84,7 @@
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -208,7 +208,7 @@
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -236,7 +236,7 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -287,145 +287,135 @@
 	
     
     | 分类：
-    <a class="categories" href='/categories/android/'>android</a>
+    <a class="categories" href="/categories/android/">android</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/android/'>android</a>
+    <a class="tags" href="/tags/android/">android</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h1 id="activity">activity</h1><ul>
+      		<h1 id="activity"><a href="#activity" class="headerlink" title="activity"></a>activity</h1><ul>
 <li>对于安卓的学习一开始无非就是安装软件配置开发环境，adt和android stdio我感觉都差不多。在eclipse中开发一次加载多个项目，而在android stdio中只对一个项目进行开发。 我比较喜欢查看以前项目中的代码或是写个小例子还是eclipse比较适合我^_^  </li>
 <li>说到activity就是要说activity的生命周期。<br><img src="http://hukai.me/android-training-course-in-chinese/basics/activity-lifecycle/basic-lifecycle-paused.png" alt="photo">  </li>
 <li>finish()结束activity，默认会返回到上一个activity。<br>（ps：acitvity是通过返回栈来管理的，不要用intent跳回去哟这样你按返回键又会返回回来的）  </li>
 </ul>
-<h1 id="intent">intent</h1><ul>
+<h1 id="intent"><a href="#intent" class="headerlink" title="intent"></a>intent</h1><ul>
 <li>显式intent：显式就是意图非常明确，<br>指定跳转的activity，startActivity（<br>New Intent(MainActivity.this,OtherActivity.class)）。</li>
 <li><p>隐式intent：隐式就是意图不明确，<br>需要根据action和category匹配对应的activity   </p>
 <p>  <intent-filter></intent-filter></p>
-<pre><code>&lt;action android:<span class="property">name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;
-&lt;category android:<span class="property">name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;
+<pre><code>&lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+&lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
 保证此activity入口出现在luncher中，一般出现在Mainactivity
 </code></pre><p>    </p>
 <p>  对于隐式的Intent的使用比较常见的就是调用系统的应用如：打电话   </p>
-<pre><code>Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_DIAL);
-intent.setData(<span class="built_in">Uri</span>.parse(<span class="string">"tel:10086"</span>));
+<pre><code>Intent intent = new Intent(Intent.ACTION_DIAL);
+intent.setData(Uri.parse(&quot;tel:10086&quot;));
 startActivity(intent);
 还有很多实践可以尝试：发短信，打开网页等
 </code></pre></li>
 </ul>
-<h1 id="intent可以用于发送和回传数据">intent可以用于发送和回传数据</h1><ul>
+<h1 id="intent可以用于发送和回传数据"><a href="#intent可以用于发送和回传数据" class="headerlink" title="intent可以用于发送和回传数据"></a>intent可以用于发送和回传数据</h1><ul>
 <li><p>发送：  </p>
-<pre><code>button1.setOnClickListener(<span class="keyword">new</span> <span class="type">OnClickListener</span>() {
-  <span class="annotation">@Override</span>
-  public void onClick(<span class="type">View</span> v) {
-      <span class="type">String</span> data = <span class="string">"Hello SecondActivity"</span>;
-      <span class="type">Intent</span> intent = <span class="keyword">new</span> <span class="type">Intent</span>(<span class="type">FirstActivity</span>.<span class="keyword">this</span>, <span class="type">SecondActivity</span>.<span class="keyword">class</span>);
-      intent.putExtra(<span class="string">"extra_data"</span>, data);
-      <span class="comment">//发送需要的数据，发送对象是需要对对象进行序列化通过实现Serializable接口传递对象,一种是通过实现Parcelable接口传递对象</span>
+<pre><code>button1.setOnClickListener(new OnClickListener() &#123;
+  @Override
+  public void onClick(View v) &#123;
+      String data = &quot;Hello SecondActivity&quot;;
+      Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+      intent.putExtra(&quot;extra_data&quot;, data);
+      //发送需要的数据，发送对象是需要对对象进行序列化通过实现Serializable接口传递对象,一种是通过实现Parcelable接口传递对象
       startActivity(intent);
-    }
-});
+    &#125;
+&#125;);
 
-public <span class="class"><span class="keyword">class</span> <span class="title">SecondActivity</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Activity</span> {</span>
-  <span class="annotation">@Override</span>
-  <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> savedInstanceState) {
-      <span class="keyword">super</span>.onCreate(savedInstanceState);
-      requestWindowFeature(<span class="type">Window</span>.<span class="type">FEATURE_NO_TITLE</span>);<span class="comment">//去掉标题栏，一定要放在setContentView（）之前哟</span>
-      setContentView(<span class="type">R</span>.layout.second_layout);
-      <span class="type">Intent</span> intent = getIntent();
-      <span class="type">String</span> data = intent.getStringExtra(<span class="string">"extra_data"</span>);<span class="comment">//获取从firstactivity中传递来的数据</span>
-      <span class="type">Log</span>.d(<span class="string">"SecondActivity"</span>, data);
-  }
-}
+public class SecondActivity extends Activity &#123;
+  @Override
+  protected void onCreate(Bundle savedInstanceState) &#123;
+      super.onCreate(savedInstanceState);
+      requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏，一定要放在setContentView（）之前哟
+      setContentView(R.layout.second_layout);
+      Intent intent = getIntent();
+      String data = intent.getStringExtra(&quot;extra_data&quot;);//获取从firstactivity中传递来的数据
+      Log.d(&quot;SecondActivity&quot;, data);
+  &#125;
+&#125;
 </code></pre></li>
 <li><p>返回数据：  </p>
-<pre><code>button1.setOnClickListener(<span class="keyword">new</span> OnClickListener() {
-    <span class="annotation">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
-        Intent intent = <span class="keyword">new</span> Intent(FirstActivity.<span class="keyword">this</span>, SecondActivity.class);
-        startActivityForResult(intent, <span class="number">1</span>);
-    }
-});
-<span class="annotation">@Override</span>
-<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span> </span>{
-    <span class="keyword">switch</span> (requestCode) {
-        <span class="keyword">case</span> <span class="number">1</span>:
-            <span class="keyword">if</span> (resultCode == RESULT_OK) {
-                String returnedData = data.getStringExtra(<span class="string">"data_return"</span>);
-                Log.d(<span class="string">"FirstActivity"</span>, returnedData);
-            }
-            <span class="keyword">break</span>;
-        <span class="keyword">default</span>:
-    }
-}
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecondActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>{
-    <span class="annotation">@Override</span>
-    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>{
-        <span class="keyword">super</span>.onCreate(savedInstanceState);
+<pre><code>button1.setOnClickListener(new OnClickListener() &#123;
+    @Override
+    public void onClick(View v) &#123;
+        Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+        startActivityForResult(intent, 1);
+    &#125;
+&#125;);
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) &#123;
+    switch (requestCode) &#123;
+        case 1:
+            if (resultCode == RESULT_OK) &#123;
+                String returnedData = data.getStringExtra(&quot;data_return&quot;);
+                Log.d(&quot;FirstActivity&quot;, returnedData);
+            &#125;
+            break;
+        default:
+    &#125;
+&#125;
+public class SecondActivity extends Activity &#123;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) &#123;
+        super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.second_layout);
         Button button2 = (Button) findViewById(R.id.button_2);
-        button2.setOnClickListener(<span class="keyword">new</span> OnClickListener() {
-            <span class="annotation">@Override</span>
-            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
-                Intent intent = <span class="keyword">new</span> Intent();
-                intent.putExtra(<span class="string">"data_return"</span>, <span class="string">"Hello FirstActivity"</span>);
+        button2.setOnClickListener(new OnClickListener() &#123;
+            @Override
+            public void onClick(View v) &#123;
+                Intent intent = new Intent();
+                intent.putExtra(&quot;data_return&quot;, &quot;Hello FirstActivity&quot;);
                 setResult(RESULT_OK, intent);
                 finish();
-            }
-        });
-    }
-}
+            &#125;
+        &#125;);
+    &#125;
+&#125;
 </code></pre></li>
 </ul>
-<h1 id="activity的启动模式">activity的启动模式</h1><p>启动模式一共有四种，分别是standard、singleTop、singleTask 和singleInstance ， 可以在AndroidManifest.xml 中通过给<activity> 标签指定android:launchMode 属性来选择启动模式。</activity></p>
+<h1 id="activity的启动模式"><a href="#activity的启动模式" class="headerlink" title="activity的启动模式"></a>activity的启动模式</h1><p>启动模式一共有四种，分别是standard、singleTop、singleTask 和singleInstance ， 可以在AndroidManifest.xml 中通过给<activity> 标签指定android:launchMode 属性来选择启动模式。</activity></p>
 <ul>
 <li>standard 标准启动模式，使用返回栈管理activity，需要一层一层的返回，而且可能会创建多个相同activity的实例。  </li>
 <li>singleTop 在启动活动时如果发现返回栈的栈顶已经是该活动，则认为可以直接使用它，不会再创建新的活动实例。   </li>
 <li>singleTask 每次启动该活动时系统首先会在返回栈中检查是否存在该活动的实例，如果发现已经存在则直接使用该实例，并把在这个活动之上的所有活动统统出栈，如果没有发现就会创建一个新的活动实例。  </li>
 <li>singleInstance 在这种模式下会有一个单独的返回栈来管理这个活动，不管是哪个应用程序来访问这个活动，都共用的同一个返回栈，也就解决了共享活动实例的问题。  </li>
 </ul>
-<h1 id="快速结束activity">快速结束activity</h1><p>我们知道activity的返回是一个退栈的过程，但是如果当前是第N个activity中如何做到结束所有的activity呢？<br>你肯能会想用home键返回或调用系统的结束进程。但是我们程序自己是完全可以做得到的。<br>首先建立一个工具类ActivityCollector，在这个类中创建一个List<activity>的实例，提供静态方法addActivity（）和removeActivity（）方法来并在BaseActivity中onCreate（）和onDestory（）维护List<activity>。然后就是在ActivityCollector中提供一个finishAll的方法就OK了。  </activity></activity></p>
+<h1 id="快速结束activity"><a href="#快速结束activity" class="headerlink" title="快速结束activity"></a>快速结束activity</h1><p>我们知道activity的返回是一个退栈的过程，但是如果当前是第N个activity中如何做到结束所有的activity呢？<br>你肯能会想用home键返回或调用系统的结束进程。但是我们程序自己是完全可以做得到的。<br>首先建立一个工具类ActivityCollector，在这个类中创建一个List<activity>的实例，提供静态方法addActivity（）和removeActivity（）方法来并在BaseActivity中onCreate（）和onDestory（）维护List<activity>。然后就是在ActivityCollector中提供一个finishAll的方法就OK了。  </activity></activity></p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2016/04/01/android学习笔记（2） ——UI/" style="float: left;">
+    <a class="pull-left" href="/2016/04/01/android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%882%EF%BC%89%20%E2%80%94%E2%80%94UI/" style="float: left">
         ← android学习笔记（2） ——UI
     </a>
     
     
-    <a class="pull-right" href="/2015/11/23/学习Hibernate记录（6）/">
+    <a class="pull-right" href="/2015/11/23/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%886%EF%BC%89/">
         学习Hibernate记录(6)——映射关联 →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "android学习笔记（1）——activity与intent"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -442,9 +432,9 @@ public <span class="class"><span class="keyword">class</span> <span class="title
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -540,5 +530,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

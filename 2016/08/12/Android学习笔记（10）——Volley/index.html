@@ -19,9 +19,9 @@
 <head>
   <title>Android学习笔记(10)——Volley | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
@@ -84,7 +84,7 @@
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -208,7 +208,7 @@
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -236,7 +236,7 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -287,22 +287,22 @@
 	
     
     | 分类：
-    <a class="categories" href='/categories/android/'>android</a>
+    <a class="categories" href="/categories/android/">android</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/android/'>android</a>
+    <a class="tags" href="/tags/android/">android</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p>本文参考文章：<br><a href="http://www.cnblogs.com/zyw-205520/p/4950357.html" target="_blank" rel="external">Android Volley框架的使用（一）</a><br><a href="http://www.cnblogs.com/zyw-205520/p/4950464.html" target="_blank" rel="external">Android Volley框架的使用（二）</a><br><a href="http://www.cnblogs.com/zyw-205520/p/4950535.html" target="_blank" rel="external">Android Volley框架的使用（三）</a></p>
-<h1 id="Volley简介">Volley简介</h1><p>Volley是谷歌在2013年推出的网络通信框架，对于android应用需要获取网络数据是很方便的。<br>相对于原始的使用HttpURLConnection或httpClient的方式进行了简化，不需要我们去写太多的新线程和io操作。<br>使用Volley可以使我们的代码更加少并更加清晰。<br>Volley的特点有：  </p>
+      		<p>本文参考文章：<br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/zyw-205520/p/4950357.html">Android Volley框架的使用（一）</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/zyw-205520/p/4950464.html">Android Volley框架的使用（二）</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/zyw-205520/p/4950535.html">Android Volley框架的使用（三）</a></p>
+<h1 id="Volley简介"><a href="#Volley简介" class="headerlink" title="Volley简介"></a>Volley简介</h1><p>Volley是谷歌在2013年推出的网络通信框架，对于android应用需要获取网络数据是很方便的。<br>相对于原始的使用HttpURLConnection或httpClient的方式进行了简化，不需要我们去写太多的新线程和io操作。<br>使用Volley可以使我们的代码更加少并更加清晰。<br>Volley的特点有：  </p>
 <ul>
 <li>自动调度网络请求</li>
 <li>多个并发的网络连接</li>
@@ -315,266 +315,256 @@
 </ul>
 <p><img src="http://jxust_cgs.github.io/photos/Android学习笔记（10）——Volley_1.jpg" alt="Volley功能结构图"></p>
 <p>不过Volley也有自己的短板，那就是对于大批量的数据（如下载文件）还是不推荐使用的。</p>
-<h1 id="Volley的基本使用">Volley的基本使用</h1><h2 id="添加jar包到项目中">添加jar包到项目中</h2><pre><code><span class="label">https:</span>//android.googlesource.com/platform/frameworks/volley
-<span class="label">http:</span>//central.maven<span class="preprocessor">.org</span>/maven2/<span class="keyword">com</span>/mcxiaoke/volley/library/<span class="number">1.0</span><span class="number">.19</span>/  
-</code></pre><h2 id="创建队列">创建队列</h2><pre><code>requestQueue=Volley.newRequestQueue(<span class="keyword">this</span>);
-</code></pre><h2 id="创建请求">创建请求</h2><h3 id="请求字符串">请求字符串</h3><pre><code>StringRequest stringRequest=<span class="keyword">new</span> StringRequest(Request.Method.POST   <span class="comment">//默认不写是get方法</span>
-    ,<span class="string">"https://www.baidu.com/"</span>,
-    <span class="keyword">new</span> Listener&lt;String&gt;() {
-        <span class="annotation">@Override</span>
-        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(String arg0)</span> </span>{
+<h1 id="Volley的基本使用"><a href="#Volley的基本使用" class="headerlink" title="Volley的基本使用"></a>Volley的基本使用</h1><h2 id="添加jar包到项目中"><a href="#添加jar包到项目中" class="headerlink" title="添加jar包到项目中"></a>添加jar包到项目中</h2><pre><code>https://android.googlesource.com/platform/frameworks/volley
+http://central.maven.org/maven2/com/mcxiaoke/volley/library/1.0.19/  
+</code></pre><h2 id="创建队列"><a href="#创建队列" class="headerlink" title="创建队列"></a>创建队列</h2><pre><code>requestQueue=Volley.newRequestQueue(this);
+</code></pre><h2 id="创建请求"><a href="#创建请求" class="headerlink" title="创建请求"></a>创建请求</h2><h3 id="请求字符串"><a href="#请求字符串" class="headerlink" title="请求字符串"></a>请求字符串</h3><pre><code>StringRequest stringRequest=new StringRequest(Request.Method.POST   //默认不写是get方法
+    ,&quot;https://www.baidu.com/&quot;,
+    new Listener&lt;String&gt;() &#123;
+        @Override
+        public void onResponse(String arg0) &#123;
             textView.setText(arg0);
-            Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"查询成功！！！"</span>, Toast.LENGTH_SHORT).show();
-        }
-    },
-    <span class="keyword">new</span> ErrorListener() {
-        <span class="annotation">@Override</span>
-        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onErrorResponse</span><span class="params">(VolleyError arg0)</span> </span>{
-            Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"查询失败..."</span>, Toast.LENGTH_SHORT).show();
-        }
-    }
+            Toast.makeText(MainActivity.this, &quot;查询成功！！！&quot;, Toast.LENGTH_SHORT).show();
+        &#125;
+    &#125;,
+    new ErrorListener() &#123;
+        @Override
+        public void onErrorResponse(VolleyError arg0) &#123;
+            Toast.makeText(MainActivity.this, &quot;查询失败...&quot;, Toast.LENGTH_SHORT).show();
+        &#125;
+    &#125;
 );
-</code></pre><h3 id="请求图片">请求图片</h3><pre><code>ImageRequest imageRequest=<span class="keyword">new</span> ImageRequest(<span class="string">"https://www.baidu.com/img/baidu_jgylogo3.gif"</span>, <span class="keyword">new</span> Listener&lt;Bitmap&gt;() {
+</code></pre><h3 id="请求图片"><a href="#请求图片" class="headerlink" title="请求图片"></a>请求图片</h3><pre><code>ImageRequest imageRequest=new ImageRequest(&quot;https://www.baidu.com/img/baidu_jgylogo3.gif&quot;, new Listener&lt;Bitmap&gt;() &#123;
 
-        <span class="annotation">@Override</span>
-        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Bitmap arg0)</span> </span>{
+        @Override
+        public void onResponse(Bitmap arg0) &#123;
             imageView.setImageBitmap(arg0);
-            Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"查询成功！！！"</span>, Toast.LENGTH_SHORT).show();
-        }
-    }, <span class="number">0</span>, <span class="number">0</span>, Config.ARGB_8888, <span class="keyword">new</span> ErrorListener() {
+            Toast.makeText(MainActivity.this, &quot;查询成功！！！&quot;, Toast.LENGTH_SHORT).show();
+        &#125;
+    &#125;, 0, 0, Config.ARGB_8888, new ErrorListener() &#123;
 
-        <span class="annotation">@Override</span>
-        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onErrorResponse</span><span class="params">(VolleyError arg0)</span> </span>{
-            Toast.makeText(MainActivity.<span class="keyword">this</span>, VolleyErrorHelper.getMessage(arg0, MainActivity.<span class="keyword">this</span>), Toast.LENGTH_SHORT).show();
-        }
-    });      
+        @Override
+        public void onErrorResponse(VolleyError arg0) &#123;
+            Toast.makeText(MainActivity.this, VolleyErrorHelper.getMessage(arg0, MainActivity.this), Toast.LENGTH_SHORT).show();
+        &#125;
+    &#125;);      
 
-ImageLoader imageLoader=VolleyManager.getInstance(MainActivity.<span class="keyword">this</span>).getImageLoader();
-        imageLoader.get(<span class="string">"https://www.baidu.com/img/baidu_jgylogo3.gif"</span>, <span class="keyword">new</span> ImageListener() {
+ImageLoader imageLoader=VolleyManager.getInstance(MainActivity.this).getImageLoader();
+        imageLoader.get(&quot;https://www.baidu.com/img/baidu_jgylogo3.gif&quot;, new ImageListener() &#123;
 
-            <span class="annotation">@Override</span>
-            <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onErrorResponse</span><span class="params">(VolleyError arg0)</span> </span>{
-                Toast.makeText(MainActivity.<span class="keyword">this</span>, VolleyErrorHelper.getMessage(arg0, MainActivity.<span class="keyword">this</span>), Toast.LENGTH_SHORT).show();
-            }
+            @Override
+            public void onErrorResponse(VolleyError arg0) &#123;
+                Toast.makeText(MainActivity.this, VolleyErrorHelper.getMessage(arg0, MainActivity.this), Toast.LENGTH_SHORT).show();
+            &#125;
 
-            <span class="annotation">@Override</span>
-            <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(ImageContainer arg0, <span class="keyword">boolean</span> arg1)</span> </span>{
+            @Override
+            public void onResponse(ImageContainer arg0, boolean arg1) &#123;
                 imageView.setImageBitmap(arg0.getBitmap());
-                Toast.makeText(MainActivity.<span class="keyword">this</span>, <span class="string">"查询成功！！！"</span>, Toast.LENGTH_SHORT).show();
-            }
-        });
-</code></pre><h2 id="将请求放入队列">将请求放入队列</h2><pre><code>requestQueue.add<span class="comment">(stringRequest)</span>;
-</code></pre><h1 id="Volley的使用建议">Volley的使用建议</h1><h2 id="使用单例模式进行使用">使用单例模式进行使用</h2><p>在开发中使用的时候避免创建多个队列，推荐采用单例模式创建一个Volley管理类对应用中的所有网络请求进行管理。  </p>
-<pre><code>  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VolleyManager</span> </span>{
+                Toast.makeText(MainActivity.this, &quot;查询成功！！！&quot;, Toast.LENGTH_SHORT).show();
+            &#125;
+        &#125;);
+</code></pre><h2 id="将请求放入队列"><a href="#将请求放入队列" class="headerlink" title="将请求放入队列"></a>将请求放入队列</h2><pre><code>requestQueue.add(stringRequest);
+</code></pre><h1 id="Volley的使用建议"><a href="#Volley的使用建议" class="headerlink" title="Volley的使用建议"></a>Volley的使用建议</h1><h2 id="使用单例模式进行使用"><a href="#使用单例模式进行使用" class="headerlink" title="使用单例模式进行使用"></a>使用单例模式进行使用</h2><p>在开发中使用的时候避免创建多个队列，推荐采用单例模式创建一个Volley管理类对应用中的所有网络请求进行管理。  </p>
+<pre><code>  public class VolleyManager &#123;
 
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG=<span class="string">"VolleyManager"</span>;
+    private static final String TAG=&quot;VolleyManager&quot;;
 
-    <span class="keyword">private</span> <span class="keyword">static</span> VolleyManager mVolleyManager;
-    <span class="keyword">private</span> RequestQueue mRequestQueue;
-    <span class="keyword">private</span> ImageLoader mImageLoader;
-    <span class="keyword">private</span> <span class="keyword">static</span> Context mContext;
+    private static VolleyManager mVolleyManager;
+    private RequestQueue mRequestQueue;
+    private ImageLoader mImageLoader;
+    private static Context mContext;
 
-    <span class="function"><span class="keyword">public</span> <span class="title">VolleyManager</span><span class="params">(Context context)</span> </span>{
+    public VolleyManager(Context context) &#123;
         mContext = context;
         mRequestQueue = getRequestQueue();
-        mImageLoader = <span class="keyword">new</span> ImageLoader(mRequestQueue, <span class="keyword">new</span> ImageLoader.ImageCache() {
-            <span class="keyword">private</span> <span class="keyword">final</span> LruCache&lt;String, Bitmap&gt; cache = <span class="keyword">new</span> LruCache&lt;String, Bitmap&gt;(<span class="number">20</span>);
+        mImageLoader = new ImageLoader(mRequestQueue, new ImageLoader.ImageCache() &#123;
+            private final LruCache&lt;String, Bitmap&gt; cache = new LruCache&lt;String, Bitmap&gt;(20);
 
-            <span class="annotation">@Override</span>
-            <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">putBitmap</span><span class="params">(String url, Bitmap bitmap)</span> </span>{
+            @Override
+            public void putBitmap(String url, Bitmap bitmap) &#123;
                 cache.put(url, bitmap);
-            }
+            &#125;
 
-            <span class="annotation">@Override</span>
-            <span class="keyword">public</span> <span class="function">Bitmap <span class="title">getBitmap</span><span class="params">(String url)</span> </span>{
-                <span class="function"><span class="keyword">return</span> cache.<span class="title">get</span><span class="params">(url)</span></span>;
-            }
-        });
+            @Override
+            public Bitmap getBitmap(String url) &#123;
+                return cache.get(url);
+            &#125;
+        &#125;);
 
-    }
+    &#125;
 
-    <span class="keyword">public</span> <span class="function">RequestQueue <span class="title">getRequestQueue</span><span class="params">()</span> </span>{
-        <span class="keyword">if</span> (mRequestQueue == <span class="keyword">null</span>) {
-            <span class="keyword">return</span> Volley.newRequestQueue(mContext.getApplicationContext());
-        } <span class="keyword">else</span> {
-            <span class="keyword">return</span> mRequestQueue;
-        }
-    }
+    public RequestQueue getRequestQueue() &#123;
+        if (mRequestQueue == null) &#123;
+            return Volley.newRequestQueue(mContext.getApplicationContext());
+        &#125; else &#123;
+            return mRequestQueue;
+        &#125;
+    &#125;
 
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="function">VolleyManager <span class="title">getInstance</span><span class="params">(Context context)</span> </span>{
-         <span class="keyword">if</span> (mVolleyManager == <span class="keyword">null</span>) {
-                <span class="keyword">synchronized</span>(VolleyManager.class)
-                {
-                    <span class="keyword">if</span> (mVolleyManager == <span class="keyword">null</span>) {
-                        mVolleyManager = <span class="keyword">new</span> VolleyManager(context);
-                    }
-                }
-            }
-            <span class="keyword">return</span> mVolleyManager;
-    }
+    public static synchronized VolleyManager getInstance(Context context) &#123;
+         if (mVolleyManager == null) &#123;
+                synchronized(VolleyManager.class)
+                &#123;
+                    if (mVolleyManager == null) &#123;
+                        mVolleyManager = new VolleyManager(context);
+                    &#125;
+                &#125;
+            &#125;
+            return mVolleyManager;
+    &#125;
 
-    <span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">addToRequestQueue</span><span class="params">(Request&lt;T&gt; req,String tag)</span> </span>{
+    public &lt;T&gt; void addToRequestQueue(Request&lt;T&gt; req,String tag) &#123;
         req.setTag(TextUtils.isEmpty(tag)?TAG:tag);
         getRequestQueue().add(req);
-    }
+    &#125;
 
-    <span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">addToRequestQueue</span><span class="params">(Request&lt;T&gt; req)</span> </span>{
-        req.setTag(TAG);<span class="comment">//为Request添加tag用于取消请求</span>
+    public &lt;T&gt; void addToRequestQueue(Request&lt;T&gt; req) &#123;
+        req.setTag(TAG);//为Request添加tag用于取消请求
         getRequestQueue().add(req);
-    }
+    &#125;
 
-    <span class="keyword">public</span> <span class="function">ImageLoader <span class="title">getImageLoader</span><span class="params">()</span> </span>{
-        <span class="keyword">return</span> mImageLoader;
-    }
+    public ImageLoader getImageLoader() &#123;
+        return mImageLoader;
+    &#125;
 
-    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">cancelPendingRequests</span><span class="params">(String tag)</span> </span>{
-        mRequestQueue.cancelAll(tag);<span class="comment">//通过tag取消队列中的请求</span>
-    }
-}
-</code></pre><h2 id="设置请求的优先级">设置请求的优先级</h2><p>参看<a href="http://www.cnblogs.com/zyw-205520/p/4950464.html" target="_blank" rel="external">Android Volley框架的使用（二）</a>   </p>
-<h2 id="设置缓存">设置缓存</h2><p>参看<a href="http://www.cnblogs.com/zyw-205520/p/4950535.html" target="_blank" rel="external">Android Volley框架的使用（三）</a>  </p>
-<h2 id="使用VolleyErrorHelper分析错误信息">使用VolleyErrorHelper分析错误信息</h2><pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VolleyErrorHelper</span> </span>{
+    public void cancelPendingRequests(String tag) &#123;
+        mRequestQueue.cancelAll(tag);//通过tag取消队列中的请求
+    &#125;
+&#125;
+</code></pre><h2 id="设置请求的优先级"><a href="#设置请求的优先级" class="headerlink" title="设置请求的优先级"></a>设置请求的优先级</h2><p>参看<a target="_blank" rel="noopener" href="http://www.cnblogs.com/zyw-205520/p/4950464.html">Android Volley框架的使用（二）</a>   </p>
+<h2 id="设置缓存"><a href="#设置缓存" class="headerlink" title="设置缓存"></a>设置缓存</h2><p>参看<a target="_blank" rel="noopener" href="http://www.cnblogs.com/zyw-205520/p/4950535.html">Android Volley框架的使用（三）</a>  </p>
+<h2 id="使用VolleyErrorHelper分析错误信息"><a href="#使用VolleyErrorHelper分析错误信息" class="headerlink" title="使用VolleyErrorHelper分析错误信息"></a>使用VolleyErrorHelper分析错误信息</h2><pre><code>public class VolleyErrorHelper &#123;
 
-    <span class="comment">// 用于返回具体错误信息，分辨错误类别</span>
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function">String <span class="title">getMessage</span><span class="params">(Object <span class="keyword">error</span>, Context context)</span> </span>{
-        <span class="keyword">if</span> (<span class="keyword">error</span> <span class="keyword">instanceof</span> TimeoutError) {
-            <span class="keyword">return</span> <span class="string">"请求超时！"</span>;
-        } <span class="keyword">else</span> <span class="keyword">if</span> (isServerProblem(<span class="keyword">error</span>)) {
-            <span class="function"><span class="keyword">return</span> <span class="title">handleServerError</span><span class="params">(<span class="keyword">error</span>, context)</span></span>;
-        } <span class="keyword">else</span> <span class="keyword">if</span> (isNetworkProblem(<span class="keyword">error</span>)) {
-            <span class="keyword">return</span> <span class="string">"网络异常"</span>;
-        }
-        <span class="keyword">return</span> <span class="string">"未知异常"</span>;
-    }
+    // 用于返回具体错误信息，分辨错误类别
+    public static String getMessage(Object error, Context context) &#123;
+        if (error instanceof TimeoutError) &#123;
+            return &quot;请求超时！&quot;;
+        &#125; else if (isServerProblem(error)) &#123;
+            return handleServerError(error, context);
+        &#125; else if (isNetworkProblem(error)) &#123;
+            return &quot;网络异常&quot;;
+        &#125;
+        return &quot;未知异常&quot;;
+    &#125;
 
-    <span class="comment">// 判断是否是网络错误</span>
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="function"><span class="keyword">boolean</span> <span class="title">isNetworkProblem</span><span class="params">(Object <span class="keyword">error</span>)</span> </span>{
-        <span class="keyword">return</span> (<span class="keyword">error</span> <span class="keyword">instanceof</span> NetworkError) || (<span class="keyword">error</span> <span class="keyword">instanceof</span> NoConnectionError);
-    }
+    // 判断是否是网络错误
+    private static boolean isNetworkProblem(Object error) &#123;
+        return (error instanceof NetworkError) || (error instanceof NoConnectionError);
+    &#125;
 
-    <span class="comment">// 判断是否是服务端错误</span>
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="function"><span class="keyword">boolean</span> <span class="title">isServerProblem</span><span class="params">(Object <span class="keyword">error</span>)</span> </span>{
-        <span class="keyword">return</span> (<span class="keyword">error</span> <span class="keyword">instanceof</span> ServerError) || (<span class="keyword">error</span> <span class="keyword">instanceof</span> AuthFailureError);
-    }
+    // 判断是否是服务端错误
+    private static boolean isServerProblem(Object error) &#123;
+        return (error instanceof ServerError) || (error instanceof AuthFailureError);
+    &#125;
 
-    <span class="comment">// 处理服务端错误</span>
-    <span class="keyword">private</span> <span class="keyword">static</span> <span class="function">String <span class="title">handleServerError</span><span class="params">(Object err, Context context)</span> </span>{
-        VolleyError <span class="keyword">error</span> = (VolleyError) err;
+    // 处理服务端错误
+    private static String handleServerError(Object err, Context context) &#123;
+        VolleyError error = (VolleyError) err;
 
-        NetworkResponse response = <span class="keyword">error</span>.networkResponse;
+        NetworkResponse response = error.networkResponse;
 
-        <span class="keyword">if</span> (response != <span class="keyword">null</span>) {
-            <span class="keyword">switch</span> (response.statusCode) {
-            <span class="keyword">case</span> <span class="number">404</span>:
-                <span class="keyword">return</span> <span class="string">"没有找到页面，请检查请求链接。"</span>;
-            <span class="keyword">case</span> <span class="number">422</span>:
-            <span class="keyword">case</span> 401:
-                <span class="keyword">try</span> {
-                    <span class="comment">// server might return error like this { "error": "Some</span>
-                    <span class="comment">// error occured" }</span>
-                    <span class="comment">// Use "Gson" to parse the result</span>
-                    HashMap&lt;String, String&gt; result = <span class="keyword">new</span> Gson().fromJson(<span class="keyword">new</span> String(response.data),
-                            <span class="keyword">new</span> TypeToken&lt;Map&lt;String, String&gt;&gt;() {
-                            }.getType());
+        if (response != null) &#123;
+            switch (response.statusCode) &#123;
+            case 404:
+                return &quot;没有找到页面，请检查请求链接。&quot;;
+            case 422:
+            case 401:
+                try &#123;
+                    // server might return error like this &#123; &quot;error&quot;: &quot;Some
+                    // error occured&quot; &#125;
+                    // Use &quot;Gson&quot; to parse the result
+                    HashMap&lt;String, String&gt; result = new Gson().fromJson(new String(response.data),
+                            new TypeToken&lt;Map&lt;String, String&gt;&gt;() &#123;
+                            &#125;.getType());
 
-                    <span class="keyword">if</span> (result != <span class="keyword">null</span> &amp;&amp; result.containsKey(<span class="string">"error"</span>)) {
-                        <span class="function"><span class="keyword">return</span> result.<span class="title">get</span><span class="params">(<span class="string">"error"</span>)</span></span>;
-                    }
+                    if (result != null &amp;&amp; result.containsKey(&quot;error&quot;)) &#123;
+                        return result.get(&quot;error&quot;);
+                    &#125;
 
-                } <span class="keyword">catch</span> (Exception e) {
+                &#125; catch (Exception e) &#123;
                     e.printStackTrace();
-                }
+                &#125;
 
-                <span class="function"><span class="keyword">return</span> <span class="keyword">error</span>.<span class="title">getMessage</span><span class="params">()</span></span>;
+                return error.getMessage();
 
-            <span class="keyword">default</span>:
-                <span class="keyword">return</span> <span class="string">"服务器出错"</span>;
-            }
-        }
-        <span class="keyword">return</span> <span class="string">"服务器出错"</span>;
-    }
-}
-</code></pre><h2 id="创建自定义的Request">创建自定义的Request</h2><p>以Gson为例创建GsonRequest</p>
-<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">GsonRequest&lt;T&gt;</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Request&lt;T&gt;</span> {</span>
+            default:
+                return &quot;服务器出错&quot;;
+            &#125;
+        &#125;
+        return &quot;服务器出错&quot;;
+    &#125;
+&#125;
+</code></pre><h2 id="创建自定义的Request"><a href="#创建自定义的Request" class="headerlink" title="创建自定义的Request"></a>创建自定义的Request</h2><p>以Gson为例创建GsonRequest</p>
+<pre><code>public class GsonRequest&lt;T&gt; extends Request&lt;T&gt; &#123;
 
-    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">Gson</span> gson = <span class="keyword">new</span> <span class="type">Gson</span>();
-    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">Class</span>&lt;<span class="type">T</span>&gt; clazz;
-    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">String</span>&gt; headers;
-    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">Listener</span>&lt;<span class="type">T</span>&gt; listener;
+    private final Gson gson = new Gson();
+    private final Class&lt;T&gt; clazz;
+    private final Map&lt;String, String&gt; headers;
+    private final Listener&lt;T&gt; listener;
 
-    <span class="comment">/**
+    /**
      * Make a GET request and return a parsed object from JSON.
      *
      * @param url URL of the request to make
-     * @param clazz Relevant class object, for Gson's reflection
+     * @param clazz Relevant class object, for Gson&apos;s reflection
      * @param headers Map of request headers
-     ****/</span>
-    public <span class="type">GsonRequest</span>(<span class="type">String</span> url, <span class="type">Class</span>&lt;<span class="type">T</span>&gt; clazz, <span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">String</span>&gt; headers,
-            <span class="type">Listener</span>&lt;<span class="type">T</span>&gt; listener, <span class="type">ErrorListener</span> errorListener) {
-        <span class="keyword">super</span>(<span class="type">Method</span>.<span class="type">GET</span>, url, errorListener);
-        <span class="keyword">this</span>.clazz = clazz;
-        <span class="keyword">this</span>.headers = headers;
-        <span class="keyword">this</span>.listener = listener;
-    }
+     ****/
+    public GsonRequest(String url, Class&lt;T&gt; clazz, Map&lt;String, String&gt; headers,
+            Listener&lt;T&gt; listener, ErrorListener errorListener) &#123;
+        super(Method.GET, url, errorListener);
+        this.clazz = clazz;
+        this.headers = headers;
+        this.listener = listener;
+    &#125;
 
-    <span class="annotation">@Override</span>
-    public <span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">String</span>&gt; getHeaders() <span class="keyword">throws</span> <span class="type">AuthFailureError</span> {
-        <span class="keyword">return</span> headers != <span class="literal">null</span> ? headers : <span class="keyword">super</span>.getHeaders();
-    }
+    @Override
+    public Map&lt;String, String&gt; getHeaders() throws AuthFailureError &#123;
+        return headers != null ? headers : super.getHeaders();
+    &#125;
 
-    <span class="annotation">@Override</span>
-    <span class="keyword">protected</span> void deliverResponse(<span class="type">T</span> response) {
+    @Override
+    protected void deliverResponse(T response) &#123;
         listener.onResponse(response);
-    }
+    &#125;
 
-    <span class="annotation">@Override</span>
-    <span class="keyword">protected</span> <span class="type">Response</span>&lt;<span class="type">T</span>&gt; parseNetworkResponse(<span class="type">NetworkResponse</span> response) {
-        <span class="keyword">try</span> {
-            <span class="type">String</span> json = <span class="keyword">new</span> <span class="type">String</span>(
+    @Override
+    protected Response&lt;T&gt; parseNetworkResponse(NetworkResponse response) &#123;
+        try &#123;
+            String json = new String(
                     response.data,
-                    <span class="type">HttpHeaderParser</span>.parseCharset(response.headers));
-            <span class="keyword">return</span> <span class="type">Response</span>.success(
+                    HttpHeaderParser.parseCharset(response.headers));
+            return Response.success(
                     gson.fromJson(json, clazz),
-                    <span class="type">HttpHeaderParser</span>.parseCacheHeaders(response));
-        } <span class="keyword">catch</span> (<span class="type">UnsupportedEncodingException</span> e) {
-            <span class="keyword">return</span> <span class="type">Response</span>.error(<span class="keyword">new</span> <span class="type">ParseError</span>(e));
-        } <span class="keyword">catch</span> (<span class="type">JsonSyntaxException</span> e) {
-            <span class="keyword">return</span> <span class="type">Response</span>.error(<span class="keyword">new</span> <span class="type">ParseError</span>(e));
-        }
-    }
-}
+                    HttpHeaderParser.parseCacheHeaders(response));
+        &#125; catch (UnsupportedEncodingException e) &#123;
+            return Response.error(new ParseError(e));
+        &#125; catch (JsonSyntaxException e) &#123;
+            return Response.error(new ParseError(e));
+        &#125;
+    &#125;
+&#125;
 </code></pre>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2016/08/12/Java学习笔记（1）——解析json/" style="float: left;">
+    <a class="pull-left" href="/2016/08/12/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89%E2%80%94%E2%80%94%E8%A7%A3%E6%9E%90json/" style="float: left">
         ← Java学习笔记(1)——解析json
     </a>
     
     
-    <a class="pull-right" href="/2016/07/13/git学习笔记/">
+    <a class="pull-right" href="/2016/07/13/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
         git学习笔记 →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "Android学习笔记(10)——Volley"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -591,9 +581,9 @@ ImageLoader imageLoader=VolleyManager.getInstance(MainActivity.<span class="keyw
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -689,5 +679,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

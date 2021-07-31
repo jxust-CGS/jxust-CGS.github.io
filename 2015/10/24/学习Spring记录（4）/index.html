@@ -19,9 +19,9 @@
 <head>
   <title>学习Spring记录(4)——aop | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
@@ -83,7 +83,7 @@
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -207,7 +207,7 @@
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -235,7 +235,7 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -286,173 +286,163 @@
 	
     
     | 分类：
-    <a class="categories" href='/categories/Spring/'>Spring</a>
+    <a class="categories" href="/categories/Spring/">Spring</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/Spring/'>Spring</a>
+    <a class="tags" href="/tags/Spring/">Spring</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="相关概念">相关概念</h2><p>AOP：Aspect Oriented Program，面向切面编程；<br>切面：操作过程中的截面；<br>连接点：对象操作过程中的某个阶段点；<br>切入点：切入点是连接点的集合，切面与程序的“交叉点”；<br>通知：切入点被横切都所采取的处理逻辑；<br>目标对象：被通知的对象；<br>织入：将切面功能应用到目标对象中，一般有3种，编译织入、加载织入、执行织入；<br>引入：动态的向类里加入属性或方法。  </p>
-<h2 id="aop实现">aop实现</h2><p>首先创建目标类</p>
-<pre><code>@Repository(<span class="string">"target"</span>)
-<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Target</span> {
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span>
-    </span>{
-        System.<span class="keyword">out</span>.println(<span class="string">"doing execute"</span>); 
-    }
-}
+      		<h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><p>AOP：Aspect Oriented Program，面向切面编程；<br>切面：操作过程中的截面；<br>连接点：对象操作过程中的某个阶段点；<br>切入点：切入点是连接点的集合，切面与程序的“交叉点”；<br>通知：切入点被横切都所采取的处理逻辑；<br>目标对象：被通知的对象；<br>织入：将切面功能应用到目标对象中，一般有3种，编译织入、加载织入、执行织入；<br>引入：动态的向类里加入属性或方法。  </p>
+<h2 id="aop实现"><a href="#aop实现" class="headerlink" title="aop实现"></a>aop实现</h2><p>首先创建目标类</p>
+<pre><code>@Repository(&quot;target&quot;)
+public class Target &#123;
+    public void execute()
+    &#123;
+        System.out.println(&quot;doing execute&quot;); 
+    &#125;
+&#125;
 </code></pre><p>创建通知（本例是around通知）</p>
-<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoggerExecute</span> <span class="keyword">implements</span> <span class="title">MethodInterceptor</span></span>{<span class="comment">//around通知必须实现MethodInterceptor</span>
+<pre><code>public class LoggerExecute implements MethodInterceptor&#123;//around通知必须实现MethodInterceptor
 
-    <span class="annotation">@Override</span>
-    <span class="keyword">public</span> <span class="function">Object <span class="title">invoke</span><span class="params">(MethodInvocation arg0)</span> <span class="keyword">throws</span> Throwable </span>{
-        <span class="keyword">before</span>();
-    <span class="comment">//    System.out.println(arg0.getClass().getName());</span>
-        arg0.<span class="keyword">proceed</span>();
-        <span class="keyword">after</span>();
-        <span class="keyword">return</span> <span class="keyword">null</span>;
-    }
+    @Override
+    public Object invoke(MethodInvocation arg0) throws Throwable &#123;
+        before();
+    //    System.out.println(arg0.getClass().getName());
+        arg0.proceed();
+        after();
+        return null;
+    &#125;
 
-    <span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">after</span><span class="params">()</span> </span>{
-        System.out.println(<span class="string">"do this before "</span>);
-    }
+    private void after() &#123;
+        System.out.println(&quot;do this before &quot;);
+    &#125;
 
-    <span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">before</span><span class="params">()</span> </span>{
-        System.out.println(<span class="string">"do this after "</span>);
-    }
+    private void before() &#123;
+        System.out.println(&quot;do this after &quot;);
+    &#125;
 
-}
+&#125;
 </code></pre><p>创建代理</p>
-<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">Aop_test_1</span> </span>{
-    public <span class="literal">static</span> <span class="keyword">void</span> main(<span class="built_in">String</span>[] args) {
-        Target target=<span class="keyword">new</span> Target();<span class="comment">//创建目标对象</span>
-        ProxyFactory <span class="literal">factory</span>=<span class="keyword">new</span> ProxyFactory();<span class="comment">//创建代理工厂</span>
-        <span class="literal">factory</span>.addAdvice(<span class="keyword">new</span> LoggerExecute());<span class="comment">//添加通知</span>
-        <span class="literal">factory</span>.setTarget(target);<span class="comment">//注册目标</span>
-        Target proxy=(Target) <span class="literal">factory</span>.getProxy();<span class="comment">//从工厂获得目标类</span>
-        proxy.execute();<span class="comment">//执行目标，织入通知</span>
-    }
-}
+<pre><code>public class Aop_test_1 &#123;
+    public static void main(String[] args) &#123;
+        Target target=new Target();//创建目标对象
+        ProxyFactory factory=new ProxyFactory();//创建代理工厂
+        factory.addAdvice(new LoggerExecute());//添加通知
+        factory.setTarget(target);//注册目标
+        Target proxy=(Target) factory.getProxy();//从工厂获得目标类
+        proxy.execute();//执行目标，织入通知
+    &#125;
+&#125;
 </code></pre><p>运行结果</p>
 <pre><code>do this after 
-doing<span class="instruction"> execute
-</span>do this before 
-</code></pre><h2 id="其他具体通知">其他具体通知</h2><p>通知一共分为5种：前置Before Advice、后置After Returning Advice、周围Interception Around Advice、异常Throws Advice、引入通知Introduction Advice;<br>同样需要目标类</p>
-<pre><code>@Repository(<span class="string">"target"</span>)
-<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Target</span> {
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span>
-    </span>{
-        System.<span class="keyword">out</span>.println(<span class="string">"doing execute"</span>); 
-    }
-}
+doing execute
+do this before 
+</code></pre><h2 id="其他具体通知"><a href="#其他具体通知" class="headerlink" title="其他具体通知"></a>其他具体通知</h2><p>通知一共分为5种：前置Before Advice、后置After Returning Advice、周围Interception Around Advice、异常Throws Advice、引入通知Introduction Advice;<br>同样需要目标类</p>
+<pre><code>@Repository(&quot;target&quot;)
+public class Target &#123;
+    public void execute()
+    &#123;
+        System.out.println(&quot;doing execute&quot;); 
+    &#125;
+&#125;
 </code></pre><p>通知类</p>
-<pre><code>@<span class="type">Repository</span>(<span class="string">"beforeAdviceExample"</span>)
-public class <span class="type">BeforeAdviceExample</span> implements <span class="type">MethodBeforeAdvice</span>{
-//此处展示的是<span class="type">Before</span> <span class="type">Advice</span>
-//如果是after则需要实现<span class="type">AfterReturningAdvice</span>中的public <span class="type">void</span> afterReturning(<span class="type">Object</span> returnValue, <span class="type">Method</span> <span class="keyword">method</span>, <span class="type">Object</span>[] arg2,<span class="type">Object</span> target) throws <span class="type">Throwable</span>
-    @<span class="type">Override</span>
-    public <span class="type">void</span> before(<span class="type">Method</span> <span class="keyword">method</span>, <span class="type">Object</span>[] arg1, <span class="type">Object</span> target)
-            throws <span class="type">Throwable</span> {
-        <span class="type">System</span>.<span class="keyword">out</span>.println(target.getClass());
-        <span class="type">System</span>.<span class="keyword">out</span>.println(<span class="keyword">method</span>+<span class="string">" will runing!"</span>);
-    }
-}
+<pre><code>@Repository(&quot;beforeAdviceExample&quot;)
+public class BeforeAdviceExample implements MethodBeforeAdvice&#123;
+//此处展示的是Before Advice
+//如果是after则需要实现AfterReturningAdvice中的public void afterReturning(Object returnValue, Method method, Object[] arg2,Object target) throws Throwable
+    @Override
+    public void before(Method method, Object[] arg1, Object target)
+            throws Throwable &#123;
+        System.out.println(target.getClass());
+        System.out.println(method+&quot; will runing!&quot;);
+    &#125;
+&#125;
 
-public class <span class="type">LoggerExecute</span> implements <span class="type">MethodInterceptor</span>{//around通知
-    @<span class="type">Override</span>
-    public <span class="type">Object</span> invoke(<span class="type">MethodInvocation</span> arg0) throws <span class="type">Throwable</span> {
+public class LoggerExecute implements MethodInterceptor&#123;//around通知
+    @Override
+    public Object invoke(MethodInvocation arg0) throws Throwable &#123;
         before();
-        //<span class="type">System</span>.<span class="keyword">out</span>.println(arg0.getClass().getName());
+        //System.out.println(arg0.getClass().getName());
         arg0.proceed();//此行代码表示执行目标代码，之前的为前置通知，之后的为后置通知
         after();
-        <span class="keyword">return</span> null;
-    }
-    private <span class="type">void</span> after() {
-        <span class="type">System</span>.<span class="keyword">out</span>.println(<span class="string">"do this before "</span>);
-    }
-    private <span class="type">void</span> before() {
-        <span class="type">System</span>.<span class="keyword">out</span>.println(<span class="string">"do this after "</span>);
-    }
-}
+        return null;
+    &#125;
+    private void after() &#123;
+        System.out.println(&quot;do this before &quot;);
+    &#125;
+    private void before() &#123;
+        System.out.println(&quot;do this after &quot;);
+    &#125;
+&#125;
 另外的异常通知和引入通知，略^_^
 </code></pre><p>代理工厂</p>
-<pre><code><span class="comment">&lt;!-- 注册代理工厂，进行切面编程 --&gt;</span>
-<span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"proxyFactoryBean"</span> <span class="attribute">class</span>=<span class="value">"org.springframework.aop.framework.ProxyFactoryBean"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"target"</span> <span class="attribute">ref</span>=<span class="value">"target"</span>&gt;</span><span class="tag">&lt;/<span class="title">property</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"interceptorNames"</span>&gt;</span>
-        <span class="tag">&lt;<span class="title">list</span>&gt;</span>
-            <span class="tag">&lt;<span class="title">value</span>&gt;</span>beforeAdviceExample<span class="tag">&lt;/<span class="title">value</span>&gt;</span><span class="comment">&lt;!-- 添加前置通知 --&gt;</span>
-            <span class="tag">&lt;<span class="title">value</span>&gt;</span>afterAdviceExample<span class="tag">&lt;/<span class="title">value</span>&gt;</span><span class="comment">&lt;!-- 添加后置通知 --&gt;</span>
-        <span class="tag">&lt;/<span class="title">list</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">property</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">bean</span>&gt;</span>
-</code></pre><h2 id="自动代理">自动代理</h2><p>BeanNameAutoProxyCreator类允许开发者指定适当的Bean名称，这样的Spring会自动用指定的通知代理这些bean；</p>
-<pre><code><span class="tag">&lt;<span class="title">bean</span>  <span class="attribute">id</span>= "<span class="attribute">beanNameProxyCreater</span>" <span class="attribute">class</span>=<span class="value">"org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator"</span>&gt;</span>    
-     <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"beanNames"</span>&gt;</span>    
-         <span class="tag">&lt;<span class="title">list</span>&gt;</span>    
-             <span class="tag">&lt;<span class="title">value</span>&gt;</span>Test*<span class="tag">&lt;/<span class="title">value</span>&gt;</span>//所有Test开头的方法会被拦截   
-         <span class="tag">&lt;/<span class="title">list</span>&gt;</span>    
-     <span class="tag">&lt;/<span class="title">property</span>&gt;</span>    
-     <span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"interceptorNames"</span>&gt;</span>    
-         <span class="tag">&lt;<span class="title">list</span>&gt;</span>    
-             <span class="tag">&lt;<span class="title">value</span>&gt;</span>BeforeAdvice<span class="tag">&lt;/<span class="title">value</span>&gt;</span>//对代理bean添加before通知  
-         <span class="tag">&lt;/<span class="title">list</span>&gt;</span>    
-     <span class="tag">&lt;/<span class="title">property</span>&gt;</span>    
- <span class="tag">&lt;/<span class="title">bean</span>&gt;</span>  
+<pre><code>&lt;!-- 注册代理工厂，进行切面编程 --&gt;
+&lt;bean id=&quot;proxyFactoryBean&quot; class=&quot;org.springframework.aop.framework.ProxyFactoryBean&quot;&gt;
+    &lt;property name=&quot;target&quot; ref=&quot;target&quot;&gt;&lt;/property&gt;
+    &lt;property name=&quot;interceptorNames&quot;&gt;
+        &lt;list&gt;
+            &lt;value&gt;beforeAdviceExample&lt;/value&gt;&lt;!-- 添加前置通知 --&gt;
+            &lt;value&gt;afterAdviceExample&lt;/value&gt;&lt;!-- 添加后置通知 --&gt;
+        &lt;/list&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+</code></pre><h2 id="自动代理"><a href="#自动代理" class="headerlink" title="自动代理"></a>自动代理</h2><p>BeanNameAutoProxyCreator类允许开发者指定适当的Bean名称，这样的Spring会自动用指定的通知代理这些bean；</p>
+<pre><code>&lt;bean  id= &quot;beanNameProxyCreater&quot; class=&quot;org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator&quot;&gt;    
+     &lt;property name=&quot;beanNames&quot;&gt;    
+         &lt;list&gt;    
+             &lt;value&gt;Test*&lt;/value&gt;//所有Test开头的方法会被拦截   
+         &lt;/list&gt;    
+     &lt;/property&gt;    
+     &lt;property name=&quot;interceptorNames&quot;&gt;    
+         &lt;list&gt;    
+             &lt;value&gt;BeforeAdvice&lt;/value&gt;//对代理bean添加before通知  
+         &lt;/list&gt;    
+     &lt;/property&gt;    
+ &lt;/bean&gt;  
 </code></pre><p>使用DefaultAdviceAutoProxyCreater类只需创建相应的通知者就可以在applicationContext.xml中通知任何bean了</p>
-<pre><code><span class="comment">&lt;!-- 自动代理所有的advisor --&gt;</span>  
-<span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"autoProxyCreator"</span> <span class="attribute">class</span>=<span class="value">"org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"</span>&gt;</span><span class="tag">&lt;/<span class="title">bean</span>&gt;</span> 
+<pre><code>&lt;!-- 自动代理所有的advisor --&gt;  
+&lt;bean id=&quot;autoProxyCreator&quot; class=&quot;org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator&quot;&gt;&lt;/bean&gt; 
 
-<span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"WelcomeAdvice"</span> <span class="attribute">class</span>=<span class="value">"AutoProxyTwo.WelcomeAdvice"</span>/&gt;</span>  
+&lt;bean id=&quot;WelcomeAdvice&quot; class=&quot;AutoProxyTwo.WelcomeAdvice&quot;/&gt;  
 
-<span class="tag">&lt;<span class="title">bean</span> <span class="attribute">id</span>=<span class="value">"advisor"</span> <span class="attribute">class</span>=<span class="value">"org.springframework.aop.support.RegexpMethodPointcutAdvisor"</span>&gt;</span>  
-<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"pointcut"</span>&gt;</span>  
-   <span class="tag">&lt;<span class="title">bean</span> <span class="attribute">class</span>=<span class="value">"spring.aop.PointCut"</span>&gt;</span><span class="tag">&lt;/<span class="title">bean</span>&gt;</span> 
-<span class="tag">&lt;/<span class="title">property</span>&gt;</span>  
-<span class="tag">&lt;<span class="title">property</span> <span class="attribute">name</span>=<span class="value">"advice"</span>&gt;</span>  
-    <span class="tag">&lt;<span class="title">ref</span> <span class="attribute">bean</span>=<span class="value">"WelcomeAdvice"</span>/&gt;</span>  
-<span class="tag">&lt;/<span class="title">property</span>&gt;</span>  
-<span class="tag">&lt;/<span class="title">bean</span>&gt;</span> 
+&lt;bean id=&quot;advisor&quot; class=&quot;org.springframework.aop.support.RegexpMethodPointcutAdvisor&quot;&gt;  
+&lt;property name=&quot;pointcut&quot;&gt;  
+   &lt;bean class=&quot;spring.aop.PointCut&quot;&gt;&lt;/bean&gt; 
+&lt;/property&gt;  
+&lt;property name=&quot;advice&quot;&gt;  
+    &lt;ref bean=&quot;WelcomeAdvice&quot;/&gt;  
+&lt;/property&gt;  
+&lt;/bean&gt; 
 </code></pre>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2015/11/01/学习Hibernate记录（1）/" style="float: left;">
+    <a class="pull-left" href="/2015/11/01/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%881%EF%BC%89/" style="float: left">
         ← 学习Hibernate记录(1)——概念
     </a>
     
     
-    <a class="pull-right" href="/2015/10/24/学习Spring记录（3）/">
+    <a class="pull-right" href="/2015/10/24/%E5%AD%A6%E4%B9%A0Spring%E8%AE%B0%E5%BD%95%EF%BC%883%EF%BC%89/">
         学习Spring记录(3)——国际化、日志 →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "学习Spring记录(4)——aop"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -469,9 +459,9 @@ public class <span class="type">LoggerExecute</span> implements <span class="typ
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -567,5 +557,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

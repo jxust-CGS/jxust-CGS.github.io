@@ -77,22 +77,22 @@ HTML {
 	OVERFLOW-Y: scroll; BACKGROUND: #fff; COLOR: #000
 }
 BODY {
-	FONT-SIZE: 12px; FONT-FAMILY: Tahoma, Helvetica, "Microsoft Yahei", "Î¢ï¿½ï¿½ï¿½Åºï¿½", Arial, STHeiti; _font-family: Tahoma,Arial,Helvetica,STHeiti
+	FONT-SIZE: 12px; FONT-FAMILY: Tahoma, Helvetica, "Microsoft Yahei", "Î¢ÈíÑÅºÚ", Arial, STHeiti; _font-family: Tahoma,Arial,Helvetica,STHeiti
 }
 BUTTON {
-	FONT-SIZE: 12px; FONT-FAMILY: Tahoma, Helvetica, "Microsoft Yahei", "Î¢ï¿½ï¿½ï¿½Åºï¿½", Arial, STHeiti; _font-family: Tahoma,Arial,Helvetica,STHeiti
+	FONT-SIZE: 12px; FONT-FAMILY: Tahoma, Helvetica, "Microsoft Yahei", "Î¢ÈíÑÅºÚ", Arial, STHeiti; _font-family: Tahoma,Arial,Helvetica,STHeiti
 }
 INPUT {
-	FONT-SIZE: 12px; FONT-FAMILY: Tahoma, Helvetica, "Microsoft Yahei", "Î¢ï¿½ï¿½ï¿½Åºï¿½", Arial, STHeiti; _font-family: Tahoma,Arial,Helvetica,STHeiti
+	FONT-SIZE: 12px; FONT-FAMILY: Tahoma, Helvetica, "Microsoft Yahei", "Î¢ÈíÑÅºÚ", Arial, STHeiti; _font-family: Tahoma,Arial,Helvetica,STHeiti
 }
 SELECT {
-	FONT-SIZE: 12px; FONT-FAMILY: Tahoma, Helvetica, "Microsoft Yahei", "Î¢ï¿½ï¿½ï¿½Åºï¿½", Arial, STHeiti; _font-family: Tahoma,Arial,Helvetica,STHeiti
+	FONT-SIZE: 12px; FONT-FAMILY: Tahoma, Helvetica, "Microsoft Yahei", "Î¢ÈíÑÅºÚ", Arial, STHeiti; _font-family: Tahoma,Arial,Helvetica,STHeiti
 }
 TEXTAREA {
-	FONT-SIZE: 12px; FONT-FAMILY: Tahoma, Helvetica, "Microsoft Yahei", "Î¢ï¿½ï¿½ï¿½Åºï¿½", Arial, STHeiti; _font-family: Tahoma,Arial,Helvetica,STHeiti
+	FONT-SIZE: 12px; FONT-FAMILY: Tahoma, Helvetica, "Microsoft Yahei", "Î¢ÈíÑÅºÚ", Arial, STHeiti; _font-family: Tahoma,Arial,Helvetica,STHeiti
 }
 PRE {
-	FONT-SIZE: 12px; FONT-FAMILY: Tahoma, Helvetica, "Microsoft Yahei", "Î¢ï¿½ï¿½ï¿½Åºï¿½", Arial, STHeiti; _font-family: Tahoma,Arial,Helvetica,STHeiti
+	FONT-SIZE: 12px; FONT-FAMILY: Tahoma, Helvetica, "Microsoft Yahei", "Î¢ÈíÑÅºÚ", Arial, STHeiti; _font-family: Tahoma,Arial,Helvetica,STHeiti
 }
 HTML.mod-without-msyahei BODY {
 	FONT-FAMILY: Tahoma,Helvetica,Arial,STHeiti
@@ -1427,7 +1427,7 @@ HTML {
 	MARGIN-RIGHT: 45px
 }
 .x-fixed-tip .tip-title {
-	FONT-SIZE: 18px; COLOR: #333; FONT-FAMILY: "Microsoft Yahei", "Î¢ï¿½ï¿½ï¿½Åºï¿½", STHeiti, Arial
+	FONT-SIZE: 18px; COLOR: #333; FONT-FAMILY: "Microsoft Yahei", "Î¢ÈíÑÅºÚ", STHeiti, Arial
 }
 .x-fixed-tip .tip-desc {
 	FONT-SIZE: 12px; COLOR: #969696

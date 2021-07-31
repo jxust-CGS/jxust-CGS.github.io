@@ -19,17 +19,17 @@
 <head>
   <title>学习Hibernate记录(1)——概念 | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
     
-    <meta name="description" content="什么是ORMORM(Object-Relational Mapping)是对象到关系的映射，简单的说就是ORM是通过使用描述对象和数据库之间映射的元数据，将java程序中的对象自动持久化到关系数据库中。
-ORM的优缺点优点：     
+    <meta name="description" content="##什么是ORMORM(Object-Relational Mapping)是对象到关系的映射，简单的说就是ORM是通过使用描述对象和数据库之间映射的元数据，将java程序中的对象自动持久化到关系数据库中。
+##ORM的优缺点优点：     
 
-提高开发效率,由于ORM可以对实体对象与数据库中的表进行字段与">
+提高开发效率,由于ORM可以对实体对象与数据库中的表进">
 	
 	<meta name="Keywords" content="极光轨迹">
 	
@@ -86,7 +86,7 @@ ORM的优缺点优点：
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -210,7 +210,7 @@ ORM的优缺点优点：
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -238,7 +238,7 @@ ORM的优缺点优点：
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -289,22 +289,22 @@ ORM的优缺点优点：
 	
     
     | 分类：
-    <a class="categories" href='/categories/Hibernate/'>Hibernate</a>
+    <a class="categories" href="/categories/Hibernate/">Hibernate</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/Hibernate/'>Hibernate</a>
+    <a class="tags" href="/tags/Hibernate/">Hibernate</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="什么是ORM">什么是ORM</h2><p>ORM(Object-Relational Mapping)是对象到关系的映射，简单的说就是ORM是通过使用描述对象和数据库之间映射的元数据，将java程序中的对象自动持久化到关系数据库中。</p>
-<h2 id="ORM的优缺点">ORM的优缺点</h2><p>优点：     </p>
+      		<p>##什么是ORM<br>ORM(Object-Relational Mapping)是对象到关系的映射，简单的说就是ORM是通过使用描述对象和数据库之间映射的元数据，将java程序中的对象自动持久化到关系数据库中。</p>
+<p>##ORM的优缺点<br>优点：     </p>
 <ul>
 <li>提高开发效率,由于ORM可以对实体对象与数据库中的表进行字段与属性的映射，所以实际操作中已经不再需要一个专用的、庞大的数据库访问层。  </li>
 <li>ORM提供了对数据库的映射，能够像操作对象一样从数据库中获取数据，而不用直接进行SQL编程。    </li>
@@ -313,10 +313,10 @@ ORM的优缺点优点：
 <ul>
 <li>系统架构方面，采用ORM的系统的一般都是多层系统，系统的层次增加了，效率就会降低。  </li>
 <li>性能方面，主要体现在对持久化对象的提取和对数据的加工处理上。采用ORM是，系统可能将全部的数据提取到内存对象之中，然后在进行过滤和加工处理，这样就很容易产生性能问题。   </li>
-<li>对象持久化方面，ORM一般会持久化所有的属性，这对有些是不希望发生的<h2 id="域对象的关系">域对象的关系</h2>一共有4种：关联（类之间引用）、依赖（类之间访问）、聚集（整体与部分）、一般化（类之间的继承）。  <h2 id="Hibernate特点">Hibernate特点</h2></li>
+<li>对象持久化方面，ORM一般会持久化所有的属性，这对有些是不希望发生的<br>##域对象的关系<br>一共有4种：关联（类之间引用）、依赖（类之间访问）、聚集（整体与部分）、一般化（类之间的继承）。<br>##Hibernate特点  </li>
 <li>它负责协调软件与数据库的交互，提供了管理持久性数据的完整方案。让开发者能够专注于业务逻辑的开发；  </li>
 <li>应用者不需要才、遵循太多的规则和设计模式，能够灵活地运用；  </li>
-<li>它是一个开源代码的映射框架，对JDBC只做了轻量级的封装，让java程序员可以随心所欲地运用面向对象的思想操纵数据库，无需考虑资源的问题。<h2 id="Hibernate核心接口">Hibernate核心接口</h2></li>
+<li>它是一个开源代码的映射框架，对JDBC只做了轻量级的封装，让java程序员可以随心所欲地运用面向对象的思想操纵数据库，无需考虑资源的问题。<br>##Hibernate核心接口  </li>
 <li>Configuation接口</li>
 <li>SessionFactory接口</li>
 <li>Session接口</li>
@@ -329,32 +329,22 @@ ORM的优缺点优点：
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2015/11/01/学习Hibernate记录（2）/" style="float: left;">
+    <a class="pull-left" href="/2015/11/01/%E5%AD%A6%E4%B9%A0Hibernate%E8%AE%B0%E5%BD%95%EF%BC%882%EF%BC%89/" style="float: left">
         ← 学习Hibernate记录(2)——配置文件
     </a>
     
     
-    <a class="pull-right" href="/2015/10/24/学习Spring记录（4）/">
+    <a class="pull-right" href="/2015/10/24/%E5%AD%A6%E4%B9%A0Spring%E8%AE%B0%E5%BD%95%EF%BC%884%EF%BC%89/">
         学习Spring记录(4)——aop →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "学习Hibernate记录(1)——概念"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -371,9 +361,9 @@ ORM的优缺点优点：
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -469,5 +459,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>

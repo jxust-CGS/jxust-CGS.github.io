@@ -19,9 +19,9 @@
 <head>
   <title>Android学习笔记（11）——RecyclerView | 极光轨迹</title>
   <!-- Meta data -->
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="极光轨迹">
     
     <meta name="author" content="Jxust_CGS">
@@ -84,7 +84,7 @@
 
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
         <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-            <img src="/img/close.png" alt="Close"/>
+            <img src="/img/close.png" alt="Close">
         </div>
         <!-- Lists in Slidebars -->
         <ul class="sb-menu">
@@ -208,7 +208,7 @@
                 <a class="sb-toggle-submenu">友情链接<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
+                    <li><a target="_blank" rel="noopener" href="http://ykzhai.top/" class="animsition-link">砦龑堃</a></li>
                     
                 </ul>
             </li>
@@ -236,7 +236,7 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -287,29 +287,29 @@
 	
     
     | 分类：
-    <a class="categories" href='/categories/android/'>android</a>
+    <a class="categories" href="/categories/android/">android</a>
     
     
     
     
     | 标签：
-    <a class="tags" href='/tags/android/'>android</a>
+    <a class="tags" href="/tags/android/">android</a>
     
     
 </span>
-		<br/>
+		<br>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="为什么recyclerview是一个容器">为什么recyclerview是一个容器</h2><ul>
+      		<h2 id="为什么recyclerview是一个容器"><a href="#为什么recyclerview是一个容器" class="headerlink" title="为什么recyclerview是一个容器"></a>为什么recyclerview是一个容器</h2><ul>
 <li>可以自定义显示的位置——layoutmanager</li>
 <li>可以自定义的item之间分隔——ItemDecoration</li>
 <li>可以自定义增删动画——ItemAnimator</li>
 <li>仅仅控制item的回收与复用——adapter针对的不是view而是ViewHolder</li>
 </ul>
-<h2 id="那recyclerview到底是什么样子呢">那recyclerview到底是什么样子呢</h2><p>既可以实现ListView也可以实现GridView，还能实现瀑布流。<br>是不是感觉很神奇\^_^   </p>
+<h2 id="那recyclerview到底是什么样子呢"><a href="#那recyclerview到底是什么样子呢" class="headerlink" title="那recyclerview到底是什么样子呢"></a>那recyclerview到底是什么样子呢</h2><p>既可以实现ListView也可以实现GridView，还能实现瀑布流。<br>是不是感觉很神奇\^_^   </p>
 <p><img src="http://oeb33qix3.bkt.clouddn.com/16-10-10/23778082.jpg" alt="image"><br><img src="http://oeb33qix3.bkt.clouddn.com/16-10-10/23593608.jpg" alt="image"><br><img src="http://oeb33qix3.bkt.clouddn.com/16-10-10/88905249.jpg" alt="image"><br><img src="http://oeb33qix3.bkt.clouddn.com/16-10-9/17122114.jpg" alt="image">  </p>
-<h2 id="如何实现recyclerview">如何实现recyclerview</h2><ul>
+<h2 id="如何实现recyclerview"><a href="#如何实现recyclerview" class="headerlink" title="如何实现recyclerview"></a>如何实现recyclerview</h2><ul>
 <li>首先需要导入v7的recyclerview的资源包</li>
 <li>在layout文件中放置recyclerview</li>
 <li>在activity中配置recycleview<ul>
@@ -320,93 +320,83 @@
 </ul>
 </li>
 </ul>
-<h2 id="上代码">上代码</h2><pre><code><span class="annotation">@Override</span>
-<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>{
-    <span class="keyword">super</span>.onCreate(savedInstanceState);
+<h2 id="上代码"><a href="#上代码" class="headerlink" title="上代码"></a>上代码</h2><pre><code>@Override
+protected void onCreate(Bundle savedInstanceState) &#123;
+    super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    initData();<span class="comment">//初始化数据</span>
-    recyclerView= (RecyclerView) findViewById(R.id.myRecyclerView);<span class="comment">//绑定recyclerview</span>
-    <span class="comment">//recyclerView.setLayoutManager(new LinearLayoutManager(this));//按类似listview的方式展示数据</span>
-    <span class="comment">//recyclerView.setLayoutManager(new GridLayoutManager(this,4));//按类似GridVIew的方式展示数据</span>
-    recyclerView.setLayoutManager(<span class="keyword">new</span> StaggeredGridLayoutManager(<span class="number">3</span>,
-            StaggeredGridLayoutManager.VERTICAL));<span class="comment">//按瀑布流的方式展示数据</span>
-    recyclerAdapter=<span class="keyword">new</span> RecyclerAdapter();
-    recyclerView.setAdapter(recyclerAdapter);<span class="comment">//绑定数据填充器</span>
-    recyclerView.setItemAnimator(<span class="keyword">new</span> DefaultItemAnimator());<span class="comment">//设置添加删除动画效果</span>
-    <span class="comment">//recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL_LIST));//设置listview形式的边框</span>
-    <span class="comment">//recyclerView.addItemDecoration(new DividerGridItemDecoration(this));//设置gridView形式的边框</span>
-}
+    initData();//初始化数据
+    recyclerView= (RecyclerView) findViewById(R.id.myRecyclerView);//绑定recyclerview
+    //recyclerView.setLayoutManager(new LinearLayoutManager(this));//按类似listview的方式展示数据
+    //recyclerView.setLayoutManager(new GridLayoutManager(this,4));//按类似GridVIew的方式展示数据
+    recyclerView.setLayoutManager(new StaggeredGridLayoutManager(3,
+            StaggeredGridLayoutManager.VERTICAL));//按瀑布流的方式展示数据
+    recyclerAdapter=new RecyclerAdapter();
+    recyclerView.setAdapter(recyclerAdapter);//绑定数据填充器
+    recyclerView.setItemAnimator(new DefaultItemAnimator());//设置添加删除动画效果
+    //recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL_LIST));//设置listview形式的边框
+    //recyclerView.addItemDecoration(new DividerGridItemDecoration(this));//设置gridView形式的边框
+&#125;
 
 
-<span class="class"><span class="keyword">class</span> <span class="title">RecyclerAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerAdapter</span>.<span class="title">MyViewHolder</span>&gt;</span>{
-    <span class="annotation">@Override</span>
-    <span class="function"><span class="keyword">public</span> MyViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>{
-        MyViewHolder holder = <span class="keyword">new</span> MyViewHolder(LayoutInflater.from(
-                MainActivity.<span class="keyword">this</span>).inflate(R.layout.item_recycler, parent,
-                <span class="keyword">false</span>));
-        <span class="keyword">return</span> holder;
-    }
-    <span class="annotation">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(MyViewHolder holder, <span class="keyword">int</span> position)</span> </span>{
-        <span class="comment">//holder.text_recy.setHeight();</span>
+class RecyclerAdapter extends RecyclerView.Adapter&lt;RecyclerAdapter.MyViewHolder&gt;&#123;
+    @Override
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) &#123;
+        MyViewHolder holder = new MyViewHolder(LayoutInflater.from(
+                MainActivity.this).inflate(R.layout.item_recycler, parent,
+                false));
+        return holder;
+    &#125;
+    @Override
+    public void onBindViewHolder(MyViewHolder holder, int position) &#123;
+        //holder.text_recy.setHeight();
         holder.text_recy.setText(dataList.get(position));
         holder.text_recy.getLayoutParams().height=dataHeight.get(position);
-    }
-    <span class="annotation">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>{
-        <span class="keyword">return</span> dataList.size();
-    }
-    <span class="class"><span class="keyword">class</span> <span class="title">MyViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>{
+    &#125;
+    @Override
+    public int getItemCount() &#123;
+        return dataList.size();
+    &#125;
+    class MyViewHolder extends RecyclerView.ViewHolder &#123;
         TextView text_recy;
-        <span class="function"><span class="keyword">public</span> <span class="title">MyViewHolder</span><span class="params">(View itemView)</span> </span>{
-            <span class="keyword">super</span>(itemView);
+        public MyViewHolder(View itemView) &#123;
+            super(itemView);
             text_recy= (TextView) itemView.findViewById(R.id.text_recy);
-        }
-    }
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addData</span><span class="params">(<span class="keyword">int</span> position)</span></span>{
-        dataList.add(position,<span class="string">"inset"</span>);
-        dataHeight.add(position,(<span class="keyword">int</span>)(Math.random()*<span class="number">200</span>)+<span class="number">100</span>);<span class="comment">//添加子模块设置随机高度，实现瀑布流效果</span>
+        &#125;
+    &#125;
+    public void addData(int position)&#123;
+        dataList.add(position,&quot;inset&quot;);
+        dataHeight.add(position,(int)(Math.random()*200)+100);//添加子模块设置随机高度，实现瀑布流效果
         notifyItemInserted(position);
-    }
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delData</span><span class="params">(<span class="keyword">int</span> position)</span></span>{
+    &#125;
+    public void delData(int position)&#123;
         dataList.remove(position);
-        dataHeight.remove(position);<span class="comment">//维护每个子模块的高度，避免重新加载时修改了高度</span>
+        dataHeight.remove(position);//维护每个子模块的高度，避免重新加载时修改了高度
         notifyItemRemoved(position);
-    }
-}
-</code></pre><h2 id="参考文章">参考文章</h2><p>最后附上hongyang大神的链接：<a href="http://blog.csdn.net/lmj623565791/article/details/45059587" target="_blank" rel="external">Android RecyclerView 使用完全解析 体验艺术般的控件</a></p>
+    &#125;
+&#125;
+</code></pre><h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p>最后附上hongyang大神的链接：<a target="_blank" rel="noopener" href="http://blog.csdn.net/lmj623565791/article/details/45059587">Android RecyclerView 使用完全解析 体验艺术般的控件</a></p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2017/02/19/使用selenium+python自动化操作浏览器/" style="float: left;">
-        ← 使用selenium+python自动化操作浏览器
+    <a class="pull-left" href="/2017/03/03/%E5%AE%89%E5%8D%93%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94%E5%86%85%E7%BD%AE%E7%B3%BB%E7%BB%9Fapp/" style="float: left">
+        ← 安卓源码学习（2）——内置系统app
     </a>
     
     
-    <a class="pull-right" href="/2016/08/14/Android源码学习——Android L系统设置中的搜索功能/">
+    <a class="pull-right" href="/2016/08/14/Android%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94Android%20L%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE%E4%B8%AD%E7%9A%84%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD/">
         Android源码学习——Android L中系统设置的搜索功能 →
     </a>
     
-	<br/>
+	<br>
 </nav>
 
-        <br/>
+        <br>
 	<div class="row col-md-offset-2">
             <div class="col-md-8">
     			<div class="wumi">
-<!-- WUMI BEGIN -->
-<script type="text/javascript" id="wumiiComments">
-    var wumiiPermaLink = ""; 
-    var wumiiTitle = "Android学习笔记（11）——RecyclerView"; 
-    var wumiiSitePrefix = "http://www.chenguangsong.online"; 
-    var wumiiCommentParams = "&pf=JAVASCRIPT";
-</script>
-<script type="text/javascript" src="http://widget.wumii.cn/ext/cw/widget"></script>
-<!-- WUMI END -->
-
 </div>
             </div>
         </div>
@@ -423,9 +413,9 @@
                 <p>
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Jxust_CGS. All Rights Reserved.<br>
 					<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br />
+					<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span><br>
                 </p>
-                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
             </div>
             <div class="social">
                 <ul>
@@ -521,5 +511,5 @@ $('#intro').find('img').each(function(){
       });
     });
 </script>
-</body>
+</div></body>
 </html>
